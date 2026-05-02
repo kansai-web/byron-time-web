@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCHEDULE | FLEUR CRÊPE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;700&family=Great+Vibes&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --pink: #E8739A; --pink-light: #F9D4E0; --caramel: #C4956A; --dark: #2d1a1a; --cream: #FFF8F5; --gray: #8a7070; }
+    body { font-family: 'Noto Sans JP', sans-serif; font-weight: 300; color: var(--dark); background: var(--cream); }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,248,245,0.94); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(232,115,154,0.1); }
+    .nav-inner { max-width: 1240px; margin: 0 auto; padding: 0 80px; display: flex; justify-content: space-between; align-items: center; height: 66px; }
+    .nav-logo { font-family: 'Great Vibes', cursive; font-size: 28px; color: var(--pink); text-decoration: none; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { font-family: 'Josefin Sans', sans-serif; color: var(--dark); text-decoration: none; font-size: 11px; font-weight: 300; letter-spacing: 0.22em; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--pink); }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .nav-toggle span { display: block; width: 22px; height: 1.5px; background: var(--dark); transition: all 0.28s; transform-origin: center; }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* HERO HEADER */
+    .page-hero { min-height: 42vh; background: var(--dark); display: flex; align-items: flex-end; padding: 0; position: relative; overflow: hidden; }
+    .page-hero::before { content: ''; position: absolute; top: -60px; right: -60px; width: 360px; height: 360px; border-radius: 50%; background: rgba(232,115,154,0.14); }
+    .page-hero::after { content: ''; position: absolute; bottom: -40px; left: 20%; width: 180px; height: 180px; border-radius: 50%; background: rgba(196,149,106,0.1); }
+    .page-hero-inner { max-width: 1240px; margin: 0 auto; padding: 110px 80px 72px; width: 100%; position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: flex-end; }
+    .section-label { font-family: 'Josefin Sans', sans-serif; font-size: 10px; font-weight: 300; letter-spacing: 0.35em; color: var(--pink); display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+    .section-label::after { content: ''; display: block; width: 40px; height: 1px; background: rgba(232,115,154,0.5); }
+    .page-title { font-family: 'Noto Serif JP', serif; font-size: clamp(36px, 5vw, 64px); font-weight: 400; color: #fff; line-height: 1.3; }
+    .page-hero-right { text-align: right; padding-bottom: 4px; }
+    .page-hero-desc { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 2.0; max-width: 280px; text-align: right; }
+
+    /* MAIN SCHEDULE */
+    .schedule-main { background: var(--cream); padding: 100px 0; }
+    .schedule-inner { max-width: 1240px; margin: 0 auto; padding: 0 80px; display: grid; grid-template-columns: 1fr 400px; gap: 80px; align-items: start; }
+    .schedule-left {}
+    .schedule-heading { font-family: 'Noto Serif JP', serif; font-size: clamp(26px, 3vw, 40px); font-weight: 400; color: var(--dark); margin-bottom: 44px; line-height: 1.6; }
+
+    /* Event list */
+    .event-item { display: flex; gap: 22px; align-items: flex-start; padding: 24px 0; border-bottom: 1px solid rgba(232,115,154,0.14); }
+    .event-item:first-child { padding-top: 0; }
+    .event-date-box { background: var(--pink); color: #fff; border-radius: 14px; padding: 12px 16px; text-align: center; flex-shrink: 0; min-width: 60px; }
+    .event-date-num { font-size: 28px; font-weight: 700; line-height: 1; display: block; }
+    .event-date-dow { font-family: 'Josefin Sans', sans-serif; font-size: 10px; letter-spacing: 0.12em; margin-top: 3px; display: block; }
+    .event-info { flex: 1; padding-top: 4px; }
+    .event-info-name { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .event-info-detail { font-size: 13px; color: var(--gray); line-height: 1.75; }
+    .event-info-tag { display: inline-block; background: var(--pink-light); color: var(--pink); font-family: 'Josefin Sans', sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 0.12em; padding: 3px 10px; border-radius: 12px; margin-left: 10px; vertical-align: middle; }
+
+    /* Calendar sidebar */
+    .schedule-sidebar { background: #fff; border-radius: 22px; padding: 38px; position: sticky; top: 90px; box-shadow: 0 4px 36px rgba(45,26,26,0.06); }
+    .sidebar-title { font-family: 'Noto Serif JP', serif; font-size: 18px; font-weight: 400; color: var(--dark); margin-bottom: 8px; }
+    .sidebar-sub { font-size: 12px; color: var(--gray); margin-bottom: 28px; line-height: 1.7; }
+
+    /* Demo calendar */
+    .demo-cal { border: 1px solid var(--pink-light); border-radius: 14px; overflow: hidden; }
+    .demo-cal-head { background: var(--pink); color: #fff; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; }
+    .demo-cal-month { font-family: 'Josefin Sans', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.12em; }
+    .demo-cal-nav-btn { background: rgba(255,255,255,0.25); border: none; color: #fff; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+    .demo-cal-nav-btns { display: flex; gap: 6px; }
+    .demo-cal-body { padding: 16px; }
+    .demo-cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; text-align: center; }
+    .cal-dow { font-family: 'Josefin Sans', sans-serif; font-size: 9px; letter-spacing: 0.1em; color: var(--gray); padding: 6px 0; }
+    .cal-day { font-size: 13px; padding: 6px 2px; color: var(--dark); border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; margin: 0 auto; }
+    .cal-day.event { background: var(--pink); color: #fff; font-weight: 700; }
+    .cal-day.today { color: var(--caramel); font-weight: 700; }
+    .cal-day.other { color: rgba(45,26,26,0.2); }
+
+    .cal-note { margin-top: 16px; background: var(--cream); border-radius: 10px; padding: 14px; font-size: 11px; color: var(--gray); line-height: 1.8; text-align: center; }
+
+    .sidebar-cta { display: block; text-align: center; margin-top: 20px; background: var(--dark); color: #fff; font-family: 'Josefin Sans', sans-serif; font-size: 11px; letter-spacing: 0.15em; font-weight: 600; padding: 14px; border-radius: 50px; text-decoration: none; transition: transform 0.2s; }
+    .sidebar-cta:hover { transform: translateY(-2px); }
+
+    /* INSTAGRAM */
+    .instagram { background: var(--dark); padding: 100px 0; position: relative; overflow: hidden; }
+    .instagram::before { content: ''; position: absolute; top: -100px; right: -80px; width: 380px; height: 380px; border-radius: 50%; background: rgba(232,115,154,0.12); }
+    .instagram-inner { max-width: 1240px; margin: 0 auto; padding: 0 80px; display: flex; justify-content: space-between; align-items: center; gap: 60px; position: relative; z-index: 1; }
+    .insta-label { font-family: 'Josefin Sans', sans-serif; font-size: 10px; letter-spacing: 0.35em; color: var(--pink); margin-bottom: 18px; }
+    .insta-heading { font-family: 'Noto Serif JP', serif; font-size: clamp(22px, 3vw, 36px); font-weight: 400; color: #fff; line-height: 1.7; margin-bottom: 14px; }
+    .insta-desc { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.95; }
+    .btn-insta { border: 1.5px solid var(--pink); color: var(--pink); background: transparent; font-family: 'Josefin Sans', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.18em; padding: 16px 36px; border-radius: 50px; text-decoration: none; display: inline-block; white-space: nowrap; transition: all 0.25s; }
+    .btn-insta:hover { background: var(--pink); color: #fff; }
+
+    /* FOOTER */
+    footer { background: #1a0f0f; padding: 72px 0 40px; }
+    .footer-inner { max-width: 1240px; margin: 0 auto; padding: 0 80px; }
+    .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 32px; }
+    .footer-logo { font-family: 'Great Vibes', cursive; font-size: 38px; color: var(--pink-light); margin-bottom: 12px; }
+    .footer-tagline { font-size: 12px; color: rgba(255,255,255,0.3); line-height: 2.0; }
+    .footer-col-title { font-family: 'Josefin Sans', sans-serif; font-size: 10px; letter-spacing: 0.32em; color: rgba(255,255,255,0.35); margin-bottom: 20px; }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 12px; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--pink-light); }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,0.18); letter-spacing: 0.08em; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .nav-inner { padding: 0 28px; }
+      .nav-toggle { display: flex; }
+      .nav-links { display: none; position: absolute; top: 66px; left: 0; right: 0; background: rgba(255,248,245,0.98); backdrop-filter: blur(14px); flex-direction: column; gap: 0; padding: 8px 0 18px; border-bottom: 1px solid var(--pink-light); }
+      .nav-links.open { display: flex; }
+      .nav-links li a { display: block; padding: 14px 28px; font-size: 13px; }
+      .page-hero-inner, .schedule-inner, .instagram-inner, .footer-inner { padding-left: 32px; padding-right: 32px; }
+      .page-hero-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .page-hero-right { text-align: left; }
+      .page-hero-desc { text-align: left; max-width: 100%; }
+      .schedule-inner { grid-template-columns: 1fr; }
+      .schedule-sidebar { position: static; }
+      .instagram-inner { flex-direction: column; align-items: flex-start; gap: 32px; }
+      .footer-top { grid-template-columns: 1fr; gap: 36px; }
+    }
+    @media (max-width: 600px) {
+      .page-hero-inner, .schedule-inner, .instagram-inner, .footer-inner { padding-left: 24px; padding-right: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Fleur Crêpe</a>
+      <button class="nav-toggle" aria-label="メニュー"><span></span><span></span><span></span></button>
+      <ul class="nav-links">
+        <li><a href="menu.html">MENU</a></li>
+        <li><a href="schedule.html" class="active">SCHEDULE</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <header class="page-hero">
+    <div class="page-hero-inner">
+      <div>
+        <p class="section-label">SCHEDULE</p>
+        <h1 class="page-title">出展<br>スケジュール</h1>
+      </div>
+      <div class="page-hero-right">
+        <p class="page-hero-desc">関西エリアを中心に、<br>マルシェ・イベントへ出展中。</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- SCHEDULE MAIN -->
+  <section class="schedule-main">
+    <div class="schedule-inner">
+      <div class="schedule-left">
+        <p class="section-label">MAY 2026</p>
+        <h2 class="schedule-heading">今月の<br>出展スケジュール</h2>
+        <div class="event-list">
+          <div class="event-item">
+            <div class="event-date-box"><span class="event-date-num">4</span><span class="event-date-dow">SUN</span></div>
+            <div class="event-info">
+              <div class="event-info-name">花博記念公園マルシェ<span class="event-info-tag">大阪</span></div>
+              <div class="event-info-detail">📍 鶴見緑地 / 🕙 10:00〜16:00<br>マルシェ会場内、正面ゲートそば</div>
+            </div>
+          </div>
+          <div class="event-item">
+            <div class="event-date-box"><span class="event-date-num">10</span><span class="event-date-dow">SAT</span></div>
+            <div class="event-info">
+              <div class="event-info-name">北山クラフトガーデン<span class="event-info-tag">京都</span></div>
+              <div class="event-info-detail">📍 京都府立陶板名画の庭 / 🕙 10:00〜17:00</div>
+            </div>
+          </div>
+          <div class="event-item">
+            <div class="event-date-box"><span class="event-date-num">11</span><span class="event-date-dow">SUN</span></div>
+            <div class="event-info">
+              <div class="event-info-name">せせらぎマルシェ<span class="event-info-tag">大阪</span></div>
+              <div class="event-info-detail">📍 花博記念公園 鶴見緑地 / 🕙 10:00〜15:00</div>
+            </div>
+          </div>
+          <div class="event-item">
+            <div class="event-date-box"><span class="event-date-num">17</span><span class="event-date-dow">SAT</span></div>
+            <div class="event-info">
+              <div class="event-info-name">EAT LOCAL KOBE<span class="event-info-tag">神戸</span></div>
+              <div class="event-info-detail">📍 六甲八幡神社 / 🕙 9:00〜14:00</div>
+            </div>
+          </div>
+          <div class="event-item">
+            <div class="event-date-box"><span class="event-date-num">25</span><span class="event-date-dow">SUN</span></div>
+            <div class="event-info">
+              <div class="event-info-name">万博記念公園お祭り広場<span class="event-info-tag">大阪</span></div>
+              <div class="event-info-detail">📍 万博記念公園 / 🕙 11:00〜16:00</div>
+            </div>
+          </div>
+          <div class="event-item">
+            <div class="event-date-box"><span class="event-date-num">31</span><span class="event-date-dow">SAT</span></div>
+            <div class="event-info">
+              <div class="event-info-name">ハンドメイドバザール<span class="event-info-tag">大阪</span></div>
+              <div class="event-info-detail">📍 ツイン21 アトリウム / 🕙 10:00〜18:00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="schedule-sidebar">
+        <div class="sidebar-title">2026年 5月</div>
+        <p class="sidebar-sub">🟥 = 出展予定日</p>
+        <div class="demo-cal">
+          <div class="demo-cal-head">
+            <span class="demo-cal-month">MAY 2026</span>
+            <div class="demo-cal-nav-btns">
+              <button class="demo-cal-nav-btn">‹</button>
+              <button class="demo-cal-nav-btn">›</button>
+            </div>
+          </div>
+          <div class="demo-cal-body">
+            <div class="demo-cal-grid">
+              <div class="cal-dow">S</div><div class="cal-dow">M</div><div class="cal-dow">T</div><div class="cal-dow">W</div><div class="cal-dow">T</div><div class="cal-dow">F</div><div class="cal-dow">S</div>
+              <div class="cal-day other">27</div><div class="cal-day other">28</div><div class="cal-day other">29</div><div class="cal-day other">30</div><div class="cal-day">1</div><div class="cal-day">2</div><div class="cal-day">3</div>
+              <div class="cal-day event">4</div><div class="cal-day">5</div><div class="cal-day">6</div><div class="cal-day">7</div><div class="cal-day">8</div><div class="cal-day">9</div><div class="cal-day event">10</div>
+              <div class="cal-day event">11</div><div class="cal-day">12</div><div class="cal-day">13</div><div class="cal-day">14</div><div class="cal-day">15</div><div class="cal-day">16</div><div class="cal-day event">17</div>
+              <div class="cal-day event">18</div><div class="cal-day">19</div><div class="cal-day today">20</div><div class="cal-day">21</div><div class="cal-day">22</div><div class="cal-day">23</div><div class="cal-day event">24</div>
+              <div class="cal-day event">25</div><div class="cal-day">26</div><div class="cal-day">27</div><div class="cal-day">28</div><div class="cal-day">29</div><div class="cal-day">30</div><div class="cal-day event">31</div>
+            </div>
+            <div class="cal-note">📍 ピンクの日付が出展予定日です</div>
+          </div>
+        </div>
+        <a href="https://www.instagram.com/" class="sidebar-cta">📸 急な変更はInstagramで確認</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM -->
+  <section class="instagram">
+    <div class="instagram-inner">
+      <div>
+        <p class="insta-label">FOLLOW US ON INSTAGRAM</p>
+        <h2 class="insta-heading">当日の最新情報は<br>Instagramで発信中</h2>
+        <p class="insta-desc">天候・体調による急な中止や変更は<br>Instagramストーリーでお知らせしています。</p>
+      </div>
+      <div><a href="https://www.instagram.com/" class="btn-insta">📸 @fleur_crepe をフォロー</a></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div><div class="footer-logo">Fleur Crêpe</div><p class="footer-tagline">旅するクレープ屋さん<br>大阪府内・関西全域</p></div>
+        <div><p class="footer-col-title">PAGES</p><ul class="footer-links"><li><a href="menu.html">Menu</a></li><li><a href="schedule.html">Schedule</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div><p class="footer-col-title">FOLLOW</p><ul class="footer-links"><li><a href="https://www.instagram.com/">Instagram @fleur_crepe</a></li></ul></div>
+      </div>
+      <p class="footer-copy">© 2026 Fleur Crêpe All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => { links.classList.toggle('open'); toggle.classList.toggle('open'); });
+  </script>
+</body>
+</html>

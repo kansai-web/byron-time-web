@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MENU | FLEUR CRÊPE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;700&family=Great+Vibes&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --pink: #E8739A; --pink-light: #F9D4E0; --caramel: #C4956A; --dark: #2d1a1a; --cream: #FFF8F5; --gray: #8a7070; }
+    body { font-family: 'Noto Sans JP', sans-serif; font-weight: 300; color: var(--dark); background: var(--cream); }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,248,245,0.94); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(232,115,154,0.1); }
+    .nav-inner { max-width: 1240px; margin: 0 auto; padding: 0 80px; display: flex; justify-content: space-between; align-items: center; height: 66px; }
+    .nav-logo { font-family: 'Great Vibes', cursive; font-size: 28px; color: var(--pink); text-decoration: none; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { font-family: 'Josefin Sans', sans-serif; color: var(--dark); text-decoration: none; font-size: 11px; font-weight: 300; letter-spacing: 0.22em; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--pink); }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .nav-toggle span { display: block; width: 22px; height: 1.5px; background: var(--dark); transition: all 0.28s; transform-origin: center; }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* PAGE HEADER */
+    .page-header { padding: 140px 0 80px; background: #fff; }
+    .page-header-inner { max-width: 1240px; margin: 0 auto; padding: 0 80px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .page-header-left {}
+    .section-label { font-family: 'Josefin Sans', sans-serif; font-size: 10px; font-weight: 300; letter-spacing: 0.35em; color: var(--pink); display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+    .section-label::after { content: ''; display: block; width: 40px; height: 1px; background: var(--pink-light); }
+    .page-title { font-family: 'Noto Serif JP', serif; font-size: clamp(36px, 5vw, 64px); font-weight: 400; color: var(--dark); line-height: 1.2; }
+    .page-header-right { text-align: right; padding-bottom: 8px; }
+    .page-header-desc { font-size: 13px; color: var(--gray); line-height: 2.0; max-width: 300px; text-align: right; }
+
+    /* CATEGORY NAV */
+    .cat-nav { background: var(--cream); border-bottom: 1px solid var(--pink-light); position: sticky; top: 66px; z-index: 50; }
+    .cat-nav-inner { max-width: 1240px; margin: 0 auto; padding: 0 80px; display: flex; gap: 0; }
+    .cat-nav a { font-family: 'Josefin Sans', sans-serif; font-size: 11px; font-weight: 300; letter-spacing: 0.2em; color: var(--gray); text-decoration: none; padding: 16px 28px; display: block; border-bottom: 2px solid transparent; transition: all 0.2s; }
+    .cat-nav a:hover, .cat-nav a.active { color: var(--pink); border-bottom-color: var(--pink); }
+
+    /* MENU SECTIONS */
+    .menu-section { padding: 100px 0; }
+    .menu-section:nth-child(even) { background: #fff; }
+    .menu-section-inner { max-width: 1240px; margin: 0 auto; padding: 0 80px; }
+    .cat-header { display: grid; grid-template-columns: 200px 1fr; gap: 60px; align-items: baseline; margin-bottom: 52px; padding-bottom: 28px; border-bottom: 1px solid var(--pink-light); }
+    .cat-number { font-family: 'Josefin Sans', sans-serif; font-size: 80px; font-weight: 600; color: var(--pink-light); line-height: 1; }
+    .cat-info {}
+    .cat-label { font-family: 'Josefin Sans', sans-serif; font-size: 10px; letter-spacing: 0.35em; color: var(--pink); margin-bottom: 8px; }
+    .cat-title { font-family: 'Noto Serif JP', serif; font-size: clamp(24px, 3vw, 36px); font-weight: 400; color: var(--dark); margin-bottom: 10px; }
+    .cat-desc { font-size: 13px; color: var(--gray); line-height: 1.9; }
+    .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .menu-card { background: #fff; border-radius: 22px; overflow: hidden; box-shadow: 0 4px 36px rgba(45,26,26,0.06); }
+    .menu-section:nth-child(even) .menu-card { background: var(--cream); }
+    .menu-img { width: 100%; aspect-ratio: 4/3; overflow: hidden; }
+    .menu-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+    .menu-img-placeholder { width: 100%; aspect-ratio: 4/3; background: linear-gradient(135deg, #f5e6ec, #f9d4e0); display: flex; align-items: center; justify-content: center; font-size: 52px; }
+    .menu-info { padding: 26px; }
+    .menu-tag { display: inline-block; background: var(--pink-light); color: var(--pink); font-family: 'Josefin Sans', sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 0.14em; padding: 4px 13px; border-radius: 20px; margin-bottom: 12px; }
+    .menu-tag.caramel { background: #f5ede3; color: var(--caramel); }
+    .menu-tag.dark { background: #ede9e9; color: var(--dark); }
+    .menu-name { font-family: 'Noto Serif JP', serif; font-size: 18px; font-weight: 700; margin-bottom: 8px; color: var(--dark); }
+    .menu-desc { font-size: 13px; color: var(--gray); line-height: 1.85; margin-bottom: 18px; }
+    .menu-footer-row { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--pink-light); padding-top: 16px; }
+    .menu-price { font-size: 22px; font-weight: 900; color: var(--pink); }
+    .menu-allergy { font-size: 10px; color: var(--gray); }
+
+    /* ALLERGY NOTE */
+    .allergy { background: var(--cream); padding: 60px 0; }
+    .allergy-inner { max-width: 1240px; margin: 0 auto; padding: 0 80px; }
+    .allergy-box { background: #fff; border-radius: 16px; padding: 36px 44px; display: flex; gap: 28px; align-items: flex-start; box-shadow: 0 2px 24px rgba(232,115,154,0.07); }
+    .allergy-icon { font-size: 32px; flex-shrink: 0; }
+    .allergy-text strong { font-size: 15px; font-weight: 700; display: block; margin-bottom: 8px; }
+    .allergy-text p { font-size: 13px; color: var(--gray); line-height: 2.0; }
+
+    /* INSTAGRAM */
+    .instagram { background: var(--dark); padding: 110px 0; position: relative; overflow: hidden; }
+    .instagram::before { content: ''; position: absolute; top: -100px; right: -80px; width: 420px; height: 420px; border-radius: 50%; background: rgba(232,115,154,0.12); }
+    .instagram::after { content: ''; position: absolute; bottom: -80px; left: -60px; width: 260px; height: 260px; border-radius: 50%; background: rgba(196,149,106,0.09); }
+    .instagram-inner { max-width: 1240px; margin: 0 auto; padding: 0 80px; display: flex; justify-content: space-between; align-items: center; gap: 60px; position: relative; z-index: 1; }
+    .insta-label { font-family: 'Josefin Sans', sans-serif; font-size: 10px; letter-spacing: 0.35em; color: var(--pink); margin-bottom: 18px; }
+    .insta-heading { font-family: 'Noto Serif JP', serif; font-size: clamp(24px, 3vw, 40px); font-weight: 400; color: #fff; line-height: 1.7; margin-bottom: 16px; }
+    .insta-desc { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.95; }
+    .btn-insta { border: 1.5px solid var(--pink); color: var(--pink); background: transparent; font-family: 'Josefin Sans', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.18em; padding: 16px 36px; border-radius: 50px; text-decoration: none; display: inline-block; white-space: nowrap; transition: all 0.25s; }
+    .btn-insta:hover { background: var(--pink); color: #fff; }
+
+    /* FOOTER */
+    footer { background: #1a0f0f; padding: 72px 0 40px; }
+    .footer-inner { max-width: 1240px; margin: 0 auto; padding: 0 80px; }
+    .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 32px; }
+    .footer-logo { font-family: 'Great Vibes', cursive; font-size: 38px; color: var(--pink-light); margin-bottom: 12px; }
+    .footer-tagline { font-size: 12px; color: rgba(255,255,255,0.3); line-height: 2.0; }
+    .footer-col-title { font-family: 'Josefin Sans', sans-serif; font-size: 10px; letter-spacing: 0.32em; color: rgba(255,255,255,0.35); margin-bottom: 20px; }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 12px; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--pink-light); }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,0.18); letter-spacing: 0.08em; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .nav-inner { padding: 0 28px; }
+      .nav-toggle { display: flex; }
+      .nav-links { display: none; position: absolute; top: 66px; left: 0; right: 0; background: rgba(255,248,245,0.98); backdrop-filter: blur(14px); flex-direction: column; gap: 0; padding: 8px 0 18px; border-bottom: 1px solid var(--pink-light); }
+      .nav-links.open { display: flex; }
+      .nav-links li a { display: block; padding: 14px 28px; font-size: 13px; }
+      .page-header { padding: 110px 0 56px; }
+      .page-header-inner, .cat-nav-inner, .menu-section-inner, .allergy-inner, .instagram-inner, .footer-inner { padding-left: 32px; padding-right: 32px; }
+      .page-header-inner { flex-direction: column; gap: 20px; align-items: flex-start; }
+      .page-header-right { text-align: left; }
+      .page-header-desc { text-align: left; max-width: 100%; }
+      .cat-header { grid-template-columns: 1fr; gap: 16px; }
+      .cat-number { font-size: 56px; }
+      .menu-section { padding: 64px 0; }
+      .menu-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+      .footer-top { grid-template-columns: 1fr; gap: 36px; }
+      .instagram-inner { flex-direction: column; align-items: flex-start; gap: 32px; }
+      .allergy-box { flex-direction: column; gap: 16px; padding: 28px; }
+    }
+    @media (max-width: 600px) {
+      .page-header-inner, .menu-section-inner, .allergy-inner, .instagram-inner, .footer-inner { padding-left: 24px; padding-right: 24px; }
+      .cat-nav-inner { padding-left: 16px; padding-right: 16px; }
+      .cat-nav a { padding: 14px 16px; font-size: 10px; }
+      .menu-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Fleur Crêpe</a>
+      <button class="nav-toggle" aria-label="メニュー"><span></span><span></span><span></span></button>
+      <ul class="nav-links">
+        <li><a href="menu.html" class="active">MENU</a></li>
+        <li><a href="schedule.html">SCHEDULE</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <div class="page-header-inner">
+      <div class="page-header-left">
+        <p class="section-label">MENU</p>
+        <h1 class="page-title">クレープ<br>全メニュー</h1>
+      </div>
+      <div class="page-header-right">
+        <p class="page-header-desc">すべて手作り生地・手作りクリームにこだわっています🥞<br>当日の販売状況はInstagramでご確認ください。</p>
+      </div>
+    </div>
+  </header>
+
+  <nav class="cat-nav">
+    <div class="cat-nav-inner">
+      <a href="#fruits" class="active">🍓 フルーツ系</a>
+      <a href="#japanese">🍵 和スイーツ系</a>
+      <a href="#savory">🧂 しょっぱい系</a>
+    </div>
+  </nav>
+
+  <!-- フルーツ系 -->
+  <section class="menu-section" id="fruits">
+    <div class="menu-section-inner">
+      <div class="cat-header">
+        <div class="cat-number">01</div>
+        <div class="cat-info">
+          <p class="cat-label">FRUITS</p>
+          <h2 class="cat-title">フルーツ系</h2>
+          <p class="cat-desc">旬のフルーツをたっぷり使った定番ラインナップ。甘さと酸味のバランスを大切に。</p>
+        </div>
+      </div>
+      <div class="menu-grid">
+        <div class="menu-card">
+          <div class="menu-img"><img src="crepe-strawberry.jpg" alt="苺とカスタードクレープ"></div>
+          <div class="menu-info">
+            <span class="menu-tag">POPULAR NO.1</span>
+            <div class="menu-name">苺とカスタードクレープ</div>
+            <div class="menu-desc">甘酸っぱい苺と濃厚カスタードの定番クレープ。生クリーム増量もできます。</div>
+            <div class="menu-footer-row"><div class="menu-price">¥680</div><span class="menu-allergy">卵・乳・小麦</span></div>
+          </div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-img-placeholder">🫐</div>
+          <div class="menu-info">
+            <span class="menu-tag">SEASONAL</span>
+            <div class="menu-name">ミックスベリークレープ</div>
+            <div class="menu-desc">ブルーベリー・ラズベリー・苺の3種ベリーと軽やかなホイップクリーム。</div>
+            <div class="menu-footer-row"><div class="menu-price">¥720</div><span class="menu-allergy">卵・乳・小麦</span></div>
+          </div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-img-placeholder">🍌</div>
+          <div class="menu-info">
+            <span class="menu-tag caramel">定番</span>
+            <div class="menu-name">バナナチョコクレープ</div>
+            <div class="menu-desc">チョコクリームとバナナのやさしい甘さ。お子さまにも大人気です。</div>
+            <div class="menu-footer-row"><div class="menu-price">¥650</div><span class="menu-allergy">卵・乳・小麦</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 和スイーツ系 -->
+  <section class="menu-section" id="japanese">
+    <div class="menu-section-inner">
+      <div class="cat-header">
+        <div class="cat-number">02</div>
+        <div class="cat-info">
+          <p class="cat-label">JAPANESE</p>
+          <h2 class="cat-title">和スイーツ系</h2>
+          <p class="cat-desc">日本の素材を活かした、フレンチ×和のクレープ。旅する先々でインスピレーションを。</p>
+        </div>
+      </div>
+      <div class="menu-grid">
+        <div class="menu-card">
+          <div class="menu-img"><img src="crepe-matcha.jpg" alt="抹茶あんこクレープ"></div>
+          <div class="menu-info">
+            <span class="menu-tag">SEASONAL</span>
+            <div class="menu-name">抹茶あんこクレープ</div>
+            <div class="menu-desc">京都産宇治抹茶クリームと北海道つぶあんの和風クレープ。</div>
+            <div class="menu-footer-row"><div class="menu-price">¥720</div><span class="menu-allergy">卵・乳・小麦</span></div>
+          </div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-img-placeholder">🌾</div>
+          <div class="menu-info">
+            <span class="menu-tag caramel">NEW</span>
+            <div class="menu-name">きなこ黒みつクリーム</div>
+            <div class="menu-desc">香ばしいきなこクリームに沖縄産黒みつをかけた和テイスト。</div>
+            <div class="menu-footer-row"><div class="menu-price">¥680</div><span class="menu-allergy">卵・乳・小麦・大豆</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- しょっぱい系 -->
+  <section class="menu-section" id="savory">
+    <div class="menu-section-inner">
+      <div class="cat-header">
+        <div class="cat-number">03</div>
+        <div class="cat-info">
+          <p class="cat-label">SAVORY</p>
+          <h2 class="cat-title">しょっぱい系</h2>
+          <p class="cat-desc">甘いだけじゃないのがFLEUR CRÊPEの魅力。ランチ代わりにもどうぞ。</p>
+        </div>
+      </div>
+      <div class="menu-grid">
+        <div class="menu-card">
+          <div class="menu-img"><img src="crepe-caramel.jpg" alt="塩キャラメルバナナ"></div>
+          <div class="menu-info">
+            <span class="menu-tag dark">NEW</span>
+            <div class="menu-name">塩キャラメルバナナ</div>
+            <div class="menu-desc">塩キャラメルソースとバナナの甘塩っぱい大人クレープ。</div>
+            <div class="menu-footer-row"><div class="menu-price">¥700</div><span class="menu-allergy">卵・乳・小麦</span></div>
+          </div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-img-placeholder">🧀</div>
+          <div class="menu-info">
+            <span class="menu-tag caramel">定番</span>
+            <div class="menu-name">ハムチーズクレープ</div>
+            <div class="menu-desc">とろけるチーズとハムのシンプルなガレット風。軽食にもぴったり。</div>
+            <div class="menu-footer-row"><div class="menu-price">¥680</div><span class="menu-allergy">卵・乳・小麦</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALLERGY NOTE -->
+  <div class="allergy">
+    <div class="allergy-inner">
+      <div class="allergy-box">
+        <div class="allergy-icon">⚠️</div>
+        <div class="allergy-text">
+          <strong>アレルギーをお持ちの方へ</strong>
+          <p>当店の商品はすべて同じ調理器具を使用しています。アレルギーが心配な方はスタッフまでお声がけください。表示はおもな原材料です。詳細はお尋ねください。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSTAGRAM -->
+  <section class="instagram">
+    <div class="instagram-inner">
+      <div>
+        <p class="insta-label">FOLLOW US ON INSTAGRAM</p>
+        <h2 class="insta-heading">最新の出展情報は<br>Instagramで発信中</h2>
+        <p class="insta-desc">今日どこにいるか、新メニューの情報など<br>Instagramでリアルタイムに更新しています。</p>
+      </div>
+      <div><a href="https://www.instagram.com/" class="btn-insta">🌸 @fleur_crepe をフォロー</a></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div><div class="footer-logo">Fleur Crêpe</div><p class="footer-tagline">旅するクレープ屋さん<br>大阪府内・関西全域</p></div>
+        <div><p class="footer-col-title">PAGES</p><ul class="footer-links"><li><a href="menu.html">Menu</a></li><li><a href="schedule.html">Schedule</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div><p class="footer-col-title">FOLLOW</p><ul class="footer-links"><li><a href="https://www.instagram.com/">Instagram @fleur_crepe</a></li></ul></div>
+      </div>
+      <p class="footer-copy">© 2026 Fleur Crêpe All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => { links.classList.toggle('open'); toggle.classList.toggle('open'); });
+  </script>
+</body>
+</html>

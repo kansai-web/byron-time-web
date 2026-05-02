@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CONTACT | FLEUR CRÊPE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;700&family=Great+Vibes&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --pink: #E8739A; --pink-light: #F9D4E0; --caramel: #C4956A; --dark: #2d1a1a; --cream: #FFF8F5; --gray: #8a7070; }
+    body { font-family: 'Noto Sans JP', sans-serif; font-weight: 300; color: var(--dark); background: var(--cream); }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,248,245,0.94); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(232,115,154,0.1); }
+    .nav-inner { max-width: 1240px; margin: 0 auto; padding: 0 80px; display: flex; justify-content: space-between; align-items: center; height: 66px; }
+    .nav-logo { font-family: 'Great Vibes', cursive; font-size: 28px; color: var(--pink); text-decoration: none; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { font-family: 'Josefin Sans', sans-serif; color: var(--dark); text-decoration: none; font-size: 11px; font-weight: 300; letter-spacing: 0.22em; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--pink); }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .nav-toggle span { display: block; width: 22px; height: 1.5px; background: var(--dark); transition: all 0.28s; transform-origin: center; }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* PAGE HERO */
+    .page-hero { background: var(--pink); padding: 140px 0 80px; position: relative; overflow: hidden; }
+    .page-hero::before { content: ''; position: absolute; top: -80px; left: -80px; width: 360px; height: 360px; border-radius: 50%; background: rgba(255,255,255,0.1); }
+    .page-hero::after { content: ''; position: absolute; bottom: -60px; right: 10%; width: 220px; height: 220px; border-radius: 50%; background: rgba(196,149,106,0.15); }
+    .page-hero-inner { max-width: 1240px; margin: 0 auto; padding: 0 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; position: relative; z-index: 1; }
+    .section-label { font-family: 'Josefin Sans', sans-serif; font-size: 10px; font-weight: 300; letter-spacing: 0.35em; color: rgba(255,255,255,0.7); display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+    .section-label::after { content: ''; display: block; width: 40px; height: 1px; background: rgba(255,255,255,0.3); }
+    .page-title { font-family: 'Noto Serif JP', serif; font-size: clamp(36px, 5vw, 60px); font-weight: 400; color: #fff; line-height: 1.4; }
+    .page-hero-right { padding-bottom: 6px; }
+    .welcome-cards { display: flex; flex-direction: column; gap: 14px; }
+    .welcome-card { background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border-radius: 14px; padding: 18px 20px; display: flex; gap: 14px; align-items: center; }
+    .welcome-card-icon { font-size: 22px; flex-shrink: 0; }
+    .welcome-card-text strong { font-size: 14px; font-weight: 700; color: #fff; display: block; margin-bottom: 2px; }
+    .welcome-card-text span { font-size: 12px; color: rgba(255,255,255,0.75); }
+
+    /* MAIN CONTENT */
+    .contact-main { padding: 100px 0; background: #fff; }
+    .contact-inner { max-width: 1240px; margin: 0 auto; padding: 0 80px; display: grid; grid-template-columns: 380px 1fr; gap: 96px; align-items: start; }
+
+    /* Left info */
+    .contact-info {}
+    .contact-info-sticky { position: sticky; top: 90px; }
+    .info-heading { font-family: 'Noto Serif JP', serif; font-size: clamp(24px, 2.5vw, 34px); font-weight: 400; color: var(--dark); margin-bottom: 20px; line-height: 1.7; }
+    .info-desc { font-size: 14px; color: var(--gray); line-height: 2.1; margin-bottom: 36px; }
+    .info-point { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 20px; }
+    .info-point-icon { font-size: 20px; flex-shrink: 0; width: 40px; height: 40px; background: var(--pink-light); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+    .info-point-text strong { font-size: 14px; font-weight: 700; display: block; margin-bottom: 3px; }
+    .info-point-text span { font-size: 12px; color: var(--gray); line-height: 1.7; }
+    .info-divider { border: none; border-top: 1px dashed var(--pink-light); margin: 32px 0; }
+    .info-instagram { background: var(--cream); border-radius: 14px; padding: 20px; display: flex; gap: 14px; align-items: center; }
+    .info-instagram-icon { font-size: 24px; }
+    .info-instagram strong { font-size: 14px; font-weight: 700; display: block; margin-bottom: 3px; }
+    .info-instagram span { font-size: 12px; color: var(--gray); }
+
+    /* FORM */
+    .contact-form-wrap {}
+    .form-notice { background: var(--pink-light); border-radius: 12px; padding: 16px 20px; font-size: 13px; color: var(--dark); line-height: 1.8; margin-bottom: 36px; display: flex; gap: 10px; align-items: flex-start; }
+    .form-notice-icon { flex-shrink: 0; font-size: 16px; }
+    .form-group { margin-bottom: 24px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+    .form-label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 8px; color: var(--dark); }
+    .form-label .req { color: var(--pink); font-size: 10px; margin-left: 6px; font-weight: 400; }
+    .form-label .opt { color: var(--gray); font-size: 10px; margin-left: 6px; font-weight: 400; }
+    .form-input, .form-select, .form-textarea {
+      width: 100%; padding: 14px 16px; border: 1.5px solid #e8ddd8; border-radius: 10px;
+      font-family: 'Noto Sans JP', sans-serif; font-size: 14px; font-weight: 300; color: var(--dark);
+      background: var(--cream); transition: border-color 0.2s, background 0.2s; -webkit-appearance: none;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { outline: none; border-color: var(--pink); background: #fff; }
+    .form-textarea { height: 120px; resize: vertical; line-height: 1.8; }
+    .form-hint { font-size: 11px; color: var(--gray); margin-top: 6px; line-height: 1.7; }
+    .radio-group { display: flex; gap: 16px; flex-wrap: wrap; }
+    .radio-label { display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 14px; font-weight: 300; }
+    .radio-label input[type="radio"] { width: 18px; height: 18px; accent-color: var(--pink); }
+    .form-section-divider { border: none; border-top: 1px dashed var(--pink-light); margin: 36px 0; }
+    .form-section-title { font-family: 'Josefin Sans', sans-serif; font-size: 10px; letter-spacing: 0.3em; color: var(--pink); margin-bottom: 24px; padding-bottom: 10px; border-bottom: 1px solid var(--pink-light); }
+    .btn-submit { width: 100%; background: var(--dark); color: #fff; font-size: 15px; font-weight: 700; padding: 18px; border-radius: 50px; border: none; cursor: pointer; letter-spacing: 0.1em; margin-top: 8px; font-family: 'Noto Sans JP', sans-serif; transition: transform 0.2s, box-shadow 0.2s; }
+    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(45,26,26,0.2); }
+    .form-privacy { text-align: center; font-size: 11px; color: var(--gray); margin-top: 16px; line-height: 1.9; }
+
+    /* FOOTER */
+    footer { background: #1a0f0f; padding: 72px 0 40px; }
+    .footer-inner { max-width: 1240px; margin: 0 auto; padding: 0 80px; }
+    .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 32px; }
+    .footer-logo { font-family: 'Great Vibes', cursive; font-size: 38px; color: var(--pink-light); margin-bottom: 12px; }
+    .footer-tagline { font-size: 12px; color: rgba(255,255,255,0.3); line-height: 2.0; }
+    .footer-col-title { font-family: 'Josefin Sans', sans-serif; font-size: 10px; letter-spacing: 0.32em; color: rgba(255,255,255,0.35); margin-bottom: 20px; }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 12px; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--pink-light); }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,0.18); letter-spacing: 0.08em; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .nav-inner { padding: 0 28px; }
+      .nav-toggle { display: flex; }
+      .nav-links { display: none; position: absolute; top: 66px; left: 0; right: 0; background: rgba(255,248,245,0.98); backdrop-filter: blur(14px); flex-direction: column; gap: 0; padding: 8px 0 18px; border-bottom: 1px solid var(--pink-light); }
+      .nav-links.open { display: flex; }
+      .nav-links li a { display: block; padding: 14px 28px; font-size: 13px; }
+      .page-hero-inner { grid-template-columns: 1fr; gap: 36px; padding-left: 32px; padding-right: 32px; }
+      .contact-inner { grid-template-columns: 1fr; padding: 0 32px; }
+      .contact-info-sticky { position: static; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+      .form-row .form-group { margin-bottom: 24px; }
+      .footer-inner { padding: 0 32px; }
+      .footer-top { grid-template-columns: 1fr; gap: 36px; }
+    }
+    @media (max-width: 600px) {
+      .page-hero { padding: 120px 0 60px; }
+      .page-hero-inner { padding-left: 24px; padding-right: 24px; }
+      .contact-inner { padding: 0 24px; }
+      .footer-inner { padding: 0 24px; }
+      .welcome-card { padding: 14px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Fleur Crêpe</a>
+      <button class="nav-toggle" aria-label="メニュー"><span></span><span></span><span></span></button>
+      <ul class="nav-links">
+        <li><a href="menu.html">MENU</a></li>
+        <li><a href="schedule.html">SCHEDULE</a></li>
+        <li><a href="contact.html" class="active">CONTACT</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <header class="page-hero">
+    <div class="page-hero-inner">
+      <div>
+        <p class="section-label">CONTACT</p>
+        <h1 class="page-title">出展依頼・<br>お問い合わせ</h1>
+      </div>
+      <div class="page-hero-right">
+        <div class="welcome-cards">
+          <div class="welcome-card">
+            <div class="welcome-card-icon">🏪</div>
+            <div class="welcome-card-text"><strong>マルシェ・フリマ</strong><span>地域の手作りマルシェや各種フリーマーケット</span></div>
+          </div>
+          <div class="welcome-card">
+            <div class="welcome-card-icon">🏢</div>
+            <div class="welcome-card-text"><strong>企業・団体イベント</strong><span>社員向けイベント・地域のお祭り・学校行事</span></div>
+          </div>
+          <div class="welcome-card">
+            <div class="welcome-card-icon">🎉</div>
+            <div class="welcome-card-text"><strong>プライベートイベント</strong><span>ウェディング・誕生日・記念日パーティーなど</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <section class="contact-main">
+    <div class="contact-inner">
+      <!-- LEFT INFO -->
+      <div class="contact-info">
+        <div class="contact-info-sticky">
+          <h2 class="info-heading">お気軽に<br>ご連絡ください</h2>
+          <p class="info-desc">マルシェや企業イベントなど、どんな規模のご依頼でも丁寧にご対応します。まずはお気軽にフォームからご連絡ください。</p>
+          <div class="info-point">
+            <div class="info-point-icon">⚡</div>
+            <div class="info-point-text"><strong>返信スピード</strong><span>通常2〜3営業日以内にご返信いたします。</span></div>
+          </div>
+          <div class="info-point">
+            <div class="info-point-icon">🚚</div>
+            <div class="info-point-text"><strong>発電機持参可能</strong><span>電源がない会場でも対応できる場合があります。お気軽にご相談ください。</span></div>
+          </div>
+          <div class="info-point">
+            <div class="info-point-icon">📍</div>
+            <div class="info-point-text"><strong>関西全域対応</strong><span>大阪・京都・神戸・滋賀・奈良・和歌山など関西全域を対象にしています。</span></div>
+          </div>
+          <hr class="info-divider">
+          <div class="info-instagram">
+            <div class="info-instagram-icon">📸</div>
+            <div>
+              <strong>@fleur_crepe</strong>
+              <span>急ぎの場合はInstagramのDMからもどうぞ</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FORM -->
+      <div class="contact-form-wrap">
+        <div class="form-notice">
+          <span class="form-notice-icon">🌸</span>
+          <span>デモサイトのため、このフォームは実際には送信されません。実際のサイトではGoogleフォームが埋め込まれます。</span>
+        </div>
+
+        <p class="form-section-title">— YOUR INFO —</p>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">お名前・会社名<span class="req">必須</span></label>
+            <input type="text" class="form-input" placeholder="例：田中花子 / 〇〇商店">
+          </div>
+          <div class="form-group">
+            <label class="form-label">電話番号<span class="req">必須</span></label>
+            <input type="tel" class="form-input" placeholder="090-0000-0000">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">メールアドレス<span class="req">必須</span></label>
+          <input type="email" class="form-input" placeholder="example@email.com">
+        </div>
+
+        <hr class="form-section-divider">
+        <p class="form-section-title">— EVENT INFO —</p>
+
+        <div class="form-group">
+          <label class="form-label">イベント開催場所（住所）<span class="req">必須</span></label>
+          <input type="text" class="form-input" placeholder="例：大阪市鶴見区緑地公園2-163">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">希望日時（第1希望）<span class="req">必須</span></label>
+            <input type="text" class="form-input" placeholder="例：2026年6月14日（日）">
+          </div>
+          <div class="form-group">
+            <label class="form-label">希望日時（第2希望）<span class="opt">任意</span></label>
+            <input type="text" class="form-input" placeholder="例：2026年6月21日（日）">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">開催時間<span class="req">必須</span></label>
+            <input type="text" class="form-input" placeholder="例：10:00〜16:00">
+          </div>
+          <div class="form-group">
+            <label class="form-label">来場予定人数<span class="req">必須</span></label>
+            <select class="form-select">
+              <option value="">選択してください</option>
+              <option>〜100人</option><option>100〜300人</option>
+              <option>300〜500人</option><option>500〜1,000人</option><option>1,000人以上</option>
+            </select>
+          </div>
+        </div>
+
+        <hr class="form-section-divider">
+        <p class="form-section-title">— ENVIRONMENT —</p>
+
+        <div class="form-group">
+          <label class="form-label">電源の使用可否<span class="req">必須</span></label>
+          <div class="radio-group">
+            <label class="radio-label"><input type="radio" name="power"> 使用可</label>
+            <label class="radio-label"><input type="radio" name="power"> 使用不可</label>
+            <label class="radio-label"><input type="radio" name="power"> 未定</label>
+          </div>
+          <p class="form-hint">※発電機持参可能ですので、電源なしでも対応できる場合があります。</p>
+        </div>
+        <div class="form-group">
+          <label class="form-label">駐車スペースの広さ<span class="req">必須</span></label>
+          <select class="form-select">
+            <option value="">選択してください</option>
+            <option>軽自動車1台分（約3m×4m）</option>
+            <option>普通車1台分（約5m×5m）</option>
+            <option>普通車2台分以上</option>
+            <option>駐車スペースなし（徒歩搬入のみ）</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">ゴミ処理の対応可否<span class="req">必須</span></label>
+          <div class="radio-group">
+            <label class="radio-label"><input type="radio" name="trash"> 主催者側で対応</label>
+            <label class="radio-label"><input type="radio" name="trash"> 各自持ち帰り</label>
+          </div>
+        </div>
+
+        <hr class="form-section-divider">
+        <p class="form-section-title">— OTHER —</p>
+
+        <div class="form-group">
+          <label class="form-label">予算の目安<span class="opt">任意</span></label>
+          <input type="text" class="form-input" placeholder="例：出展料〇〇円以内 など">
+        </div>
+        <div class="form-group">
+          <label class="form-label">メッセージ・その他のご要望<span class="opt">任意</span></label>
+          <textarea class="form-textarea" placeholder="ご自由にお書きください。&#10;例：アレルギー対応が必要・子どもが多い・テーマがある など"></textarea>
+        </div>
+
+        <button type="button" class="btn-submit">送信する →</button>
+        <p class="form-privacy">ご入力いただいた情報は、出展依頼の確認・返信のみに使用します。<br>第三者への提供は行いません。</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div><div class="footer-logo">Fleur Crêpe</div><p class="footer-tagline">旅するクレープ屋さん<br>大阪府内・関西全域</p></div>
+        <div><p class="footer-col-title">PAGES</p><ul class="footer-links"><li><a href="menu.html">Menu</a></li><li><a href="schedule.html">Schedule</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div><p class="footer-col-title">FOLLOW</p><ul class="footer-links"><li><a href="https://www.instagram.com/">Instagram @fleur_crepe</a></li></ul></div>
+      </div>
+      <p class="footer-copy">© 2026 Fleur Crêpe All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => { links.classList.toggle('open'); toggle.classList.toggle('open'); });
+  </script>
+</body>
+</html>

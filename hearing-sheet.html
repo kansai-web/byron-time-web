@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ホームページ制作 ヒアリングシート｜キッチンカー・飲食店向け</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --white:   #F1ECE5;
+      --beige:   #D3C4A7;
+      --brown:   #8B664F;
+      --teal:    #5DA8A3;
+      --blue:    #A8BFD1;
+      --sunset:  #E19B6D;
+      --story:   #9B8DB8;
+      --text:    #4a3728;
+      --sub:     #9b8575;
+      --border:  #e0d5c8;
+      --font:    'Noto Serif JP', serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font);
+      background: #f5f0eb;
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .page-wrap {
+      max-width: 820px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 4px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+
+    /* ヘッダー */
+    .sheet-header {
+      background: var(--brown);
+      color: white;
+      padding: 36px 48px 28px;
+    }
+    .header-en {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 6px;
+    }
+    .header-title { font-size: 22px; font-weight: 700; margin-bottom: 6px; letter-spacing: 0.05em; }
+    .header-sub { font-size: 13px; color: rgba(255,255,255,0.7); }
+    .header-meta { margin-top: 20px; display: flex; gap: 32px; flex-wrap: wrap; }
+    .meta-field { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.8); font-size: 13px; }
+    .meta-label { color: rgba(255,255,255,0.5); font-size: 11px; letter-spacing: 0.1em; }
+    .meta-input {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 3px;
+      padding: 4px 12px;
+      color: white;
+      font-family: var(--font);
+      font-size: 13px;
+      width: 180px;
+    }
+    .meta-input::placeholder { color: rgba(255,255,255,0.4); }
+
+    /* セクション */
+    .sheet-body { padding: 0 48px 48px; }
+
+    .section { margin-top: 40px; border-left: 3px solid var(--teal); padding-left: 16px; }
+    .section.orange { border-left-color: var(--sunset); }
+    .section.blue   { border-left-color: var(--blue); }
+    .section.brown  { border-left-color: var(--brown); }
+    .section.story  { border-left-color: var(--story); }
+
+    .section-title {
+      font-size: 15px; font-weight: 700; color: var(--teal);
+      margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
+    }
+    .section.orange .section-title { color: var(--sunset); }
+    .section.blue   .section-title { color: var(--blue); }
+    .section.brown  .section-title { color: var(--brown); }
+    .section.story  .section-title { color: var(--story); }
+
+    /* 必須バッジ */
+    .required-badge {
+      display: inline-block;
+      background: #c0392b;
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 3px;
+      letter-spacing: 0.05em;
+    }
+
+    /* ストーリー専用説明 */
+    .story-intro {
+      background: #f5f2fa;
+      border-radius: 4px;
+      padding: 14px 18px;
+      margin-bottom: 20px;
+      font-size: 13px;
+      color: #6a5a7a;
+      line-height: 1.9;
+      border: 1px solid #ddd5ec;
+    }
+    .story-intro strong { color: var(--story); }
+
+    /* 質問 */
+    .q-block { margin-bottom: 20px; }
+    .q-label {
+      font-size: 13px; font-weight: 700; color: var(--text);
+      margin-bottom: 8px; display: flex; align-items: baseline; gap: 6px;
+    }
+    .q-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 20px; height: 20px; background: var(--teal);
+      color: white; border-radius: 50%; font-size: 10px; font-weight: 700; flex-shrink: 0;
+    }
+    .section.orange .q-num { background: var(--sunset); }
+    .section.blue   .q-num { background: var(--blue); }
+    .section.brown  .q-num { background: var(--brown); }
+    .section.story  .q-num { background: var(--story); }
+
+    .q-note { font-size: 11px; color: var(--sub); font-weight: 400; margin-left: 4px; }
+    .q-hint { font-size: 12px; color: var(--sub); margin-bottom: 10px; line-height: 1.7; }
+
+    .q-input {
+      width: 100%; border: none; border-bottom: 1.5px solid var(--border);
+      padding: 8px 4px; font-family: var(--font); font-size: 14px;
+      color: var(--text); background: transparent; outline: none; transition: border-color 0.2s;
+    }
+    .q-input:focus { border-bottom-color: var(--teal); }
+
+    .q-textarea {
+      width: 100%; border: 1.5px solid var(--border); border-radius: 3px;
+      padding: 10px 12px; font-family: var(--font); font-size: 14px;
+      color: var(--text); background: var(--white); outline: none;
+      resize: vertical; min-height: 80px; transition: border-color 0.2s;
+    }
+    .q-textarea:focus { border-color: var(--teal); }
+    .q-textarea.short { min-height: 52px; }
+    .q-textarea.tall  { min-height: 120px; }
+
+    .section.story .q-textarea { background: #faf8fc; min-height: 110px; }
+    .section.story .q-textarea:focus { border-color: var(--story); }
+
+    .check-group { display: flex; flex-wrap: wrap; gap: 8px 16px; }
+    .check-item { display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 13px; }
+    .check-item input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--teal); cursor: pointer; }
+
+    .radio-group { display: flex; flex-wrap: wrap; gap: 8px 16px; }
+    .radio-item { display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 13px; }
+    .radio-item input[type="radio"] { width: 16px; height: 16px; accent-color: var(--teal); cursor: pointer; }
+
+    .q-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 32px; }
+
+    /* ── SNS URL入力 ── */
+    .sns-list { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+    .sns-row { display: flex; align-items: center; gap: 12px; }
+    .sns-check {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 13px; cursor: pointer; min-width: 160px; flex-shrink: 0;
+    }
+    .sns-check input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--sunset); cursor: pointer; }
+    .sns-icon { font-size: 15px; color: var(--sub); width: 18px; text-align: center; }
+    .sns-url {
+      flex: 1; border: none; border-bottom: 1.5px dashed var(--border);
+      padding: 6px 4px; font-family: var(--font); font-size: 13px;
+      color: var(--text); background: transparent; outline: none;
+      transition: border-color 0.2s, opacity 0.2s;
+      opacity: 0.35; pointer-events: none;
+    }
+    .sns-url.active {
+      border-bottom-style: solid; border-bottom-color: var(--sunset);
+      opacity: 1; pointer-events: auto;
+    }
+    .sns-url.active:focus { border-bottom-color: var(--brown); }
+    .sns-url::placeholder { color: #b0a090; }
+
+    /* ── トーン設計カード ── */
+    .tone-important {
+      background: #fdf7f2;
+      border: 1px solid #e8d5c0;
+      border-radius: 4px;
+      padding: 10px 14px;
+      margin-bottom: 14px;
+      font-size: 12px;
+      color: var(--brown);
+      line-height: 1.8;
+    }
+    .tone-important strong { font-weight: 700; }
+
+    .tone-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .tone-label {
+      display: block;
+      border: 2px solid var(--border);
+      border-radius: 6px;
+      padding: 14px 16px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .tone-label:has(input:checked) {
+      border-color: var(--brown);
+      background: #faf6f2;
+    }
+    .tone-label input[type="radio"] { display: none; }
+    .tone-row-top { display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px; }
+    .tone-num { font-size: 10px; color: var(--sub); letter-spacing: 0.12em; font-family: 'Cormorant Garamond', serif; }
+    .tone-name { font-size: 13px; font-weight: 700; color: var(--text); }
+    .tone-swatches { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 7px; }
+    .tone-swatch {
+      width: 15px; height: 15px; border-radius: 50%;
+      border: 1px solid rgba(0,0,0,0.08); flex-shrink: 0;
+    }
+    .tone-colors { font-size: 11px; color: var(--sub); line-height: 1.6; }
+    .tone-desc { font-size: 11px; color: var(--sub); margin-bottom: 8px; letter-spacing: 0.03em; }
+
+    /* ── 写真チェックリスト ── */
+    .photo-note {
+      background: #f2f8f7;
+      border: 1px solid #c5dedd;
+      border-radius: 4px;
+      padding: 10px 14px;
+      margin-bottom: 14px;
+      font-size: 12px;
+      color: #3d7470;
+      line-height: 1.8;
+    }
+    .photo-table { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+    .photo-row {
+      display: flex; align-items: center; gap: 16px;
+      padding: 10px 14px; border-bottom: 1px solid var(--border);
+      background: white;
+    }
+    .photo-row:last-child { border-bottom: none; }
+    .photo-row:nth-child(even) { background: #faf8f5; }
+    .photo-name { flex: 1; font-size: 13px; font-weight: 700; }
+    .photo-count { font-size: 11px; color: var(--sub); font-weight: 400; margin-left: 6px; }
+    .photo-radios { display: flex; gap: 12px; flex-shrink: 0; }
+    .photo-radios label { display: flex; align-items: center; gap: 5px; font-size: 12px; cursor: pointer; }
+    .photo-radios input[type="radio"] { width: 14px; height: 14px; accent-color: var(--teal); }
+
+    /* フッター */
+    .sheet-footer {
+      background: var(--white); border-top: 1px solid var(--border);
+      padding: 24px 48px; display: flex; justify-content: space-between;
+      align-items: center; font-size: 12px; color: var(--sub); flex-wrap: wrap; gap: 12px;
+    }
+    .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-style: italic; color: var(--brown); }
+
+    /* 印刷・PDFボタン */
+    .print-btn {
+      position: fixed; bottom: 24px; right: 24px;
+      background: var(--teal); color: white; border: none;
+      padding: 12px 24px; border-radius: 32px; font-size: 14px;
+      font-weight: 700; font-family: var(--font); cursor: pointer;
+      box-shadow: 0 4px 16px rgba(93,168,163,0.4);
+      display: flex; align-items: center; gap: 8px; transition: all 0.2s;
+    }
+    .print-btn:hover { background: var(--brown); transform: translateY(-2px); }
+
+    /* 印刷・PDF */
+    @media print {
+      body { background: white; font-size: 12px; }
+      .page-wrap { max-width: 100%; margin: 0; box-shadow: none; border-radius: 0; }
+      .print-btn { display: none; }
+      button[type="submit"] { display: none; }
+      .sheet-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .q-num { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .required-badge { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .story-intro { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .tone-important { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .photo-note { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .tone-swatch { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .section.story .q-textarea { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .section { break-inside: avoid; }
+      .q-block { break-inside: avoid; }
+      .section.story { break-before: page; }
+      @page { margin: 15mm; size: A4; }
+    }
+
+    @media (max-width: 600px) {
+      .sheet-header, .sheet-body, .sheet-footer { padding-left: 24px; padding-right: 24px; }
+      .q-grid { grid-template-columns: 1fr; }
+      .header-meta { flex-direction: column; gap: 12px; }
+      .tone-grid { grid-template-columns: 1fr; }
+      .sns-row { flex-direction: column; align-items: flex-start; }
+      .sns-url { width: 100%; }
+      .photo-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+<form action="https://api.web3forms.com/submit" method="POST">
+  <input type="hidden" name="access_key" value="9578232e-a24e-4c0a-846c-9688fed6bab4">
+  <input type="hidden" name="subject" value="【ヒアリングシート】新しい回答が届きました - Byron time Web制作">
+  <input type="hidden" name="from_name" value="Byron time ヒアリングシート">
+
+  <!-- ヘッダー -->
+  <div class="sheet-header">
+    <div class="header-en">Website Creation / Hearing Sheet</div>
+    <div class="header-title">ホームページ制作 ヒアリングシート</div>
+    <div class="header-sub">キッチンカー・飲食店向け ／ ご記入いただいた内容をもとに制作を進めます</div>
+    <div class="header-meta">
+      <div class="meta-field">
+        <span class="meta-label">お名前・屋号</span>
+        <input class="meta-input" type="text" name="お名前・屋号" placeholder="例）山田 花子 / フルールクレープ">
+      </div>
+      <div class="meta-field">
+        <span class="meta-label">ご記入日</span>
+        <input class="meta-input" type="text" name="ご記入日" placeholder="例）2026年5月1日">
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#fdf7f0; border-left:4px solid var(--teal); padding:16px 24px; margin:0; font-size:13px; line-height:2.0; color:#5a4535;">
+    ✍️ <strong>このシートに書いてくださった言葉・こだわり・想いは、そのままホームページのコピーやデザインに反映されます。</strong><br>
+    うまく書けなくて大丈夫です。話すように、思いつくままに書いてもらえれば、あとは Byron time が形にします。
+  </div>
+
+  <div class="sheet-body">
+
+    <!-- 1. お店の基本情報 -->
+    <div class="section">
+      <div class="section-title"><i class="fa-solid fa-store"></i> 1. お店の基本情報</div>
+      <div class="q-grid">
+        <div class="q-block">
+          <div class="q-label"><span class="q-num">1</span> お店の名前</div>
+          <input class="q-input" type="text" name="Q1_お店の名前" placeholder="屋号・ブランド名">
+        </div>
+        <div class="q-block">
+          <div class="q-label"><span class="q-num">2</span> 読み方（フリガナ）</div>
+          <input class="q-input" type="text" name="Q2_読み方" placeholder="ふりがな">
+        </div>
+      </div>
+      <div class="q-block" style="margin-top:16px;">
+        <div class="q-label"><span class="q-num">3</span> 営業スタイル <span class="q-note">（当てはまるものすべて）</span></div>
+        <div class="check-group">
+          <label class="check-item"><input type="checkbox"> キッチンカーのみ</label>
+          <label class="check-item"><input type="checkbox"> 実店舗あり</label>
+          <label class="check-item"><input type="checkbox"> ネットショップあり（minne・BASE等）</label>
+          <label class="check-item"><input type="checkbox"> イベント・マルシェ出店</label>
+        </div>
+      </div>
+      <div class="q-block">
+        <div class="q-label"><span class="q-num">4</span> 取り扱う商品・メニューのジャンル</div>
+        <div class="check-group">
+          <label class="check-item"><input type="checkbox"> 焼き菓子・スイーツ</label>
+          <label class="check-item"><input type="checkbox"> パン</label>
+          <label class="check-item"><input type="checkbox"> ドリンク・カフェ</label>
+          <label class="check-item"><input type="checkbox"> 食事系（ランチ・軽食）</label>
+          <label class="check-item"><input type="checkbox"> 惣菜・弁当</label>
+          <label class="check-item"><input type="checkbox"> その他（　　　　　　　　）</label>
+        </div>
+      </div>
+      <div class="q-block">
+        <div class="q-label"><span class="q-num">5</span> お店のキャッチコピー・一言説明 <span class="q-note">（なければ空欄でOK）</span></div>
+        <input class="q-input" type="text" name="Q5_キャッチコピー" placeholder="例）地元素材にこだわった焼きたてパンのお店">
+      </div>
+
+      <div class="q-block">
+        <div class="q-label"><span class="q-num">6</span> どんな人に来てほしいですか？<span class="q-note">（ターゲットのイメージ）</span></div>
+        <p class="q-hint">ホームページのデザインや言葉づかいに反映されます。思いつくまま書いてください。</p>
+        <textarea class="q-textarea" style="min-height:60px;" name="Q6_ターゲット客層" placeholder="例）20代〜30代の女性・子連れのママ・会社員のランチ利用・マルシェが好きな人 など"></textarea>
+      </div>
+    </div>
+
+    <!-- 2. 現在の状況 -->
+    <div class="section orange">
+      <div class="section-title"><i class="fa-solid fa-chart-bar"></i> 2. 現在の状況</div>
+
+      <div class="q-block">
+        <div class="q-label"><span class="q-num">7</span> 使っているSNS・ツールのリンク</div>
+        <p class="q-hint">使っているものにチェックを入れて、URLを貼り付けてください</p>
+        <div class="sns-list">
+          <div class="sns-row">
+            <label class="sns-check">
+              <input type="checkbox" class="sns-toggle" data-target="sns-instagram">
+              <span class="sns-icon"><i class="fa-brands fa-instagram"></i></span> Instagram
+            </label>
+            <input class="sns-url" id="sns-instagram" name="SNS_Instagram" type="url" placeholder="https://www.instagram.com/yourname">
+          </div>
+          <div class="sns-row">
+            <label class="sns-check">
+              <input type="checkbox" class="sns-toggle" data-target="sns-line">
+              <span class="sns-icon"><i class="fa-brands fa-line"></i></span> LINE公式
+            </label>
+            <input class="sns-url" id="sns-line" name="SNS_LINE公式" type="url" placeholder="https://lin.ee/...">
+          </div>
+          <div class="sns-row">
+            <label class="sns-check">
+              <input type="checkbox" class="sns-toggle" data-target="sns-facebook">
+              <span class="sns-icon"><i class="fa-brands fa-facebook"></i></span> Facebook
+            </label>
+            <input class="sns-url" id="sns-facebook" name="SNS_Facebook" type="url" placeholder="https://www.facebook.com/...">
+          </div>
+          <div class="sns-row">
+            <label class="sns-check">
+              <input type="checkbox" class="sns-toggle" data-target="sns-x">
+              <span class="sns-icon"><i class="fa-brands fa-x-twitter"></i></span> X（旧Twitter）
+            </label>
+            <input class="sns-url" id="sns-x" name="SNS_X" type="url" placeholder="https://x.com/...">
+          </div>
+          <div class="sns-row">
+            <label class="sns-check">
+              <input type="checkbox" class="sns-toggle" data-target="sns-blog">
+              <span class="sns-icon"><i class="fa-solid fa-blog"></i></span> ブログ
+            </label>
+            <input class="sns-url" id="sns-blog" name="SNS_ブログ" type="url" placeholder="https://ameblo.jp/... など">
+          </div>
+        </div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-label"><span class="q-num">8</span> 現在のお客さんへの告知方法は？<span class="q-note">（主な方法）</span></div>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="q7"> SNS投稿がメイン</label>
+          <label class="radio-item"><input type="radio" name="q7"> LINE公式がメイン</label>
+          <label class="radio-item"><input type="radio" name="q7"> 口コミ・常連さんのみ</label>
+          <label class="radio-item"><input type="radio" name="q7"> 特に発信していない</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. ホームページに載せたい情報 -->
+    <div class="section blue">
+      <div class="section-title"><i class="fa-solid fa-list-check"></i> 3. ホームページに載せたい情報</div>
+      <div class="q-block">
+        <div class="q-label"><span class="q-num">9</span> 載せたいコンテンツ <span class="q-note">（当てはまるものすべて）</span></div>
+        <div class="check-group" style="gap:10px 20px;">
+          <label class="check-item"><input type="checkbox"> メニュー・商品一覧と価格</label>
+          <label class="check-item"><input type="checkbox"> 出店スケジュール（どこにいるか）</label>
+          <label class="check-item"><input type="checkbox"> お店のコンセプト・こだわり</label>
+          <label class="check-item"><input type="checkbox"> オーナーの自己紹介・ストーリー</label>
+          <label class="check-item"><input type="checkbox"> 写真ギャラリー</label>
+          <label class="check-item"><input type="checkbox"> ネットショップへのリンク</label>
+          <label class="check-item"><input type="checkbox"> 予約・問い合わせフォーム</label>
+          <label class="check-item"><input type="checkbox"> SNSリンク（Instagram・LINE等）</label>
+          <label class="check-item"><input type="checkbox"> アクセス・店舗情報</label>
+          <label class="check-item"><input type="checkbox"> お知らせ・ブログ</label>
+        </div>
+      </div>
+      <div class="q-block">
+        <div class="q-label"><span class="q-num">10</span> ホームページを訪れる人に、一番伝えたいことは？</div>
+        <textarea class="q-textarea" name="Q10_一番伝えたいこと" placeholder="例）毎週どこにいるかを一目でわかるようにしたい。お菓子のこだわりを知ってから買ってほしい。など"></textarea>
+      </div>
+      <div class="q-block">
+        <div class="q-label"><span class="q-num">11</span> 問い合わせ・注文を受ける方法 <span class="q-note">（希望するもの）</span></div>
+        <div class="check-group">
+          <label class="check-item"><input type="checkbox"> フォームで受け取りたい（メール）</label>
+          <label class="check-item"><input type="checkbox"> LINEに飛ばしたい</label>
+          <label class="check-item"><input type="checkbox"> Instagramに飛ばしたい</label>
+          <label class="check-item"><input type="checkbox"> ネットショップに飛ばしたい</label>
+          <label class="check-item"><input type="checkbox"> 問い合わせは受け付けない</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. デザインの好み -->
+    <div class="section brown">
+      <div class="section-title"><i class="fa-solid fa-palette"></i> 4. デザインの好み <span class="required-badge" style="font-size:9px;padding:2px 7px;">重要</span></div>
+
+      <div class="q-block">
+        <div class="q-label"><span class="q-num">12</span> サイトの世界観・トーン <span class="q-note">（一番近いイメージを選んでください）</span></div>
+        <div class="tone-important">
+          <strong>🎨 この項目はデザインの方向性を決める最重要ポイントです。</strong><br>
+          「なんか違う」を防ぐために、色やトーンのイメージをここで合わせます。ピンとくるものを選んでください。
+        </div>
+        <div style="background:#f9f5f0; border:1px solid #e0d5c8; border-radius:6px; padding:10px 14px; margin-bottom:14px; font-size:12px; color:#7a6a5a; line-height:1.75;">
+          💡 <strong>この配色はイメージ参考です。</strong>表示している色をすべて使うわけではありません。「このような雰囲気・世界観にしたい」というトーンのイメージです。実際の配色はヒアリング後に提案します。
+        </div>
+        <div class="tone-grid">
+
+          <!-- ① ナチュラル・森カフェ系 -->
+          <!-- Source: SchemeColor "Local Bakery" + color-hex #42673 -->
+          <label class="tone-label">
+            <input type="radio" name="q11" value="natural">
+            <div class="tone-row-top"><span class="tone-num">①</span><span class="tone-name">ナチュラル・森カフェ系</span></div>
+            <div class="tone-desc">安心・素材感・ほっこり ／ パン・焼き菓子・オーガニック向き</div>
+            <div class="tone-swatches">
+              <span class="tone-swatch" style="background:#F4EDE7;"></span>
+              <span class="tone-swatch" style="background:#EDE5D4;"></span>
+              <span class="tone-swatch" style="background:#E4AC4F;"></span>
+              <span class="tone-swatch" style="background:#D4B896;"></span>
+              <span class="tone-swatch" style="background:#B0B980;"></span>
+              <span class="tone-swatch" style="background:#8A9E7E;"></span>
+              <span class="tone-swatch" style="background:#B08968;"></span>
+              <span class="tone-swatch" style="background:#8B6F47;"></span>
+              <span class="tone-swatch" style="background:#965C5B;"></span>
+              <span class="tone-swatch" style="background:#4A5240;"></span>
+            </div>
+            <div class="tone-colors">アラバスター・サンレイ・ミスティモス・テラコッタ・ローズタウプ</div>
+          </label>
+
+          <!-- ② かわいい・スイーツ系 -->
+          <!-- Source: macaronsandmimosas.com "Marvelous Macarons" + icons8 pastel palette -->
+          <label class="tone-label">
+            <input type="radio" name="q11" value="sweets">
+            <div class="tone-row-top"><span class="tone-num">②</span><span class="tone-name">かわいい・スイーツ系</span></div>
+            <div class="tone-desc">ガーリー・パステル・やわらかい ／ クレープ・ドーナツ・マカロン向き</div>
+            <div class="tone-swatches">
+              <span class="tone-swatch" style="background:#FFF0F5; border:1px solid #ecc;"></span>
+              <span class="tone-swatch" style="background:#FADADD;"></span>
+              <span class="tone-swatch" style="background:#F7C5D0;"></span>
+              <span class="tone-swatch" style="background:#F4A7B9;"></span>
+              <span class="tone-swatch" style="background:#FF928F;"></span>
+              <span class="tone-swatch" style="background:#ECC5F4;"></span>
+              <span class="tone-swatch" style="background:#C9A0DC;"></span>
+              <span class="tone-swatch" style="background:#A7D479;"></span>
+              <span class="tone-swatch" style="background:#A2E0DF;"></span>
+              <span class="tone-swatch" style="background:#FDD28E;"></span>
+            </div>
+            <div class="tone-colors">ペールピンク・ベビーピンク・ローズ・ラベンダー・パステルグリーン</div>
+          </label>
+
+          <!-- ③ おしゃれカフェ・ドリンク系 -->
+          <!-- Source: media.io "Concrete Brew Bar" + "Turquoise Tiled Café" palettes -->
+          <label class="tone-label">
+            <input type="radio" name="q11" value="cafe">
+            <div class="tone-row-top"><span class="tone-num">③</span><span class="tone-name">おしゃれカフェ・ドリンク系</span></div>
+            <div class="tone-desc">くすみ・スタイリッシュ・トレンド ／ スペシャルティコーヒー・タピオカ向き</div>
+            <div class="tone-swatches">
+              <span class="tone-swatch" style="background:#F5F3F0; border:1px solid #ddd;"></span>
+              <span class="tone-swatch" style="background:#D3C8BC;"></span>
+              <span class="tone-swatch" style="background:#F0C49B;"></span>
+              <span class="tone-swatch" style="background:#9C8167;"></span>
+              <span class="tone-swatch" style="background:#B5764C;"></span>
+              <span class="tone-swatch" style="background:#297B7B;"></span>
+              <span class="tone-swatch" style="background:#5C4A3A;"></span>
+              <span class="tone-swatch" style="background:#143B3C;"></span>
+              <span class="tone-swatch" style="background:#3A3A3A;"></span>
+              <span class="tone-swatch" style="background:#2D2A2A;"></span>
+            </div>
+            <div class="tone-colors">オフホワイト・グレージュ・キャラメル・ティール・チャコール</div>
+          </label>
+
+          <!-- ④ 洋菓子・パティスリー系 -->
+          <!-- Source: color-hex "French bakery" #105378 + luxury branding research -->
+          <label class="tone-label">
+            <input type="radio" name="q11" value="patisserie">
+            <div class="tone-row-top"><span class="tone-num">④</span><span class="tone-name">洋菓子・パティスリー系</span></div>
+            <div class="tone-desc">上品・高級感・フレンチエレガント ／ 高級ケーキ・ショコラ・フランス菓子向き</div>
+            <div class="tone-swatches">
+              <span class="tone-swatch" style="background:#FFFFFF; border:1px solid #ccc;"></span>
+              <span class="tone-swatch" style="background:#FFE2EB;"></span>
+              <span class="tone-swatch" style="background:#F6D7D7;"></span>
+              <span class="tone-swatch" style="background:#E5D1D1;"></span>
+              <span class="tone-swatch" style="background:#CCB6B6;"></span>
+              <span class="tone-swatch" style="background:#BAA4A0;"></span>
+              <span class="tone-swatch" style="background:#C9A96E;"></span>
+              <span class="tone-swatch" style="background:#B8860B;"></span>
+              <span class="tone-swatch" style="background:#2A2A2A;"></span>
+              <span class="tone-swatch" style="background:#1A1A1A;"></span>
+            </div>
+            <div class="tone-colors">ピュアホワイト・ブラッシュ・ダスティローズ・ゴールド・ブラック</div>
+          </label>
+
+          <!-- ⑤ ポップ・にぎやか系 -->
+          <!-- Source: Shutterstock "Donut Stop Believin'" + icons8 "Marvelous Macarons" -->
+          <label class="tone-label">
+            <input type="radio" name="q11" value="pop">
+            <div class="tone-row-top"><span class="tone-num">⑤</span><span class="tone-name">ポップ・にぎやか系</span></div>
+            <div class="tone-desc">元気・楽しい・カラフル ／ ファミリー・フードフェス・子ども向け</div>
+            <div class="tone-swatches">
+              <span class="tone-swatch" style="background:#E5526F;"></span>
+              <span class="tone-swatch" style="background:#EC6547;"></span>
+              <span class="tone-swatch" style="background:#FAA378;"></span>
+              <span class="tone-swatch" style="background:#F4D650;"></span>
+              <span class="tone-swatch" style="background:#FEE759;"></span>
+              <span class="tone-swatch" style="background:#ACDDBF;"></span>
+              <span class="tone-swatch" style="background:#6CD4AF;"></span>
+              <span class="tone-swatch" style="background:#4D96FF;"></span>
+              <span class="tone-swatch" style="background:#C2D903;"></span>
+              <span class="tone-swatch" style="background:#F05DAE;"></span>
+            </div>
+            <div class="tone-colors">コーラル・オレンジ・イエロー・ライム・ミント・ブルー・ピンク</div>
+          </label>
+
+          <!-- ⑥ ウォーム・手作り惣菜系 -->
+          <!-- Source: color-hex "Warm Bakery" #101538 + media.io coffee shop warm -->
+          <label class="tone-label">
+            <input type="radio" name="q11" value="warm">
+            <div class="tone-row-top"><span class="tone-num">⑥</span><span class="tone-name">ウォーム・手作り惣菜系</span></div>
+            <div class="tone-desc">ぬくもり・アットホーム・親近感 ／ 惣菜・弁当・家庭料理向き</div>
+            <div class="tone-swatches">
+              <span class="tone-swatch" style="background:#FFF4E6; border:1px solid #eee;"></span>
+              <span class="tone-swatch" style="background:#FFE0B2;"></span>
+              <span class="tone-swatch" style="background:#FFCC80;"></span>
+              <span class="tone-swatch" style="background:#FF8C42;"></span>
+              <span class="tone-swatch" style="background:#F57C00;"></span>
+              <span class="tone-swatch" style="background:#BE9B7B;"></span>
+              <span class="tone-swatch" style="background:#A65F2B;"></span>
+              <span class="tone-swatch" style="background:#854442;"></span>
+              <span class="tone-swatch" style="background:#5E4134;"></span>
+              <span class="tone-swatch" style="background:#3C2F2F;"></span>
+            </div>
+            <div class="tone-colors">クリーム・ピーチ・オレンジ・テラコッタ・ダークブラウン</div>
+          </label>
+
+          <!-- ⑦ ダーク・バーガー肉系 -->
+          <!-- Source: HueHive BBQ + ColorsWall brand BBQ #54405 -->
+          <label class="tone-label">
+            <input type="radio" name="q11" value="dark">
+            <div class="tone-row-top"><span class="tone-num">⑦</span><span class="tone-name">ダーク・バーガー肉系</span></div>
+            <div class="tone-desc">力強い・インパクト・ボールド ／ バーガー・肉料理・クラフトビール向き</div>
+            <div class="tone-swatches">
+              <span class="tone-swatch" style="background:#333333;"></span>
+              <span class="tone-swatch" style="background:#5E260F;"></span>
+              <span class="tone-swatch" style="background:#8B4513;"></span>
+              <span class="tone-swatch" style="background:#7E0800;"></span>
+              <span class="tone-swatch" style="background:#C0392B;"></span>
+              <span class="tone-swatch" style="background:#FF4500;"></span>
+              <span class="tone-swatch" style="background:#E5B502;"></span>
+              <span class="tone-swatch" style="background:#E1684A;"></span>
+              <span class="tone-swatch" style="background:#D0C0A4;"></span>
+              <span class="tone-swatch" style="background:#F5F0E8; border:1px solid #ddd;"></span>
+            </div>
+            <div class="tone-colors">スモーキーブラック・バーガーパティ・ケチャップ・フレームレッド・マスタード</div>
+          </label>
+
+          <!-- ⑧ 和モダン系 -->
+          <!-- Source: HueAtlas "Japanese Color Palette" (Ai Indigo/Sakura/Matcha/Sumi) -->
+          <label class="tone-label">
+            <input type="radio" name="q11" value="japanese">
+            <div class="tone-row-top"><span class="tone-num">⑧</span><span class="tone-name">和モダン系</span></div>
+            <div class="tone-desc">和の美意識・落ち着き・品 ／ 和スイーツ・おにぎり・和食向き</div>
+            <div class="tone-swatches">
+              <span class="tone-swatch" style="background:#F5F0E8;"></span>
+              <span class="tone-swatch" style="background:#F2A7B0;"></span>
+              <span class="tone-swatch" style="background:#E8D5A3;"></span>
+              <span class="tone-swatch" style="background:#7A9033;"></span>
+              <span class="tone-swatch" style="background:#2D5016;"></span>
+              <span class="tone-swatch" style="background:#1F4E8C;"></span>
+              <span class="tone-swatch" style="background:#7B2D2D;"></span>
+              <span class="tone-swatch" style="background:#8B7355;"></span>
+              <span class="tone-swatch" style="background:#4A4A3A;"></span>
+              <span class="tone-swatch" style="background:#2C2C2C;"></span>
+            </div>
+            <div class="tone-colors">白練・桜色・抹茶・深緑・藍・えんじ・墨色</div>
+          </label>
+
+          <!-- ⑨ フレッシュ・ヘルシー系 -->
+          <!-- Source: ColorsWall vegan restaurant #17827 + media.io Wellness palette -->
+          <label class="tone-label">
+            <input type="radio" name="q11" value="fresh">
+            <div class="tone-row-top"><span class="tone-num">⑨</span><span class="tone-name">フレッシュ・ヘルシー系</span></div>
+            <div class="tone-desc">清潔・みずみずしい・健康的 ／ スムージー・サラダ・ビーガン向き</div>
+            <div class="tone-swatches">
+              <span class="tone-swatch" style="background:#E3F6F5; border:1px solid #ddd;"></span>
+              <span class="tone-swatch" style="background:#ACF49C;"></span>
+              <span class="tone-swatch" style="background:#A4C3B2;"></span>
+              <span class="tone-swatch" style="background:#83B44B;"></span>
+              <span class="tone-swatch" style="background:#7BAD56;"></span>
+              <span class="tone-swatch" style="background:#6B9080;"></span>
+              <span class="tone-swatch" style="background:#386641;"></span>
+              <span class="tone-swatch" style="background:#345414;"></span>
+              <span class="tone-swatch" style="background:#1B4332;"></span>
+              <span class="tone-swatch" style="background:#FFEA99; border:1px solid #eee;"></span>
+            </div>
+            <div class="tone-colors">ミント・ライトグリーン・セージ・リーフ・ハーブグリーン・レモンアクセント</div>
+          </label>
+
+          <!-- ⑩ レトロ・喫茶店風系 -->
+          <!-- Source: media.io Retro Diner + color-hex Butterscotch Pie palette -->
+          <label class="tone-label">
+            <input type="radio" name="q11" value="retro">
+            <div class="tone-row-top"><span class="tone-num">⑩</span><span class="tone-name">レトロ・喫茶店風系</span></div>
+            <div class="tone-desc">懐かし・ノスタルジック・昭和の雰囲気 ／ 昭和喫茶・プリン・クリームソーダ向き</div>
+            <div class="tone-swatches">
+              <span class="tone-swatch" style="background:#FFFDE7; border:1px solid #eee;"></span>
+              <span class="tone-swatch" style="background:#FFDCA8;"></span>
+              <span class="tone-swatch" style="background:#FFCF71;"></span>
+              <span class="tone-swatch" style="background:#FFB347;"></span>
+              <span class="tone-swatch" style="background:#FBE7C6;"></span>
+              <span class="tone-swatch" style="background:#D4824A;"></span>
+              <span class="tone-swatch" style="background:#8C4A24;"></span>
+              <span class="tone-swatch" style="background:#402218;"></span>
+              <span class="tone-swatch" style="background:#38C6D9;"></span>
+              <span class="tone-swatch" style="background:#FF315F;"></span>
+            </div>
+            <div class="tone-colors">バタークリーム・バタースコッチ・テラコッタ・エスプレッソ・ティール・チェリー</div>
+          </label>
+
+          <!-- ⑪ エスニック・スパイシー系 -->
+          <!-- Source: SchemeColor "Indian Curry" + ColorsWall Adobe Indian food #97836 -->
+          <label class="tone-label">
+            <input type="radio" name="q11" value="ethnic">
+            <div class="tone-row-top"><span class="tone-num">⑪</span><span class="tone-name">エスニック・スパイシー系</span></div>
+            <div class="tone-desc">スパイス・異国情緒・鮮やか ／ カレー・インド料理・スパイス料理向き</div>
+            <div class="tone-swatches">
+              <span class="tone-swatch" style="background:#FFF3E0; border:1px solid #eee;"></span>
+              <span class="tone-swatch" style="background:#FCC454;"></span>
+              <span class="tone-swatch" style="background:#F3A231;"></span>
+              <span class="tone-swatch" style="background:#FF8F00;"></span>
+              <span class="tone-swatch" style="background:#E65100;"></span>
+              <span class="tone-swatch" style="background:#C0392B;"></span>
+              <span class="tone-swatch" style="background:#A15D0C;"></span>
+              <span class="tone-swatch" style="background:#8B2500;"></span>
+              <span class="tone-swatch" style="background:#6A4C2A;"></span>
+              <span class="tone-swatch" style="background:#3D1C00;"></span>
+            </div>
+            <div class="tone-colors">クリーム・ターメリック・マンゴー・サフラン・テラコッタ・スパイスレッド</div>
+          </label>
+
+          <!-- ⑫ アジアン・トロピカル系 -->
+          <!-- Source: Octet Design "Colorful Vietnamese" + Thai tropical branding research -->
+          <label class="tone-label">
+            <input type="radio" name="q11" value="tropical">
+            <div class="tone-row-top"><span class="tone-num">⑫</span><span class="tone-name">アジアン・トロピカル系</span></div>
+            <div class="tone-desc">南国・フレッシュ・異国感 ／ バインミー・フォー・タイ料理・ベトナム系向き</div>
+            <div class="tone-swatches">
+              <span class="tone-swatch" style="background:#F9F5E3; border:1px solid #eee;"></span>
+              <span class="tone-swatch" style="background:#DCDBCC;"></span>
+              <span class="tone-swatch" style="background:#EFA515;"></span>
+              <span class="tone-swatch" style="background:#FF8C42;"></span>
+              <span class="tone-swatch" style="background:#4CAF50;"></span>
+              <span class="tone-swatch" style="background:#2D8653;"></span>
+              <span class="tone-swatch" style="background:#1A5C3A;"></span>
+              <span class="tone-swatch" style="background:#966F0C;"></span>
+              <span class="tone-swatch" style="background:#625D5E;"></span>
+              <span class="tone-swatch" style="background:#4D3710;"></span>
+            </div>
+            <div class="tone-colors">サンドベージュ・サンイエロー・サンセット・トロピカルグリーン・アースブラウン</div>
+          </label>
+
+          <!-- ⑬ メキシカン・ラテン系 -->
+          <!-- Source: color-hex "Taco Truck" #63530 + "Mexican Taco" #33491 -->
+          <label class="tone-label">
+            <input type="radio" name="q11" value="mexican">
+            <div class="tone-row-top"><span class="tone-num">⑬</span><span class="tone-name">メキシカン・ラテン系</span></div>
+            <div class="tone-desc">情熱・フィエスタ・鮮烈 ／ タコス・チュロス・メキシカンフード向き</div>
+            <div class="tone-swatches">
+              <span class="tone-swatch" style="background:#FAE9A9;"></span>
+              <span class="tone-swatch" style="background:#F7CA0E;"></span>
+              <span class="tone-swatch" style="background:#FBB03B;"></span>
+              <span class="tone-swatch" style="background:#54B01F;"></span>
+              <span class="tone-swatch" style="background:#22B573;"></span>
+              <span class="tone-swatch" style="background:#ED1C24;"></span>
+              <span class="tone-swatch" style="background:#BF3419;"></span>
+              <span class="tone-swatch" style="background:#6F1400;"></span>
+              <span class="tone-swatch" style="background:#2D5016;"></span>
+              <span class="tone-swatch" style="background:#1A1A1A;"></span>
+            </div>
+            <div class="tone-colors">コーンイエロー・ゴールデン・グリーン・フィエスタレッド・ダークブラウン</div>
+          </label>
+
+          <!-- ⑭ ストリートアジア系 -->
+          <!-- Source: color-hex "Chinese Food 2U" #1039618 + ColorsWall Ramen #89949 -->
+          <label class="tone-label">
+            <input type="radio" name="q11" value="street-asian">
+            <div class="tone-row-top"><span class="tone-num">⑭</span><span class="tone-name">ストリートアジア系</span></div>
+            <div class="tone-desc">活気・屋台感・アジア的エネルギー ／ 台湾・中華・ラーメン・小龍包向き</div>
+            <div class="tone-swatches">
+              <span class="tone-swatch" style="background:#FFF9EC; border:1px solid #eee;"></span>
+              <span class="tone-swatch" style="background:#FCF9DA; border:1px solid #eee;"></span>
+              <span class="tone-swatch" style="background:#FFAF03;"></span>
+              <span class="tone-swatch" style="background:#F2AC57;"></span>
+              <span class="tone-swatch" style="background:#EA6834;"></span>
+              <span class="tone-swatch" style="background:#C8481E;"></span>
+              <span class="tone-swatch" style="background:#9F1618;"></span>
+              <span class="tone-swatch" style="background:#8F481E;"></span>
+              <span class="tone-swatch" style="background:#47240F;"></span>
+              <span class="tone-swatch" style="background:#2C2C2C;"></span>
+            </div>
+            <div class="tone-colors">アイボリー・ゴールデン・バーントオレンジ・チャイニーズレッド・エスプレッソ</div>
+          </label>
+
+          <!-- ⑮ BBQ・アウトドア系 -->
+          <!-- Source: color-hex BBQ #59092 + HueHive AI BBQ palette -->
+          <label class="tone-label">
+            <input type="radio" name="q11" value="bbq">
+            <div class="tone-row-top"><span class="tone-num">⑮</span><span class="tone-name">BBQ・アウトドア系</span></div>
+            <div class="tone-desc">炭火・スモーキー・アウトドア感 ／ BBQ・スモーク料理・炉端・キャンプ飯向き</div>
+            <div class="tone-swatches">
+              <span class="tone-swatch" style="background:#F5F0E8; border:1px solid #ddd;"></span>
+              <span class="tone-swatch" style="background:#E5B502;"></span>
+              <span class="tone-swatch" style="background:#E1684A;"></span>
+              <span class="tone-swatch" style="background:#FF5722;"></span>
+              <span class="tone-swatch" style="background:#BF360C;"></span>
+              <span class="tone-swatch" style="background:#8D6E63;"></span>
+              <span class="tone-swatch" style="background:#5D4037;"></span>
+              <span class="tone-swatch" style="background:#455A64;"></span>
+              <span class="tone-swatch" style="background:#263238;"></span>
+              <span class="tone-swatch" style="background:#333333;"></span>
+            </div>
+            <div class="tone-colors">アッシュクリーム・マスタード・エンバー・フレームオレンジ・ウッドブラウン・スチール・チャコール</div>
+          </label>
+
+        </div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-label"><span class="q-num">13</span> 色の補足メモ <span class="q-note">（こだわりや気になる色があれば）</span></div>
+        <input class="q-input" type="text" name="Q13_色の補足メモ" placeholder="例）ピンクは使いたい、明るい色が好き、など">
+      </div>
+    </div>
+
+    <!-- 5. 素材・準備状況 -->
+    <div class="section">
+      <div class="section-title"><i class="fa-solid fa-images"></i> 5. 写真素材の準備</div>
+
+      <div class="q-block">
+        <div class="q-label"><span class="q-num">14</span> 必要な写真を揃えてください <span class="q-note">（HP制作前に準備いただくもの）</span></div>
+        <div class="photo-note">
+          📸 ホームページに使う写真はスマホ撮影でOKです。<br>
+          下記の各写真について、現在の準備状況を選んでください。
+        </div>
+
+        <div style="font-size:11px; font-weight:700; color:var(--teal); letter-spacing:0.08em; margin-bottom:6px; padding-left:2px;">▍必須（これがないと制作がスタートできません）</div>
+        <div class="photo-table" style="margin-bottom:16px;">
+          <div class="photo-row">
+            <div class="photo-name">キッチンカー外観 <span class="photo-count">（1〜2枚）</span></div>
+            <div class="photo-radios">
+              <label><input type="radio" name="p1"> 準備OK</label>
+              <label><input type="radio" name="p1"> これから撮る</label>
+              <label><input type="radio" name="p1"> 難しい</label>
+            </div>
+          </div>
+          <div class="photo-row">
+            <div class="photo-name">商品アップ写真 <span class="photo-count">（3〜6枚）</span></div>
+            <div class="photo-radios">
+              <label><input type="radio" name="p2"> 準備OK</label>
+              <label><input type="radio" name="p2"> これから撮る</label>
+              <label><input type="radio" name="p2"> 難しい</label>
+            </div>
+          </div>
+        </div>
+
+        <div style="font-size:11px; font-weight:700; color:var(--sunset); letter-spacing:0.08em; margin-bottom:6px; padding-left:2px;">▍あると格段によくなる（できれば揃えてください）</div>
+        <div class="photo-table">
+          <div class="photo-row">
+            <div class="photo-name">
+              オーナー写真 <span class="photo-count">（1枚）</span>
+              <div style="font-size:11px; color:var(--sub); font-weight:400; margin-top:3px; line-height:1.6;">💡 正面顔でなくてもOK！横顔・後ろ姿・調理中の手元など自然な一枚でも十分です。似顔絵・イラストでの代替も対応できます。</div>
+            </div>
+            <div class="photo-radios">
+              <label><input type="radio" name="p3"> 準備OK</label>
+              <label><input type="radio" name="p3"> これから撮る</label>
+              <label><input type="radio" name="p3"> 難しい</label>
+            </div>
+          </div>
+          <div class="photo-row">
+            <div class="photo-name">出店風景・マルシェの様子 <span class="photo-count">（1〜2枚）</span></div>
+            <div class="photo-radios">
+              <label><input type="radio" name="p4"> 準備OK</label>
+              <label><input type="radio" name="p4"> これから撮る</label>
+              <label><input type="radio" name="p4"> なし</label>
+            </div>
+          </div>
+          <div class="photo-row">
+            <div class="photo-name">調理中・作っているところ <span class="photo-count">（1〜2枚）</span></div>
+            <div class="photo-radios">
+              <label><input type="radio" name="p5"> 準備OK</label>
+              <label><input type="radio" name="p5"> これから撮る</label>
+              <label><input type="radio" name="p5"> なし</label>
+            </div>
+          </div>
+          <div class="photo-row">
+            <div class="photo-name">メニュー表・看板 <span class="photo-count">（1枚）</span></div>
+            <div class="photo-radios">
+              <label><input type="radio" name="p6"> 準備OK</label>
+              <label><input type="radio" name="p6"> これから作る</label>
+              <label><input type="radio" name="p6"> なし</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-label"><span class="q-num">15</span> ロゴ・お店のマークはありますか？</div>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="q14"> ある（データで渡せる）</label>
+          <label class="radio-item"><input type="radio" name="q14"> 手書きや写真ならある</label>
+          <label class="radio-item"><input type="radio" name="q14"> ない・作ってほしい</label>
+          <label class="radio-item"><input type="radio" name="q14"> ない・なくてもいい</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. ご要望・その他 -->
+    <div class="section orange">
+      <div class="section-title"><i class="fa-regular fa-message"></i> 6. ご要望・その他</div>
+      <div class="q-block">
+        <div class="q-label"><span class="q-num">16</span> 公開希望時期</div>
+        <input class="q-input" type="text" name="Q16_公開希望時期" placeholder="例）1ヶ月以内、急ぎではない、〇月ごろに出展イベントがある、等">
+      </div>
+      <div class="q-block">
+        <div class="q-label"><span class="q-num">17</span> 特に重視したいこと・その他ご要望</div>
+        <textarea class="q-textarea" name="Q17_その他ご要望" placeholder="なんでもご記入ください。「こういうのは絶対入れたい」「これだけは避けたい」など遠慮なくどうぞ。"></textarea>
+      </div>
+    </div>
+
+    <!-- 7. お店のストーリー（必須） -->
+    <div class="section story">
+      <div class="section-title">
+        <i class="fa-solid fa-book-open"></i> 7. お店のストーリー
+        <span class="required-badge">必須</span>
+      </div>
+
+      <div class="story-intro">
+        <strong>なぜストーリーが大切なのか。</strong><br>
+        お店を始めた理由、想い、こだわり——そこにそのお店だけの"らしさ"があります。
+        ストーリーが伝わることで、はじめてのお客さんが「このお店から買いたい」と思ってくれます。
+        うまく書けなくても大丈夫。ゆっくりお話を聞かせてください。
+      </div>
+
+      <div class="q-block">
+        <div class="q-label"><span class="q-num">S1</span> お店を始めたきっかけ・理由</div>
+        <textarea class="q-textarea tall" name="S1_始めたきっかけ" placeholder="例）子育て中に「自分にしかできない仕事がしたい」と思ったのがきっかけです。もともと料理が好きで…"></textarea>
+      </div>
+
+      <div class="q-block">
+        <div class="q-label"><span class="q-num">S2</span> お店への想い・大切にしていること</div>
+        <textarea class="q-textarea tall" name="S2_お店への想い" placeholder="例）来てくれた人に「今日来てよかった」と感じてほしい。素材は妥協したくない。笑顔で帰ってもらえることが一番の喜びです。"></textarea>
+      </div>
+
+      <div class="q-block">
+        <div class="q-label"><span class="q-num">S3</span> お客さんへひとこと <span class="q-note">（HPのメッセージに使います）</span></div>
+        <textarea class="q-textarea" name="S3_お客さんへひとこと" placeholder="例）どこかの街角で会えることを楽しみにしています。気軽に声をかけてくださいね。"></textarea>
+      </div>
+    </div>
+
+  </div><!-- /sheet-body -->
+
+  <!-- 送信ボタン -->
+  <div style="padding:32px 48px 40px; text-align:center; background:#fdf7f0; border-top:1px solid #e8ddd3;">
+    <p style="font-size:13px; color:#7a6a5a; margin-bottom:16px;">すべての項目を記入したら、下のボタンを押して送信してください。</p>
+    <button type="submit" style="
+      background: var(--teal);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 14px 48px;
+      font-size: 16px;
+      font-family: var(--font);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(93,168,163,0.3);
+      transition: all 0.2s;
+    ">✉️ ヒアリングシートを送信する</button>
+    <p style="font-size:11px; color:#9b8575; margin-top:12px;">送信後、内容確認のご連絡をいたします。</p>
+  </div>
+
+</form>
+
+  <!-- フッター -->
+  <div class="sheet-footer">
+    <div>
+      <div class="footer-brand">Byron time Web制作</div>
+      <div style="margin-top:4px;">ご記入ありがとうございます。内容を確認後、ご連絡いたします。</div>
+    </div>
+    <div style="text-align:right;">
+      <div>Instagram：@kansai_connector</div>
+    </div>
+  </div>
+
+</div><!-- /page-wrap -->
+
+<!-- 印刷・PDF保存ボタン -->
+<button class="print-btn" onclick="window.print()">
+  <i class="fa-solid fa-print"></i> 印刷・PDF保存
+</button>
+
+<script>
+  // SNSチェックでURLフィールドを有効化
+  document.querySelectorAll('.sns-toggle').forEach(function(cb) {
+    cb.addEventListener('change', function() {
+      var url = document.getElementById(this.dataset.target);
+      if (this.checked) {
+        url.classList.add('active');
+        url.focus();
+      } else {
+        url.classList.remove('active');
+        url.value = '';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
