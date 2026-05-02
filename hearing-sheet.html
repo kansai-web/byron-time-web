@@ -272,11 +272,48 @@
     .print-btn:hover { background: var(--brown); transform: translateY(-2px); }
 
     /* 印刷・PDF */
+    /* 送信確認モーダル */
+    .confirm-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .confirm-overlay.active { display: flex; }
+    .confirm-box {
+      background: white;
+      border-radius: 12px;
+      padding: 32px 28px;
+      max-width: 340px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    }
+    .confirm-title { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .confirm-sub { font-size: 13px; color: var(--sub); margin-bottom: 24px; line-height: 1.8; }
+    .confirm-buttons { display: flex; gap: 12px; justify-content: center; }
+    .btn-cancel {
+      flex: 1; padding: 12px;
+      border: 2px solid var(--border); border-radius: 6px;
+      background: white; color: var(--sub);
+      font-size: 14px; font-family: var(--font); cursor: pointer;
+    }
+    .btn-send {
+      flex: 1; padding: 12px;
+      border: none; border-radius: 6px;
+      background: var(--teal); color: white;
+      font-size: 14px; font-family: var(--font); font-weight: 700; cursor: pointer;
+    }
+
     @media print {
       body { background: white; font-size: 12px; }
       .page-wrap { max-width: 100%; margin: 0; box-shadow: none; border-radius: 0; }
       .print-btn { display: none; }
       button[type="submit"] { display: none; }
+      .confirm-overlay { display: none !important; }
       .sheet-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
       .q-num { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
       .required-badge { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -940,7 +977,7 @@
   <!-- 送信ボタン -->
   <div style="padding:32px 48px 40px; text-align:center; background:#fdf7f0; border-top:1px solid #e8ddd3;">
     <p style="font-size:13px; color:#7a6a5a; margin-bottom:16px;">すべての項目を記入したら、下のボタンを押して送信してください。</p>
-    <button type="submit" style="
+    <button type="button" id="btnShowConfirm" style="
       background: var(--teal);
       color: white;
       border: none;
@@ -957,6 +994,18 @@
     <p style="font-size:11px; color:#9b8575; margin-top:12px;">送信後、内容確認のご連絡をいたします。</p>
   </div>
 
+<!-- 送信確認モーダル -->
+<div class="confirm-overlay" id="confirmOverlay">
+  <div class="confirm-box">
+    <div class="confirm-title">✉️ 送信しますか？</div>
+    <div class="confirm-sub">入力内容をByron time Web制作へ送信します。<br>送信後、内容確認のご連絡をいたします。</div>
+    <div class="confirm-buttons">
+      <button type="button" class="btn-cancel" id="btnCancel">戻って確認する</button>
+      <button type="button" class="btn-send" id="btnConfirm">送信する</button>
+    </div>
+  </div>
+</div>
+
 </form>
 
   <!-- フッター -->
@@ -972,12 +1021,31 @@
 
 </div><!-- /page-wrap -->
 
+<!-- =============================================
+  📌 クライアントへ送るURL（LINEでコピペ用）
+  https://byron-time-web.otona-plus40.workers.dev/hearing-sheet.html
+============================================= -->
+
 <!-- 印刷・PDF保存ボタン -->
 <button class="print-btn" onclick="window.print()">
   <i class="fa-solid fa-print"></i> 印刷・PDF保存
 </button>
 
 <script>
+  // 送信確認モーダル
+  document.getElementById('btnShowConfirm').addEventListener('click', function() {
+    document.getElementById('confirmOverlay').classList.add('active');
+  });
+  document.getElementById('btnCancel').addEventListener('click', function() {
+    document.getElementById('confirmOverlay').classList.remove('active');
+  });
+  document.getElementById('btnConfirm').addEventListener('click', function() {
+    document.querySelector('form').submit();
+  });
+  document.getElementById('confirmOverlay').addEventListener('click', function(e) {
+    if (e.target === this) this.classList.remove('active');
+  });
+
   // SNSチェックでURLフィールドを有効化
   document.querySelectorAll('.sns-toggle').forEach(function(cb) {
     cb.addEventListener('change', function() {
