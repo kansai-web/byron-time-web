@@ -254,6 +254,65 @@
     const toggle = document.querySelector('.nav-toggle');
     const links = document.querySelector('.nav-links');
     toggle.addEventListener('click', () => { links.classList.toggle('open'); toggle.classList.toggle('open'); });
+
+    // 出展予定日（デモ）
+    const eventDays = [4, 10, 11, 17, 25, 31];
+
+    // 動的カレンダー生成
+    function buildCalendar(year, month) {
+      const monthNames = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+      document.querySelector('.demo-cal-month').textContent = monthNames[month] + ' ' + year;
+      document.querySelector('.sidebar-title').textContent = year + '年 ' + (month+1) + '月';
+
+      const today = new Date();
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month+1, 0).getDate();
+      const prevMonthDays = new Date(year, month, 0).getDate();
+
+      // 曜日ヘッダー
+      const grid = document.querySelector('.demo-cal-grid');
+      grid.innerHTML = '';
+      ['S','M','T','W','T','F','S'].forEach(d => {
+        const el = document.createElement('div');
+        el.className = 'cal-dow'; el.textContent = d; grid.appendChild(el);
+      });
+
+      // 前月の日
+      for (let i = firstDay - 1; i >= 0; i--) {
+        const el = document.createElement('div');
+        el.className = 'cal-day other'; el.textContent = prevMonthDays - i; grid.appendChild(el);
+      }
+
+      // 当月の日
+      for (let d = 1; d <= daysInMonth; d++) {
+        const el = document.createElement('div');
+        let cls = 'cal-day';
+        if (eventDays.includes(d)) cls += ' event';
+        else if (today.getFullYear() === year && today.getMonth() === month && today.getDate() === d) cls += ' today';
+        el.className = cls; el.textContent = d; grid.appendChild(el);
+      }
+
+      // 次月の日（6行分埋める）
+      const total = grid.querySelectorAll('.cal-day, .cal-dow + .cal-day').length;
+      const cells = grid.children.length - 7; // 曜日行除く
+      const remaining = cells % 7 === 0 ? 0 : 7 - (cells % 7);
+      for (let d = 1; d <= remaining; d++) {
+        const el = document.createElement('div');
+        el.className = 'cal-day other'; el.textContent = d; grid.appendChild(el);
+      }
+    }
+
+    let currentYear = new Date().getFullYear();
+    let currentMonth = new Date().getMonth();
+    buildCalendar(currentYear, currentMonth);
+
+    document.querySelectorAll('.demo-cal-nav-btn').forEach((btn, i) => {
+      btn.addEventListener('click', () => {
+        if (i === 0) { currentMonth--; if (currentMonth < 0) { currentMonth = 11; currentYear--; } }
+        else { currentMonth++; if (currentMonth > 11) { currentMonth = 0; currentYear++; } }
+        buildCalendar(currentYear, currentMonth);
+      });
+    });
   </script>
 </body>
 </html>
