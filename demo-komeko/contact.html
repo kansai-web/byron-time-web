@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact｜komeko to.</title>
+  <meta name="description" content="komeko to. へのお問い合わせ・出展依頼はこちらから。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+JP:wght@300;400&family=Noto+Serif+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --base:   #F7F3ED;
+      --sub:    #EDE8DF;
+      --green:  #7A9E7E;
+      --brown:  #B08968;
+      --dark:   #3D2E22;
+      --muted:  #8C7560;
+      --border: #DDD5C8;
+      --white:  #FDFAF6;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Noto Sans JP',sans-serif; font-weight:300; color:var(--dark); background:var(--base); line-height:1.8; }
+    a { text-decoration:none; color:inherit; }
+
+    /* NAV */
+    nav {
+      position:fixed; top:0; left:0; right:0; z-index:100;
+      background:rgba(247,243,237,0.96); backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(176,137,104,0.12);
+    }
+    .nav-inner {
+      max-width:1100px; margin:0 auto; padding:0 40px;
+      display:flex; justify-content:space-between; align-items:center; height:64px;
+    }
+    .nav-logo { font-family:'Cormorant Garamond',serif; font-size:24px; font-style:italic; letter-spacing:0.06em; }
+    .nav-logo span { color:var(--brown); }
+    .nav-links { display:flex; gap:32px; list-style:none; }
+    .nav-links a { font-family:'Cormorant Garamond',serif; font-size:13px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); transition:color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color:var(--brown); }
+    .nav-toggle { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; }
+    .nav-toggle span { display:block; width:22px; height:1.5px; background:var(--dark); transition:all 0.28s; transform-origin:center; }
+    .nav-toggle.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity:0; }
+    .nav-toggle.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+    .nav-mobile { display:none; position:fixed; top:64px; left:0; right:0; background:var(--white); border-top:1px solid var(--border); padding:20px 32px; z-index:99; }
+    .nav-mobile.open { display:block; }
+    .nav-mobile a { display:block; padding:12px 0; border-bottom:1px solid var(--border); font-family:'Cormorant Garamond',serif; font-size:15px; letter-spacing:0.12em; text-transform:uppercase; color:var(--dark); }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: 120px 40px 64px;
+      background: var(--white);
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-label {
+      font-family:'Cormorant Garamond',serif;
+      font-size:11px; letter-spacing:0.3em; color:var(--brown);
+      text-transform:uppercase; margin-bottom:12px;
+    }
+    .page-title {
+      font-family:'Noto Serif JP',serif;
+      font-size:clamp(22px,3vw,32px); font-weight:700;
+      color:var(--dark); margin-bottom:12px;
+    }
+    .page-sub { font-size:13px; color:var(--muted); line-height:2.0; }
+
+    /* TAB */
+    .tab-wrap {
+      max-width:760px; margin:0 auto;
+      display:flex; border-bottom:2px solid var(--border);
+      margin-bottom:0;
+    }
+    .tab-btn {
+      flex:1; padding:18px 16px; background:none; border:none;
+      font-family:'Noto Serif JP',serif; font-size:14px; font-weight:500;
+      color:var(--muted); cursor:pointer; letter-spacing:0.05em;
+      border-bottom:2px solid transparent; margin-bottom:-2px;
+      transition:all 0.2s;
+    }
+    .tab-btn.active { color:var(--brown); border-bottom-color:var(--brown); }
+    .tab-btn:hover { color:var(--dark); }
+
+    /* FORMS */
+    .forms-wrap { padding:48px 40px 80px; }
+    .form-panel { display:none; max-width:760px; margin:0 auto; }
+    .form-panel.active { display:block; }
+
+    .form-intro {
+      padding:16px 20px; background:var(--sub);
+      border-radius:4px; font-size:13px; color:var(--muted);
+      line-height:1.9; margin-bottom:32px;
+    }
+
+    /* 出展依頼フォームのイントロは色を変える */
+    .form-intro.green { background:#EDF4EE; border-left:3px solid var(--green); }
+
+    .form-group { margin-bottom:24px; }
+    .form-label {
+      display:block; font-size:12px; color:var(--muted);
+      letter-spacing:0.05em; margin-bottom:8px;
+    }
+    .required {
+      display:inline-block; background:#c0392b; color:white;
+      font-size:9px; font-weight:700; padding:1px 5px;
+      border-radius:2px; margin-left:6px; vertical-align:middle;
+    }
+    .form-input, .form-select, .form-textarea {
+      width:100%; padding:12px 14px;
+      border:1.5px solid var(--border); border-radius:3px;
+      background:var(--white); font-family:'Noto Sans JP',sans-serif;
+      font-size:13px; color:var(--dark); outline:none;
+      transition:border-color 0.2s;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color:var(--brown); }
+    .form-input::placeholder, .form-textarea::placeholder { color:#c4b8aa; }
+    .form-textarea { resize:vertical; min-height:120px; line-height:1.8; }
+    .form-select { appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238C7560' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 14px center; padding-right:36px; }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+
+    /* チェックボックス・ラジオ */
+    .check-list { display:flex; flex-direction:column; gap:10px; }
+    .check-item { display:flex; align-items:flex-start; gap:10px; font-size:13px; color:var(--dark); cursor:pointer; line-height:1.7; }
+    .check-item input { margin-top:3px; flex-shrink:0; accent-color:var(--brown); }
+
+    /* 送信ボタン */
+    .submit-btn {
+      width:100%; padding:16px;
+      background:var(--brown); color:white; border:none;
+      border-radius:3px; font-family:'Noto Serif JP',serif;
+      font-size:15px; font-weight:700; cursor:pointer;
+      letter-spacing:0.08em; transition:opacity 0.2s; margin-top:8px;
+    }
+    .submit-btn.green-btn { background:var(--green); }
+    .submit-btn:hover { opacity:0.85; }
+
+    /* SNS誘導 */
+    .sns-note {
+      max-width:760px; margin:32px auto 0;
+      padding:20px 24px; background:var(--white);
+      border-radius:4px; border:1px solid var(--border);
+      font-size:13px; color:var(--muted); line-height:2.0;
+      text-align:center;
+    }
+    .sns-note a { color:var(--brown); font-weight:400; }
+
+    /* 確認モーダル */
+    .confirm-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:1000; align-items:center; justify-content:center; }
+    .confirm-overlay.active { display:flex; }
+    .confirm-box { background:white; border-radius:12px; padding:32px 28px; max-width:340px; width:90%; text-align:center; box-shadow:0 8px 32px rgba(0,0,0,0.2); }
+    .confirm-title { font-size:18px; font-weight:700; color:var(--dark); margin-bottom:8px; font-family:'Noto Serif JP',serif; }
+    .confirm-sub { font-size:13px; color:var(--muted); margin-bottom:24px; line-height:1.8; }
+    .confirm-buttons { display:flex; gap:12px; }
+    .btn-cancel { flex:1; padding:12px; border:2px solid var(--border); border-radius:6px; background:white; color:var(--muted); font-size:14px; font-family:'Noto Sans JP',sans-serif; cursor:pointer; }
+    .btn-send { flex:1; padding:12px; border:none; border-radius:6px; background:var(--brown); color:white; font-size:14px; font-family:'Noto Sans JP',sans-serif; font-weight:700; cursor:pointer; }
+    .btn-send.green { background:var(--green); }
+
+    /* FOOTER */
+    footer { background:var(--dark); color:rgba(255,255,255,0.55); padding:40px 40px 24px; }
+    .footer-inner { max-width:1100px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; }
+    .footer-logo { font-family:'Cormorant Garamond',serif; font-size:20px; font-style:italic; color:white; }
+    .footer-logo span { color:var(--brown); }
+    .footer-links { display:flex; gap:24px; }
+    .footer-links a { font-family:'Cormorant Garamond',serif; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.45); transition:color 0.2s; }
+    .footer-links a:hover { color:white; }
+    .footer-bottom { max-width:1100px; margin:0 auto; padding-top:16px; border-top:1px solid rgba(255,255,255,0.08); display:flex; justify-content:space-between; font-size:10px; letter-spacing:0.08em; }
+    .footer-credit a { color:rgba(255,255,255,0.3); }
+
+    @media(max-width:600px) {
+      .nav-inner { padding:0 20px; }
+      .nav-links { display:none; }
+      .nav-toggle { display:flex; }
+      .forms-wrap { padding:32px 20px 60px; }
+      .form-row { grid-template-columns:1fr; }
+      .footer-inner { flex-direction:column; gap:16px; text-align:center; }
+      .footer-links { flex-wrap:wrap; justify-content:center; }
+      .footer-bottom { flex-direction:column; gap:6px; text-align:center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">komeko to<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="schedule.html">Schedule</a></li>
+      <li><a href="index.html#shop">Shop</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="index.html">Home</a>
+  <a href="menu.html">Menu</a>
+  <a href="schedule.html">Schedule</a>
+  <a href="index.html#shop">Online Shop</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-label">Contact</div>
+  <h1 class="page-title">お問い合わせ</h1>
+  <p class="page-sub">
+    一般のお問い合わせ、またはイベント・マルシェへの出展依頼は<br>
+    下記フォームよりお気軽にご連絡ください。
+  </p>
+</div>
+
+<!-- TABS + FORMS -->
+<div style="background:var(--white); padding-top:0;">
+  <div style="max-width:760px; margin:0 auto; padding:0 40px;">
+    <div class="tab-wrap">
+      <button class="tab-btn active" onclick="switchTab('event')">
+        🎪 出展依頼フォーム
+      </button>
+      <button class="tab-btn" onclick="switchTab('customer')">
+        💬 お問い合わせ
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="forms-wrap">
+
+  <!-- ① 一般お問い合わせ -->
+  <div class="form-panel" id="panel-customer">
+    <div class="form-intro">
+      📩 こんなときにご利用ください：<br>
+      <span style="display:block; margin-top:8px; padding-left:8px; line-height:2.2;">
+        🌾 <strong>アレルギー成分・原材料</strong>について詳しく知りたい<br>
+        🎁 <strong>ギフト注文・まとめ買い</strong>の相談がしたい<br>
+        📸 <strong>取材・SNS掲載</strong>のご依頼<br>
+        🛒 <strong>オンラインショップ</strong>の配送・支払い方法について<br>
+        💬 その他、<strong>LINEやInstagramに書くほどではないけど聞いておきたい</strong>こと
+      </span>
+      <span style="display:block; margin-top:12px; padding-top:12px; border-top:1px solid var(--border); font-size:11px; color:var(--sub);">
+        ※ 急ぎのご連絡・気軽なやりとりは Instagram DM または LINE公式がおすすめです。<br>
+        ※ フォームからのご返信は2〜3営業日以内となります。
+      </span>
+    </div>
+
+    <form action="https://api.web3forms.com/submit" method="POST" id="form-customer">
+      <input type="hidden" name="access_key" value="9578232e-a24e-4c0a-846c-9688fed6bab4">
+      <input type="hidden" name="subject" value="【komeko to.】一般お問い合わせ">
+      <input type="hidden" name="from_name" value="komeko to. お問い合わせフォーム">
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">お名前<span class="required">必須</span></label>
+          <input class="form-input" type="text" name="お名前" placeholder="山田 花子" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">メールアドレス<span class="required">必須</span></label>
+          <input class="form-input" type="email" name="メールアドレス" placeholder="example@email.com" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">お問い合わせ内容<span class="required">必須</span></label>
+        <textarea class="form-textarea" name="お問い合わせ内容" placeholder="ご質問・ご要望をご記入ください" required></textarea>
+      </div>
+
+      <button type="button" class="submit-btn" onclick="showConfirm('customer')">
+        送信する
+      </button>
+    </form>
+  </div>
+
+  <!-- ② 出展依頼フォーム -->
+  <div class="form-panel active" id="panel-event">
+    <div class="form-intro green">
+      🎪 イベント主催者・企業の担当者様へ<br>
+      <span style="display:block; margin-top:8px; line-height:2.2;">
+        出展依頼の際は、このフォームからご連絡ください。<br>
+        <strong style="color:var(--green);">日程・場所・規模などをまとめてお送りいただけると、スムーズにご回答できます。</strong>
+      </span>
+      <span style="display:block; margin-top:8px; font-size:11px; color:var(--sub);">
+        出展エリア：関西全域（応相談）／内容確認後3営業日以内にご返信します
+      </span>
+    </div>
+
+    <form action="https://api.web3forms.com/submit" method="POST" id="form-event">
+      <input type="hidden" name="access_key" value="9578232e-a24e-4c0a-846c-9688fed6bab4">
+      <input type="hidden" name="subject" value="【komeko to.】出展依頼">
+      <input type="hidden" name="from_name" value="komeko to. 出展依頼フォーム">
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">お名前・ご担当者名<span class="required">必須</span></label>
+          <input class="form-input" type="text" name="担当者名" placeholder="山田 太郎" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">団体名・会社名</label>
+          <input class="form-input" type="text" name="団体名" placeholder="〇〇マルシェ実行委員会">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">メールアドレス<span class="required">必須</span></label>
+          <input class="form-input" type="email" name="メールアドレス" placeholder="example@email.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">電話番号</label>
+          <input class="form-input" type="tel" name="電話番号" placeholder="090-0000-0000">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">イベント開催日<span class="required">必須</span></label>
+          <input class="form-input" type="text" name="開催日" placeholder="例）2026年8月2日（土）" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">開催時間</label>
+          <input class="form-input" type="text" name="開催時間" placeholder="例）10:00〜16:00">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">開催場所・住所<span class="required">必須</span></label>
+        <input class="form-input" type="text" name="開催場所" placeholder="例）大阪府豊中市〇〇公園" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">イベントの規模・来場者数（目安）</label>
+        <select class="form-select" name="来場者数">
+          <option value="">選択してください</option>
+          <option value="〜100人">〜100人</option>
+          <option value="100〜500人">100〜500人</option>
+          <option value="500〜1000人">500〜1000人</option>
+          <option value="1000人以上">1000人以上</option>
+          <option value="未定">未定</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">出展条件・費用の有無</label>
+        <div class="check-list">
+          <label class="check-item">
+            <input type="checkbox" name="出展条件" value="出展料あり">
+            出展料あり
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="出展条件" value="出展料なし">
+            出展料なし
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="出展条件" value="電源あり">
+            電源あり
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="出展条件" value="駐車スペースあり">
+            駐車スペースあり（キッチンカー対応）
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">イベントの詳細・ご依頼内容<span class="required">必須</span></label>
+        <textarea class="form-textarea" name="依頼内容" placeholder="イベントの内容、出展をお願いしたい理由、その他ご要望などをご記入ください。" style="min-height:140px;" required></textarea>
+      </div>
+
+      <button type="button" class="submit-btn green-btn" onclick="showConfirm('event')">
+        出展依頼を送信する
+      </button>
+    </form>
+  </div>
+
+  <!-- SNS誘導 -->
+  <div class="sns-note">
+    急ぎのご連絡は <a href="https://www.instagram.com/komeko_to" target="_blank">Instagram DM</a> または
+    <a href="https://lin.ee/vAS0Ryb" target="_blank">LINE公式</a> からもお気軽にどうぞ。
+  </div>
+
+</div>
+
+<!-- 確認モーダル（一般） -->
+<div class="confirm-overlay" id="confirmCustomer">
+  <div class="confirm-box">
+    <div class="confirm-title">✉️ 送信しますか？</div>
+    <div class="confirm-sub">komeko to. へお問い合わせを送信します。<br>2〜3営業日以内にご返信いたします。</div>
+    <div class="confirm-buttons">
+      <button class="btn-cancel" onclick="closeConfirm('customer')">戻る</button>
+      <button class="btn-send" onclick="submitForm('customer')">送信する</button>
+    </div>
+  </div>
+</div>
+
+<!-- 確認モーダル（出展依頼） -->
+<div class="confirm-overlay" id="confirmEvent">
+  <div class="confirm-box">
+    <div class="confirm-title">🎪 出展依頼を送信しますか？</div>
+    <div class="confirm-sub">内容を確認後、3営業日以内にご連絡いたします。</div>
+    <div class="confirm-buttons">
+      <button class="btn-cancel" onclick="closeConfirm('event')">戻る</button>
+      <button class="btn-send green" onclick="submitForm('event')">送信する</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">komeko to<span>.</span></div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 komeko to.</div>
+    <div class="footer-credit">Web制作：<a href="#">Byron time Web制作</a></div>
+  </div>
+</footer>
+
+<script>
+  // タブ切り替え
+  function switchTab(type) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
+    event.target.classList.add('active');
+    document.getElementById('panel-' + type).classList.add('active');
+  }
+
+  // 確認モーダル
+  function showConfirm(type) {
+    const form = document.getElementById('form-' + type);
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    document.getElementById(type === 'customer' ? 'confirmCustomer' : 'confirmEvent').classList.add('active');
+  }
+  function closeConfirm(type) {
+    document.getElementById(type === 'customer' ? 'confirmCustomer' : 'confirmEvent').classList.remove('active');
+  }
+  function submitForm(type) {
+    document.getElementById('form-' + type).submit();
+  }
+
+  // ハンバーガー
+  const toggle = document.getElementById('navToggle');
+  const mobile = document.getElementById('navMobile');
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('open');
+    mobile.classList.toggle('open');
+  });
+</script>
+
+</body>
+</html>

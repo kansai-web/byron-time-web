@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schedule｜komeko to.</title>
+  <meta name="description" content="komeko to. の出店スケジュール。関西のマルシェ・イベント情報・実店舗のご案内。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Noto+Sans+JP:wght@300;400&family=Noto+Serif+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --base:   #F7F3ED;
+      --sub:    #EDE8DF;
+      --green:  #7A9E7E;
+      --brown:  #B08968;
+      --dark:   #3D2E22;
+      --muted:  #8C7560;
+      --border: #DDD5C8;
+      --white:  #FDFAF6;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Noto Sans JP',sans-serif; font-weight:300; color:var(--dark); background:var(--base); line-height:1.8; }
+    a { text-decoration:none; color:inherit; }
+
+    /* NAV */
+    nav {
+      position:fixed; top:0; left:0; right:0; z-index:100;
+      background:rgba(247,243,237,0.96); backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(176,137,104,0.12);
+      transition:box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow:0 2px 20px rgba(61,46,34,0.08); }
+    .nav-inner {
+      max-width:1100px; margin:0 auto; padding:0 40px;
+      display:flex; justify-content:space-between; align-items:center; height:64px;
+    }
+    .nav-logo { font-family:'Cormorant Garamond',serif; font-size:24px; font-style:italic; letter-spacing:0.06em; color:var(--dark); }
+    .nav-logo span { color:var(--brown); }
+    .nav-links { display:flex; gap:32px; list-style:none; }
+    .nav-links a { font-family:'Cormorant Garamond',serif; font-size:13px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); transition:color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color:var(--brown); }
+    .nav-toggle { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; }
+    .nav-toggle span { display:block; width:22px; height:1.5px; background:var(--dark); transition:all 0.28s; transform-origin:center; }
+    .nav-toggle.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity:0; }
+    .nav-toggle.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+    .nav-mobile { display:none; position:fixed; top:64px; left:0; right:0; background:var(--white); border-top:1px solid var(--border); padding:20px 32px; z-index:99; }
+    .nav-mobile.open { display:block; }
+    .nav-mobile a { display:block; padding:12px 0; border-bottom:1px solid var(--border); font-family:'Cormorant Garamond',serif; font-size:15px; letter-spacing:0.12em; text-transform:uppercase; color:var(--dark); }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding:120px 40px 64px; background:var(--white);
+      text-align:center; border-bottom:1px solid var(--border);
+    }
+    .page-label { font-family:'Cormorant Garamond',serif; font-size:11px; letter-spacing:0.3em; color:var(--brown); text-transform:uppercase; margin-bottom:12px; }
+    .page-title { font-family:'Noto Serif JP',serif; font-size:clamp(22px,3vw,32px); font-weight:700; color:var(--dark); margin-bottom:12px; }
+    .page-sub { font-size:14px; color:var(--muted); line-height:2.0; }
+
+    /* SECTION */
+    .sec { padding:72px 40px; }
+    .sec-label { font-family:'Cormorant Garamond',serif; font-size:11px; letter-spacing:0.3em; color:var(--brown); text-transform:uppercase; margin-bottom:10px; }
+    .sec-title { font-family:'Noto Serif JP',serif; font-size:clamp(20px,2.4vw,26px); font-weight:700; color:var(--dark); margin-bottom:16px; line-height:1.7; }
+
+    /* CALENDAR SECTION */
+    .cal-sec { background:var(--base); }
+    .cal-inner { max-width:960px; margin:0 auto; }
+
+    /* タイプ別バッジ */
+    .type-cards {
+      display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:40px;
+    }
+    .type-card {
+      background:var(--white); border-radius:4px; padding:20px;
+      border-top:3px solid var(--border);
+      display:flex; align-items:flex-start; gap:14px;
+    }
+    .type-card.marche { border-top-color:var(--green); }
+    .type-card.store  { border-top-color:var(--brown); }
+    .type-card.online { border-top-color:#9B6B9B; }
+    .type-icon {
+      width:40px; height:40px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center; flex-shrink:0;
+      font-size:16px;
+    }
+    .type-card.marche .type-icon { background:#EDF4EE; color:var(--green); }
+    .type-card.store  .type-icon { background:#FEF5ED; color:var(--brown); }
+    .type-card.online .type-icon { background:#F4EEF8; color:#9B6B9B; }
+    .type-label { font-size:10px; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:4px; }
+    .type-card.marche .type-label { color:var(--green); }
+    .type-card.store  .type-label { color:var(--brown); }
+    .type-card.online .type-label { color:#9B6B9B; }
+    .type-name { font-family:'Noto Serif JP',serif; font-size:16px; font-weight:700; color:var(--dark); margin-bottom:4px; }
+    .type-desc { font-size:13px; color:var(--muted); line-height:1.9; }
+    .type-link {
+      display:inline-flex; align-items:center; gap:5px;
+      margin-top:10px; font-family:'Cormorant Garamond',serif;
+      font-size:12px; letter-spacing:0.12em; color:var(--brown);
+      border-bottom:1px solid rgba(176,137,104,0.4); padding-bottom:1px;
+      transition:color 0.2s;
+    }
+    .type-card.online .type-link { color:#9B6B9B; border-bottom-color:rgba(155,107,155,0.4); }
+    .type-link:hover { opacity:0.75; }
+
+    /* Google Calendar 埋め込みエリア */
+    .cal-embed {
+      background:var(--white); border-radius:4px;
+      border:1px solid var(--border); overflow:hidden;
+      margin-bottom:16px;
+    }
+    .cal-embed iframe { width:100%; height:520px; border:none; display:block; }
+    .cal-placeholder {
+      width:100%; height:400px; background:var(--sub);
+      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px;
+    }
+    .cal-placeholder-icon { font-size:48px; color:var(--muted); opacity:0.5; }
+    .cal-placeholder-title { font-family:'Noto Serif JP',serif; font-size:16px; font-weight:700; color:var(--dark); }
+    .cal-placeholder-text { font-size:13px; color:var(--muted); line-height:2.0; text-align:center; }
+    .cal-placeholder-demo {
+      margin-top:4px; padding:6px 18px; border:1px solid var(--border);
+      border-radius:20px; font-size:11px; color:var(--muted); letter-spacing:0.08em;
+    }
+    .cal-note { font-size:13px; color:var(--muted); text-align:center; line-height:2.0; }
+
+    /* UPCOMING EVENTS */
+    .events-sec { background:var(--white); }
+    .events-inner { max-width:760px; margin:0 auto; }
+    .event-list { display:flex; flex-direction:column; gap:0; }
+    .event-item {
+      display:grid; grid-template-columns:72px 1fr;
+      gap:0 24px; padding:28px 0;
+      border-bottom:1px solid var(--border); align-items:start;
+    }
+    .event-item:last-child { border-bottom:none; }
+    .event-date-block { text-align:center; }
+    .event-month { font-family:'Cormorant Garamond',serif; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--brown); }
+    .event-day { font-family:'Cormorant Garamond',serif; font-size:36px; font-weight:600; color:var(--dark); line-height:1; }
+    .event-dow { font-size:10px; color:var(--muted); margin-top:2px; }
+    .event-badge {
+      display:inline-block; padding:2px 10px; border-radius:20px;
+      font-size:10px; letter-spacing:0.08em; margin-bottom:8px;
+    }
+    .event-badge.marche { background:#EDF4EE; color:var(--green); }
+    .event-badge.store  { background:#FEF5ED; color:var(--brown); }
+    .event-name { font-family:'Noto Serif JP',serif; font-size:16px; font-weight:700; color:var(--dark); margin-bottom:4px; }
+    .event-info { font-size:13px; color:var(--muted); line-height:2.0; }
+    .event-info i { width:16px; text-align:center; margin-right:4px; }
+    .event-sold { color:#c0392b; font-size:11px; font-weight:700; margin-top:6px; letter-spacing:0.05em; }
+
+    /* STORE INFO */
+    .store-sec { background:var(--sub); }
+    .store-inner { max-width:960px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
+    .store-info { }
+    .store-header { display:flex; align-items:center; gap:12px; margin-bottom:24px; }
+    .store-icon { width:44px; height:44px; border-radius:50%; background:var(--white); display:flex; align-items:center; justify-content:center; font-size:18px; color:var(--brown); }
+    .store-title { font-family:'Noto Serif JP',serif; font-size:18px; font-weight:700; color:var(--dark); }
+    .store-rows { display:flex; flex-direction:column; gap:0; }
+    .store-row {
+      display:grid; grid-template-columns:80px 1fr;
+      gap:0 16px; padding:14px 0; border-bottom:1px solid var(--border);
+      font-size:14px; align-items:start;
+    }
+    .store-row:last-child { border-bottom:none; }
+    .store-key { color:var(--muted); font-size:13px; padding-top:1px; }
+    .store-val { color:var(--dark); line-height:1.9; }
+    .store-val a { color:var(--brown); }
+
+    /* Google Map 埋め込みエリア */
+    .map-embed {
+      border-radius:4px; overflow:hidden;
+      border:1px solid var(--border);
+    }
+    .map-embed iframe { width:100%; height:320px; border:none; display:block; }
+    .map-placeholder {
+      width:100%; height:320px; background:var(--border);
+      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px;
+    }
+    .map-placeholder i { font-size:40px; color:var(--muted); opacity:0.5; }
+    .map-placeholder .map-text { font-size:12px; color:var(--muted); letter-spacing:0.1em; }
+
+    /* SNS */
+    .sns-sec { background:var(--dark); }
+    .sns-inner { max-width:640px; margin:0 auto; text-align:center; }
+    .sns-label { font-family:'Cormorant Garamond',serif; font-size:11px; letter-spacing:0.3em; color:rgba(255,255,255,0.4); text-transform:uppercase; margin-bottom:12px; }
+    .sns-title { font-family:'Noto Serif JP',serif; font-size:22px; font-weight:700; color:white; margin-bottom:12px; line-height:1.7; }
+    .sns-desc { font-size:14px; color:rgba(255,255,255,0.55); line-height:2.2; margin-bottom:32px; }
+    .sns-btns { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+    .btn-insta {
+      display:inline-flex; align-items:center; gap:8px;
+      padding:13px 28px; background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+      color:white; border-radius:2px; font-family:'Cormorant Garamond',serif;
+      font-size:13px; letter-spacing:0.2em; transition:opacity 0.2s;
+    }
+    .btn-insta:hover { opacity:0.85; }
+    .btn-line {
+      display:inline-flex; align-items:center; gap:8px;
+      padding:13px 28px; background:#06C755; color:white;
+      font-family:'Cormorant Garamond',serif; font-size:13px;
+      letter-spacing:0.15em; border-radius:2px; transition:opacity 0.2s;
+    }
+    .btn-line:hover { opacity:0.85; }
+    .btn-base {
+      display:inline-flex; align-items:center; gap:8px;
+      padding:13px 28px; background:#ff4900; color:white;
+      font-family:'Cormorant Garamond',serif; font-size:13px;
+      letter-spacing:0.15em; border-radius:2px; transition:opacity 0.2s;
+    }
+    .btn-base:hover { opacity:0.85; }
+
+    /* FOOTER */
+    footer { background:var(--dark); color:rgba(255,255,255,0.55); padding:48px 40px 28px; border-top:1px solid rgba(255,255,255,0.06); }
+    .footer-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr auto; gap:40px; align-items:start; margin-bottom:32px; }
+    .footer-logo { font-family:'Cormorant Garamond',serif; font-size:22px; font-style:italic; color:white; margin-bottom:10px; }
+    .footer-logo span { color:var(--brown); }
+    .footer-desc { font-size:11px; line-height:2.0; }
+    .footer-links { display:flex; flex-direction:column; gap:10px; text-align:right; }
+    .footer-links a { font-family:'Cormorant Garamond',serif; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.45); transition:color 0.2s; }
+    .footer-links a:hover { color:white; }
+    .footer-bottom { max-width:1100px; margin:0 auto; padding-top:20px; border-top:1px solid rgba(255,255,255,0.08); display:flex; justify-content:space-between; font-size:10px; letter-spacing:0.08em; }
+    .footer-credit a { color:rgba(255,255,255,0.3); }
+
+    /* Demo Calendar */
+    .demo-cal { background:white; }
+    .demo-cal-header {
+      display:flex; align-items:center; gap:8px;
+      padding:14px 20px; border-bottom:1px solid var(--border);
+    }
+    .demo-cal-month {
+      font-family:'Noto Serif JP',serif; font-size:15px; font-weight:700;
+      color:var(--dark); flex:1; text-align:center;
+    }
+    .demo-cal-nav { color:var(--muted); font-size:18px; opacity:0.35; padding:0 4px; user-select:none; }
+    .demo-badge {
+      background:rgba(176,137,104,0.12); color:var(--brown);
+      font-size:10px; letter-spacing:0.12em; padding:3px 12px;
+      border-radius:20px; font-family:'Cormorant Garamond',serif;
+    }
+    .demo-cal-grid { display:grid; grid-template-columns:repeat(7,1fr); }
+    .dcal-head {
+      text-align:center; font-size:11px; color:var(--muted);
+      padding:9px 0; background:var(--sub); letter-spacing:0.05em;
+    }
+    .dcal-head.sun { color:#c0392b; }
+    .dcal-head.sat { color:var(--brown); }
+    .dcal-day {
+      border:1px solid rgba(221,213,200,0.45);
+      padding:7px 6px 6px; min-height:72px;
+      font-size:12px; color:var(--dark); font-weight:300;
+      vertical-align:top;
+    }
+    .dcal-day.sun { color:#c0392b; }
+    .dcal-day.sat { color:var(--brown); }
+    .dcal-day.empty { background:rgba(237,232,223,0.4); }
+    .dcal-event {
+      display:block; font-size:10px; padding:2px 5px;
+      border-radius:2px; margin-top:4px; line-height:1.5;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+    .dcal-event.green { background:#EDF4EE; color:var(--green); }
+    .dcal-event.brown { background:#FEF5ED; color:var(--brown); }
+    .demo-cal-footer {
+      padding:11px 20px; background:var(--sub);
+      text-align:center; font-size:11px; color:var(--muted);
+      line-height:1.8; letter-spacing:0.04em;
+    }
+
+    .fade-up { opacity:0; transform:translateY(20px); transition:opacity 0.7s ease,transform 0.7s ease; }
+    .fade-up.visible { opacity:1; transform:translateY(0); }
+
+    @media(max-width:900px){
+      .type-cards { grid-template-columns:1fr; gap:12px; }
+      .store-inner { grid-template-columns:1fr; }
+      .footer-inner { grid-template-columns:1fr; }
+      .footer-links { text-align:left; }
+    }
+    @media(max-width:600px){
+      .nav-inner { padding:0 20px; }
+      .nav-links { display:none; }
+      .nav-toggle { display:flex; }
+      .sec { padding:56px 20px; }
+      .page-header { padding:96px 20px 48px; }
+      .event-item { grid-template-columns:56px 1fr; gap:0 16px; }
+      .event-day { font-size:28px; }
+      footer { padding:40px 20px 24px; }
+      .footer-bottom { flex-direction:column; gap:6px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">komeko to<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="schedule.html" class="active">Schedule</a></li>
+      <li><a href="index.html#shop">Shop</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="index.html">Home</a>
+  <a href="menu.html">Menu</a>
+  <a href="schedule.html">Schedule</a>
+  <a href="index.html#shop">Online Shop</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-label">Schedule</div>
+  <h1 class="page-title">出店スケジュール</h1>
+  <p class="page-sub">
+    マルシェ・イベントへの出店日程と、実店舗のご案内。<br>
+    カレンダーはリアルタイムで更新されます。
+  </p>
+</div>
+
+<!-- CALENDAR -->
+<section class="sec cal-sec">
+  <div class="cal-inner">
+
+    <!-- タイプ別バッジ -->
+    <div class="type-cards fade-up">
+      <div class="type-card marche">
+        <div class="type-icon"><i class="fa-solid fa-store"></i></div>
+        <div>
+          <div class="type-label">Marché</div>
+          <div class="type-name">マルシェ・イベント出店</div>
+          <div class="type-desc">関西各地に不定期出店。最新情報は<a href="https://www.instagram.com/komeko_to" target="_blank" style="color:var(--green); border-bottom:1px solid rgba(122,158,126,0.4);">Instagram</a>でも発信中。</div>
+        </div>
+      </div>
+      <div class="type-card store">
+        <div class="type-icon"><i class="fa-solid fa-house"></i></div>
+        <div>
+          <div class="type-label">Store</div>
+          <div class="type-name">実店舗・工房販売</div>
+          <div class="type-desc">平日は工房にてご購入いただけます。事前に<a href="https://www.instagram.com/komeko_to" target="_blank" style="color:var(--brown); border-bottom:1px solid rgba(176,137,104,0.4);">Instagram</a>で確認ください。</div>
+        </div>
+      </div>
+      <div class="type-card online">
+        <div class="type-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+        <div>
+          <div class="type-label">Online</div>
+          <div class="type-name">オンラインショップ</div>
+          <div class="type-desc">BASEより常時ご購入いただけます。全国配送対応。</div>
+          <a class="type-link" href="https://komeko-to.base.shop" target="_blank">BASEショップへ →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Googleカレンダー埋め込み -->
+    <div class="cal-embed fade-up">
+      <!--
+        【運用時の設定方法】
+        1. Googleカレンダーを開く
+        2. 対象カレンダーの「設定と共有」→「カレンダーを統合」
+        3. 「HTMLで埋め込む」のコードをコピー
+        4. 下記コメントを外して貼り付ける
+        例：
+        <iframe src="https://calendar.google.com/calendar/embed?src=your_calendar_id%40gmail.com&ctz=Asia%2FTokyo&mode=MONTH"
+          style="border:0" width="100%" height="520" frameborder="0" scrolling="no"></iframe>
+      -->
+      <div class="demo-cal">
+        <div class="demo-cal-header">
+          <span class="demo-cal-nav">‹</span>
+          <span class="demo-cal-month">2026年 6月</span>
+          <span class="demo-cal-nav">›</span>
+          <span class="demo-badge">DEMO</span>
+        </div>
+        <div class="demo-cal-grid">
+          <div class="dcal-head sun">日</div>
+          <div class="dcal-head">月</div>
+          <div class="dcal-head">火</div>
+          <div class="dcal-head">水</div>
+          <div class="dcal-head">木</div>
+          <div class="dcal-head">金</div>
+          <div class="dcal-head sat">土</div>
+          <!-- 第1週 -->
+          <div class="dcal-day sun">1</div>
+          <div class="dcal-day">2</div>
+          <div class="dcal-day">3</div>
+          <div class="dcal-day">4</div>
+          <div class="dcal-day">5</div>
+          <div class="dcal-day">6</div>
+          <div class="dcal-day sat">7<span class="dcal-event green">📍 堺グリーンマルシェ</span></div>
+          <!-- 第2週 -->
+          <div class="dcal-day sun">8</div>
+          <div class="dcal-day">9</div>
+          <div class="dcal-day">10</div>
+          <div class="dcal-day">11</div>
+          <div class="dcal-day">12</div>
+          <div class="dcal-day">13</div>
+          <div class="dcal-day sat">14<span class="dcal-event green">📍 万博クラフトフェア</span></div>
+          <!-- 第3週 -->
+          <div class="dcal-day sun">15</div>
+          <div class="dcal-day">16</div>
+          <div class="dcal-day">17</div>
+          <div class="dcal-day">18</div>
+          <div class="dcal-day">19</div>
+          <div class="dcal-day">20</div>
+          <div class="dcal-day sat">21<span class="dcal-event green">📍 神戸メリケンパーク</span></div>
+          <!-- 第4週 -->
+          <div class="dcal-day sun">22</div>
+          <div class="dcal-day">23</div>
+          <div class="dcal-day">24</div>
+          <div class="dcal-day">25</div>
+          <div class="dcal-day">26</div>
+          <div class="dcal-day">27</div>
+          <div class="dcal-day sat">28<span class="dcal-event brown">🏪 工房開放日</span></div>
+          <!-- 第5週 -->
+          <div class="dcal-day sun">29</div>
+          <div class="dcal-day">30</div>
+          <div class="dcal-day empty"></div>
+          <div class="dcal-day empty"></div>
+          <div class="dcal-day empty"></div>
+          <div class="dcal-day empty"></div>
+          <div class="dcal-day empty"></div>
+        </div>
+        <div class="demo-cal-footer">
+          ※ デモ表示 — 実際のサイトではオーナーがGoogleカレンダーに登録するだけで自動更新されます
+        </div>
+      </div>
+    </div>
+    <p class="cal-note fade-up">
+      <i class="fa-regular fa-circle-question" style="margin-right:6px;"></i>
+      カレンダーが表示されない場合は <a href="https://www.instagram.com/komeko_to" target="_blank" style="color:var(--brown);">Instagram</a> をご確認ください
+    </p>
+
+  </div>
+</section>
+
+<!-- STORE INFO -->
+<section class="sec store-sec">
+  <div class="store-inner">
+
+    <div class="store-info fade-up">
+      <div class="store-header">
+        <div class="store-icon"><i class="fa-solid fa-house"></i></div>
+        <div class="store-title">実店舗・工房のご案内</div>
+      </div>
+      <div class="store-rows">
+        <div class="store-row">
+          <div class="store-key">屋号</div>
+          <div class="store-val">komeko to.</div>
+        </div>
+        <div class="store-row">
+          <div class="store-key">所在地</div>
+          <div class="store-val">大阪府内（詳細はInstagram DMにてご案内）</div>
+        </div>
+        <div class="store-row">
+          <div class="store-key">営業日</div>
+          <div class="store-val">平日（月〜金）／ 工房開放日（月1〜2回・土曜）<br><span style="font-size:11px; color:var(--muted);">※ 詳細はInstagramをご確認ください</span></div>
+        </div>
+        <div class="store-row">
+          <div class="store-key">営業時間</div>
+          <div class="store-val">11:00 〜 売り切れ次第終了<br><span style="font-size:11px; color:var(--muted);">※ 在庫状況によって早く終わることがあります</span></div>
+        </div>
+        <div class="store-row">
+          <div class="store-key">お支払い</div>
+          <div class="store-val">現金・PayPay</div>
+        </div>
+        <div class="store-row">
+          <div class="store-key">Instagram</div>
+          <div class="store-val"><a href="https://www.instagram.com/komeko_to" target="_blank">@komeko_to</a></div>
+        </div>
+        <div class="store-row">
+          <div class="store-key">LINE公式</div>
+          <div class="store-val"><a href="https://lin.ee/vAS0Ryb" target="_blank" style="color:var(--brown);">友だち追加はこちら</a><br><span style="font-size:11px; color:var(--muted);">予約・問い合わせはLINEが便利です</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Googleマップ -->
+    <div class="fade-up" style="transition-delay:0.15s">
+      <div style="font-family:'Cormorant Garamond',serif; font-size:11px; letter-spacing:0.25em; color:var(--brown); text-transform:uppercase; margin-bottom:14px;">Location</div>
+      <div class="map-embed">
+        <!--
+          【運用時の設定方法】
+          1. Googleマップで場所を検索
+          2. 「共有」→「地図を埋め込む」→HTMLコードをコピー
+          3. 下記コメントを外して貼り付ける
+          例：
+          <iframe
+            src="https://www.google.com/maps/embed?pb=..."
+            width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy">
+          </iframe>
+        -->
+        <div class="map-placeholder">
+          <i class="fa-solid fa-map-location-dot"></i>
+          <div class="map-text">Googleマップが表示されます</div>
+          <div style="font-size:11px; color:var(--muted); margin-top:4px; text-align:center; line-height:1.8;">
+            実際のサイトでは<br>工房・実店舗の地図が表示されます
+          </div>
+        </div>
+      </div>
+      <p style="margin-top:12px; font-size:11px; color:var(--muted); line-height:1.8;">
+        ※ 工房の詳細な住所はInstagram DMまたはLINEにてお知らせしています。
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- SNS FOLLOW -->
+<section class="sec sns-sec">
+  <div class="sns-inner fade-up">
+    <div class="sns-label">Follow us</div>
+    <h2 class="sns-title">最新情報はSNSで</h2>
+    <p class="sns-desc">
+      出店情報・新メニューのお知らせはInstagramとLINEで。<br>
+      オンラインショップはBASEからいつでもご購入いただけます。
+    </p>
+    <div class="sns-btns">
+      <a class="btn-insta" href="https://www.instagram.com/komeko_to" target="_blank">
+        <i class="fa-brands fa-instagram"></i> @komeko_to
+      </a>
+      <a class="btn-base" href="https://komeko-to.base.shop" target="_blank">
+        <i class="fa-solid fa-bag-shopping"></i> BASEショップへ
+      </a>
+      <a class="btn-line" href="https://lin.ee/vAS0Ryb" target="_blank">
+        <i class="fa-brands fa-line"></i> LINE公式
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">komeko to<span>.</span></div>
+      <p class="footer-desc">
+        焼き菓子・スイーツ ／ 関西エリア出店中<br>
+        平日：実店舗・工房販売　週末：マルシェ・イベント<br>
+        📷 @komeko_to　　💬 LINE公式あり
+      </p>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="contact.html">Contact</a>
+      <a href="index.html#shop">Online Shop</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 komeko to.</div>
+    <div class="footer-credit">Web制作：<a href="#">Byron time Web制作</a></div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+
+  const toggle = document.getElementById('navToggle');
+  const mobile = document.getElementById('navMobile');
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('open');
+    mobile.classList.toggle('open');
+  });
+
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

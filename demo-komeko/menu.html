@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu｜komeko to.</title>
+  <meta name="description" content="komeko to. の手作り焼き菓子・スイーツメニュー一覧。アレルギー情報・価格もご確認いただけます。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Noto+Sans+JP:wght@300;400&family=Noto+Serif+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --base:   #F7F3ED;
+      --sub:    #EDE8DF;
+      --green:  #7A9E7E;
+      --brown:  #B08968;
+      --dark:   #3D2E22;
+      --muted:  #8C7560;
+      --border: #DDD5C8;
+      --white:  #FDFAF6;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Noto Sans JP',sans-serif; font-weight:300; color:var(--dark); background:var(--base); line-height:1.8; }
+    a { text-decoration:none; color:inherit; }
+    img { display:block; width:100%; }
+
+    /* NAV */
+    nav {
+      position:fixed; top:0; left:0; right:0; z-index:100;
+      background:rgba(247,243,237,0.96); backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(176,137,104,0.12);
+      transition:box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow:0 2px 20px rgba(61,46,34,0.08); }
+    .nav-inner {
+      max-width:1100px; margin:0 auto; padding:0 40px;
+      display:flex; justify-content:space-between; align-items:center; height:64px;
+    }
+    .nav-logo { font-family:'Cormorant Garamond',serif; font-size:24px; font-style:italic; letter-spacing:0.06em; color:var(--dark); }
+    .nav-logo span { color:var(--brown); }
+    .nav-links { display:flex; gap:32px; list-style:none; }
+    .nav-links a { font-family:'Cormorant Garamond',serif; font-size:13px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); transition:color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color:var(--brown); }
+    .nav-toggle { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; }
+    .nav-toggle span { display:block; width:22px; height:1.5px; background:var(--dark); transition:all 0.28s; transform-origin:center; }
+    .nav-toggle.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity:0; }
+    .nav-toggle.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+    .nav-mobile { display:none; position:fixed; top:64px; left:0; right:0; background:var(--white); border-top:1px solid var(--border); padding:20px 32px; z-index:99; }
+    .nav-mobile.open { display:block; }
+    .nav-mobile a { display:block; padding:12px 0; border-bottom:1px solid var(--border); font-family:'Cormorant Garamond',serif; font-size:15px; letter-spacing:0.12em; text-transform:uppercase; color:var(--dark); }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding:120px 40px 64px; background:var(--white);
+      text-align:center; border-bottom:1px solid var(--border);
+    }
+    .page-label { font-family:'Cormorant Garamond',serif; font-size:11px; letter-spacing:0.3em; color:var(--brown); text-transform:uppercase; margin-bottom:12px; }
+    .page-title { font-family:'Noto Serif JP',serif; font-size:clamp(22px,3vw,32px); font-weight:700; color:var(--dark); margin-bottom:12px; }
+    .page-sub { font-size:13px; color:var(--muted); line-height:2.0; }
+
+    /* SECTION */
+    .sec { padding:72px 40px; }
+    .sec-label { text-align:center; font-family:'Cormorant Garamond',serif; font-size:11px; letter-spacing:0.3em; color:var(--brown); text-transform:uppercase; margin-bottom:10px; }
+    .sec-title { text-align:center; font-family:'Noto Serif JP',serif; font-size:clamp(18px,2.2vw,24px); font-weight:700; color:var(--dark); margin-bottom:16px; line-height:1.7; }
+    .sec-sub { text-align:center; font-size:13px; color:var(--muted); line-height:2.0; margin-bottom:48px; }
+
+    /* CATEGORY TABS */
+    .cat-tabs {
+      display:flex; justify-content:center; gap:0;
+      border:1.5px solid var(--border); border-radius:4px;
+      overflow:hidden; max-width:500px; margin:0 auto 48px;
+    }
+    .cat-tab {
+      flex:1; padding:12px 16px; background:none; border:none;
+      font-family:'Noto Serif JP',serif; font-size:13px; font-weight:500;
+      color:var(--muted); cursor:pointer; letter-spacing:0.04em;
+      transition:all 0.2s; border-right:1px solid var(--border);
+    }
+    .cat-tab:last-child { border-right:none; }
+    .cat-tab.active { background:var(--brown); color:white; }
+    .cat-tab:hover:not(.active) { background:var(--sub); color:var(--dark); }
+
+    /* MENU GRID */
+    .menu-wrap { max-width:960px; margin:0 auto; }
+    .menu-panel { display:none; }
+    .menu-panel.active { display:block; }
+    .menu-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+    .menu-card {
+      background:var(--white); border-radius:4px; overflow:hidden;
+      transition:transform 0.3s,box-shadow 0.3s;
+    }
+    .menu-card:hover { transform:translateY(-4px); box-shadow:0 10px 28px rgba(61,46,34,0.1); }
+    .menu-img { aspect-ratio:4/3; overflow:hidden; background:var(--sub); }
+    .menu-img img { width:100%; height:100%; object-fit:cover; transition:transform 0.4s; }
+    .menu-card:hover .menu-img img { transform:scale(1.04); }
+    .menu-body { padding:20px; }
+    .menu-tag { display:inline-block; padding:2px 9px; border-radius:20px; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; border:1px solid; margin-bottom:10px; }
+    .menu-tag.std   { border-color:var(--brown); color:var(--brown); }
+    .menu-tag.seas  { border-color:var(--green); color:var(--green); }
+    .menu-tag.gift  { border-color:#9B6B9B; color:#9B6B9B; }
+    .menu-name { font-family:'Noto Serif JP',serif; font-size:16px; font-weight:700; color:var(--dark); margin-bottom:8px; line-height:1.5; }
+    .menu-desc { font-size:12px; color:var(--muted); line-height:2.0; margin-bottom:14px; }
+    .menu-price { font-family:'Cormorant Garamond',serif; font-size:20px; color:var(--brown); letter-spacing:0.05em; }
+    .menu-price small { font-size:12px; color:var(--muted); font-family:'Noto Sans JP',sans-serif; margin-left:4px; }
+
+    /* 画像なしカード（季節・ギフト用プレースホルダー） */
+    .menu-img-ph {
+      aspect-ratio:4/3; display:flex; flex-direction:column;
+      align-items:center; justify-content:center; gap:8px;
+      background:linear-gradient(135deg,var(--sub),var(--border));
+    }
+    .menu-img-ph .ph-icon { font-size:36px; opacity:0.5; }
+    .menu-img-ph .ph-text { font-size:10px; color:var(--muted); letter-spacing:0.12em; text-transform:uppercase; }
+
+    /* ALLERGY TABLE */
+    .allergy-sec { background:var(--white); }
+    .allergy-inner { max-width:900px; margin:0 auto; }
+    .allergy-note {
+      display:flex; gap:12px; align-items:flex-start;
+      padding:16px 20px; background:var(--sub); border-radius:4px;
+      margin-bottom:32px; font-size:12px; color:var(--muted); line-height:1.9;
+    }
+    .allergy-note i { color:var(--brown); font-size:16px; flex-shrink:0; margin-top:2px; }
+    .allergy-table-wrap { overflow-x:auto; }
+    .allergy-table {
+      width:100%; border-collapse:collapse; font-size:12px;
+      white-space:nowrap;
+    }
+    .allergy-table th {
+      background:var(--dark); color:rgba(255,255,255,0.85);
+      padding:12px 16px; font-weight:500; letter-spacing:0.05em; text-align:center;
+    }
+    .allergy-table th:first-child { text-align:left; min-width:140px; }
+    .allergy-table td {
+      padding:12px 16px; border-bottom:1px solid var(--border);
+      text-align:center; color:var(--dark);
+    }
+    .allergy-table td:first-child { text-align:left; font-weight:400; color:var(--dark); background:var(--base); }
+    .allergy-table tr:last-child td { border-bottom:none; }
+    .allergy-table tr:hover td { background:rgba(176,137,104,0.04); }
+    .allergy-table tr:hover td:first-child { background:rgba(176,137,104,0.08); }
+    .check-o { color:var(--brown); font-size:14px; }
+    .check-x { color:var(--green); font-size:14px; }
+    .check-tri { color:#c0a030; font-size:12px; }
+
+    /* SHOP CTA */
+    .shop-cta { background:var(--sub); }
+    .shop-cta-inner {
+      max-width:700px; margin:0 auto; text-align:center;
+    }
+    .cta-label { font-family:'Cormorant Garamond',serif; font-size:11px; letter-spacing:0.3em; color:var(--brown); text-transform:uppercase; margin-bottom:12px; }
+    .cta-title { font-family:'Noto Serif JP',serif; font-size:clamp(18px,2.5vw,26px); font-weight:700; color:var(--dark); margin-bottom:16px; line-height:1.7; }
+    .cta-desc { font-size:13px; color:var(--muted); line-height:2.2; margin-bottom:32px; }
+    .cta-btns { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+    .btn-primary {
+      display:inline-flex; align-items:center; gap:8px;
+      padding:14px 32px; background:var(--brown); color:white;
+      font-family:'Cormorant Garamond',serif; font-size:13px;
+      letter-spacing:0.2em; text-transform:uppercase; border-radius:2px; transition:opacity 0.2s;
+    }
+    .btn-primary:hover { opacity:0.85; }
+    .btn-outline {
+      display:inline-flex; align-items:center; gap:8px;
+      padding:13px 28px; border:1.5px solid var(--border); color:var(--muted);
+      font-family:'Cormorant Garamond',serif; font-size:13px;
+      letter-spacing:0.2em; text-transform:uppercase; border-radius:2px; transition:all 0.2s;
+    }
+    .btn-outline:hover { border-color:var(--brown); color:var(--brown); }
+
+    /* FOOTER */
+    footer { background:var(--dark); color:rgba(255,255,255,0.55); padding:48px 40px 28px; }
+    .footer-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr auto; gap:40px; align-items:start; margin-bottom:32px; }
+    .footer-logo { font-family:'Cormorant Garamond',serif; font-size:22px; font-style:italic; color:white; margin-bottom:10px; }
+    .footer-logo span { color:var(--brown); }
+    .footer-desc { font-size:11px; line-height:2.0; }
+    .footer-links { display:flex; flex-direction:column; gap:10px; text-align:right; }
+    .footer-links a { font-family:'Cormorant Garamond',serif; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.45); transition:color 0.2s; }
+    .footer-links a:hover { color:white; }
+    .footer-bottom { max-width:1100px; margin:0 auto; padding-top:20px; border-top:1px solid rgba(255,255,255,0.08); display:flex; justify-content:space-between; font-size:10px; letter-spacing:0.08em; }
+    .footer-credit a { color:rgba(255,255,255,0.3); }
+
+    .fade-up { opacity:0; transform:translateY(20px); transition:opacity 0.7s ease,transform 0.7s ease; }
+    .fade-up.visible { opacity:1; transform:translateY(0); }
+
+    @media(max-width:900px){
+      .menu-grid { grid-template-columns:1fr 1fr; }
+      .footer-inner { grid-template-columns:1fr; }
+      .footer-links { text-align:left; }
+    }
+    @media(max-width:600px){
+      .nav-inner { padding:0 20px; }
+      .nav-links { display:none; }
+      .nav-toggle { display:flex; }
+      .sec { padding:56px 20px; }
+      .page-header { padding:96px 20px 48px; }
+      .menu-grid { grid-template-columns:1fr; }
+      .cat-tabs { max-width:100%; }
+      footer { padding:40px 20px 24px; }
+      .footer-bottom { flex-direction:column; gap:6px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">komeko to<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html" class="active">Menu</a></li>
+      <li><a href="schedule.html">Schedule</a></li>
+      <li><a href="index.html#shop">Shop</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="index.html">Home</a>
+  <a href="menu.html">Menu</a>
+  <a href="schedule.html">Schedule</a>
+  <a href="index.html#shop">Online Shop</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-label">Menu</div>
+  <h1 class="page-title">手作りスイーツ</h1>
+  <p class="page-sub">
+    毎日少量ずつ、丁寧に手作りしています。<br>
+    素材にこだわり、安心して食べていただけるものを。
+  </p>
+</div>
+
+<!-- MENU SECTION -->
+<section class="sec" style="background:var(--base);">
+  <div class="sec-label">Our Menu</div>
+  <h2 class="sec-title">メニュー一覧</h2>
+  <p class="sec-sub">
+    季節によって内容が変わります。最新情報はInstagramをご確認ください。
+  </p>
+
+  <!-- カテゴリタブ -->
+  <div class="cat-tabs">
+    <button class="cat-tab active" onclick="switchCat('standard', this)">定番スイーツ</button>
+    <button class="cat-tab" onclick="switchCat('season', this)">季節のスイーツ</button>
+    <button class="cat-tab" onclick="switchCat('gift', this)">ギフトセット</button>
+  </div>
+
+  <div class="menu-wrap">
+
+    <!-- 定番スイーツ -->
+    <div class="menu-panel active" id="cat-standard">
+      <div class="menu-grid">
+        <div class="menu-card fade-up">
+          <div class="menu-img"><img src="images/menu-1.jpg" alt="焼き菓子セット"></div>
+          <div class="menu-body">
+            <span class="menu-tag std">Standard</span>
+            <div class="menu-name">焼き菓子セット</div>
+            <div class="menu-desc">クッキー・フィナンシェ・マドレーヌなど。毎日種類が変わります。素材のやさしい甘さをそのまま楽しんでください。</div>
+            <div class="menu-price">¥800<small>〜（内容により変動）</small></div>
+          </div>
+        </div>
+        <div class="menu-card fade-up" style="transition-delay:0.1s">
+          <div class="menu-img"><img src="images/menu-2.jpg" alt="バターサンド"></div>
+          <div class="menu-body">
+            <span class="menu-tag std">Standard</span>
+            <div class="menu-name">バターサンド</div>
+            <div class="menu-desc">バタークリームをたっぷり挟んだリッチな一品。冷やすとより美味しくなります。プレーン・いちご・抹茶の3種。</div>
+            <div class="menu-price">¥300<small>/ 1個</small></div>
+          </div>
+        </div>
+        <div class="menu-card fade-up" style="transition-delay:0.2s">
+          <div class="menu-img"><img src="images/menu-3.jpg" alt="季節のタルト"></div>
+          <div class="menu-body">
+            <span class="menu-tag std">Standard</span>
+            <div class="menu-name">クッキー缶（マルシェ限定）</div>
+            <div class="menu-desc">マルシェ会場でのみ販売する限定クッキー缶。種類を詰め合わせた、自分へのご褒美や手土産に。</div>
+            <div class="menu-price">¥1,500<small>〜</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 季節のスイーツ -->
+    <div class="menu-panel" id="cat-season">
+      <div class="menu-grid">
+        <div class="menu-card fade-up">
+          <div class="menu-img-ph">
+            <div class="ph-icon">🌸</div>
+            <div class="ph-text">Spring</div>
+          </div>
+          <div class="menu-body">
+            <span class="menu-tag seas">Seasonal</span>
+            <div class="menu-name">桜のバターサンド</div>
+            <div class="menu-desc">春限定。塩漬け桜と桜クリームの爽やかな甘さ。桜の季節が終わると来年まで食べられません。</div>
+            <div class="menu-price">¥350<small>/ 1個</small></div>
+          </div>
+        </div>
+        <div class="menu-card fade-up" style="transition-delay:0.1s">
+          <div class="menu-img-ph">
+            <div class="ph-icon">🍋</div>
+            <div class="ph-text">Summer</div>
+          </div>
+          <div class="menu-body">
+            <span class="menu-tag seas">Seasonal</span>
+            <div class="menu-name">レモンシフォンケーキ</div>
+            <div class="menu-desc">夏限定のふわふわシフォン。国産レモンをたっぷり使ったさわやかな味わい。カット販売のみ。</div>
+            <div class="menu-price">¥400<small>/ カット</small></div>
+          </div>
+        </div>
+        <div class="menu-card fade-up" style="transition-delay:0.2s">
+          <div class="menu-img-ph">
+            <div class="ph-icon">🍁</div>
+            <div class="ph-text">Autumn</div>
+          </div>
+          <div class="menu-body">
+            <span class="menu-tag seas">Seasonal</span>
+            <div class="menu-name">さつまいもタルト</div>
+            <div class="menu-desc">秋限定。国産さつまいもをたっぷり使ったやさしい甘さのタルト。焦がしバターの香りが食欲をそそります。</div>
+            <div class="menu-price">¥500<small>/ 1ピース</small></div>
+          </div>
+        </div>
+      </div>
+      <p style="text-align:center; margin-top:24px; font-size:12px; color:var(--muted);">
+        ※ 季節メニューは時期によって変わります。最新情報はInstagramをご確認ください。
+      </p>
+    </div>
+
+    <!-- ギフトセット -->
+    <div class="menu-panel" id="cat-gift">
+      <div class="menu-grid">
+        <div class="menu-card fade-up">
+          <div class="menu-img-ph">
+            <div class="ph-icon">🎁</div>
+            <div class="ph-text">Gift</div>
+          </div>
+          <div class="menu-body">
+            <span class="menu-tag gift">Gift</span>
+            <div class="menu-name">ギフトボックス S</div>
+            <div class="menu-desc">焼き菓子6〜8点の詰め合わせ。ちょっとしたお礼・手土産に。メッセージカード対応。</div>
+            <div class="menu-price">¥1,500<small>〜</small></div>
+          </div>
+        </div>
+        <div class="menu-card fade-up" style="transition-delay:0.1s">
+          <div class="menu-img-ph">
+            <div class="ph-icon">🎀</div>
+            <div class="ph-text">Gift</div>
+          </div>
+          <div class="menu-body">
+            <span class="menu-tag gift">Gift</span>
+            <div class="menu-name">ギフトボックス M</div>
+            <div class="menu-desc">焼き菓子10〜12点＋季節のスイーツのセット。誕生日・内祝いなど少し特別な場面に。</div>
+            <div class="menu-price">¥2,500<small>〜</small></div>
+          </div>
+        </div>
+        <div class="menu-card fade-up" style="transition-delay:0.2s">
+          <div class="menu-img-ph">
+            <div class="ph-icon">📦</div>
+            <div class="ph-text">Gift</div>
+          </div>
+          <div class="menu-body">
+            <span class="menu-tag gift">Gift</span>
+            <div class="menu-name">おまかせBOX（オンライン専用）</div>
+            <div class="menu-desc">BASEよりご注文いただけます。その日の焼き菓子をおまかせでお届け。全国配送対応。</div>
+            <div class="menu-price">¥2,000<small>〜（送料別）</small></div>
+          </div>
+        </div>
+      </div>
+      <p style="text-align:center; margin-top:24px; font-size:12px; color:var(--muted);">
+        ※ マルシェ会場では当日在庫のみの対応となります。ご予約はDMまたはLINEにてご相談ください。
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ALLERGY TABLE -->
+<section class="sec allergy-sec">
+  <div class="allergy-inner">
+    <div class="sec-label" style="text-align:left;">Allergy Info</div>
+    <h2 class="sec-title" style="text-align:left; margin-bottom:8px;">アレルギー・原材料について</h2>
+    <p class="sec-sub" style="text-align:left; margin-bottom:32px; font-size:13px;">
+      アレルギーのある方・お子様連れの方も安心してお楽しみいただけるよう、主要アレルゲンをまとめています。
+    </p>
+
+    <div class="allergy-note fade-up">
+      <i class="fa-solid fa-circle-info"></i>
+      <div>
+        当店は同一キッチンで複数の商品を製造しています。アレルゲンの混入を完全に防ぐことができないため、重篤なアレルギーをお持ちの方はあらかじめご相談ください。表中の「△」は微量含む可能性があることを示します。
+      </div>
+    </div>
+
+    <div class="allergy-table-wrap fade-up">
+      <table class="allergy-table">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>小麦</th>
+            <th>卵</th>
+            <th>乳</th>
+            <th>落花生</th>
+            <th>木の実類</th>
+            <th>大豆</th>
+            <th>りんご</th>
+            <th>もも</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>焼き菓子セット（クッキー）</td>
+            <td class="check-o"><i class="fa-solid fa-circle-xmark"></i></td>
+            <td class="check-o"><i class="fa-solid fa-circle-xmark"></i></td>
+            <td class="check-o"><i class="fa-solid fa-circle-xmark"></i></td>
+            <td class="check-x"><i class="fa-regular fa-circle"></i></td>
+            <td class="check-tri">△</td>
+            <td class="check-x"><i class="fa-regular fa-circle"></i></td>
+            <td class="check-x"><i class="fa-regular fa-circle"></i></td>
+            <td class="check-x"><i class="fa-regular fa-circle"></i></td>
+          </tr>
+          <tr>
+            <td>フィナンシェ</td>
+            <td class="check-o"><i class="fa-solid fa-circle-xmark"></i></td>
+            <td class="check-o"><i class="fa-solid fa-circle-xmark"></i></td>
+            <td class="check-o"><i class="fa-solid fa-circle-xmark"></i></td>
+            <td class="check-x"><i class="fa-regular fa-circle"></i></td>
+            <td class="check-o"><i class="fa-solid fa-circle-xmark"></i></td>
+            <td class="check-x"><i class="fa-regular fa-circle"></i></td>
+            <td class="check-x"><i class="fa-regular fa-circle"></i></td>
+            <td class="check-x"><i class="fa-regular fa-circle"></i></td>
+          </tr>
+          <tr>
+            <td>バターサンド（プレーン）</td>
+            <td class="check-o"><i class="fa-solid fa-circle-xmark"></i></td>
+            <td class="check-o"><i class="fa-solid fa-circle-xmark"></i></td>
+            <td class="check-o"><i class="fa-solid fa-circle-xmark"></i></td>
+            <td class="check-x"><i class="fa-regular fa-circle"></i></td>
+            <td class="check-x"><i class="fa-regular fa-circle"></i></td>
+            <td class="check-x"><i class="fa-regular fa-circle"></i></td>
+            <td class="check-x"><i class="fa-regular fa-circle"></i></td>
+            <td class="check-x"><i class="fa-regular fa-circle"></i></td>
+          </tr>
+          <tr>
+            <td>レモンシフォンケーキ</td>
+            <td class="check-o"><i class="fa-solid fa-circle-xmark"></i></td>
+            <td class="check-o"><i class="fa-solid fa-circle-xmark"></i></td>
+            <td class="check-x"><i class="fa-regular fa-circle"></i></td>
+            <td class="check-x"><i class="fa-regular fa-circle"></i></td>
+            <td class="check-x"><i class="fa-regular fa-circle"></i></td>
+            <td class="check-o"><i class="fa-solid fa-circle-xmark"></i></td>
+            <td class="check-x"><i class="fa-regular fa-circle"></i></td>
+            <td class="check-x"><i class="fa-regular fa-circle"></i></td>
+          </tr>
+          <tr>
+            <td>さつまいもタルト</td>
+            <td class="check-o"><i class="fa-solid fa-circle-xmark"></i></td>
+            <td class="check-o"><i class="fa-solid fa-circle-xmark"></i></td>
+            <td class="check-o"><i class="fa-solid fa-circle-xmark"></i></td>
+            <td class="check-x"><i class="fa-regular fa-circle"></i></td>
+            <td class="check-x"><i class="fa-regular fa-circle"></i></td>
+            <td class="check-x"><i class="fa-regular fa-circle"></i></td>
+            <td class="check-x"><i class="fa-regular fa-circle"></i></td>
+            <td class="check-x"><i class="fa-regular fa-circle"></i></td>
+          </tr>
+          <tr>
+            <td>ギフトボックス</td>
+            <td class="check-o"><i class="fa-solid fa-circle-xmark"></i></td>
+            <td class="check-o"><i class="fa-solid fa-circle-xmark"></i></td>
+            <td class="check-o"><i class="fa-solid fa-circle-xmark"></i></td>
+            <td class="check-tri">△</td>
+            <td class="check-tri">△</td>
+            <td class="check-tri">△</td>
+            <td class="check-x"><i class="fa-regular fa-circle"></i></td>
+            <td class="check-x"><i class="fa-regular fa-circle"></i></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-top:16px; display:flex; gap:24px; font-size:11px; color:var(--muted); flex-wrap:wrap;">
+      <span><i class="fa-solid fa-circle-xmark" style="color:var(--brown);"></i> 含む</span>
+      <span><i class="fa-regular fa-circle" style="color:var(--green);"></i> 含まない</span>
+      <span>△ 微量含む可能性あり</span>
+    </div>
+
+    <p style="margin-top:12px; font-size:11px; color:var(--muted); line-height:1.9;">
+      ※ 詳細・最新情報はお問い合わせフォームまたはInstagram DMにてご確認ください。
+    </p>
+  </div>
+</section>
+
+<!-- SHOP CTA -->
+<section class="sec shop-cta">
+  <div class="shop-cta-inner fade-up">
+    <div class="cta-label">Online Shop</div>
+    <h2 class="cta-title">ご自宅にお届けします</h2>
+    <p class="cta-desc">
+      来られない方も、大切な方へのギフトにも。<br>
+      BASEオンラインショップより全国へお届けします。
+    </p>
+    <div class="cta-btns">
+      <a class="btn-primary" href="#" target="_blank">
+        <i class="fa-solid fa-basket-shopping"></i> オンラインショップへ
+      </a>
+      <a class="btn-outline" href="contact.html">
+        <i class="fa-regular fa-envelope"></i> ギフト相談・まとめ買い
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">komeko to<span>.</span></div>
+      <p class="footer-desc">
+        焼き菓子・スイーツ ／ 関西エリア出店中<br>
+        平日：実店舗・工房販売　週末：マルシェ・イベント<br>
+        📷 @komeko_to　　💬 LINE公式あり
+      </p>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="contact.html">Contact</a>
+      <a href="index.html#shop">Online Shop</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 komeko to.</div>
+    <div class="footer-credit">Web制作：<a href="#">Byron time Web制作</a></div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+
+  const toggle = document.getElementById('navToggle');
+  const mobile = document.getElementById('navMobile');
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('open');
+    mobile.classList.toggle('open');
+  });
+
+  function switchCat(name, btn) {
+    document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('cat-' + name).classList.add('active');
+    // fade-up を再発火
+    document.querySelectorAll('#cat-' + name + ' .fade-up').forEach(el => {
+      el.classList.remove('visible');
+      setTimeout(() => observer.observe(el), 10);
+    });
+  }
+
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
