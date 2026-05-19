@@ -358,19 +358,24 @@
       color: var(--brown); margin-bottom: 8px; line-height: 1.5;
     }
     .item-desc { font-size: 12px; color: var(--sub); line-height: 1.8; margin-bottom: 14px; }
-    .item-footer { display: flex; align-items: center; justify-content: space-between; }
+    .item-footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
     .item-price {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 22px; font-weight: 600; color: var(--teal);
+      font-size: 22px; font-weight: 600; color: var(--teal); flex-shrink: 0;
     }
     .item-price span { font-size: 13px; color: var(--sub); font-weight: 400; font-family: 'Noto Sans JP', sans-serif; }
-    .item-link {
-      font-size: 12px; color: var(--teal);
-      border: 1px solid var(--teal);
-      padding: 6px 14px; border-radius: 20px;
-      transition: all 0.2s;
+    .item-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+    .item-btn-base {
+      display: inline-block;
+      font-size: 12px; color: white; background: var(--teal);
+      padding: 7px 14px; border-radius: 20px; font-weight: 500;
+      white-space: nowrap; transition: all 0.2s;
     }
-    .item-link:hover { background: var(--teal); color: white; }
+    .item-btn-base:hover { opacity: 0.85; transform: translateY(-1px); }
+    .item-link-minne {
+      font-size: 11px; color: var(--sub); transition: color 0.2s;
+    }
+    .item-link-minne:hover { color: var(--brown); }
     .items-cta { text-align: center; margin-top: 48px; }
 
     /* ============================================================
@@ -638,8 +643,8 @@
         <li><a href="#howto">How to Order</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-      <a href="https://minne.com/@otona-plus40" target="_blank" rel="noopener" class="nav-minne">
-        <i class="fa-solid fa-bag-shopping"></i> minneで購入
+      <a href="https://byrontime.base.shop/" target="_blank" rel="noopener" class="nav-minne">
+        <i class="fa-solid fa-bag-shopping"></i> BASEで購入
       </a>
       <button class="nav-toggle" id="navToggle" aria-label="メニュー">
         <span></span><span></span><span></span>
@@ -651,8 +656,8 @@
     <a href="#items" onclick="closeMobile()">Items</a>
     <a href="#howto" onclick="closeMobile()">How to Order</a>
     <a href="contact.html">Contact</a>
-    <a href="https://minne.com/@otona-plus40" target="_blank" rel="noopener" class="mob-cta">
-      <i class="fa-solid fa-bag-shopping"></i> minneで購入する
+    <a href="https://byrontime.base.shop/" target="_blank" rel="noopener" class="mob-cta">
+      <i class="fa-solid fa-bag-shopping"></i> BASEで購入する
     </a>
   </div>
 
@@ -672,8 +677,8 @@
         名入れOK。犬・猫・鳥・お子さまにも。
       </p>
       <div class="hero-btns">
-        <a href="https://minne.com/@otona-plus40" target="_blank" rel="noopener" class="btn btn-sunset">
-          <i class="fa-solid fa-bag-shopping"></i> minneで注文する
+        <a href="https://byrontime.base.shop/" target="_blank" rel="noopener" class="btn btn-sunset bootstrap-checkout-button">
+          <i class="fa-solid fa-bag-shopping"></i> BASEで購入する
         </a>
         <a href="#howto" class="btn btn-outline">
           <i class="fa-regular fa-circle-question"></i> 注文の流れを見る
@@ -682,7 +687,7 @@
       <div class="hero-flow">
         <span class="hero-flow-label"><i class="fa-solid fa-route"></i>&ensp;4 STEPS</span>
         <div class="flow-steps">
-          <span class="flow-step">minneで相談</span>
+          <span class="flow-step">LINEでご相談</span>
           <span class="flow-arrow"><i class="fa-solid fa-chevron-right"></i></span>
           <span class="flow-step">LINEで写真送付</span>
           <span class="flow-arrow"><i class="fa-solid fa-chevron-right"></i></span>
@@ -784,7 +789,10 @@
               <p class="item-desc">毎日手にするスマホに、うちの子を。12色の背景×7種フォントからお選びいただけます。iPhone 16シリーズ対応。</p>
               <div class="item-footer">
                 <div class="item-price">¥3,480<span>〜</span></div>
-                <a href="https://minne.com/items/37934312" target="_blank" rel="noopener" class="item-link">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                <div class="item-actions">
+                  <a href="https://byrontime.base.shop/" target="_blank" rel="noopener" class="item-btn-base bootstrap-checkout-button">BASEで購入</a>
+                  <a href="https://minne.com/items/37934312" target="_blank" rel="noopener" class="item-link-minne">minneでも見る <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                </div>
               </div>
             </div>
           </div>
@@ -798,7 +806,10 @@
               <p class="item-desc">天然木の温もりに、うちの子のイラストを。やわらかな木目がナチュラルな雰囲気を演出するこだわりのケース。</p>
               <div class="item-footer">
                 <div class="item-price">¥4,280<span>〜</span></div>
-                <a href="https://minne.com/items/43103701" target="_blank" rel="noopener" class="item-link">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                <div class="item-actions">
+                  <a href="https://byrontime.base.shop/" target="_blank" rel="noopener" class="item-btn-base bootstrap-checkout-button">BASEで購入</a>
+                  <a href="https://minne.com/items/43103701" target="_blank" rel="noopener" class="item-link-minne">minneでも見る <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                </div>
               </div>
             </div>
           </div>
@@ -812,7 +823,10 @@
               <p class="item-desc">毎日の水分補給が癒しの時間に。うちの子と一緒に出かける日々を、もっと特別に。ギフトにも大人気。</p>
               <div class="item-footer">
                 <div class="item-price">¥4,680</div>
-                <a href="https://minne.com/items/43089332" target="_blank" rel="noopener" class="item-link">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                <div class="item-actions">
+                  <a href="https://byrontime.base.shop/" target="_blank" rel="noopener" class="item-btn-base bootstrap-checkout-button">BASEで購入</a>
+                  <a href="https://minne.com/items/43089332" target="_blank" rel="noopener" class="item-link-minne">minneでも見る <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                </div>
               </div>
             </div>
           </div>
@@ -826,7 +840,10 @@
               <p class="item-desc">5,000mAh / 10,000mAhから選べる。ケーブル内蔵で荷物がかさばらない。うちの子がいつもそばに。</p>
               <div class="item-footer">
                 <div class="item-price">¥4,800</div>
-                <a href="https://minne.com/items/41033174" target="_blank" rel="noopener" class="item-link">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                <div class="item-actions">
+                  <a href="https://byrontime.base.shop/" target="_blank" rel="noopener" class="item-btn-base bootstrap-checkout-button">BASEで購入</a>
+                  <a href="https://minne.com/items/41033174" target="_blank" rel="noopener" class="item-link-minne">minneでも見る <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                </div>
               </div>
             </div>
           </div>
@@ -840,7 +857,10 @@
               <p class="item-desc">お部屋に飾っていつでも会える。記念日・お誕生日・大切な子への思い出を透明感あるアクリルに。</p>
               <div class="item-footer">
                 <div class="item-price">¥2,980</div>
-                <a href="https://minne.com/items/43125070" target="_blank" rel="noopener" class="item-link">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                <div class="item-actions">
+                  <a href="https://byrontime.base.shop/" target="_blank" rel="noopener" class="item-btn-base bootstrap-checkout-button">BASEで購入</a>
+                  <a href="https://minne.com/items/43125070" target="_blank" rel="noopener" class="item-link-minne">minneでも見る <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                </div>
               </div>
             </div>
           </div>
@@ -860,7 +880,10 @@
               <p class="item-desc">オーストラリア・バイロンベイの自然をモチーフにしたアートケース。名入れ無料。ギフトにもおすすめ。</p>
               <div class="item-footer">
                 <div class="item-price">¥2,980</div>
-                <a href="https://minne.com/items/42443516" target="_blank" rel="noopener" class="item-link">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                <div class="item-actions">
+                  <a href="https://byrontime.base.shop/" target="_blank" rel="noopener" class="item-btn-base bootstrap-checkout-button">BASEで購入</a>
+                  <a href="https://minne.com/items/42443516" target="_blank" rel="noopener" class="item-link-minne">minneでも見る <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                </div>
               </div>
             </div>
           </div>
@@ -874,7 +897,10 @@
               <p class="item-desc">やわらかな海の色彩に、ウミガメと花のアートを描いたケース。涼しげで美しい一枚。名入れ無料。</p>
               <div class="item-footer">
                 <div class="item-price">¥2,980</div>
-                <a href="https://minne.com/items/38153703" target="_blank" rel="noopener" class="item-link">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                <div class="item-actions">
+                  <a href="https://byrontime.base.shop/" target="_blank" rel="noopener" class="item-btn-base bootstrap-checkout-button">BASEで購入</a>
+                  <a href="https://minne.com/items/38153703" target="_blank" rel="noopener" class="item-link-minne">minneでも見る <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                </div>
               </div>
             </div>
           </div>
@@ -888,7 +914,10 @@
               <p class="item-desc">大海原を泳ぐ鯨と、やさしい花のアート。ブルーを基調としたデザインは見るたびに心が落ち着きます。</p>
               <div class="item-footer">
                 <div class="item-price">¥2,980</div>
-                <a href="https://minne.com/items/38087352" target="_blank" rel="noopener" class="item-link">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                <div class="item-actions">
+                  <a href="https://byrontime.base.shop/" target="_blank" rel="noopener" class="item-btn-base bootstrap-checkout-button">BASEで購入</a>
+                  <a href="https://minne.com/items/38087352" target="_blank" rel="noopener" class="item-link-minne">minneでも見る <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                </div>
               </div>
             </div>
           </div>
@@ -902,7 +931,10 @@
               <p class="item-desc">天然木×バイロンベイのアート。クカバラ（オーストラリアの国鳥）とランタンを描いた幻想的なデザイン。</p>
               <div class="item-footer">
                 <div class="item-price">¥3,480</div>
-                <a href="https://minne.com/items/36536453" target="_blank" rel="noopener" class="item-link">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                <div class="item-actions">
+                  <a href="https://byrontime.base.shop/" target="_blank" rel="noopener" class="item-btn-base bootstrap-checkout-button">BASEで購入</a>
+                  <a href="https://minne.com/items/36536453" target="_blank" rel="noopener" class="item-link-minne">minneでも見る <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                </div>
               </div>
             </div>
           </div>
@@ -916,7 +948,10 @@
               <p class="item-desc">バイロンベイシリーズのモバイルバッテリー。5,000mAh / 10,000mAhから選べる。名入れ無料。</p>
               <div class="item-footer">
                 <div class="item-price">¥3,980</div>
-                <a href="https://minne.com/items/38292327" target="_blank" rel="noopener" class="item-link">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                <div class="item-actions">
+                  <a href="https://byrontime.base.shop/" target="_blank" rel="noopener" class="item-btn-base bootstrap-checkout-button">BASEで購入</a>
+                  <a href="https://minne.com/items/38292327" target="_blank" rel="noopener" class="item-link-minne">minneでも見る <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                </div>
               </div>
             </div>
           </div>
@@ -924,8 +959,8 @@
       </div>
 
       <div class="items-cta fade-up">
-        <a href="https://minne.com/@otona-plus40" target="_blank" rel="noopener" class="btn btn-teal">
-          <i class="fa-solid fa-store"></i> minne で全作品を見る
+        <a href="https://byrontime.base.shop/" target="_blank" rel="noopener" class="btn btn-teal">
+          <i class="fa-solid fa-store"></i> BASEショップを見る
         </a>
       </div>
     </div>
@@ -946,8 +981,8 @@
         <div class="howto-step">
           <div class="step-num">1</div>
           <div class="step-icon"><i class="fa-solid fa-comment-dots"></i></div>
-          <div class="step-title">minneでメッセージ</div>
-          <p class="step-text">「写真相談希望」とメッセージをください。LINEのリンクをお送りします。<br><small>ご相談・イメージ作成は無料です</small></p>
+          <div class="step-title">LINEまたはBASEでご相談</div>
+          <p class="step-text">LINEまたはBASEショップのメッセージからご連絡ください。<br><small>ご相談・イメージ作成は無料です</small></p>
         </div>
         <div class="howto-step">
           <div class="step-num">2</div>
@@ -964,8 +999,8 @@
         <div class="howto-step">
           <div class="step-num">4</div>
           <div class="step-icon"><i class="fa-solid fa-box-open"></i></div>
-          <div class="step-title">minneで購入→発送</div>
-          <p class="step-text">イメージにご納得いただいてからご購入。印刷会社より直接発送。ゆうパケット220円、1〜2週間でお届け。</p>
+          <div class="step-title">BASEで購入→発送</div>
+          <p class="step-text">イメージにご納得いただいてからBASEでご購入。印刷会社より直接発送。ゆうパケット220円、1〜2週間でお届け。</p>
         </div>
       </div>
 
@@ -982,8 +1017,8 @@
       </div>
 
       <div class="items-cta fade-up" style="margin-top:40px">
-        <a href="https://minne.com/@otona-plus40" target="_blank" rel="noopener" class="btn btn-sunset">
-          <i class="fa-solid fa-comment-dots"></i> minneでご相談を始める（無料）
+        <a href="https://lin.ee/yourlinelink" target="_blank" rel="noopener" class="btn btn-sunset">
+          <i class="fa-brands fa-line"></i> LINEでご相談（無料）
         </a>
       </div>
     </div>
@@ -1093,8 +1128,8 @@
         まずはお気軽にご相談ください。イメージを確認してから購入できるので、初めての方も安心です。
       </p>
       <div class="cta-btns fade-up">
-        <a href="https://minne.com/@otona-plus40" target="_blank" rel="noopener" class="btn-white">
-          <i class="fa-solid fa-bag-shopping"></i> minne で注文する
+        <a href="https://byrontime.base.shop/" target="_blank" rel="noopener" class="btn-white bootstrap-checkout-button">
+          <i class="fa-solid fa-bag-shopping"></i> BASEで購入する
         </a>
         <a href="contact.html" class="btn-white-outline">
           <i class="fa-regular fa-envelope"></i> お問い合わせ・FAQ
@@ -1115,8 +1150,11 @@
           <a href="https://www.instagram.com/byron_time/" target="_blank" rel="noopener" class="sns-icon" aria-label="Instagram">
             <i class="fa-brands fa-instagram"></i>
           </a>
-          <a href="https://minne.com/@otona-plus40" target="_blank" rel="noopener" class="sns-icon" aria-label="minne">
+          <a href="https://byrontime.base.shop/" target="_blank" rel="noopener" class="sns-icon" aria-label="BASE">
             <i class="fa-solid fa-store"></i>
+          </a>
+          <a href="https://minne.com/@otona-plus40" target="_blank" rel="noopener" class="sns-icon" aria-label="minne">
+            <i class="fa-solid fa-basket-shopping"></i>
           </a>
         </div>
       </div>
@@ -1132,6 +1170,7 @@
       <div class="footer-col">
         <h4>Shop</h4>
         <ul>
+          <li><a href="https://byrontime.base.shop/" target="_blank" rel="noopener">BASE ショップ</a></li>
           <li><a href="https://minne.com/@otona-plus40" target="_blank" rel="noopener">minne ショップ</a></li>
           <li><a href="#items">うちの子シリーズ</a></li>
           <li><a href="#items">Byron Nature シリーズ</a></li>
@@ -1142,6 +1181,11 @@
       &copy; 2025 Byron time. All rights reserved.
     </div>
   </footer>
+
+  <!-- BASE ショッピングリンク -->
+  <script type="text/javascript"
+    src="https://pay.binc.jp/static/scripts/bootstrap-checkout.js"
+    charset="UTF-8"></script>
 
   <!-- ===================== JAVASCRIPT ===================== -->
   <script>
