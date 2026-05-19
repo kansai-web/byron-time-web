@@ -339,20 +339,13 @@
     .item-card:hover { box-shadow: 0 10px 32px rgba(74,55,40,0.1); transform: translateY(-4px); }
     .item-img {
       width: 100%; aspect-ratio: 1/1;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 8px;
+      overflow: hidden; background: #f0ebe4;
     }
-    .item-img i { font-size: 52px; opacity: 0.35; }
-    .item-img span {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 12px; letter-spacing: 0.1em; opacity: 0.5;
+    .item-img img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.4s ease;
     }
-    .item-img.beige { background: linear-gradient(140deg, #f5ede2, #e8ddd0); color: var(--brown); }
-    .item-img.teal  { background: linear-gradient(140deg, #ddf0ef, #c4e4e2); color: var(--teal); }
-    .item-img.wood  { background: linear-gradient(140deg, #e8dccc, #d4c4b0); color: #8B6040; }
-    .item-img.blue  { background: linear-gradient(140deg, #dce8f2, #c8d8e8); color: var(--blue); }
-    .item-img.sand  { background: linear-gradient(140deg, #ede5d8, #dfd4c4); color: var(--brown); }
-    .item-img.nature { background: linear-gradient(140deg, #d8edea, #c4e0dc); color: var(--teal); }
+    .item-card:hover .item-img img { transform: scale(1.04); }
     .item-body { padding: 22px 20px 24px; }
     .item-series {
       font-family: 'Cormorant Garamond', serif;
@@ -782,9 +775,8 @@
       <div class="tab-panel active" id="tab-order">
         <div class="items-grid">
           <div class="item-card fade-up">
-            <div class="item-img beige">
-              <i class="fa-solid fa-mobile-screen"></i>
-              <span>iPhone Grip Case</span>
+            <div class="item-img">
+              <img src="img/uchinoko-grip.jpg" alt="写真で作る うちの子iPhoneグリップケース">
             </div>
             <div class="item-body">
               <div class="item-series">Order Made</div>
@@ -797,9 +789,8 @@
             </div>
           </div>
           <div class="item-card fade-up" style="transition-delay:0.08s">
-            <div class="item-img wood">
-              <i class="fa-solid fa-mobile-screen-button"></i>
-              <span>iPhone Wood Case</span>
+            <div class="item-img">
+              <img src="img/uchinoko-wood.jpg" alt="写真で作る うちの子iPhoneウッドケース">
             </div>
             <div class="item-body">
               <div class="item-series">Order Made</div>
@@ -807,14 +798,13 @@
               <p class="item-desc">天然木の温もりに、うちの子のイラストを。やわらかな木目がナチュラルな雰囲気を演出するこだわりのケース。</p>
               <div class="item-footer">
                 <div class="item-price">¥4,280<span>〜</span></div>
-                <a href="https://minne.com/@otona-plus40" target="_blank" rel="noopener" class="item-link">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                <a href="https://minne.com/items/43103701" target="_blank" rel="noopener" class="item-link">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
               </div>
             </div>
           </div>
           <div class="item-card fade-up" style="transition-delay:0.16s">
-            <div class="item-img teal">
-              <i class="fa-solid fa-mug-hot"></i>
-              <span>Stainless Bottle</span>
+            <div class="item-img">
+              <img src="img/uchinoko-bottle.jpg" alt="写真で作る うちの子ステンレスボトル">
             </div>
             <div class="item-body">
               <div class="item-series">Order Made</div>
@@ -822,14 +812,13 @@
               <p class="item-desc">毎日の水分補給が癒しの時間に。うちの子と一緒に出かける日々を、もっと特別に。ギフトにも大人気。</p>
               <div class="item-footer">
                 <div class="item-price">¥4,680</div>
-                <a href="https://minne.com/@otona-plus40" target="_blank" rel="noopener" class="item-link">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                <a href="https://minne.com/items/43089332" target="_blank" rel="noopener" class="item-link">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
               </div>
             </div>
           </div>
           <div class="item-card fade-up">
-            <div class="item-img blue">
-              <i class="fa-solid fa-battery-full"></i>
-              <span>Mobile Battery</span>
+            <div class="item-img">
+              <img src="img/uchinoko-battery.jpg" alt="写真で作る うちの子モバイルバッテリー">
             </div>
             <div class="item-body">
               <div class="item-series">Order Made</div>
@@ -837,14 +826,13 @@
               <p class="item-desc">5,000mAh / 10,000mAhから選べる。ケーブル内蔵で荷物がかさばらない。うちの子がいつもそばに。</p>
               <div class="item-footer">
                 <div class="item-price">¥4,800</div>
-                <a href="https://minne.com/@otona-plus40" target="_blank" rel="noopener" class="item-link">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                <a href="https://minne.com/items/41033174" target="_blank" rel="noopener" class="item-link">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
               </div>
             </div>
           </div>
           <div class="item-card fade-up" style="transition-delay:0.08s">
-            <div class="item-img sand">
-              <i class="fa-regular fa-image"></i>
-              <span>Acrylic Stand</span>
+            <div class="item-img">
+              <img src="img/uchinoko-acrylic.jpg" alt="写真で作る うちの子アクリルフォトスタンド">
             </div>
             <div class="item-body">
               <div class="item-series">Order Made</div>
@@ -852,7 +840,7 @@
               <p class="item-desc">お部屋に飾っていつでも会える。記念日・お誕生日・大切な子への思い出を透明感あるアクリルに。</p>
               <div class="item-footer">
                 <div class="item-price">¥2,980</div>
-                <a href="https://minne.com/@otona-plus40" target="_blank" rel="noopener" class="item-link">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                <a href="https://minne.com/items/43125070" target="_blank" rel="noopener" class="item-link">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
               </div>
             </div>
           </div>
@@ -863,9 +851,8 @@
       <div class="tab-panel" id="tab-nature">
         <div class="items-grid">
           <div class="item-card fade-up">
-            <div class="item-img nature">
-              <i class="fa-solid fa-leaf"></i>
-              <span>Byron Bay Nature</span>
+            <div class="item-img">
+              <img src="img/nature-koala-grip.jpg" alt="バイロンベイシリーズ コアラと花のアート iPhoneグリップケース">
             </div>
             <div class="item-body">
               <div class="item-series">Byron Nature</div>
@@ -873,14 +860,13 @@
               <p class="item-desc">オーストラリア・バイロンベイの自然をモチーフにしたアートケース。名入れ無料。ギフトにもおすすめ。</p>
               <div class="item-footer">
                 <div class="item-price">¥2,980</div>
-                <a href="https://minne.com/@otona-plus40" target="_blank" rel="noopener" class="item-link">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                <a href="https://minne.com/items/42443516" target="_blank" rel="noopener" class="item-link">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
               </div>
             </div>
           </div>
           <div class="item-card fade-up" style="transition-delay:0.08s">
-            <div class="item-img nature">
-              <i class="fa-solid fa-fish"></i>
-              <span>Byron Bay Nature</span>
+            <div class="item-img">
+              <img src="img/nature-turtle-grip.jpg" alt="バイロンベイシリーズ ウミガメと花のアート iPhoneグリップケース">
             </div>
             <div class="item-body">
               <div class="item-series">Byron Nature</div>
@@ -888,14 +874,13 @@
               <p class="item-desc">やわらかな海の色彩に、ウミガメと花のアートを描いたケース。涼しげで美しい一枚。名入れ無料。</p>
               <div class="item-footer">
                 <div class="item-price">¥2,980</div>
-                <a href="https://minne.com/@otona-plus40" target="_blank" rel="noopener" class="item-link">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                <a href="https://minne.com/items/38153703" target="_blank" rel="noopener" class="item-link">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
               </div>
             </div>
           </div>
           <div class="item-card fade-up" style="transition-delay:0.16s">
-            <div class="item-img nature">
-              <i class="fa-solid fa-water"></i>
-              <span>Byron Bay Nature</span>
+            <div class="item-img">
+              <img src="img/nature-whale-grip.jpg" alt="バイロンベイシリーズ 鯨と花のアート iPhoneグリップケース">
             </div>
             <div class="item-body">
               <div class="item-series">Byron Nature</div>
@@ -903,14 +888,13 @@
               <p class="item-desc">大海原を泳ぐ鯨と、やさしい花のアート。ブルーを基調としたデザインは見るたびに心が落ち着きます。</p>
               <div class="item-footer">
                 <div class="item-price">¥2,980</div>
-                <a href="https://minne.com/@otona-plus40" target="_blank" rel="noopener" class="item-link">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                <a href="https://minne.com/items/38087352" target="_blank" rel="noopener" class="item-link">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
               </div>
             </div>
           </div>
           <div class="item-card fade-up">
-            <div class="item-img nature">
-              <i class="fa-solid fa-mobile-screen-button"></i>
-              <span>Byron Bay Nature</span>
+            <div class="item-img">
+              <img src="img/nature-kookaburra-wood.jpg" alt="バイロンベイシリーズ クカバラとランタンのアート iPhoneウッドケース">
             </div>
             <div class="item-body">
               <div class="item-series">Byron Nature</div>
@@ -918,14 +902,13 @@
               <p class="item-desc">天然木×バイロンベイのアート。クカバラ（オーストラリアの国鳥）とランタンを描いた幻想的なデザイン。</p>
               <div class="item-footer">
                 <div class="item-price">¥3,480</div>
-                <a href="https://minne.com/@otona-plus40" target="_blank" rel="noopener" class="item-link">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                <a href="https://minne.com/items/36536453" target="_blank" rel="noopener" class="item-link">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
               </div>
             </div>
           </div>
           <div class="item-card fade-up" style="transition-delay:0.08s">
-            <div class="item-img nature">
-              <i class="fa-solid fa-battery-full"></i>
-              <span>Byron Bay Nature</span>
+            <div class="item-img">
+              <img src="img/nature-turtle-battery.jpg" alt="バイロンベイシリーズ ウミガメと花のアート モバイルバッテリー">
             </div>
             <div class="item-body">
               <div class="item-series">Byron Nature</div>
@@ -933,7 +916,7 @@
               <p class="item-desc">バイロンベイシリーズのモバイルバッテリー。5,000mAh / 10,000mAhから選べる。名入れ無料。</p>
               <div class="item-footer">
                 <div class="item-price">¥3,980</div>
-                <a href="https://minne.com/@otona-plus40" target="_blank" rel="noopener" class="item-link">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                <a href="https://minne.com/items/38292327" target="_blank" rel="noopener" class="item-link">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
               </div>
             </div>
           </div>
