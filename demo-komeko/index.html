@@ -186,12 +186,50 @@
       border:1px solid var(--border);
     }
     .cal-embed iframe { width:100%; height:400px; border:none; display:block; }
-    .cal-placeholder {
-      width:100%; height:300px; background:var(--sub);
-      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px;
+    /* Demo Calendar */
+    .demo-cal { background:white; }
+    .demo-cal-header {
+      display:flex; align-items:center; gap:8px;
+      padding:14px 20px; border-bottom:1px solid var(--border);
     }
-    .cal-placeholder .icon { font-size:40px; }
-    .cal-placeholder .text { font-size:12px; color:var(--muted); letter-spacing:0.1em; }
+    .demo-cal-month {
+      font-family:'Noto Serif JP',serif; font-size:15px; font-weight:700;
+      color:var(--dark); flex:1; text-align:center;
+    }
+    .demo-cal-nav { color:var(--muted); font-size:18px; opacity:0.35; padding:0 4px; user-select:none; }
+    .demo-badge {
+      background:rgba(176,137,104,0.12); color:var(--brown);
+      font-size:10px; letter-spacing:0.12em; padding:3px 12px;
+      border-radius:20px; font-family:'Cormorant Garamond',serif;
+    }
+    .demo-cal-grid { display:grid; grid-template-columns:repeat(7,1fr); }
+    .dcal-head {
+      text-align:center; font-size:11px; color:var(--muted);
+      padding:9px 0; background:var(--sub); letter-spacing:0.05em;
+    }
+    .dcal-head.sun { color:#c0392b; }
+    .dcal-head.sat { color:var(--brown); }
+    .dcal-day {
+      border:1px solid rgba(221,213,200,0.45);
+      padding:7px 6px 6px; min-height:72px;
+      font-size:12px; color:var(--dark); font-weight:300;
+      vertical-align:top;
+    }
+    .dcal-day.sun { color:#c0392b; }
+    .dcal-day.sat { color:var(--brown); }
+    .dcal-day.empty { background:rgba(237,232,223,0.4); }
+    .dcal-event {
+      display:block; font-size:10px; padding:2px 5px;
+      border-radius:2px; margin-top:4px; line-height:1.5;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+    .dcal-event.green { background:#EDF4EE; color:var(--green); }
+    .dcal-event.brown { background:#FEF5ED; color:var(--brown); }
+    .demo-cal-footer {
+      padding:11px 20px; background:var(--sub);
+      text-align:center; font-size:11px; color:var(--muted);
+      line-height:1.8; letter-spacing:0.04em;
+    }
 
     /* ── MENU ── */
     .menu-sec { background:var(--white); }
@@ -545,14 +583,71 @@
 
     <!-- Googleカレンダー埋め込み -->
     <div class="cal-embed fade-up">
-      <div class="cal-placeholder">
-        <div class="icon">📅</div>
-        <div class="text">ここにGoogleカレンダーが表示されます</div>
-      </div>
       <!--
         実際の運用時は下記のコメントを外してGoogleカレンダーの埋め込みコードを貼り付けてください
-        <iframe src="https://calendar.google.com/calendar/embed?src=XXXXX" style="border:0" width="100%" height="400" frameborder="0" scrolling="no"></iframe>
+        <iframe src="https://calendar.google.com/calendar/embed?src=XXXXX&ctz=Asia%2FTokyo&mode=MONTH"
+          style="border:0" width="100%" height="400" frameborder="0" scrolling="no"></iframe>
       -->
+      <div class="demo-cal">
+        <div class="demo-cal-header">
+          <span class="demo-cal-nav">‹</span>
+          <span class="demo-cal-month">2026年 6月</span>
+          <span class="demo-cal-nav">›</span>
+          <span class="demo-badge">DEMO</span>
+        </div>
+        <div class="demo-cal-grid">
+          <div class="dcal-head sun">日</div>
+          <div class="dcal-head">月</div>
+          <div class="dcal-head">火</div>
+          <div class="dcal-head">水</div>
+          <div class="dcal-head">木</div>
+          <div class="dcal-head">金</div>
+          <div class="dcal-head sat">土</div>
+          <!-- 第1週 -->
+          <div class="dcal-day sun">1</div>
+          <div class="dcal-day">2</div>
+          <div class="dcal-day">3</div>
+          <div class="dcal-day">4</div>
+          <div class="dcal-day">5</div>
+          <div class="dcal-day">6</div>
+          <div class="dcal-day sat">7<span class="dcal-event green">📍 堺グリーンマルシェ</span></div>
+          <!-- 第2週 -->
+          <div class="dcal-day sun">8</div>
+          <div class="dcal-day">9</div>
+          <div class="dcal-day">10</div>
+          <div class="dcal-day">11</div>
+          <div class="dcal-day">12</div>
+          <div class="dcal-day">13</div>
+          <div class="dcal-day sat">14<span class="dcal-event green">📍 万博クラフトフェア</span></div>
+          <!-- 第3週 -->
+          <div class="dcal-day sun">15</div>
+          <div class="dcal-day">16</div>
+          <div class="dcal-day">17</div>
+          <div class="dcal-day">18</div>
+          <div class="dcal-day">19</div>
+          <div class="dcal-day">20</div>
+          <div class="dcal-day sat">21<span class="dcal-event green">📍 神戸メリケンパーク</span></div>
+          <!-- 第4週 -->
+          <div class="dcal-day sun">22</div>
+          <div class="dcal-day">23</div>
+          <div class="dcal-day">24</div>
+          <div class="dcal-day">25</div>
+          <div class="dcal-day">26</div>
+          <div class="dcal-day">27</div>
+          <div class="dcal-day sat">28<span class="dcal-event brown">🏪 工房開放日</span></div>
+          <!-- 第5週 -->
+          <div class="dcal-day sun">29</div>
+          <div class="dcal-day">30</div>
+          <div class="dcal-day empty"></div>
+          <div class="dcal-day empty"></div>
+          <div class="dcal-day empty"></div>
+          <div class="dcal-day empty"></div>
+          <div class="dcal-day empty"></div>
+        </div>
+        <div class="demo-cal-footer">
+          ※ デモ表示 — 実際のサイトではオーナーがGoogleカレンダーに登録するだけで自動更新されます
+        </div>
+      </div>
     </div>
     <div style="text-align:center; margin-top:24px;">
       <a class="btn-outline" href="schedule.html">スケジュール詳細を見る</a>
