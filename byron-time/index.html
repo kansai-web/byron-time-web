@@ -335,6 +335,7 @@
       background: white; border-radius: var(--radius);
       overflow: hidden; border: 1px solid var(--border);
       transition: box-shadow 0.25s, transform 0.25s;
+      cursor: pointer;
     }
     .item-card:hover { box-shadow: 0 10px 32px rgba(74,55,40,0.1); transform: translateY(-4px); }
     .item-img {
@@ -629,6 +630,111 @@
       .hero-btns { flex-direction: column; align-items: flex-start; }
       .cta-btns { flex-direction: column; align-items: center; }
     }
+
+    /* ============================================================
+       PRODUCT MODAL
+    ============================================================ */
+    .modal-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(30,20,12,0.65);
+      z-index: 9000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      backdrop-filter: blur(4px);
+    }
+    .modal-overlay.open { display: flex; }
+
+    .modal-box {
+      background: white;
+      border-radius: 18px;
+      max-width: 540px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 24px 80px rgba(30,20,12,0.3);
+    }
+    .modal-close {
+      position: absolute; top: 14px; right: 14px;
+      width: 36px; height: 36px;
+      background: rgba(0,0,0,0.08); border: none;
+      border-radius: 50%; cursor: pointer;
+      font-size: 18px; line-height: 36px; text-align: center;
+      color: var(--brown); z-index: 10;
+      transition: background 0.2s;
+    }
+    .modal-close:hover { background: rgba(0,0,0,0.16); }
+
+    .modal-main-img {
+      width: 100%; aspect-ratio: 1/1;
+      overflow: hidden; background: #f0ebe4;
+      border-radius: 18px 18px 0 0;
+    }
+    .modal-main-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block;
+      transition: opacity 0.2s;
+    }
+
+    .modal-thumbs {
+      display: flex; gap: 8px;
+      padding: 12px 20px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      background: #f9f6f2;
+    }
+    .modal-thumbs::-webkit-scrollbar { display: none; }
+    .modal-thumb {
+      width: 56px; height: 56px; flex-shrink: 0;
+      border-radius: 8px; overflow: hidden;
+      border: 2px solid transparent;
+      cursor: pointer; transition: border-color 0.2s;
+    }
+    .modal-thumb.active { border-color: var(--teal); }
+    .modal-thumb img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+
+    .modal-info { padding: 20px 24px 28px; }
+    .modal-series {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 6px;
+    }
+    .modal-name {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 17px; font-weight: 700;
+      color: var(--brown); margin-bottom: 10px; line-height: 1.5;
+    }
+    .modal-desc {
+      font-size: 13px; color: var(--sub);
+      line-height: 1.85; margin-bottom: 18px;
+    }
+    .modal-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px; font-weight: 600;
+      color: var(--teal); margin-bottom: 20px;
+    }
+    .modal-price span { font-size: 14px; color: var(--sub); font-weight: 400; font-family: 'Noto Sans JP', sans-serif; }
+
+    .modal-btn {
+      display: block; width: 100%;
+      padding: 14px; border-radius: 28px;
+      background: var(--teal); color: white;
+      text-align: center; font-size: 14px; font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .modal-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+    .modal-btn i { margin-right: 6px; }
+
+    @media (max-width: 560px) {
+      .modal-overlay { padding: 0; align-items: flex-end; }
+      .modal-box { border-radius: 20px 20px 0 0; max-height: 92vh; }
+      .modal-main-img { border-radius: 20px 20px 0 0; }
+    }
   </style>
 </head>
 <body>
@@ -779,7 +885,7 @@
       <!-- うちの子オーダーメイド -->
       <div class="tab-panel active" id="tab-order">
         <div class="items-grid">
-          <div class="item-card fade-up">
+          <div class="item-card fade-up" onclick="openModal('grip')">
             <div class="item-img">
               <img src="img/uchinoko-grip.jpg" alt="写真で作る うちの子iPhoneグリップケース">
             </div>
@@ -790,12 +896,12 @@
               <div class="item-footer">
                 <div class="item-price">¥3,480<span>〜</span></div>
                 <div class="item-actions">
-                  <a href="https://minne.com/items/37934312" target="_blank" rel="noopener" class="item-btn-base">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                  <span class="item-btn-base">詳細を見る <i class="fa-solid fa-arrow-right fa-xs"></i></span>
                 </div>
               </div>
             </div>
           </div>
-          <div class="item-card fade-up" style="transition-delay:0.08s">
+          <div class="item-card fade-up" style="transition-delay:0.08s" onclick="openModal('wood')">
             <div class="item-img">
               <img src="img/uchinoko-wood.jpg" alt="写真で作る うちの子iPhoneウッドケース">
             </div>
@@ -806,12 +912,12 @@
               <div class="item-footer">
                 <div class="item-price">¥4,280<span>〜</span></div>
                 <div class="item-actions">
-                  <a href="https://minne.com/items/43103701" target="_blank" rel="noopener" class="item-btn-base">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                  <span class="item-btn-base">詳細を見る <i class="fa-solid fa-arrow-right fa-xs"></i></span>
                 </div>
               </div>
             </div>
           </div>
-          <div class="item-card fade-up" style="transition-delay:0.16s">
+          <div class="item-card fade-up" style="transition-delay:0.16s" onclick="openModal('bottle')">
             <div class="item-img">
               <img src="img/uchinoko-bottle.jpg" alt="写真で作る うちの子ステンレスボトル">
             </div>
@@ -822,12 +928,12 @@
               <div class="item-footer">
                 <div class="item-price">¥4,680</div>
                 <div class="item-actions">
-                  <a href="https://minne.com/items/43089332" target="_blank" rel="noopener" class="item-btn-base">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                  <span class="item-btn-base">詳細を見る <i class="fa-solid fa-arrow-right fa-xs"></i></span>
                 </div>
               </div>
             </div>
           </div>
-          <div class="item-card fade-up">
+          <div class="item-card fade-up" onclick="openModal('battery')">
             <div class="item-img">
               <img src="img/uchinoko-battery.jpg" alt="写真で作る うちの子モバイルバッテリー">
             </div>
@@ -838,12 +944,12 @@
               <div class="item-footer">
                 <div class="item-price">¥4,800</div>
                 <div class="item-actions">
-                  <a href="https://minne.com/items/41033174" target="_blank" rel="noopener" class="item-btn-base">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                  <span class="item-btn-base">詳細を見る <i class="fa-solid fa-arrow-right fa-xs"></i></span>
                 </div>
               </div>
             </div>
           </div>
-          <div class="item-card fade-up" style="transition-delay:0.08s">
+          <div class="item-card fade-up" style="transition-delay:0.08s" onclick="openModal('acrylic')">
             <div class="item-img">
               <img src="img/uchinoko-acrylic.jpg" alt="写真で作る うちの子アクリルフォトスタンド">
             </div>
@@ -854,7 +960,7 @@
               <div class="item-footer">
                 <div class="item-price">¥2,980</div>
                 <div class="item-actions">
-                  <a href="https://minne.com/items/43125070" target="_blank" rel="noopener" class="item-btn-base">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                  <span class="item-btn-base">詳細を見る <i class="fa-solid fa-arrow-right fa-xs"></i></span>
                 </div>
               </div>
             </div>
@@ -865,7 +971,7 @@
       <!-- Byron Nature -->
       <div class="tab-panel" id="tab-nature">
         <div class="items-grid">
-          <div class="item-card fade-up">
+          <div class="item-card fade-up" onclick="openModal('koala-grip')">
             <div class="item-img">
               <img src="img/nature-koala-grip.jpg" alt="バイロンベイシリーズ コアラと花のアート iPhoneグリップケース">
             </div>
@@ -876,12 +982,12 @@
               <div class="item-footer">
                 <div class="item-price">¥2,980</div>
                 <div class="item-actions">
-                  <a href="https://minne.com/items/42443516" target="_blank" rel="noopener" class="item-btn-base">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                  <span class="item-btn-base">詳細を見る <i class="fa-solid fa-arrow-right fa-xs"></i></span>
                 </div>
               </div>
             </div>
           </div>
-          <div class="item-card fade-up" style="transition-delay:0.08s">
+          <div class="item-card fade-up" style="transition-delay:0.08s" onclick="openModal('turtle-grip')">
             <div class="item-img">
               <img src="img/nature-turtle-grip.jpg" alt="バイロンベイシリーズ ウミガメと花のアート iPhoneグリップケース">
             </div>
@@ -892,12 +998,12 @@
               <div class="item-footer">
                 <div class="item-price">¥2,980</div>
                 <div class="item-actions">
-                  <a href="https://minne.com/items/38153703" target="_blank" rel="noopener" class="item-btn-base">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                  <span class="item-btn-base">詳細を見る <i class="fa-solid fa-arrow-right fa-xs"></i></span>
                 </div>
               </div>
             </div>
           </div>
-          <div class="item-card fade-up" style="transition-delay:0.16s">
+          <div class="item-card fade-up" style="transition-delay:0.16s" onclick="openModal('whale-grip')">
             <div class="item-img">
               <img src="img/nature-whale-grip.jpg" alt="バイロンベイシリーズ 鯨と花のアート iPhoneグリップケース">
             </div>
@@ -908,12 +1014,12 @@
               <div class="item-footer">
                 <div class="item-price">¥2,980</div>
                 <div class="item-actions">
-                  <a href="https://minne.com/items/38087352" target="_blank" rel="noopener" class="item-btn-base">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                  <span class="item-btn-base">詳細を見る <i class="fa-solid fa-arrow-right fa-xs"></i></span>
                 </div>
               </div>
             </div>
           </div>
-          <div class="item-card fade-up">
+          <div class="item-card fade-up" onclick="openModal('kookaburra-wood')">
             <div class="item-img">
               <img src="img/nature-kookaburra-wood.jpg" alt="バイロンベイシリーズ クカバラとランタンのアート iPhoneウッドケース">
             </div>
@@ -924,12 +1030,12 @@
               <div class="item-footer">
                 <div class="item-price">¥3,480</div>
                 <div class="item-actions">
-                  <a href="https://minne.com/items/36536453" target="_blank" rel="noopener" class="item-btn-base">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                  <span class="item-btn-base">詳細を見る <i class="fa-solid fa-arrow-right fa-xs"></i></span>
                 </div>
               </div>
             </div>
           </div>
-          <div class="item-card fade-up" style="transition-delay:0.08s">
+          <div class="item-card fade-up" style="transition-delay:0.08s" onclick="openModal('turtle-battery')">
             <div class="item-img">
               <img src="img/nature-turtle-battery.jpg" alt="バイロンベイシリーズ ウミガメと花のアート モバイルバッテリー">
             </div>
@@ -940,7 +1046,7 @@
               <div class="item-footer">
                 <div class="item-price">¥3,980</div>
                 <div class="item-actions">
-                  <a href="https://minne.com/items/38292327" target="_blank" rel="noopener" class="item-btn-base">詳細 <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+                  <span class="item-btn-base">詳細を見る <i class="fa-solid fa-arrow-right fa-xs"></i></span>
                 </div>
               </div>
             </div>
@@ -1169,6 +1275,26 @@
   </footer>
 
 
+  <!-- ===================== PRODUCT MODAL ===================== -->
+  <div class="modal-overlay" id="productModal" onclick="handleOverlayClick(event)">
+    <div class="modal-box" id="modalBox">
+      <button class="modal-close" onclick="closeModal()" aria-label="閉じる">×</button>
+      <div class="modal-main-img">
+        <img id="modalMainImg" src="" alt="">
+      </div>
+      <div class="modal-thumbs" id="modalThumbs"></div>
+      <div class="modal-info">
+        <div class="modal-series" id="modalSeries"></div>
+        <div class="modal-name" id="modalName"></div>
+        <p class="modal-desc" id="modalDesc"></p>
+        <div class="modal-price" id="modalPrice"></div>
+        <a class="modal-btn" id="modalBtn" href="#" target="_blank" rel="noopener">
+          <i class="fa-solid fa-bag-shopping"></i> minneで詳細・ご購入
+        </a>
+      </div>
+    </div>
+  </div>
+
   <!-- ===================== JAVASCRIPT ===================== -->
   <script>
     // NAV scroll effect
@@ -1207,6 +1333,159 @@
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.12 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // ===================== PRODUCT MODAL =====================
+    const PRODUCTS = {
+      'grip': {
+        series: 'Order Made',
+        name: 'iPhoneグリップケース<br>名入れOK',
+        price: '¥3,480<span>〜</span>',
+        desc: '毎日手にするスマホに、うちの子を。12色の背景×7種フォントからお選びいただけます。iPhone 16シリーズ対応。',
+        minne: 'https://minne.com/items/37934312',
+        images: Array.from({length:10}, (_,i) => `img/grip/${String(i+1).padStart(2,'0')}.png`)
+      },
+      'wood': {
+        series: 'Order Made',
+        name: 'iPhoneウッドケース<br>名入れOK',
+        price: '¥4,280<span>〜</span>',
+        desc: '天然木の温もりに、うちの子のイラストを。やわらかな木目がナチュラルな雰囲気を演出するこだわりのケース。',
+        minne: 'https://minne.com/items/43103701',
+        images: Array.from({length:5}, (_,i) => `img/wood/${String(i+1).padStart(2,'0')}.png`)
+      },
+      'bottle': {
+        series: 'Order Made',
+        name: 'ステンレスボトル<br>名入れOK',
+        price: '¥4,680',
+        desc: '毎日の水分補給が癒しの時間に。うちの子と一緒に出かける日々を、もっと特別に。ギフトにも大人気。',
+        minne: 'https://minne.com/items/43089332',
+        images: Array.from({length:8}, (_,i) => `img/bottle/${String(i+1).padStart(2,'0')}.png`)
+      },
+      'battery': {
+        series: 'Order Made',
+        name: 'モバイルバッテリー<br>名入れOK',
+        price: '¥4,800',
+        desc: '5,000mAh / 10,000mAhから選べる。ケーブル内蔵で荷物がかさばらない。うちの子がいつもそばに。',
+        minne: 'https://minne.com/items/41033174',
+        images: Array.from({length:9}, (_,i) => `img/battery/${String(i+1).padStart(2,'0')}.png`)
+      },
+      'acrylic': {
+        series: 'Order Made',
+        name: 'アクリルフォトスタンド<br>名入れOK',
+        price: '¥2,980',
+        desc: 'お部屋に飾っていつでも会える。記念日・お誕生日・大切な子への思い出を透明感あるアクリルに。',
+        minne: 'https://minne.com/items/43125070',
+        images: Array.from({length:5}, (_,i) => `img/acrylic/${String(i+1).padStart(2,'0')}.png`)
+      },
+      'koala-grip': {
+        series: 'Byron Nature',
+        name: 'コアラと花のアート<br>グリップケース',
+        price: '¥2,980',
+        desc: 'オーストラリア・バイロンベイの自然をモチーフにしたアートケース。名入れ無料。ギフトにもおすすめ。',
+        minne: 'https://minne.com/items/42443516',
+        images: Array.from({length:3}, (_,i) => `img/koala-grip/${String(i+1).padStart(2,'0')}.png`)
+      },
+      'turtle-grip': {
+        series: 'Byron Nature',
+        name: 'ウミガメと花のアート<br>グリップケース',
+        price: '¥2,980',
+        desc: 'やわらかな海の色彩に、ウミガメと花のアートを描いたケース。涼しげで美しい一枚。名入れ無料。',
+        minne: 'https://minne.com/items/38153703',
+        images: ['img/turtle-grip/01.png']
+      },
+      'whale-grip': {
+        series: 'Byron Nature',
+        name: '鯨と花のアート<br>グリップケース',
+        price: '¥2,980',
+        desc: '大海原を泳ぐ鯨と、やさしい花のアート。ブルーを基調としたデザインは見るたびに心が落ち着きます。',
+        minne: 'https://minne.com/items/38087352',
+        images: Array.from({length:3}, (_,i) => `img/whale-grip/${String(i+1).padStart(2,'0')}.png`)
+      },
+      'kookaburra-wood': {
+        series: 'Byron Nature',
+        name: 'クカバラとランタンのアート<br>ウッドケース',
+        price: '¥3,480',
+        desc: '天然木×バイロンベイのアート。クカバラ（オーストラリアの国鳥）とランタンを描いた幻想的なデザイン。',
+        minne: 'https://minne.com/items/36536453',
+        images: Array.from({length:5}, (_,i) => `img/kookaburra-wood/${String(i+1).padStart(2,'0')}.png`)
+      },
+      'turtle-battery': {
+        series: 'Byron Nature',
+        name: 'ウミガメ・鯨・コアラ<br>モバイルバッテリー',
+        price: '¥3,980',
+        desc: 'バイロンベイシリーズのモバイルバッテリー。5,000mAh / 10,000mAhから選べる。名入れ無料。',
+        minne: 'https://minne.com/items/38292327',
+        images: Array.from({length:4}, (_,i) => `img/turtle-battery/${String(i+1).padStart(2,'0')}.png`)
+      }
+    };
+
+    let currentThumbIdx = 0;
+
+    function openModal(id) {
+      const p = PRODUCTS[id];
+      if (!p) return;
+
+      // Populate content
+      document.getElementById('modalSeries').textContent = p.series;
+      document.getElementById('modalName').innerHTML = p.name;
+      document.getElementById('modalDesc').textContent = p.desc;
+      document.getElementById('modalPrice').innerHTML = p.price;
+      document.getElementById('modalBtn').href = p.minne;
+
+      // Main image
+      const mainImg = document.getElementById('modalMainImg');
+      mainImg.src = p.images[0];
+      mainImg.alt = p.name.replace('<br>', ' ');
+      currentThumbIdx = 0;
+
+      // Thumbnails
+      const thumbsEl = document.getElementById('modalThumbs');
+      thumbsEl.innerHTML = '';
+      if (p.images.length > 1) {
+        p.images.forEach((src, i) => {
+          const div = document.createElement('div');
+          div.className = 'modal-thumb' + (i === 0 ? ' active' : '');
+          div.onclick = () => switchThumb(id, i);
+          const img = document.createElement('img');
+          img.src = src;
+          img.alt = `画像${i+1}`;
+          div.appendChild(img);
+          thumbsEl.appendChild(div);
+        });
+        thumbsEl.style.display = 'flex';
+      } else {
+        thumbsEl.style.display = 'none';
+      }
+
+      // Open overlay
+      document.getElementById('productModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+
+      // Scroll modal to top
+      document.getElementById('modalBox').scrollTop = 0;
+    }
+
+    function switchThumb(id, idx) {
+      const p = PRODUCTS[id];
+      document.getElementById('modalMainImg').src = p.images[idx];
+      currentThumbIdx = idx;
+      document.querySelectorAll('.modal-thumb').forEach((el, i) => {
+        el.classList.toggle('active', i === idx);
+      });
+    }
+
+    function closeModal() {
+      document.getElementById('productModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function handleOverlayClick(e) {
+      if (e.target === document.getElementById('productModal')) closeModal();
+    }
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
   </script>
 </body>
 </html>
