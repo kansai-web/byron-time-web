@@ -228,21 +228,12 @@
     .hero-visual { position: relative; width: 100%; max-width: 400px; }
     .hero-img-main {
       width: 100%; aspect-ratio: 4/5;
-      background: linear-gradient(145deg, #ede5d8 0%, #d9cec0 40%, #c8bdb0 100%);
       border-radius: 4px;
       box-shadow: 0 20px 60px rgba(74,55,40,0.18);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
       overflow: hidden; position: relative;
     }
-    .hero-img-icon {
-      font-size: 80px; color: rgba(139,102,79,0.25);
-      margin-bottom: 12px;
-    }
-    .hero-img-label {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 13px; color: rgba(139,102,79,0.5);
-      letter-spacing: 0.1em;
+    .hero-img-main img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
     }
     /* floating badge */
     .hero-badge {
@@ -809,8 +800,7 @@
         <div class="deco-ring"></div>
         <div class="deco-ring2"></div>
         <div class="hero-img-main">
-          <i class="fa-solid fa-paw hero-img-icon"></i>
-          <span class="hero-img-label">product image</span>
+          <img src="img/hero.jpg" alt="Byron Time うちの子オーダーグッズ コレクション">
         </div>
         <div class="hero-badge">
           <div class="badge-icon-wrap">
