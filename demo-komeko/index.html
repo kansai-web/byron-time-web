@@ -295,7 +295,34 @@
       background:var(--bg); border:1px solid var(--border);
       font-size:11px; color:var(--muted); letter-spacing:0.05em;
     }
-    .insta-btns { display:flex; gap:14px; justify-content:center; margin-top:28px; }
+    .insta-btns { display:flex; gap:14px; justify-content:center; margin-top:0; }
+    .insta-profile-row {
+      display:flex; align-items:center; gap:20px;
+      max-width:840px; margin:0 auto 20px;
+      padding:22px 28px;
+      background:var(--white); border-radius:8px;
+      border:1px solid var(--border);
+    }
+    .insta-profile-row .insta-icon-wrap { flex-shrink:0; }
+    .insta-profile-right { flex:1; }
+    .insta-profile-right .insta-handle-text { margin-bottom:6px; }
+    .insta-profile-right .insta-desc { margin:0; font-size:13px; }
+    .insta-grid {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:5px;
+      max-width:840px;
+      margin:0 auto 24px;
+    }
+    .insta-grid-item {
+      aspect-ratio:1; overflow:hidden;
+      display:block; border-radius:2px;
+    }
+    .insta-grid-item img {
+      width:100%; height:100%; object-fit:cover;
+      display:block; transition:transform 0.4s ease;
+    }
+    .insta-grid-item:hover img { transform:scale(1.06); }
     .btn-line {
       display:inline-flex; align-items:center; gap:8px;
       padding:13px 24px; background:#06C755; color:white;
@@ -725,29 +752,33 @@
 <section class="sec insta-sec">
   <div class="sec-label">Follow us</div>
   <h2 class="sec-title" style="margin-bottom:32px;">Instagram</h2>
-  <div class="insta-card fade-up">
+  <!-- プロフィール行 -->
+  <div class="insta-profile-row fade-up">
     <div class="insta-icon-wrap">
       <i class="fa-brands fa-instagram"></i>
     </div>
-    <div class="insta-handle-text">@komeko_to</div>
-    <div class="insta-divider"></div>
-    <p class="insta-desc">
-      出店情報・新作スイーツ・お菓子作りの日常を発信しています。<br>
-      最新の出店日程もInstagramで随時お知らせ中。
-    </p>
-    <div class="insta-topics">
-      <span class="insta-topic">#焼き菓子</span>
-      <span class="insta-topic">#マルシェ出店</span>
-      <span class="insta-topic">#手作りスイーツ</span>
-      <span class="insta-topic">#関西</span>
-      <span class="insta-topic">#お菓子作り</span>
+    <div class="insta-profile-right">
+      <div class="insta-handle-text">@komeko_to</div>
+      <p class="insta-desc">出店情報・新作スイーツ・お菓子作りの日常を発信しています。最新の出店日程もInstagramで随時お知らせ中。</p>
     </div>
-    <div class="insta-btns">
-      <a class="btn-primary" href="https://www.instagram.com/kansai_connector/" target="_blank" style="text-transform:none; letter-spacing:0.05em;">
-        <i class="fa-brands fa-instagram"></i> Instagramをフォロー
-      </a>
-      <a class="btn-line" href="https://lin.ee/vAS0Ryb" target="_blank">LINE公式を友だち追加</a>
-    </div>
+  </div>
+
+  <!-- 投稿グリッド -->
+  <div class="insta-grid fade-up">
+    <a class="insta-grid-item" href="https://www.instagram.com/kansai_connector/" target="_blank" rel="noopener"><img src="images/insta-1.jpg" alt="Instagram投稿"></a>
+    <a class="insta-grid-item" href="https://www.instagram.com/kansai_connector/" target="_blank" rel="noopener"><img src="images/insta-2.jpg" alt="Instagram投稿"></a>
+    <a class="insta-grid-item" href="https://www.instagram.com/kansai_connector/" target="_blank" rel="noopener"><img src="images/insta-3.jpg" alt="Instagram投稿"></a>
+    <a class="insta-grid-item" href="https://www.instagram.com/kansai_connector/" target="_blank" rel="noopener"><img src="images/insta-4.jpg" alt="Instagram投稿"></a>
+    <a class="insta-grid-item" href="https://www.instagram.com/kansai_connector/" target="_blank" rel="noopener"><img src="images/insta-5.jpg" alt="Instagram投稿"></a>
+    <a class="insta-grid-item" href="https://www.instagram.com/kansai_connector/" target="_blank" rel="noopener"><img src="images/insta-6.jpg" alt="Instagram投稿"></a>
+  </div>
+
+  <!-- ボタン -->
+  <div class="insta-btns fade-up">
+    <a class="btn-primary" href="https://www.instagram.com/kansai_connector/" target="_blank" rel="noopener" style="text-transform:none; letter-spacing:0.05em;">
+      <i class="fa-brands fa-instagram"></i> Instagramをフォロー
+    </a>
+    <a class="btn-line" href="https://lin.ee/vAS0Ryb" target="_blank" rel="noopener">LINE公式を友だち追加</a>
   </div>
 </section>
 
