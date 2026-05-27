@@ -307,22 +307,53 @@
     .insta-profile-right { flex:1; }
     .insta-profile-right .insta-handle-text { margin-bottom:6px; }
     .insta-profile-right .insta-desc { margin:0; font-size:13px; }
-    .insta-grid {
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:5px;
-      max-width:840px;
-      margin:0 auto 24px;
+    /* Instagram バナー */
+    .insta-banner-wrap {
+      max-width:840px; margin:0 auto 24px;
+      border-radius:12px; overflow:hidden;
+      position:relative; display:block;
+      text-decoration:none;
+      box-shadow:0 6px 28px rgba(61,46,34,.13);
     }
-    .insta-grid-item {
-      aspect-ratio:1; overflow:hidden;
-      display:block; border-radius:2px;
+    .insta-banner-wrap img {
+      width:100%; display:block;
+      aspect-ratio:16/7; object-fit:cover;
+      transition:transform 0.5s ease;
     }
-    .insta-grid-item img {
-      width:100%; height:100%; object-fit:cover;
-      display:block; transition:transform 0.4s ease;
+    .insta-banner-wrap:hover img { transform:scale(1.03); }
+    .insta-banner-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(to right, rgba(40,28,18,.45) 0%, rgba(40,28,18,.1) 60%, transparent 100%);
+      display:flex; flex-direction:column;
+      justify-content:center; padding:0 44px;
     }
-    .insta-grid-item:hover img { transform:scale(1.06); }
+    .insta-banner-label {
+      font-size:11px; letter-spacing:.22em; color:rgba(255,255,255,.75);
+      font-family:'Cormorant Garamond',serif; margin-bottom:6px;
+      text-transform:uppercase;
+    }
+    .insta-banner-title {
+      font-size:36px; font-family:'Cormorant Garamond',serif;
+      font-style:italic; color:#fff; font-weight:400;
+      line-height:1; margin-bottom:10px;
+      text-shadow:0 2px 8px rgba(0,0,0,.2);
+    }
+    .insta-banner-handle {
+      font-size:14px; color:rgba(255,255,255,.85);
+      letter-spacing:.08em; margin-bottom:20px;
+    }
+    .insta-banner-btn {
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 22px; border-radius:30px;
+      background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.5);
+      color:#fff; font-size:13px; letter-spacing:.08em;
+      backdrop-filter:blur(4px);
+      width:fit-content;
+      transition:background .3s;
+    }
+    .insta-banner-wrap:hover .insta-banner-btn {
+      background:rgba(255,255,255,.3);
+    }
     .insta-latest {
       display:block; max-width:480px; margin:0 auto 24px;
       border-radius:8px; overflow:hidden;
@@ -782,17 +813,18 @@
     </div>
   </div>
 
-  <!-- SnapWidget埋め込みエリア（本番はここをSnapWidgetコードに差し替える） -->
-  <!-- ↓↓↓ デモ用 静的グリッド（本番はSnapWidget埋め込みに差し替え） ↓↓↓ -->
-  <div class="insta-grid fade-up">
-    <a class="insta-grid-item" href="https://www.instagram.com/kansai_connector/" target="_blank" rel="noopener"><img src="images/insta-1.jpg" alt="Instagram投稿"></a>
-    <a class="insta-grid-item" href="https://www.instagram.com/kansai_connector/" target="_blank" rel="noopener"><img src="images/insta-2.jpg" alt="Instagram投稿"></a>
-    <a class="insta-grid-item" href="https://www.instagram.com/kansai_connector/" target="_blank" rel="noopener"><img src="images/insta-3.jpg" alt="Instagram投稿"></a>
-    <a class="insta-grid-item" href="https://www.instagram.com/kansai_connector/" target="_blank" rel="noopener"><img src="images/insta-4.jpg" alt="Instagram投稿"></a>
-    <a class="insta-grid-item" href="https://www.instagram.com/kansai_connector/" target="_blank" rel="noopener"><img src="images/insta-5.jpg" alt="Instagram投稿"></a>
-    <a class="insta-grid-item" href="https://www.instagram.com/kansai_connector/" target="_blank" rel="noopener"><img src="images/insta-6.jpg" alt="Instagram投稿"></a>
-  </div>
-  <!-- ↑↑↑ デモ用グリッドここまで ↑↑↑ -->
+  <!-- Instagramバナー -->
+  <a class="insta-banner-wrap fade-up" href="https://www.instagram.com/kansai_connector/" target="_blank" rel="noopener">
+    <img src="images/instagram-banner.png" alt="komeko to. Instagram">
+    <div class="insta-banner-overlay">
+      <div class="insta-banner-label">Follow us</div>
+      <div class="insta-banner-title">Instagram</div>
+      <div class="insta-banner-handle">@komeko_to</div>
+      <div class="insta-banner-btn">
+        <i class="fa-brands fa-instagram"></i> 最新投稿を見る
+      </div>
+    </div>
+  </a>
 
   <!-- ボタン -->
   <div class="insta-btns fade-up">
