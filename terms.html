@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ホームページ制作サービス 利用規約｜BYRON TIME</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brown:  #8B664F;
+      --teal:   #5DA8A3;
+      --sunset: #E19B6D;
+      --text:   #4a3728;
+      --sub:    #9b8575;
+      --border: #e0d5c8;
+      --font:   'Noto Serif JP', serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font);
+      background: #f5f0eb;
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.9;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .page-wrap {
+      max-width: 820px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 4px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+
+    /* ===== ヘッダー ===== */
+    .doc-header {
+      background: var(--brown);
+      color: #fff;
+      padding: 40px 48px 32px;
+    }
+    .doc-header-en {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      letter-spacing: 0.28em;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 10px;
+    }
+    .doc-header-title {
+      font-size: 23px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin-bottom: 14px;
+    }
+    .doc-header-meta {
+      font-size: 12px;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.04em;
+    }
+
+    /* ===== 本文 ===== */
+    .doc-body { padding: 36px 48px 12px; }
+
+    .preamble {
+      font-size: 13.5px;
+      color: #5a4636;
+      background: #faf6f0;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 18px 22px;
+      margin-bottom: 8px;
+      line-height: 1.95;
+    }
+
+    article.article {
+      padding: 28px 0;
+      border-bottom: 1px solid #f0e8de;
+    }
+    article.article:last-of-type { border-bottom: none; }
+
+    .article-head {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+    .article-no {
+      flex-shrink: 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: #fff;
+      background: var(--teal);
+      padding: 3px 12px;
+      border-radius: 20px;
+    }
+    .article-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--brown);
+      letter-spacing: 0.02em;
+    }
+
+    .article p { margin: 0 0 10px; }
+    .article p.lead { color: #5a4636; }
+
+    /* 番号付き / 箇条書き */
+    ol.terms-list, ul.terms-list {
+      margin: 6px 0 6px;
+      padding-left: 1.5em;
+    }
+    ol.terms-list > li, ul.terms-list > li {
+      margin-bottom: 9px;
+      padding-left: 4px;
+    }
+    ul.sub-list {
+      margin: 6px 0 4px;
+      padding-left: 1.4em;
+      list-style: none;
+    }
+    ul.sub-list > li {
+      position: relative;
+      margin-bottom: 5px;
+      color: #5a4636;
+      font-size: 13.5px;
+      padding-left: 14px;
+    }
+    ul.sub-list > li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      color: var(--sub);
+    }
+
+    strong { color: #6b4f3a; font-weight: 700; }
+    .em-teal { color: var(--teal); }
+
+    /* 業務範囲ボックス */
+    .scope-box {
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 12px 0;
+    }
+    .scope-box.include { background: #f1f7f6; border: 1px solid #cfe6e3; }
+    .scope-box.exclude { background: #f6f3ef; border: 1px solid #e3dace; }
+    .scope-label {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: 0.03em;
+    }
+    .scope-box.include .scope-label { color: var(--teal); }
+    .scope-box.exclude .scope-label { color: var(--sub); }
+    .scope-box ul { list-style: none; }
+    .scope-box li {
+      position: relative;
+      padding-left: 22px;
+      margin-bottom: 7px;
+      font-size: 13.5px;
+      line-height: 1.8;
+    }
+    .scope-box.include li::before {
+      content: "✓";
+      position: absolute; left: 0;
+      color: var(--teal); font-weight: 700;
+    }
+    .scope-box.exclude li::before {
+      content: "×";
+      position: absolute; left: 2px;
+      color: #c8a98f; font-weight: 700;
+    }
+
+    /* テーブル */
+    table.terms-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 13.5px;
+    }
+    table.terms-table th,
+    table.terms-table td {
+      border: 1px solid var(--border);
+      padding: 11px 14px;
+      text-align: left;
+      vertical-align: top;
+    }
+    table.terms-table th {
+      background: #f3ece3;
+      color: var(--brown);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    table.terms-table td:first-child { font-weight: 700; color: #5a4636; white-space: nowrap; }
+
+    /* 強調ボックス */
+    .note-box {
+      background: #fff8f0;
+      border-left: 3px solid var(--sunset);
+      border-radius: 0 6px 6px 0;
+      padding: 12px 18px;
+      margin: 12px 0;
+      font-size: 13px;
+      color: #8a5e3c;
+      line-height: 1.85;
+    }
+
+    /* ===== フッター ===== */
+    .doc-footer {
+      background: #faf6f0;
+      border-top: 1px solid var(--border);
+      padding: 30px 48px 36px;
+      text-align: center;
+    }
+    .doc-footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      letter-spacing: 0.18em;
+      color: var(--brown);
+      margin-bottom: 8px;
+    }
+    .doc-footer-text { font-size: 12.5px; color: var(--sub); line-height: 1.85; }
+    .doc-footer-link { margin-top: 16px; }
+    .doc-footer-link a {
+      display: inline-block;
+      font-size: 13px;
+      color: var(--teal);
+      text-decoration: none;
+      border: 1px solid var(--teal);
+      border-radius: 20px;
+      padding: 7px 22px;
+      transition: all 0.2s;
+    }
+    .doc-footer-link a:hover { background: var(--teal); color: #fff; }
+
+    /* ===== レスポンシブ ===== */
+    @media (max-width: 600px) {
+      .page-wrap { margin: 0; border-radius: 0; }
+      .doc-header { padding: 30px 22px 24px; }
+      .doc-header-title { font-size: 19px; }
+      .doc-body { padding: 24px 22px 8px; }
+      .doc-footer { padding: 26px 22px 30px; }
+      .article-title { font-size: 15px; }
+      table.terms-table th, table.terms-table td { padding: 9px 10px; }
+    }
+
+    /* ===== 印刷 ===== */
+    @media print {
+      body { background: #fff; }
+      .page-wrap { box-shadow: none; margin: 0; max-width: 100%; }
+      article.article { page-break-inside: avoid; }
+      .doc-footer-link { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+
+    <header class="doc-header">
+      <div class="doc-header-en">BYRON TIME — TERMS OF SERVICE</div>
+      <div class="doc-header-title">ホームページ制作サービス 利用規約</div>
+      <div class="doc-header-meta">最終更新日：2026年5月10日</div>
+    </header>
+
+    <div class="doc-body">
+
+      <p class="preamble">
+        本利用規約（以下「本規約」）は、BYRON TIME（以下「制作者」）が提供するホームページ制作サービス（以下「本サービス」）に関して、クライアント（以下「お客様」）と制作者との間の権利・義務関係を定めるものです。本サービスをご依頼いただくことで、本規約の全ての内容に同意したものとみなします。
+      </p>
+
+      <!-- 第1条 -->
+      <article class="article">
+        <div class="article-head"><span class="article-no">第1条</span><span class="article-title">定義</span></div>
+        <p class="lead">本規約において使用する用語の定義は以下のとおりです。</p>
+        <ol class="terms-list">
+          <li><strong>「制作物」</strong>：本サービスにより制作されたHTMLファイル・CSSファイル・JavaScriptファイルおよびこれらに付随するデータ一式</li>
+          <li><strong>「納品」</strong>：制作物をお客様に引き渡す行為（GitHubリポジトリの共有またはCloudflare Pagesによる公開を含む）</li>
+          <li><strong>「外部サービス」</strong>：GoogleカレンダーやInstagramフィード・BASEショップ・Googleマップなど、制作物に埋め込む第三者が提供するサービス</li>
+          <li><strong>「修正」</strong>：納品前に行う、ヒアリング内容の範囲内での変更作業</li>
+          <li><strong>「追加作業」</strong>：ヒアリング内容・当初仕様の範囲を超える変更・追加</li>
+        </ol>
+      </article>
+
+      <!-- 第2条 -->
+      <article class="article">
+        <div class="article-head"><span class="article-no">第2条</span><span class="article-title">業務の範囲</span></div>
+        <div class="scope-box include">
+          <div class="scope-label">本サービスに含まれるもの</div>
+          <ul>
+            <li>ヒアリングシートの内容に基づくWebページのHTML/CSS/JS制作</li>
+            <li>Googleカレンダー・Instagramフィード・BASEショップ・Googleマップ等の外部サービスの埋め込み設定</li>
+            <li>スマートフォン・PCのレスポンシブ対応（主要ブラウザ：Chrome・Safari・Edge最新版）</li>
+            <li>GitHub・Cloudflare Pagesを使用した公開設定（初回のみ）</li>
+            <li>制作物の軽微な修正（納品前、回数制限あり／第6条参照）</li>
+            <li>お客様への操作説明（外部サービスの更新方法）</li>
+          </ul>
+        </div>
+        <div class="scope-box exclude">
+          <div class="scope-label">本サービスに含まれないもの（別途費用または対象外）</div>
+          <ul>
+            <li>ドメイン・サーバーの取得費用（実費はお客様負担）</li>
+            <li>文章・写真・動画などのコンテンツの制作・撮影</li>
+            <li>フォント・有料プラグインのライセンス費用</li>
+            <li>SEO対策・Web広告運用・SNS運用</li>
+            <li>納品後の更新・保守作業（別途ご依頼ください）</li>
+            <li>ネットショップの構築・EC機能の開発</li>
+            <li>外部サービスとの独自API連携</li>
+            <li>印刷物・名刺・チラシの制作</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 第3条 -->
+      <article class="article">
+        <div class="article-head"><span class="article-no">第3条</span><span class="article-title">ご依頼から納品までの流れ</span></div>
+        <p class="lead">本サービスは「実際の仕上がり（デモ）をご確認いただいてから、ご購入をお決めいただける」点が特徴です。制作は以下の流れで進みます。</p>
+        <ol class="terms-list">
+          <li><strong>ヒアリング</strong>：ヒアリングシートにご記入いただきます（無料）</li>
+          <li><strong>デモ制作・ご提案</strong>：ご記入内容をもとに、完成イメージとなるデモサイトを制作し、ご確認用URLにてお見せします（無料・この段階でお支払いは発生しません）</li>
+          <li><strong>ご購入のお申込み・契約成立</strong>：デモをご確認いただき、ご購入の意思表示（お申込み）をもって契約成立とします</li>
+          <li><strong>制作料金のお支払い</strong>：制作料金の全額をご入金いただきます。入金確認後に、公開に向けた正式な制作作業へ着手します</li>
+          <li><strong>最終調整・すり合わせ</strong>：本番用の写真・文章の差し替え、細部の調整を行います</li>
+          <li><strong>納品・公開</strong>：お客様名義のサービス上でCloudflare Pagesにより公開・引き渡しをもって納品完了とします</li>
+        </ol>
+      </article>
+
+      <!-- 第4条 -->
+      <article class="article">
+        <div class="article-head"><span class="article-no">第4条</span><span class="article-title">料金・支払い条件</span></div>
+        <ol class="terms-list">
+          <li>料金は制作開始前に提示し、お客様の承諾をもって確定します（オープン記念価格等の固定料金を適用する場合があります）。</li>
+          <li><strong>支払い方法</strong>は以下のいずれかとします。
+            <ul class="sub-list">
+              <li>銀行振込（制作者指定口座）</li>
+              <li>minneでのご購入（プラットフォーム利用の場合）</li>
+            </ul>
+          </li>
+          <li><strong>支払いスケジュール</strong>
+            <ul class="sub-list">
+              <li>制作料金の全額：デモご確認後のご購入お申込みから5営業日以内</li>
+              <li>入金確認後に、公開に向けた正式な制作作業へ着手します</li>
+            </ul>
+          </li>
+          <li>支払期限を過ぎても入金が確認できない場合、制作を一時停止する場合があります。</li>
+          <li>支払遅延が生じた場合、年率14.6%の遅延損害金が発生します。</li>
+          <li><strong>フリーランス新法</strong>（特定受託事業者に係る取引の適正化等に関する法律）に基づき、発注内容は書面またはデジタル手段にて明示します。</li>
+        </ol>
+      </article>
+
+      <!-- 第5条 -->
+      <article class="article">
+        <div class="article-head"><span class="article-no">第5条</span><span class="article-title">ご入金後のお取扱い</span></div>
+        <ol class="terms-list">
+          <li>本サービスは、デモ（完成イメージ）をご確認いただいたうえでご購入・ご入金いただくため、ご入金の時点で制作物は実質的に完成しています。</li>
+          <li>ご入金後のお客様都合によるキャンセル・解約の場合、<strong>理由の如何にかかわらず返金いたしません。</strong></li>
+          <li>制作者の責による重大な契約不履行があった場合はこの限りではありません。</li>
+        </ol>
+      </article>
+
+      <!-- 第6条 -->
+      <article class="article">
+        <div class="article-head"><span class="article-no">第6条</span><span class="article-title">修正・変更について</span></div>
+        <ol class="terms-list">
+          <li>ご購入後の最終調整（すり合わせ）において、<strong>無償修正は2回</strong>までとします。</li>
+          <li>3回目以降の修正、またはヒアリング内容の範囲を超える変更は追加料金が発生します。
+            <ul class="sub-list">
+              <li>目安：1,500円〜／1箇所</li>
+            </ul>
+          </li>
+          <li><strong>以下は追加料金の対象</strong>となります。
+            <ul class="sub-list">
+              <li>ページ数の追加</li>
+              <li>当初合意したデザイン・構成の大幅変更</li>
+              <li>追加の外部サービス埋め込み</li>
+              <li>一度承認したデザインへの変更要求</li>
+            </ul>
+          </li>
+          <li>追加作業が発生する場合は事前に見積もりをご提示し、承諾後に作業を行います。</li>
+        </ol>
+      </article>
+
+      <!-- 第7条 -->
+      <article class="article">
+        <div class="article-head"><span class="article-no">第7条</span><span class="article-title">お客様のご協力義務</span></div>
+        <p class="lead">円滑な制作のため、お客様には以下のご協力をお願いします。</p>
+        <ol class="terms-list">
+          <li>ヒアリングシートへの<strong>正確・漏れのない</strong>ご記入</li>
+          <li>制作に必要な素材（テキスト・写真・ロゴ等）の<strong>期限内</strong>のご提供</li>
+          <li>確認URLへの返答を<strong>送付後7営業日以内</strong>に行うこと</li>
+          <li>Googleアカウント・Instagram・BASE等の外部サービスへのアクセス許可（必要な場合）</li>
+          <li>Cloudflare・GitHubアカウントの取得（必要に応じてサポートします）</li>
+        </ol>
+        <div class="note-box">
+          <strong>お客様の対応遅延により納期が延びた場合、制作者は責任を負いません。</strong><br>
+          3週間以上ご連絡が取れない場合、制作を一時停止する場合があります。
+        </div>
+      </article>
+
+      <!-- 第8条 -->
+      <article class="article">
+        <div class="article-head"><span class="article-no">第8条</span><span class="article-title">納品・検収</span></div>
+        <ol class="terms-list">
+          <li>制作物をCloudflare Pagesで公開、またはGitHubリポジトリを共有した時点を「納品」とします。</li>
+          <li>お客様は納品後<strong>7営業日以内</strong>に動作確認を行い、問題があれば制作者に書面またはメッセージにてご連絡ください。</li>
+          <li><strong>7営業日以内に異議がない場合、検収完了（承認）とみなします。</strong></li>
+          <li>検収の基準は、ヒアリングシートに記載の要件を満たし、以下のブラウザ最新版で正常に表示・動作すること。
+            <ul class="sub-list">
+              <li>Google Chrome（PC・スマートフォン）</li>
+              <li>Safari（iPhone）</li>
+              <li>Microsoft Edge（PC）</li>
+            </ul>
+          </li>
+          <li>検収完了後に判明した制作者の明らかなミス（誤字・リンク切れ等）は無償で修正します。</li>
+        </ol>
+      </article>
+
+      <!-- 第9条 -->
+      <article class="article">
+        <div class="article-head"><span class="article-no">第9条</span><span class="article-title">著作権</span></div>
+        <ol class="terms-list">
+          <li>制作物に関する著作権は、<strong>制作料金の入金確認をもってお客様へ譲渡</strong>します。</li>
+          <li>入金完了前の著作権は制作者に帰属します。</li>
+          <li>制作物に含まれる以下の要素の著作権は各権利者に帰属し、本条の譲渡対象外となります。
+            <ul class="sub-list">
+              <li>お客様が提供した写真・文章・ロゴ等の素材</li>
+              <li>Google Fonts等の外部フォント</li>
+              <li>無料・有料素材サイトからの画像・アイコン</li>
+            </ul>
+          </li>
+          <li><strong>制作者は、制作実績としてポートフォリオ（本サービスのLP・SNS・営業資料等）に制作物を掲載する権利を持ちます。</strong>お客様がご希望の場合、掲載しない旨をヒアリング時にお申し出ください。</li>
+          <li>お客様から提供された素材が第三者の著作権・肖像権・商標権等を侵害していた場合、その責任はお客様が負うものとします。</li>
+        </ol>
+      </article>
+
+      <!-- 第10条 -->
+      <article class="article">
+        <div class="article-head"><span class="article-no">第10条</span><span class="article-title">キャンセル・解約</span></div>
+        <ol class="terms-list">
+          <li>本サービスは、デモ（完成イメージ）をご確認いただいてからご購入・ご入金いただく仕組みのため、キャンセルの取扱いは以下のとおりとします。</li>
+        </ol>
+        <table class="terms-table">
+          <thead>
+            <tr><th>段階</th><th>キャンセル料</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>ご購入お申込み・<br>ご入金前</td><td>キャンセル料なし（デモ確認の段階のため、いつでも中止いただけます）</td></tr>
+            <tr><td>ご入金後<br>（お客様都合）</td><td>原則返金不可（ご入金の時点で制作物が実質的に完成しているため）</td></tr>
+          </tbody>
+        </table>
+        <ol class="terms-list" start="2">
+          <li>制作者の責による制作不能・大幅な納期遅延（2週間以上）の場合、お客様は契約を解除でき、お支払い済み料金の返金を請求できます。</li>
+        </ol>
+      </article>
+
+      <!-- 第11条 -->
+      <article class="article">
+        <div class="article-head"><span class="article-no">第11条</span><span class="article-title">免責事項</span></div>
+        <p class="lead">制作者は以下について一切の責任を負いません。</p>
+        <ol class="terms-list">
+          <li><strong>検索順位・アクセス数・問い合わせ数・売上</strong>等の成果（SEO効果を保証するものではありません）</li>
+          <li><strong>外部サービスの障害・仕様変更・サービス終了</strong>（Instagram・Google・BASE・Cloudflare等の第三者サービス）による表示不具合</li>
+          <li>お客様が自ら行った更新・変更・操作ミスによる不具合</li>
+          <li>お客様が提供した素材に起因する第三者からの権利侵害申告</li>
+          <li>Cloudflare Pages・GitHubのサービス変更・障害によるサイトの停止・データ消失</li>
+          <li>不正アクセス・ウイルス・サイバー攻撃による被害</li>
+          <li>天災・感染症・その他不可抗力による納期遅延</li>
+          <li>本サービスに起因して発生した損害の賠償額は、お客様から受領した制作代金を上限とします。</li>
+        </ol>
+      </article>
+
+      <!-- 第12条 -->
+      <article class="article">
+        <div class="article-head"><span class="article-no">第12条</span><span class="article-title">外部サービスについて</span></div>
+        <ol class="terms-list">
+          <li>本サービスでは、GoogleカレンダーやInstagramフィード・BASEショップ・Googleマップ等の外部サービスを埋め込む場合があります。</li>
+          <li>これらの外部サービスの継続・安定動作を制作者は保証しません。</li>
+          <li>外部サービスの仕様変更・API変更・サービス終了により埋め込みが機能しなくなった場合の対応は<strong>別途有償</strong>となります。</li>
+          <li>各外部サービスの利用規約はお客様ご自身が確認・同意するものとします。</li>
+        </ol>
+      </article>
+
+      <!-- 第13条 -->
+      <article class="article">
+        <div class="article-head"><span class="article-no">第13条</span><span class="article-title">サイト公開後の管理責任</span></div>
+        <ol class="terms-list">
+          <li>納品・公開後、サイトの運用・管理・更新はお客様の責任において行うものとします。</li>
+          <li>ドメイン・Cloudflareアカウント・GitHubアカウントの維持・更新もお客様が行うものとします。</li>
+          <li>パスワード管理はお客様の責任とし、紛失・不正利用について制作者は責任を負いません。</li>
+          <li>掲載内容（価格・住所・営業時間等）の正確性はお客様が管理するものとします。</li>
+        </ol>
+      </article>
+
+      <!-- 第14条 -->
+      <article class="article">
+        <div class="article-head"><span class="article-no">第14条</span><span class="article-title">禁止事項</span></div>
+        <p class="lead">お客様は以下の用途への本サービスの利用を禁じます。</p>
+        <ol class="terms-list">
+          <li>公序良俗に反するコンテンツ（アダルト・暴力・差別等）を含むサイトの制作依頼</li>
+          <li>第三者の著作権・商標権・肖像権等の知的財産権を侵害するコンテンツの使用</li>
+          <li>特定商取引法等の法令に違反する可能性のある内容</li>
+          <li>反社会的勢力に関わる事業</li>
+          <li>その他、制作者が不適切と判断する利用</li>
+        </ol>
+        <div class="note-box">
+          上記に該当すると判明した場合、制作者は即時に契約を解除でき、受領済み代金は返金しません。
+        </div>
+      </article>
+
+      <!-- 第15条 -->
+      <article class="article">
+        <div class="article-head"><span class="article-no">第15条</span><span class="article-title">個人情報の取扱い</span></div>
+        <ol class="terms-list">
+          <li>お客様からご提供いただいた個人情報（氏名・住所・連絡先等）は、本サービスの提供目的のみに使用します。</li>
+          <li>法令に基づく場合を除き、第三者に提供・開示しません。</li>
+          <li>ご依頼内容・やりとりの情報は、業務管理のため保存する場合があります。</li>
+        </ol>
+      </article>
+
+      <!-- 第16条 -->
+      <article class="article">
+        <div class="article-head"><span class="article-no">第16条</span><span class="article-title">秘密保持</span></div>
+        <ol class="terms-list">
+          <li>制作者は、業務を通じて知り得たお客様の事業情報・顧客情報・価格情報等を、契約期間中および契約終了後2年間は第三者に開示・漏洩しません。</li>
+          <li>ポートフォリオ掲載（第9条4項）はこの限りではありません。</li>
+          <li>お客様も、制作者から提供された制作手法・ノウハウ・料金体系等を第三者に開示しないものとします。</li>
+        </ol>
+      </article>
+
+      <!-- 第17条 -->
+      <article class="article">
+        <div class="article-head"><span class="article-no">第17条</span><span class="article-title">規約の変更</span></div>
+        <ol class="terms-list">
+          <li>制作者は、必要に応じて本規約を変更することができます。</li>
+          <li>変更後は本サービスのLPまたは所定の方法にて告知します。</li>
+          <li>変更後のサービス利用継続をもって変更への同意とみなします。</li>
+        </ol>
+      </article>
+
+      <!-- 第18条 -->
+      <article class="article">
+        <div class="article-head"><span class="article-no">第18条</span><span class="article-title">準拠法・管轄裁判所</span></div>
+        <ol class="terms-list">
+          <li>本規約は日本法に準拠します。</li>
+          <li>本規約に関する紛争は、大阪地方裁判所を第一審の専属的合意管轄裁判所とします。</li>
+        </ol>
+      </article>
+
+      <!-- 第19条 -->
+      <article class="article">
+        <div class="article-head"><span class="article-no">第19条</span><span class="article-title">協議</span></div>
+        <p>本規約に定めのない事項または本規約の解釈に疑義が生じた場合は、制作者とお客様が誠実に協議して解決するものとします。</p>
+      </article>
+
+    </div>
+
+    <footer class="doc-footer">
+      <div class="doc-footer-brand">BYRON TIME</div>
+      <div class="doc-footer-text">
+        お問い合わせ：ヒアリングシートまたはminneのメッセージ機能にてご連絡ください。
+      </div>
+      <div class="doc-footer-link">
+        <a href="hearing-sheet.html">ヒアリングシートへ戻る</a>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>
