@@ -24,10 +24,10 @@
     a { text-decoration:none; color:inherit; }
 
     /* トップへ戻るナビ */
-    .topnav { background:var(--brown); display:flex; justify-content:space-between; align-items:center; padding:14px 22px; border-bottom:1px solid rgba(255,255,255,0.12); }
-    .topnav-logo { font-family:'Cormorant Garamond',serif; font-size:19px; letter-spacing:0.14em; color:#fff; }
-    .topnav-home { font-size:12px; color:rgba(255,255,255,0.78); border:1px solid rgba(255,255,255,0.32); padding:6px 14px; border-radius:20px; transition:background .2s; }
-    .topnav-home:hover { background:rgba(255,255,255,0.12); }
+    .topnav { background:var(--white); display:flex; justify-content:space-between; align-items:center; padding:10px 22px; border-bottom:1px solid var(--border); }
+    .topnav-logo img { height:32px; width:auto; display:block; }
+    .topnav-home { font-size:12px; color:var(--brown); border:1px solid var(--border); padding:6px 14px; border-radius:20px; transition:background .2s; }
+    .topnav-home:hover { background:var(--bg); }
 
     /* ヘッダー */
     .hero {
@@ -153,7 +153,7 @@
 
 <!-- トップへ戻るナビ -->
 <div class="topnav">
-  <a href="index.html" class="topnav-logo">Byron time</a>
+  <a href="index.html" class="topnav-logo"><img src="logo.png" alt="Byron time"></a>
   <a href="index.html" class="topnav-home">← トップページへ戻る</a>
 </div>
 
