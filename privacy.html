@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>プライバシーポリシー｜BYRON TIME</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brown:  #8B664F;
+      --teal:   #5DA8A3;
+      --sunset: #E19B6D;
+      --text:   #4a3728;
+      --sub:    #9b8575;
+      --border: #e0d5c8;
+      --font:   'Noto Serif JP', serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font);
+      background: #f5f0eb;
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.9;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .page-wrap {
+      max-width: 820px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 4px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+
+    /* ===== ヘッダー ===== */
+    .doc-header {
+      background: var(--brown);
+      color: #fff;
+      padding: 40px 48px 32px;
+    }
+    .doc-header-en {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      letter-spacing: 0.28em;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 10px;
+    }
+    .doc-header-title {
+      font-size: 23px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin-bottom: 14px;
+    }
+    .doc-header-meta {
+      font-size: 12px;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.04em;
+    }
+
+    /* ===== 本文 ===== */
+    .doc-body { padding: 36px 48px 12px; }
+
+    .preamble {
+      font-size: 13.5px;
+      color: #5a4636;
+      background: #faf6f0;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 18px 22px;
+      margin-bottom: 8px;
+      line-height: 1.95;
+    }
+
+    article.article {
+      padding: 28px 0;
+      border-bottom: 1px solid #f0e8de;
+    }
+    article.article:last-of-type { border-bottom: none; }
+
+    .article-head {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+    .article-no {
+      flex-shrink: 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: #fff;
+      background: var(--teal);
+      padding: 3px 12px;
+      border-radius: 20px;
+    }
+    .article-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--brown);
+      letter-spacing: 0.02em;
+    }
+
+    .article p { margin: 0 0 10px; }
+    .article p.lead { color: #5a4636; }
+
+    /* 番号付き / 箇条書き */
+    ol.terms-list, ul.terms-list {
+      margin: 6px 0 6px;
+      padding-left: 1.5em;
+    }
+    ol.terms-list > li, ul.terms-list > li {
+      margin-bottom: 9px;
+      padding-left: 4px;
+    }
+    ul.sub-list {
+      margin: 6px 0 4px;
+      padding-left: 1.4em;
+      list-style: none;
+    }
+    ul.sub-list > li {
+      position: relative;
+      margin-bottom: 5px;
+      color: #5a4636;
+      font-size: 13.5px;
+      padding-left: 14px;
+    }
+    ul.sub-list > li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      color: var(--sub);
+    }
+
+    strong { color: #6b4f3a; font-weight: 700; }
+    .em-teal { color: var(--teal); }
+
+    /* テーブル */
+    table.terms-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 13.5px;
+    }
+    table.terms-table th,
+    table.terms-table td {
+      border: 1px solid var(--border);
+      padding: 11px 14px;
+      text-align: left;
+      vertical-align: top;
+    }
+    table.terms-table th {
+      background: #f3ece3;
+      color: var(--brown);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    table.terms-table td:first-child { font-weight: 700; color: #5a4636; white-space: nowrap; }
+
+    /* 強調ボックス */
+    .note-box {
+      background: #fff8f0;
+      border-left: 3px solid var(--sunset);
+      border-radius: 0 6px 6px 0;
+      padding: 12px 18px;
+      margin: 12px 0;
+      font-size: 13px;
+      color: #8a5e3c;
+      line-height: 1.85;
+    }
+
+    /* ===== フッター ===== */
+    .doc-footer {
+      background: #faf6f0;
+      border-top: 1px solid var(--border);
+      padding: 30px 48px 36px;
+      text-align: center;
+    }
+    .doc-footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      letter-spacing: 0.18em;
+      color: var(--brown);
+      margin-bottom: 8px;
+    }
+    .doc-footer-text { font-size: 12.5px; color: var(--sub); line-height: 1.85; }
+    .doc-footer-link { margin-top: 16px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+    .doc-footer-link a {
+      display: inline-block;
+      font-size: 13px;
+      color: var(--teal);
+      text-decoration: none;
+      border: 1px solid var(--teal);
+      border-radius: 20px;
+      padding: 7px 22px;
+      transition: all 0.2s;
+    }
+    .doc-footer-link a:hover { background: var(--teal); color: #fff; }
+
+    /* ===== レスポンシブ ===== */
+    @media (max-width: 600px) {
+      .page-wrap { margin: 0; border-radius: 0; }
+      .doc-header { padding: 30px 22px 24px; }
+      .doc-header-title { font-size: 19px; }
+      .doc-body { padding: 24px 22px 8px; }
+      .doc-footer { padding: 26px 22px 30px; }
+      .article-title { font-size: 15px; }
+      table.terms-table th, table.terms-table td { padding: 9px 10px; }
+    }
+
+    /* ===== 印刷 ===== */
+    @media print {
+      body { background: #fff; }
+      .page-wrap { box-shadow: none; margin: 0; max-width: 100%; }
+      article.article { page-break-inside: avoid; }
+      .doc-footer-link { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+
+    <header class="doc-header">
+      <div class="doc-header-en">BYRON TIME — PRIVACY POLICY</div>
+      <div class="doc-header-title">プライバシーポリシー</div>
+      <div class="doc-header-meta">制定日：2026年6月24日</div>
+    </header>
+
+    <div class="doc-body">
+
+      <p class="preamble">
+        BYRON TIME（以下「当方」）は、ホームページ制作サービスおよび本ウェブサイト（以下「本サイト」）における個人情報の重要性を認識し、お客様の個人情報を適切に取り扱うため、以下のとおりプライバシーポリシー（以下「本ポリシー」）を定めます。
+      </p>
+
+      <!-- 第1条 -->
+      <article class="article">
+        <div class="article-head"><span class="article-no">第1条</span><span class="article-title">事業者情報</span></div>
+        <table class="terms-table">
+          <tbody>
+            <tr><td>名称</td><td>BYRON TIME（バイロンタイム）</td></tr>
+            <tr><td>事業内容</td><td>ホームページ制作サービス（マルシェ・キッチンカー・ハンドメイド作家等、小規模事業者向け）</td></tr>
+            <tr><td>お問い合わせ</td><td>本サイトの公式LINEよりご連絡ください</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <!-- 第2条 -->
+      <article class="article">
+        <div class="article-head"><span class="article-no">第2条</span><span class="article-title">取得する個人情報</span></div>
+        <p class="lead">当方は、サービスのご提供にあたり、以下の個人情報を取得することがあります。</p>
+        <ol class="terms-list">
+          <li>お名前・屋号</li>
+          <li>メールアドレス</li>
+          <li>LINEのアカウント情報（表示名等）</li>
+          <li>電話番号（ご提供いただいた場合）</li>
+          <li>お問い合わせ・ご相談・ヒアリングシートにご記入いただいた内容</li>
+          <li>ホームページ制作に必要な情報（お店の情報・写真・原稿・各種アカウント情報等）</li>
+        </ol>
+      </article>
+
+      <!-- 第3条 -->
+      <article class="article">
+        <div class="article-head"><span class="article-no">第3条</span><span class="article-title">個人情報の取得方法</span></div>
+        <ol class="terms-list">
+          <li>公式LINEでのお問い合わせ・やりとり</li>
+          <li>ヒアリングシート（フォーム送信）へのご記入・ご送信</li>
+          <li>制作過程におけるメール・メッセージ等でのやりとり</li>
+        </ol>
+      </article>
+
+      <!-- 第4条 -->
+      <article class="article">
+        <div class="article-head"><span class="article-no">第4条</span><span class="article-title">利用目的</span></div>
+        <p class="lead">取得した個人情報は、以下の目的のために利用します。</p>
+        <ol class="terms-list">
+          <li>お問い合わせ・ご相談への対応およびご連絡</li>
+          <li>お見積り・デモサイトの制作およびご提案</li>
+          <li>ホームページ制作業務の遂行・ご連絡・納品</li>
+          <li>サービス品質の向上、ご案内</li>
+        </ol>
+        <div class="note-box">
+          <strong>上記の利用目的の範囲を超えて、個人情報を利用することはありません。</strong>
+        </div>
+      </article>
+
+      <!-- 第5条 -->
+      <article class="article">
+        <div class="article-head"><span class="article-no">第5条</span><span class="article-title">第三者への提供</span></div>
+        <ol class="terms-list">
+          <li>当方は、次の場合を除き、あらかじめご本人の同意を得ることなく、個人情報を第三者に提供しません。
+            <ul class="sub-list">
+              <li>法令に基づく場合</li>
+              <li>人の生命・身体・財産の保護のために必要で、本人の同意を得ることが困難な場合</li>
+              <li>第6条に定める外部サービスへの委託の場合</li>
+            </ul>
+          </li>
+        </ol>
+      </article>
+
+      <!-- 第6条 -->
+      <article class="article">
+        <div class="article-head"><span class="article-no">第6条</span><span class="article-title">外部サービスの利用</span></div>
+        <p class="lead">本サービス・本サイトの運営にあたり、以下の外部サービスを利用しています。各サービスの利用に伴い、入力情報やアクセス情報が、各社のプライバシーポリシーに基づいて取り扱われる場合があります。</p>
+        <table class="terms-table">
+          <thead>
+            <tr><th>サービス</th><th>利用目的</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>LINE</td><td>お問い合わせ・ご相談・ご連絡（LINEヤフー株式会社）</td></tr>
+            <tr><td>Web3Forms</td><td>ヒアリングシート等フォーム送信内容のメール受信</td></tr>
+            <tr><td>Google</td><td>受信メール（Gmail）の利用、地図・カレンダー等の表示（Google LLC）</td></tr>
+            <tr><td>Cloudflare</td><td>本サイトのホスティング・配信、アクセスログ（Cloudflare, Inc.）</td></tr>
+            <tr><td>Behold</td><td>Instagram投稿（フィード）の表示</td></tr>
+          </tbody>
+        </table>
+        <p>各サービスにおける個人情報の取扱いについては、それぞれのプライバシーポリシーをご確認ください。</p>
+      </article>
+
+      <!-- 第7条 -->
+      <article class="article">
+        <div class="article-head"><span class="article-no">第7条</span><span class="article-title">Cookie・アクセス情報について</span></div>
+        <ol class="terms-list">
+          <li>本サイトでは、埋め込みサービスやホスティングの仕組み上、Cookieやアクセスログ（IPアドレス・ブラウザの種類・閲覧日時等）が利用される場合があります。</li>
+          <li>これらは利用状況の把握やサービスの安定提供のために使用し、個人を特定する目的では使用しません。</li>
+          <li>Cookieはブラウザの設定により無効にすることができます。ただし、一部の機能が正しく動作しない場合があります。</li>
+        </ol>
+      </article>
+
+      <!-- 第8条 -->
+      <article class="article">
+        <div class="article-head"><span class="article-no">第8条</span><span class="article-title">個人情報の管理</span></div>
+        <ol class="terms-list">
+          <li>当方は、取得した個人情報の漏洩・滅失・毀損を防ぐため、適切な安全管理に努めます。</li>
+          <li>利用目的の達成に必要な範囲を超えて保有しないよう努め、不要となった個人情報は適切な方法で速やかに削除します。</li>
+        </ol>
+      </article>
+
+      <!-- 第9条 -->
+      <article class="article">
+        <div class="article-head"><span class="article-no">第9条</span><span class="article-title">開示・訂正・削除等の請求</span></div>
+        <ol class="terms-list">
+          <li>ご本人から、個人情報の開示・訂正・追加・削除・利用停止のご請求があった場合は、ご本人であることを確認のうえ、法令に従い合理的な範囲で速やかに対応します。</li>
+          <li>ご請求は、本サイトの公式LINEよりご連絡ください。</li>
+        </ol>
+      </article>
+
+      <!-- 第10条 -->
+      <article class="article">
+        <div class="article-head"><span class="article-no">第10条</span><span class="article-title">未成年の方の個人情報</span></div>
+        <p>未成年の方が本サービスをご利用になる場合は、保護者の同意を得たうえでご利用ください。</p>
+      </article>
+
+      <!-- 第11条 -->
+      <article class="article">
+        <div class="article-head"><span class="article-no">第11条</span><span class="article-title">プライバシーポリシーの変更</span></div>
+        <ol class="terms-list">
+          <li>当方は、法令の変更やサービス内容の変更に応じて、本ポリシーを変更することがあります。</li>
+          <li>重要な変更を行う場合は、本サイト上でお知らせします。</li>
+          <li>変更後の本ポリシーは、本サイトに掲載した時点から効力を生じます。</li>
+        </ol>
+      </article>
+
+      <!-- 第12条 -->
+      <article class="article">
+        <div class="article-head"><span class="article-no">第12条</span><span class="article-title">お問い合わせ窓口</span></div>
+        <p>本ポリシーおよび個人情報の取扱いに関するお問い合わせは、本サイトの<strong>公式LINE</strong>よりご連絡ください。</p>
+      </article>
+
+    </div>
+
+    <footer class="doc-footer">
+      <div class="doc-footer-brand">BYRON TIME</div>
+      <div class="doc-footer-text">
+        個人情報に関するお問い合わせは、公式LINEよりご連絡ください。
+      </div>
+      <div class="doc-footer-link">
+        <a href="byron-time-hp/">トップページへ</a>
+        <a href="terms.html">利用規約</a>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>
