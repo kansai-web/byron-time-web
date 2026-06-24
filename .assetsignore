@@ -1,0 +1,8 @@
+# Cloudflare Workers の配信アセットから除外するもの
+# （.git が大きすぎてビルド失敗していたため、これが必須の修正）
+.git
+.gitignore
+.assetsignore
+wrangler.toml
+.DS_Store
+*.md
