@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>なぜホームページが必要なのか｜Byron time Web制作</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&family=Noto+Sans+JP:wght@300;400&family=Cormorant+Garamond:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --teal:   #5DA8A3;
+      --brown:  #8B664F;
+      --sunset: #E19B6D;
+      --green:  #5a8f5a;
+      --text:   #3a2d22;
+      --sub:    #8c7560;
+      --border: #e0d5c8;
+      --bg:     #f7f3ed;
+      --white:  #fdfaf6;
+    }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:'Noto Sans JP',sans-serif; font-weight:300; background:var(--bg); color:var(--text); line-height:1.8; font-size:14px; }
+    a { text-decoration:none; color:inherit; }
+
+    /* トップへ戻るナビ */
+    .topnav { background:var(--brown); display:flex; justify-content:space-between; align-items:center; padding:14px 22px; border-bottom:1px solid rgba(255,255,255,0.12); }
+    .topnav-logo { font-family:'Cormorant Garamond',serif; font-size:19px; letter-spacing:0.14em; color:#fff; }
+    .topnav-home { font-size:12px; color:rgba(255,255,255,0.78); border:1px solid rgba(255,255,255,0.32); padding:6px 14px; border-radius:20px; transition:background .2s; }
+    .topnav-home:hover { background:rgba(255,255,255,0.12); }
+
+    /* ヘッダー */
+    .hero {
+      background:var(--brown); color:white;
+      padding:64px 40px 56px; text-align:center;
+    }
+    .hero-en { font-family:'Cormorant Garamond',serif; font-size:12px; letter-spacing:0.3em; color:rgba(255,255,255,0.5); margin-bottom:16px; }
+    .hero-title { font-family:'Noto Serif JP',serif; font-size:clamp(22px,3vw,32px); font-weight:700; margin-bottom:16px; line-height:1.6; letter-spacing:0.05em; }
+    .hero-sub { font-size:13px; color:rgba(255,255,255,0.75); line-height:2.2; }
+
+    /* 本体 */
+    .wrap { max-width:760px; margin:0 auto; padding:0 24px; }
+
+    /* 共感セクション */
+    .empathy {
+      background:var(--white); padding:56px 40px;
+      border-bottom:1px solid var(--border);
+    }
+    .sec-label { font-family:'Cormorant Garamond',serif; font-size:11px; letter-spacing:0.28em; color:var(--brown); text-transform:uppercase; margin-bottom:12px; text-align:center; }
+    .sec-title { font-family:'Noto Serif JP',serif; font-size:clamp(18px,2.5vw,24px); font-weight:700; color:var(--text); margin-bottom:32px; line-height:1.7; text-align:center; }
+
+    .voice-list { display:flex; flex-direction:column; gap:14px; max-width:600px; margin:0 auto; }
+    .voice {
+      display:flex; align-items:flex-start; gap:12px;
+      padding:14px 18px; background:var(--bg); border-radius:4px;
+      font-size:13px; color:var(--sub); line-height:1.9;
+    }
+    .voice-icon { font-size:18px; flex-shrink:0; margin-top:1px; }
+
+    .arrow-section { text-align:center; padding:24px 0; font-size:28px; color:var(--border); }
+
+    .solution-box {
+      max-width:600px; margin:0 auto;
+      background:var(--teal); color:white;
+      border-radius:6px; padding:24px 28px;
+      font-size:14px; line-height:2.0; text-align:center;
+    }
+    .solution-box strong { font-family:'Noto Serif JP',serif; font-size:16px; display:block; margin-bottom:8px; }
+
+    /* 理由セクション */
+    .reasons { padding:56px 40px; background:var(--bg); }
+    .reason-grid { display:flex; flex-direction:column; gap:24px; }
+    .reason-card {
+      background:var(--white); border-radius:6px;
+      overflow:hidden; display:grid;
+      grid-template-columns:80px 1fr;
+    }
+    .reason-num {
+      background:var(--teal); color:white;
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      font-family:'Cormorant Garamond',serif;
+      font-size:11px; letter-spacing:0.2em; gap:4px;
+      padding:20px 0;
+    }
+    .reason-num .num { font-size:28px; font-weight:600; line-height:1; }
+    .reason-body { padding:20px 24px; }
+    .reason-title { font-family:'Noto Serif JP',serif; font-size:16px; font-weight:700; color:var(--text); margin-bottom:8px; line-height:1.6; }
+    .reason-desc { font-size:13px; color:var(--sub); line-height:2.0; }
+    .reason-example {
+      margin-top:10px; padding:10px 14px;
+      background:var(--bg); border-radius:4px;
+      font-size:12px; color:var(--teal); line-height:1.9;
+    }
+
+    /* LINE比較 */
+    .compare { padding:56px 40px; background:var(--white); }
+    .compare-title { font-family:'Noto Serif JP',serif; font-size:clamp(16px,2vw,20px); font-weight:700; color:var(--text); margin-bottom:28px; text-align:center; line-height:1.7; }
+    .compare-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; max-width:640px; margin:0 auto 32px; }
+    .compare-card { border-radius:6px; overflow:hidden; }
+    .compare-head { padding:12px 16px; font-size:12px; font-weight:700; letter-spacing:0.05em; }
+    .compare-head.sns { background:#e8f4f3; color:var(--teal); }
+    .compare-head.hp  { background:var(--brown); color:white; }
+    .compare-body { padding:14px 16px; background:var(--bg); font-size:12px; color:var(--sub); line-height:2.0; }
+    .compare-body li { margin-left:16px; }
+
+    .line-box {
+      max-width:640px; margin:0 auto;
+      padding:20px 24px; background:#f0f9f0;
+      border:1.5px solid #7cc47c; border-radius:6px;
+      font-size:13px; color:var(--text); line-height:2.0;
+    }
+    .line-box .line-title { font-family:'Noto Serif JP',serif; font-weight:700; font-size:15px; margin-bottom:8px; color:#3a7a3a; }
+    .line-diff { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:12px; }
+    .line-col { padding:12px 14px; border-radius:4px; font-size:12px; line-height:1.9; }
+    .line-col.general { background:rgba(0,0,0,0.03); }
+    .line-col.official { background:#e8f5e9; }
+    .line-col-head { font-weight:700; font-size:11px; letter-spacing:0.08em; margin-bottom:6px; }
+
+    /* CTA */
+    .cta { padding:56px 40px; background:var(--brown); text-align:center; color:white; }
+    .cta-title { font-family:'Noto Serif JP',serif; font-size:clamp(18px,2.5vw,24px); font-weight:700; margin-bottom:12px; line-height:1.7; }
+    .cta-sub { font-size:13px; color:rgba(255,255,255,0.75); margin-bottom:32px; line-height:2.0; }
+    .cta-btn {
+      display:inline-block; padding:16px 40px;
+      background:white; color:var(--brown);
+      font-family:'Noto Serif JP',serif; font-size:15px; font-weight:700;
+      border-radius:4px; letter-spacing:0.05em; transition:opacity 0.2s;
+    }
+    .cta-btn:hover { opacity:0.9; }
+
+    /* フッター */
+    footer { background:var(--text); color:rgba(255,255,255,0.5); padding:28px 40px; text-align:center; font-size:11px; letter-spacing:0.1em; }
+    footer span { color:rgba(255,255,255,0.3); }
+    .line-cta { display:inline-block; margin-top:20px; padding:12px 32px; background:#06c755; color:white; border-radius:4px; font-size:14px; font-weight:700; text-decoration:none; letter-spacing:0.05em; }
+    .line-note { display:block; margin-top:10px; font-size:11px; color:rgba(255,255,255,0.5); }
+
+    /* アニメ */
+    .fade-up { opacity:0; transform:translateY(20px); transition:opacity 0.7s,transform 0.7s; }
+    .fade-up.visible { opacity:1; transform:translateY(0); }
+
+    @media(max-width:600px){
+      .empathy, .reasons, .compare, .cta { padding:40px 20px; }
+      .reason-card { grid-template-columns:60px 1fr; }
+      .compare-grid { grid-template-columns:1fr; }
+      .line-diff { grid-template-columns:1fr; }
+      .hero { padding:48px 20px 40px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- トップへ戻るナビ -->
+<div class="topnav">
+  <a href="index.html" class="topnav-logo">Byron time</a>
+  <a href="index.html" class="topnav-home">← トップページへ戻る</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-en">Why you need a website</div>
+  <h1 class="hero-title">
+    Instagramだけで十分、<br>
+    と思っていませんか？
+  </h1>
+  <p class="hero-sub">
+    SNSで発信しているのに、なかなか新規のお客さんが増えない。<br>
+    出展依頼がなかなか来ない。そんな方へ。
+  </p>
+</div>
+
+<!-- 共感 -->
+<section class="empathy">
+  <div class="wrap">
+    <div class="sec-label">Sounds familiar?</div>
+    <h2 class="sec-title">こんなこと、思っていませんか？</h2>
+    <div class="voice-list">
+      <div class="voice fade-up"><span class="voice-icon">😔</span>「Instagramは投稿しているけど、フォロワー以外には届かない気がする」</div>
+      <div class="voice fade-up"><span class="voice-icon">😔</span>「出店情報・メニュー・SNSがバラバラで、初めての人に分かりにくい」</div>
+      <div class="voice fade-up"><span class="voice-icon">😔</span>「イベント主催者から出展依頼が来ないのは、連絡先が分からないからかも？」</div>
+      <div class="voice fade-up"><span class="voice-icon">😔</span>「オンライン販売を増やしたいけど、SNSからショップに誘導できていない」</div>
+      <div class="voice fade-up"><span class="voice-icon">😔</span>「信頼してもらいたいけど、SNSだけだとお店の雰囲気が伝わりきらない」</div>
+    </div>
+    <div class="arrow-section">↓</div>
+    <div class="solution-box fade-up">
+      <strong>それ、全部ホームページで解決できます。</strong>
+      一か所にまとまった「お店の顔」があるだけで、集客の流れが変わります。
+    </div>
+  </div>
+</section>
+
+<!-- 5つの理由 -->
+<section class="reasons">
+  <div class="wrap">
+    <div class="sec-label">5 Reasons</div>
+    <h2 class="sec-title" style="margin-bottom:32px;">ホームページが必要な5つの理由</h2>
+    <div class="reason-grid">
+
+      <div class="reason-card fade-up">
+        <div class="reason-num"><span class="num">1</span><span>REASON</span></div>
+        <div class="reason-body">
+          <div class="reason-title">「知らない人」に見つけてもらえる</div>
+          <div class="reason-desc">Instagramはフォロワーにしか届きません。でもホームページ＋Googleビジネスプロフィールに登録すれば、Googleマップで「クレープ」と検索した近くの知らない人に見つけてもらえます。</div>
+          <div class="reason-example">💡 例）「豊中 スイーツ」で検索 → あなたのお店がマップに表示される</div>
+        </div>
+      </div>
+
+      <div class="reason-card fade-up">
+        <div class="reason-num"><span class="num">2</span><span>REASON</span></div>
+        <div class="reason-body">
+          <div class="reason-title">情報が一か所にまとまる</div>
+          <div class="reason-desc">出店スケジュール・メニュー・SNSリンク・ショップへのリンクが1つのURLにまとまります。「どこで買えるの？」「次いつ出るの？」という質問に、URLを送るだけで答えられます。</div>
+          <div class="reason-example">💡 例）LINEで「詳しくはこちら→ URL」と送るだけで完結</div>
+        </div>
+      </div>
+
+      <div class="reason-card fade-up">
+        <div class="reason-num"><span class="num">3</span><span>REASON</span></div>
+        <div class="reason-body">
+          <div class="reason-title">出展依頼・取材依頼が届きやすくなる</div>
+          <div class="reason-desc">企業やイベント主催者は、LINEやInstagram DMより<strong>フォームから連絡する方が動きやすい</strong>です。出展依頼フォームがあるだけで「ここに連絡すればいい」と伝わり、依頼が届きやすくなります。</div>
+          <div class="reason-example">💡 例）マルシェ主催者がHPを見つけ → フォームから出展依頼が届く</div>
+        </div>
+      </div>
+
+      <div class="reason-card fade-up">
+        <div class="reason-num"><span class="num">4</span><span>REASON</span></div>
+        <div class="reason-body">
+          <div class="reason-title">「この人から買いたい」と思ってもらえる</div>
+          <div class="reason-desc">SNSは日常の発信向き。お店のコンセプト・こだわり・オーナーのストーリーをしっかり伝えるには、ホームページの方が向いています。想いが伝わると「値段より誰から買うか」で選んでもらえます。</div>
+          <div class="reason-example">💡 例）「この人の作るもの食べてみたい」と思ってネット購入される</div>
+        </div>
+      </div>
+
+      <div class="reason-card fade-up">
+        <div class="reason-num"><span class="num">5</span><span>REASON</span></div>
+        <div class="reason-body">
+          <div class="reason-title">オンライン販売への誘導ができる</div>
+          <div class="reason-desc">BASEやminneへのリンクをホームページに置くことで「今日マルシェに行けなかったけど買いたい」というお客さんをネットショップに誘導できます。SNSより購入までの流れがスムーズになります。</div>
+          <div class="reason-example">💡 例）HP → BASE → 購入 の流れが自然にできる</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SNS vs HP + LINE比較 -->
+<section class="compare">
+  <div class="wrap">
+    <h2 class="compare-title">SNSとホームページ、役割が違います</h2>
+    <div class="compare-grid">
+      <div class="compare-card">
+        <div class="compare-head sns">📱 Instagram・SNS</div>
+        <div class="compare-body">
+          <ul>
+            <li>日常の発信・集客</li>
+            <li>フォロワーへの告知</li>
+            <li>雰囲気を伝える</li>
+            <li>フォロワー以外には届きにくい</li>
+            <li>情報が流れてしまう</li>
+          </ul>
+        </div>
+      </div>
+      <div class="compare-card">
+        <div class="compare-head hp">🌐 ホームページ</div>
+        <div class="compare-body">
+          <ul>
+            <li>知らない人への受け皿</li>
+            <li>Google検索で見つかる</li>
+            <li>情報が永続的に残る</li>
+            <li>出展依頼・問い合わせを受ける</li>
+            <li>信頼感・本気度が伝わる</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="line-box fade-up">
+      <div class="line-title">💬 LINE公式アカウントについて</div>
+      <p style="font-size:13px; color:var(--sub);">ホームページにLINEのボタンを置く場合、使うのは<strong>「LINE公式アカウント」</strong>です。普通のLINEとは別物です。</p>
+      <div class="line-diff">
+        <div class="line-col general">
+          <div class="line-col-head">📱 一般のLINE</div>
+          知り合い同士のやりとり用<br>
+          誰でも追加はできない<br>
+          ビジネス向けではない
+        </div>
+        <div class="line-col official">
+          <div class="line-col-head" style="color:#2e7d32;">✅ LINE公式アカウント</div>
+          誰でも「友だち追加」できる<br>
+          一斉配信・自動返信が可能<br>
+          月200通まで<strong>無料</strong>
+        </div>
+      </div>
+      <p style="font-size:11px; color:var(--sub); margin-top:12px;">※ ホームページから誘導することでリピーター獲得につながります。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="wrap">
+    <h2 class="cta-title">まず、ヒアリングシートを<br>記入してみてください</h2>
+    <p class="cta-sub">
+      費用のご確認・お見積りは無料です。<br>
+      記入後にByron timeよりご連絡します。
+    </p>
+    <a class="cta-btn" href="https://byron-time-web.otona-plus40.workers.dev/hearing-sheet.html" target="_blank">
+      無料でヒアリングシートを記入する →
+    </a>
+    <a class="line-cta" href="https://lin.ee/vAS0Ryb" target="_blank">💬 まず LINEで相談する</a>
+    <span class="line-note">※ お問い合わせはLINEのみ受け付けています（Instagram DM・メール不可）</span>
+  </div>
+</section>
+
+<footer>
+  <a href="index.html" style="color:rgba(255,255,255,0.85); border-bottom:1px solid rgba(255,255,255,0.3); padding-bottom:2px;">Byron time Web制作 ｜ トップページへ →</a><br><br>
+  <span>© 2026 Byron time</span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.12 }
+  );
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

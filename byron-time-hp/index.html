@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Byron time｜マルシェ・キッチンカー・作家さん専門のホームページ制作（月額0円）</title>
+  <link rel="icon" type="image/png" href="favicon_180.png">
+  <link rel="apple-touch-icon" href="favicon_180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&family=Noto+Sans+JP:wght@300;400&family=Cormorant+Garamond:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    :root {
+      --teal:   #5DA8A3;
+      --brown:  #8B664F;
+      --sunset: #E19B6D;
+      --blue:   #A8BFD1;
+      --cream:  #F1ECE5;
+      --beige:  #D3C4A7;
+      --green:  #5a8f5a;
+      --text:   #4a392c;
+      --sub:    #8c7560;
+      --border: #e4dbcf;
+      --bg:     #F6F1E9;
+      --white:  #fffdf9;
+    }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Noto Sans JP',sans-serif; font-weight:300; background:var(--bg); color:var(--text); line-height:1.85; font-size:16px; }
+    a { text-decoration:none; color:inherit; }
+
+    .wrap { max-width:760px; margin:0 auto; padding:0 24px; }
+    section[id] { scroll-margin-top:68px; }
+
+    /* ===== グローバルナビ ===== */
+    .nav {
+      position:sticky; top:0; z-index:50;
+      background:rgba(255,253,249,0.96); backdrop-filter:blur(6px);
+      border-bottom:1px solid var(--border);
+      display:flex; align-items:center; justify-content:space-between;
+      padding:10px 22px; gap:12px;
+    }
+    .nav-logo img { height:34px; width:auto; display:block; }
+    .nav-links { display:flex; align-items:center; gap:22px; }
+    .nav-links a { font-size:14px; color:var(--brown); white-space:nowrap; transition:color .2s; }
+    .nav-links a:hover { color:var(--teal); }
+    .nav-cta {
+      background:var(--teal); color:#fff !important;
+      padding:8px 18px; border-radius:30px; font-weight:700; font-size:13px;
+    }
+    .nav-cta:hover { opacity:.9; }
+
+    /* ===== HERO ===== */
+    .hero {
+      background:linear-gradient(135deg, #5DA8A3 0%, #59A8AD 55%, #6FB0BE 100%);
+      color:white;
+      padding:54px 40px;
+    }
+    .hero-inner { max-width:1080px; margin:0 auto; display:flex; align-items:center; gap:46px; }
+    .hero-text { flex:1 1 50%; text-align:left; }
+    .hero-text .hero-sub { margin:0; max-width:none; }
+    .hero-visual { flex:1 1 48%; position:relative; min-width:0; }
+    .bw { background:#fff; border-radius:12px; box-shadow:0 24px 60px rgba(0,0,0,0.28); overflow:hidden; }
+    .bw-bar { display:flex; align-items:center; gap:7px; padding:10px 14px; background:#ece4d8; }
+    .bw-dot { width:10px; height:10px; border-radius:50%; background:#cbb89f; }
+    .bw-url { margin-left:10px; flex:1; background:#fff; border-radius:20px; height:21px; font-size:11px; color:#a8967f; display:flex; align-items:center; padding:0 12px; font-family:'Cormorant Garamond',serif; letter-spacing:.05em; }
+    .bw-img { width:100%; display:block; }
+    .ph { position:absolute; right:-14px; bottom:-28px; width:116px; background:#2c2622; border-radius:18px; padding:6px; box-shadow:0 18px 40px rgba(0,0,0,0.32); }
+    .ph-img { width:100%; display:block; border-radius:12px; }
+    @media(max-width:820px){
+      .hero-inner { flex-direction:column; gap:40px; }
+      .hero-text { text-align:center; flex-basis:auto; }
+      .hero-text .hero-sub { margin:0 auto; }
+      .hero-visual { flex-basis:auto; width:100%; max-width:420px; margin:0 auto 14px; }
+    }
+    @media(max-width:600px){
+      .ph { width:94px; right:-6px; bottom:-20px; }
+    }
+    .hero-eyebrow {
+      display:inline-block; margin-bottom:22px;
+      background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.4);
+      color:#fff; font-size:13px; font-weight:400;
+      padding:6px 18px; border-radius:30px; letter-spacing:0.04em;
+    }
+    .hero-title {
+      font-family:'Noto Serif JP',serif;
+      font-size:clamp(24px,3.3vw,33px); font-weight:700;
+      margin-bottom:22px; line-height:1.65; letter-spacing:0.04em;
+    }
+    .hero-title .accent { color:#fff; border-bottom:3px solid rgba(255,255,255,0.55); }
+    .hero-sub {
+      font-size:15px; color:rgba(255,255,255,0.95); line-height:2.2;
+      max-width:540px; margin:0 auto;
+    }
+    .hero-quote {
+      display:inline-block; margin-top:26px;
+      font-family:'Noto Serif JP',serif; font-size:16px;
+      color:#fff; font-style:italic;
+      border-left:2px solid rgba(255,255,255,0.55);
+      padding-left:16px; text-align:left; line-height:1.9;
+    }
+    .hero-btn {
+      display:inline-block; padding:17px 40px;
+      background:#fff; color:var(--teal);
+      font-family:'Noto Serif JP',serif; font-weight:700; font-size:16px;
+      border-radius:6px; letter-spacing:.04em;
+      box-shadow:0 8px 22px rgba(0,0,0,0.15);
+    }
+    .hero-btn-note {
+      margin-top:13px; font-size:12.5px;
+      color:rgba(255,255,255,0.88); line-height:1.8;
+    }
+
+    /* ===== 共通セクション ===== */
+    .sec-label {
+      font-family:'Cormorant Garamond',serif;
+      font-size:12px; letter-spacing:0.28em;
+      color:var(--brown); text-transform:uppercase;
+      margin-bottom:12px; text-align:center;
+    }
+    .sec-title {
+      font-family:'Noto Serif JP',serif;
+      font-size:clamp(21px,3vw,27px); font-weight:700;
+      color:var(--text); margin-bottom:34px;
+      line-height:1.7; text-align:center;
+    }
+
+    /* ===== 誤解セクション ===== */
+    .miscon {
+      background:var(--white); padding:56px 40px;
+      border-bottom:1px solid var(--border);
+    }
+    .miscon-list {
+      display:flex; flex-direction:column; gap:12px;
+      max-width:600px; margin:0 auto 32px;
+    }
+    .miscon-item {
+      display:flex; align-items:flex-start; gap:12px;
+      padding:15px 20px; background:var(--bg);
+      border-radius:6px; font-size:15px; color:var(--sub); line-height:1.95;
+    }
+    .miscon-icon { font-size:18px; flex-shrink:0; margin-top:3px; color:var(--sunset); width:24px; text-align:center; }
+    .arrow-section { text-align:center; padding:24px 0; font-size:30px; color:var(--beige); }
+    .result-box {
+      max-width:600px; margin:0 auto;
+      background:var(--teal); color:white;
+      border-radius:8px; padding:24px 30px;
+      font-size:15px; line-height:2.05; text-align:center;
+      word-break:auto-phrase;
+    }
+    .result-box strong {
+      font-family:'Noto Serif JP',serif; font-size:18px;
+      display:block; margin-bottom:8px;
+    }
+
+    /* ===== 相場比較表 ===== */
+    .price-sec { padding:56px 40px; background:var(--bg); }
+    .price-intro {
+      max-width:600px; margin:0 auto 32px;
+      font-size:15px; color:var(--sub); line-height:2.05; text-align:center;
+    }
+    .price-table {
+      width:100%; border-collapse:collapse;
+      max-width:680px; margin:0 auto;
+      font-size:13.5px;
+    }
+    .price-table th {
+      background:var(--brown); color:white;
+      padding:13px 14px; font-family:'Noto Serif JP',serif;
+      font-weight:700; font-size:12.5px; letter-spacing:0.05em;
+      text-align:left;
+    }
+    .price-table td {
+      padding:14px; background:var(--white);
+      border-bottom:1px solid var(--border);
+      vertical-align:top; line-height:1.85; color:var(--sub);
+    }
+    .price-table tr:last-child td { border-bottom:none; }
+    .price-table tr.highlight td {
+      background:#e9f4f2; color:var(--text);
+      font-weight:400;
+    }
+    .price-table tr.highlight td:first-child {
+      font-family:'Noto Serif JP',serif;
+      color:var(--teal); font-size:14.5px;
+    }
+    .badge-free {
+      display:inline-block; background:var(--teal); color:white;
+      font-size:11px; padding:2px 8px; border-radius:3px;
+      letter-spacing:0.05em; vertical-align:middle; margin-left:4px;
+    }
+    .badge-cost {
+      display:inline-block; background:#e0937a; color:white;
+      font-size:11px; padding:2px 8px; border-radius:3px;
+      letter-spacing:0.05em; vertical-align:middle; margin-left:4px;
+    }
+    .price-note {
+      max-width:680px; margin:16px auto 0;
+      font-size:12.5px; color:var(--sub); line-height:1.95;
+      padding:0 2px;
+    }
+    .freebox { max-width:640px; margin:32px auto 0; background:var(--white); border:1px solid var(--border); border-radius:10px; padding:28px; }
+    .freebox-title { font-family:'Noto Serif JP',serif; font-size:18px; font-weight:700; color:var(--teal); text-align:center; margin-bottom:20px; }
+    .freebox-title i { color:var(--sunset); margin-right:7px; }
+    .freebox-note { font-size:13.5px; color:var(--sub); line-height:1.95; text-align:center; border-top:1px solid var(--border); margin-top:18px; padding-top:16px; }
+    .freebox-note strong { color:var(--text); }
+    .freebox-note small { font-size:11.5px; display:block; margin-top:8px; }
+
+    /* ===== なぜこの形にしたか ===== */
+    .why-sec { padding:56px 40px; background:var(--white); }
+    .why-flow {
+      display:flex; flex-direction:column; gap:0;
+      max-width:600px; margin:0 auto 32px;
+    }
+    .why-step {
+      display:grid; grid-template-columns:42px 1fr;
+      gap:0 16px; padding:18px 0;
+      border-bottom:1px solid var(--border);
+    }
+    .why-step:last-child { border-bottom:none; }
+    .why-num {
+      font-family:'Cormorant Garamond',serif;
+      font-size:30px; color:var(--beige);
+      font-weight:600; line-height:1.2;
+      padding-top:2px;
+    }
+    .why-head {
+      font-family:'Noto Serif JP',serif;
+      font-size:17px; font-weight:700;
+      color:var(--text); margin-bottom:7px;
+      line-height:1.6;
+    }
+    .why-desc { font-size:15px; color:var(--sub); line-height:2.05; }
+    .why-desc strong { color:var(--teal); }
+
+    .embed-list {
+      max-width:600px; margin:0 auto;
+      display:flex; flex-direction:column; gap:10px;
+    }
+    .embed-item {
+      display:flex; align-items:flex-start; gap:14px;
+      padding:15px 18px; background:var(--bg); border-radius:6px;
+      font-size:15px; line-height:1.85;
+    }
+    .embed-icon { font-size:18px; flex-shrink:0; margin-top:4px; color:var(--teal); width:26px; text-align:center; }
+    .embed-item span { color:var(--sub); font-size:14px; }
+    .embed-item strong { color:var(--text); display:block; font-size:15px; margin-bottom:2px; }
+
+    /* ===== デモサイト ===== */
+    .work-sec { padding:56px 40px; background:var(--bg); border-top:1px solid var(--border); }
+    .work-lead { text-align:center; font-size:14.5px; color:var(--sub); line-height:1.95; max-width:560px; margin:0 auto 26px; }
+    .work-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; max-width:680px; margin:0 auto; }
+    .work-card { display:block; background:var(--white); border-radius:10px; overflow:hidden; border:1px solid var(--border); transition:transform .25s, box-shadow .25s; }
+    .work-card:hover { transform:translateY(-4px); box-shadow:0 12px 28px rgba(74,57,44,0.14); }
+    .work-card img { width:100%; display:block; aspect-ratio:4/3; object-fit:cover; object-position:top; }
+    .work-info { padding:16px 18px; }
+    .work-tag { font-family:'Cormorant Garamond',serif; font-size:11px; letter-spacing:0.2em; color:var(--teal); text-transform:uppercase; }
+    .work-name { font-family:'Noto Serif JP',serif; font-size:18px; font-weight:700; color:var(--text); margin:4px 0 6px; }
+    .work-desc { font-size:14px; color:var(--sub); line-height:1.75; margin-bottom:12px; }
+    .work-open { display:inline-block; font-size:13px; font-weight:700; color:#fff; background:var(--teal); padding:8px 18px; border-radius:30px; }
+    .work-note { text-align:center; font-size:14px; color:var(--sub); margin-top:26px; line-height:1.95; }
+    @media(max-width:600px){ .work-grid{ grid-template-columns:1fr; } }
+
+    /* ===== Instagram ===== */
+    .insta-sec { padding:56px 40px; background:var(--white); }
+    .insta-intro { text-align:center; font-size:15px; color:var(--sub); line-height:2.05; max-width:580px; margin:0 auto 28px; }
+    .insta-intro strong { color:var(--teal); }
+    .insta-embed { max-width:560px; margin:0 auto; }
+    .insta-placeholder {
+      border:2px dashed var(--beige); border-radius:12px;
+      padding:48px 22px; text-align:center; color:var(--sub);
+      font-size:14px; background:var(--bg); line-height:2;
+    }
+    .insta-btn {
+      display:inline-block; margin-top:24px;
+      background:linear-gradient(135deg,#8B664F,#9C775C); color:#fff;
+      padding:13px 30px; border-radius:30px; font-size:14px; font-weight:700;
+    }
+
+    /* ===== ストーリー / 自己紹介 ===== */
+    .story-sec { padding:56px 40px; background:var(--bg); }
+    .profile-card {
+      max-width:600px; margin:0 auto;
+      background:var(--white); border-radius:8px;
+      overflow:hidden;
+    }
+    .profile-head {
+      background:var(--teal); color:white;
+      padding:26px 30px;
+    }
+    .profile-name-en {
+      font-family:'Cormorant Garamond',serif;
+      font-size:12px; letter-spacing:0.3em;
+      color:rgba(255,255,255,0.65); margin-bottom:6px;
+    }
+    .profile-name {
+      font-family:'Noto Serif JP',serif;
+      font-size:25px; font-weight:700; margin-bottom:4px;
+    }
+    .profile-handle {
+      font-size:13.5px; color:rgba(255,255,255,0.85);
+    }
+    .profile-body { padding:26px 30px; }
+    .profile-story {
+      font-size:15px; color:var(--sub); line-height:2.25;
+      margin-bottom:24px;
+    }
+    .profile-story p { margin-bottom:14px; }
+    .profile-story p:last-child { margin-bottom:0; }
+    .usp-list { display:flex; flex-direction:column; gap:9px; }
+    .usp-item {
+      display:flex; align-items:flex-start; gap:10px;
+      font-size:15px; color:var(--sub); line-height:1.85;
+    }
+    .usp-item::before {
+      content:'✓'; color:var(--teal);
+      font-weight:700; flex-shrink:0; margin-top:1px;
+    }
+
+    /* ===== お問い合わせフォーム ===== */
+    .contact-sec { padding:56px 40px; background:var(--white); border-top:1px solid var(--border); }
+    .contact-intro { text-align:center; font-size:15px; color:var(--sub); line-height:2.05; margin-bottom:30px; }
+    .contact-form { max-width:560px; margin:0 auto; display:flex; flex-direction:column; gap:16px; }
+    .cf-field { display:flex; flex-direction:column; gap:6px; }
+    .cf-field label { font-size:13.5px; color:var(--text); }
+    .cf-field .req { color:#c98a6e; font-size:11px; margin-left:6px; }
+    .cf-field .opt { color:var(--sub); font-size:11px; margin-left:6px; }
+    .cf-field input, .cf-field textarea {
+      font-family:inherit; font-size:15px; padding:12px 14px;
+      border:1px solid var(--border); border-radius:8px;
+      background:var(--bg); color:var(--text); width:100%;
+    }
+    .cf-field textarea { min-height:120px; resize:vertical; }
+    .cf-field input:focus, .cf-field textarea:focus { outline:none; border-color:var(--teal); background:#fff; }
+    .cf-submit {
+      background:var(--teal); color:#fff; border:none;
+      font-family:'Noto Serif JP',serif; font-weight:700; font-size:16px;
+      padding:15px; border-radius:8px; cursor:pointer; letter-spacing:.04em;
+      transition:opacity .2s;
+    }
+    .cf-submit:hover { opacity:.92; }
+    .cf-result { text-align:center; font-size:14.5px; color:var(--teal); min-height:1.4em; line-height:1.8; }
+    .contact-or { text-align:center; color:var(--sub); font-size:13px; margin:28px 0 14px; }
+    .line-btn { display:inline-block; background:#06c755; color:#fff; padding:14px 34px; border-radius:8px; font-weight:700; font-size:15px; }
+
+    /* ===== CTA ===== */
+    .cta { padding:60px 40px; background:linear-gradient(135deg, #8B664F 0%, #9C775C 100%); text-align:center; color:white; }
+    .cta-title {
+      font-family:'Noto Serif JP',serif;
+      font-size:clamp(21px,3vw,27px); font-weight:700;
+      margin-bottom:14px; line-height:1.7;
+    }
+    .cta-sub {
+      font-size:15px; color:rgba(255,255,255,0.85);
+      margin-bottom:32px; line-height:2.05;
+    }
+    .cta-btn {
+      display:inline-block; padding:18px 42px;
+      background:white; color:var(--brown);
+      font-family:'Noto Serif JP',serif; font-size:17px; font-weight:700;
+      border-radius:6px; letter-spacing:0.05em; transition:opacity 0.2s;
+      box-shadow:0 8px 22px rgba(0,0,0,0.13);
+    }
+    .cta-btn:hover { opacity:0.9; }
+    .cta-link {
+      display:block; margin-top:20px;
+      font-size:13px; color:rgba(255,255,255,0.7);
+      text-decoration:underline; text-underline-offset:3px;
+    }
+
+    /* ===== フッター ===== */
+    footer {
+      background:var(--text); color:rgba(255,255,255,0.55);
+      padding:30px 40px; text-align:center;
+      font-size:12.5px; letter-spacing:0.1em; line-height:2;
+    }
+    footer span { color:rgba(255,255,255,0.35); }
+
+    /* ===== アニメ ===== */
+    .fade-up { opacity:0; transform:translateY(20px); transition:opacity 0.7s,transform 0.7s; }
+    .fade-up.visible { opacity:1; transform:translateY(0); }
+
+    @media(max-width:600px){
+      .hero, .miscon, .price-sec, .why-sec, .story-sec, .work-sec, .insta-sec, .contact-sec, .cta { padding:40px 20px; }
+      .nav { padding:8px 14px; gap:8px; }
+      .nav-logo img { height:28px; }
+      .nav-links { gap:13px; }
+      .nav-links a { font-size:12px; }
+      .nav-cta { padding:6px 13px; font-size:11.5px; }
+      .price-table th, .price-table td { padding:11px 10px; }
+      .price-table th:nth-child(2), .price-table td:nth-child(2) { display:none; }
+    }
+  </style>
+</head>
+<body id="top">
+
+<!-- グローバルナビ -->
+<header class="nav">
+  <a href="#top" class="nav-logo"><img src="logo.png" alt="Byron time"></a>
+  <nav class="nav-links">
+    <a href="#price">料金</a>
+    <a href="#why">つくり方</a>
+    <a href="#works">デモ</a>
+    <a href="#contact" class="nav-cta">相談する</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-eyebrow">＼ 小さなお店・ひとりの活動 専門 ／</div>
+      <h1 class="hero-title">
+        マルシェ・キッチンカー・<br>ハンドメイド作家さんの<br><span class="accent">ホームページ、作ります。</span>
+      </h1>
+      <p class="hero-sub">
+        「大きな会社の立派なサイト」ではなく、<br>
+        小さく頑張る人のためのホームページ専門。<br>
+        月額0円で持てて、自分で更新できる形でお作りします。
+      </p>
+      <div style="margin-top:28px;">
+        <a class="hero-btn" href="https://lin.ee/vAS0Ryb" target="_blank"><i class="fa-brands fa-line"></i> LINEで「ホームページ作ってみたい」と送る →</a>
+        <div class="hero-btn-note">
+          公式LINEにメッセージするだけ。まずは無料でデモサイトをお作りします！！<br>
+          気に入ったら正式依頼（¥39,800〜）・しつこい営業はしません。
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="bw">
+        <div class="bw-bar"><span class="bw-dot"></span><span class="bw-dot"></span><span class="bw-dot"></span><span class="bw-url">komeko-to.com</span></div>
+        <img class="bw-img" src="mockup_pc.jpg" alt="制作したホームページの例（パソコン表示）">
+      </div>
+      <div class="ph">
+        <img class="ph-img" src="mockup_sp.jpg" alt="制作したホームページの例（スマホ表示）">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- 誤解セクション -->
+<section class="miscon">
+  <div class="wrap">
+    <div class="sec-label fade-up">Common Misunderstandings</div>
+    <h2 class="sec-title fade-up">「ホームページ、なんか難しそう」<br>の正体</h2>
+    <div class="miscon-list">
+      <div class="miscon-item fade-up">
+        <span class="miscon-icon"><i class="fa-solid fa-money-bill-wave"></i></span>
+        「作るのに数十万かかる」と思って、最初から諦めていた
+      </div>
+      <div class="miscon-item fade-up">
+        <span class="miscon-icon"><i class="fa-solid fa-calendar-days"></i></span>
+        「作ったら月々費用が発生する」と聞いて、ためらっていた
+      </div>
+      <div class="miscon-item fade-up">
+        <span class="miscon-icon"><i class="fa-solid fa-lock"></i></span>
+        「作ったはいいけど、自分では更新できない」と聞いたことがあった
+      </div>
+      <div class="miscon-item fade-up">
+        <span class="miscon-icon"><i class="fa-solid fa-circle-question"></i></span>
+        そもそもホームページの種類や相場が全然わからない
+      </div>
+    </div>
+    <div class="arrow-section">↓</div>
+    <div class="result-box fade-up">
+      <strong>全部、解消できます。</strong>
+      ホームページにも「種類」があって、<br>
+      選び方次第で、コストも使い方も変わります。<br>
+      まず種類と相場を知ってください。
+    </div>
+  </div>
+</section>
+
+
+<!-- 相場比較表 -->
+<section class="price-sec" id="price">
+  <div class="wrap">
+    <div class="sec-label fade-up">Type &amp; Price Guide</div>
+    <h2 class="sec-title fade-up">ホームページの種類と相場</h2>
+    <p class="price-intro fade-up">
+      一口に「ホームページ」と言っても、作り方や規模によって費用は全然違います。<br>
+      小規模事業者に向いている選択肢を選ぶことが大事です。
+    </p>
+
+    <table class="price-table fade-up">
+      <thead>
+        <tr>
+          <th style="width:26%;">種類</th>
+          <th style="width:30%;">内容</th>
+          <th style="width:22%;">制作費の目安</th>
+          <th style="width:22%;">月額維持費</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>カスタム制作<br><small style="color:#bbb;">フルスクラッチ</small></td>
+          <td>デザイン・開発を一から丸ごと構築。大企業・ブランドサイト向け。</td>
+          <td>50万〜300万円</td>
+          <td>1万円〜<span class="badge-cost">月額</span></td>
+        </tr>
+        <tr>
+          <td>WordPress</td>
+          <td>管理画面から自分で記事や情報を更新できる。ブログ・ECサイトに多い。</td>
+          <td>20万〜80万円</td>
+          <td>1,000円〜<span class="badge-cost">月額</span></td>
+        </tr>
+        <tr>
+          <td>1ページ（LP）<br><small style="color:#bbb;">ペライチ等</small></td>
+          <td>縦長1ページの構成。イベント告知・期間限定ページとしてよく使われる。</td>
+          <td>3万〜15万円</td>
+          <td>無料〜数百円</td>
+        </tr>
+        <tr class="highlight">
+          <td>Byron time の形<br><small>（看板＋黒板メニュースタイル）</small></td>
+          <td>外観・デザイン・固定情報はYukariが制作。出店スケジュールやInstagramなど「毎週変わる情報」は、使い慣れたツールで自分管理できる。</td>
+          <td><strong>¥39,800〜</strong><br><small>（オープン記念価格）</small></td>
+          <td><strong>¥0</strong><span class="badge-free">無料</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="price-note fade-up">
+      ※ 相場はあくまで目安です。制作会社・フリーランスによって大きく異なります。
+    </p>
+
+    <div class="freebox fade-up">
+      <h3 class="freebox-title"><i class="fa-regular fa-lightbulb"></i>なぜ、月額0円で持てるの？</h3>
+      <div class="embed-list">
+        <div class="embed-item">
+          <span class="embed-icon"><i class="fa-solid fa-server"></i></span>
+          <div>
+            <strong>サーバー代がかからない</strong>
+            <span>世界最大規模のインフラ会社の「無料の枠」を使って公開します。小さなお店のアクセス量なら、月に数万回見られても無料の範囲で十分。世界中に配信される仕組みなので、アクセスが急に増えても落ちにくいです。</span>
+          </div>
+        </div>
+        <div class="embed-item">
+          <span class="embed-icon"><i class="fa-solid fa-envelope"></i></span>
+          <div>
+            <strong>お問い合わせフォームも無料の範囲で十分</strong>
+            <span>フォームからのお問い合わせは月250件まで無料。マルシェ・キッチンカー・小さなお店の規模なら、十分に余裕があります。</span>
+          </div>
+        </div>
+        <div class="embed-item">
+          <span class="embed-icon"><i class="fa-brands fa-instagram"></i></span>
+          <div>
+            <strong>Instagram表示も基本は無料</strong>
+            <span>最新投稿の表示も無料の範囲でOK。もし必要があれば、少しグレードアップ（追加で月1,000〜2,000円ほど）するだけで、そのまま使い続けられます。</span>
+          </div>
+        </div>
+      </div>
+      <p class="freebox-note">つまり——<strong>基本はずっと¥0。</strong>もし無料の範囲を超えても、必要なときにアップグレードすればOK。それでもかかるのは、ひと月数千円まで。「いつの間にか高額請求」みたいなことは起きません。</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- なぜこの形にしたか -->
+<section class="why-sec" id="why">
+  <div class="wrap">
+    <div class="sec-label fade-up">Why This Approach</div>
+    <h2 class="sec-title fade-up">「作って終わり」ではなく、<br>ずっと使えるホームページのために</h2>
+
+    <div class="why-flow">
+      <div class="why-step fade-up">
+        <div class="why-num">01</div>
+        <div class="why-body">
+          <div class="why-head">「作っても更新できない」問題をなくしたかった</div>
+          <div class="why-desc">
+            ホームページを作ったのに、テキスト一文の修正・メニューの変更・画像の差し替えのたびに<strong>制作者に頼まなきゃいけない</strong>。<br>
+            その手間とコストが積み重なって、結果的に「放置されたホームページ」になるケースをたくさん見てきました。
+          </div>
+        </div>
+      </div>
+      <div class="why-step fade-up">
+        <div class="why-num">02</div>
+        <div class="why-body">
+          <div class="why-head">「変わらない部分」と「変わる部分」を分けて考える</div>
+          <div class="why-desc">
+            お店のコンセプト・看板商品・連絡先は、そう頻繁には変わりません。<br>
+            一方、<strong>出店スケジュール・新商品・Instagram投稿・オンラインショップ</strong>は毎週変わる。<br>
+            だから「変わらない部分はホームページに固定して、変わる部分は自分で管理できる仕組みをつなぐ」という形にしました。
+          </div>
+        </div>
+      </div>
+      <div class="why-step fade-up">
+        <div class="why-num">03</div>
+        <div class="why-body">
+          <div class="why-head">「作った後も、わざわざ頼まなくていい」ホームページができる</div>
+          <div class="why-desc">
+            スケジュールはGoogleカレンダーを更新するだけ。<br>
+            BASEやminneのショップはそのまま管理できる。<br>
+            <strong>クライアントが普段使っているサービスで、HPを"生きた状態"に保てる。</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="embed-list">
+      <div class="embed-item fade-up">
+        <span class="embed-icon"><i class="fa-solid fa-calendar-check"></i></span>
+        <div>
+          <strong>Googleカレンダーで出店管理</strong>
+          <span>カレンダーに予定を入れるだけで、ホームページのスケジュールページが自動で更新されます</span>
+        </div>
+      </div>
+      <div class="embed-item fade-up">
+        <span class="embed-icon"><i class="fa-brands fa-instagram"></i></span>
+        <div>
+          <strong>Instagramと連動</strong>
+          <span>Instagramに投稿するだけで、ホームページの最新情報コーナーが自動で更新されます</span>
+        </div>
+      </div>
+      <div class="embed-item fade-up">
+        <span class="embed-icon"><i class="fa-solid fa-bag-shopping"></i></span>
+        <div>
+          <strong>BASE・minneへのリンク</strong>
+          <span>オンラインショップはそのまま管理。HPからショップへ誘導する形になります</span>
+        </div>
+      </div>
+      <div class="embed-item fade-up">
+        <span class="embed-icon"><i class="fa-solid fa-map-location-dot"></i></span>
+        <div>
+          <strong>Googleマップ＆Google検索に「見つけてもらう」</strong>
+          <span>実店舗・工房の場所をマップで案内するだけでなく、あわせて「Googleビジネスプロフィール」を整えれば、地域名で検索した人のGoogleマップや検索結果にあなたのお店が表示されます。ホームページを知らない人にも見つけてもらえる、新しい入口になります。</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- デモサイト -->
+<section class="work-sec" id="works">
+  <div class="wrap">
+    <div class="sec-label fade-up">Demo Sites</div>
+    <h2 class="sec-title fade-up">こんなサイトが作れます</h2>
+    <p class="work-lead fade-up">下のカードをタップすると、実際のデモサイトが開きます👇<br>「自分のお店だったら」をイメージしながら見てみてください。</p>
+    <div class="work-grid">
+      <a class="work-card fade-up" href="../demo-komeko/index.html" target="_blank" rel="noopener">
+        <img src="works/komeko.jpg" alt="komeko to. デモサイト">
+        <div class="work-info">
+          <div class="work-tag">Sweets / Kitchen car</div>
+          <div class="work-name">komeko to.</div>
+          <div class="work-desc">米粉ドーナツ・焼き菓子のお店。出店スケジュール・メニュー・ショップ誘導まで。</div>
+          <span class="work-open">デモを開く →</span>
+        </div>
+      </a>
+      <a class="work-card fade-up" href="../demo-kitchencar/index.html" target="_blank" rel="noopener">
+        <img src="works/kitchencar.jpg" alt="FLEUR CRÊPE デモサイト">
+        <div class="work-info">
+          <div class="work-tag">Cr&ecirc;pe / Kitchen car</div>
+          <div class="work-name">FLEUR CRÊPE</div>
+          <div class="work-desc">クレープのキッチンカー。出店情報やSNSと連動した&ldquo;生きた&rdquo;ページ。</div>
+          <span class="work-open">デモを開く →</span>
+        </div>
+      </a>
+    </div>
+    <div class="work-note fade-up">※ どちらも実在のお店ではない&ldquo;見本&rdquo;です。<strong style="color:var(--teal);">あなたのお店版も、無料でお作りします。</strong></div>
+  </div>
+</section>
+
+
+<!-- Instagram -->
+<section class="insta-sec" id="insta">
+  <div class="wrap">
+    <div class="sec-label fade-up">Instagram</div>
+    <h2 class="sec-title fade-up">こんな発信もしています</h2>
+    <p class="insta-intro fade-up">
+      関西のマルシェ・イベント情報をまとめる <strong>@kansai_connector</strong> を運営しています。<br>
+      ホームページ制作とは別の活動ですが、こうして現場とつながっているからこそ、出展者さんと同じ目線でお店のホームページが作れます。<br>
+      関西のおでかけ・イベント情報、よかったらのぞいてみてください。
+    </p>
+    <div class="insta-embed fade-up">
+      <behold-widget feed-id="rgs39Hk2ZMSmORJw2yGK"></behold-widget>
+      <script>
+        (() => {
+          const d=document,s=d.createElement("script");s.type="module";
+          s.src="https://w.behold.so/widget.js";d.head.append(s);
+        })();
+      </script>
+    </div>
+    <div style="text-align:center;">
+      <a class="insta-btn" href="https://www.instagram.com/kansai_connector/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i> Instagramで見る ＠kansai_connector →</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ストーリー / 自己紹介 -->
+<section class="story-sec">
+  <div class="wrap">
+    <div class="sec-label fade-up">About Me</div>
+    <h2 class="sec-title fade-up">自己紹介</h2>
+
+    <div class="profile-card fade-up">
+      <div class="profile-head">
+        <div class="profile-name-en">Web Designer / @kansai_connector</div>
+        <div class="profile-name">Yukari</div>
+        <div class="profile-handle">飲食イベント出展 → SNS発信 → ホームページ制作へ</div>
+      </div>
+      <div class="profile-body">
+        <div class="profile-story">
+          <p>
+            もともと飲食系でのイベント出展を数年続けていました。マルシェやキッチンカーイベントに足を運ぶうちに、「関西のイベント情報をまとめるアカウントがあれば出展者にも来場者にも役立つ」と感じて、<strong>@kansai_connector</strong> を開設しました。
+          </p>
+          <p>
+            その流れで、ペットの写真を使ったオーダーメイドグッズ（うちの子グッズ）のオンライン販売も始め、自分でもマルシェに出展するようになりました。インスタでの発信、オンラインショップの運営、現場での出店——小規模事業者として動いてきた経験が積み重なっています。
+          </p>
+          <p>
+            並行して、ホームページ制作を学んできました。Photoshop・Illustratorを使ったデザインから、HTML/CSSのコーディングまで。だから、ホームページがどうやって作られているか、なぜ高いのか安いのか、相場がどのくらいなのかが、自分ごととして理解できています。
+          </p>
+          <p>
+            イベントやマルシェで出会う小規模事業者の方を見ていると、「ホームページ、高そうだから」「自分じゃ更新できなさそうだから」と、最初から諦めている人が少なくありませんでした。でも、ホームページを持てていないせいで、届けられたはずの人に届いていない。そう感じることが何度もありました。
+          </p>
+          <p>
+            自分には制作の技術がある。そして現場にいてきたから、小規模事業者が本当に必要としているものがわかる。——だから、<strong>安く・自分で更新できる・持続できる</strong>ホームページを、キッチンカーやマルシェ出展者、ハンドメイド作家さん専門で作ろうと決めました。
+          </p>
+        </div>
+        <div class="usp-list">
+          <div class="usp-item">飲食系イベント出展を数年経験（現場を知っている）</div>
+          <div class="usp-item">自分でもSNS発信・オンラインショップ・マルシェ出展を続けている</div>
+          <div class="usp-item">ホームページ制作を学んだ（技術・相場感がある）</div>
+          <div class="usp-item">小規模事業者と同じ目線で「必要なHP」を考えられる</div>
+          <div class="usp-item">維持費¥0・自分で更新できる部分を残した設計にこだわっている</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="wrap">
+    <h2 class="cta-title">まずは、LINEで<br>気軽にご相談ください</h2>
+    <p class="cta-sub">
+      公式LINEにメッセージをくれたら、そこからやりとりスタート。<br>内容をうかがって、デモサイトを<strong style="color:#fff;">無料</strong>でお作りします。気に入ったら正式依頼へ（¥39,800〜）。<br><br>
+      ① 公式LINEに「ホームページ作ってみたい」と送る<br>
+      ② 自動で届くヒアリングシートに記入 → 内容をもとにデモを無料制作<br>
+      ③ 気に入ったら正式依頼・購入
+    </p>
+    <a class="cta-btn" href="https://lin.ee/vAS0Ryb" target="_blank" style="background:#06c755; color:#fff;">
+      <i class="fa-brands fa-line"></i> LINEで相談する（無料）→
+    </a>
+    <a class="cta-link" href="なぜホームページが必要か.html">
+      ↗ ホームページが必要な理由を読む
+    </a>
+  </div>
+</section>
+
+<footer>
+  Byron time Web制作<br>
+  <span>© 2026 Byron time</span>
+</footer>
+
+<script>
+  // フェードインアニメ
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    }),
+    { threshold: 0.12 }
+  );
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // お問い合わせフォーム送信（Web3Forms）
+  (function(){
+    const f = document.getElementById('contactForm');
+    const out = document.getElementById('cfResult');
+    if(!f) return;
+    f.addEventListener('submit', async function(e){
+      e.preventDefault();
+      out.style.color = 'var(--sub)';
+      out.textContent = '送信中…';
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method:'POST',
+          body: new FormData(f)
+        });
+        const data = await res.json();
+        if (data.success) {
+          f.querySelectorAll('input,textarea,button').forEach(el => el.style.display='none');
+          out.style.color = 'var(--teal)';
+          out.innerHTML = '✅ 送信しました！<br>2〜3日以内にご返信します。ありがとうございます😊';
+        } else {
+          out.style.color = '#c06a4a';
+          out.innerHTML = '送信できませんでした。お手数ですが LINE からご連絡ください🙏';
+        }
+      } catch (err) {
+        out.style.color = '#c06a4a';
+        out.innerHTML = '送信できませんでした。お手数ですが LINE からご連絡ください🙏';
+      }
+    });
+  })();
+</script>
+</body>
+</html>
