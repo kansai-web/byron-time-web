@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact｜Pilot Coffee Kitchen｜奈良・香芝 真美ヶ丘</title>
+  <meta name="description" content="Pilot Coffee Kitchen へのお問い合わせ・ご予約はこちら。奈良県香芝市真美ヶ丘。">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .tab-wrap{max-width:720px;margin:0 auto;display:flex;border-bottom:1px solid var(--border);}
+    .tab-btn{flex:1;background:none;border:none;font-family:'Noto Sans JP',sans-serif;font-size:14px;font-weight:500;color:var(--muted);padding:16px 10px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .25s;letter-spacing:.05em;}
+    .tab-btn.active{color:var(--coffee);border-bottom-color:var(--coffee);font-weight:700;}
+    .tab-btn i{margin-right:9px;color:var(--accent);}
+    .tab-btn:hover{color:var(--dark);}
+    .form-panel{display:none;}
+    .form-panel.active{display:block;}
+    .form-intro{max-width:640px;margin:0 auto 34px;background:var(--sub);border-radius:8px;padding:20px 24px;font-size:12.5px;color:var(--dark);line-height:2;}
+    .form-intro .fi-note{display:block;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);font-size:11px;color:var(--muted);}
+    .check-list{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;}
+    .check-item{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--dark);cursor:pointer;}
+    .check-item input{accent-color:var(--coffee);width:16px;height:16px;}
+    .form-2col{display:grid;grid-template-columns:1fr 1fr;gap:0 22px;}
+    @media(max-width:640px){.form-2col{grid-template-columns:1fr;}.check-list{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav" class="scrolled">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">Pilot Coffee Kitchen<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="index.html#schedule">Schedule</a></li>
+      <li><a href="index.html#shop">Shop</a></li>
+      <li><a href="index.html#access">Access</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="メニュー"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="index.html">Home</a>
+  <a href="menu.html">Menu</a>
+  <a href="index.html#schedule">Schedule</a>
+  <a href="index.html#shop">Online Shop</a>
+  <a href="index.html#access">Access</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="ph-label">Contact</div>
+  <h1 class="ph-title">お問い合わせ</h1>
+  <p class="ph-sub">ご予約・商品のご相談は「お客さまお問い合わせ」から、<br>マルシェ・イベントへの出店のご依頼は「出店依頼フォーム」からどうぞ。</p>
+</section>
+
+<!-- TABS -->
+<section class="sec" style="background:var(--white);padding-bottom:90px;">
+  <div class="tab-wrap fade-up">
+    <button class="tab-btn active" id="tab-event" onclick="switchTab('event')"><i class="fa-solid fa-tent"></i>出店依頼フォーム</button>
+    <button class="tab-btn" id="tab-customer" onclick="switchTab('customer')"><i class="fa-solid fa-envelope-open-text"></i>お客さまお問い合わせ</button>
+  </div>
+
+  <!-- ① 出店依頼フォーム -->
+  <div class="form-panel active" id="panel-event">
+    <form class="contact-form fade-up" style="padding-top:38px;" onsubmit="alert('デモサイトです。実際のサイトでは、この出店依頼がそのままオーナーのメール／LINEに届きます。');return false;">
+      <div class="form-intro">
+        <i class="fa-solid fa-tent" style="color:var(--accent);margin-right:7px;"></i><strong>イベント主催者・企業のご担当者様へ</strong><br>
+        マルシェ・イベントへの出店依頼は、こちらのフォームからご連絡ください。<br>
+        <strong style="color:var(--coffee);">日程・場所・規模をまとめてお送りいただけると、スムーズにご回答できます。</strong>
+        <span class="fi-note">出店エリア：奈良・関西全域（応相談）／スペシャルティコーヒー・スイーツなどの出店が可能です</span>
+      </div>
+      <div class="form-2col">
+        <div class="form-row">
+          <label>お名前・ご担当者名 <span class="req">*</span></label>
+          <input type="text" placeholder="山田 太郎" required>
+        </div>
+        <div class="form-row">
+          <label>団体名・会社名</label>
+          <input type="text" placeholder="〇〇マルシェ実行委員会">
+        </div>
+      </div>
+      <div class="form-2col">
+        <div class="form-row">
+          <label>メールアドレス <span class="req">*</span></label>
+          <input type="email" placeholder="example@mail.com" required>
+        </div>
+        <div class="form-row">
+          <label>お電話番号</label>
+          <input type="tel" placeholder="090-0000-0000">
+        </div>
+      </div>
+      <div class="form-2col">
+        <div class="form-row">
+          <label>イベント開催日 <span class="req">*</span></label>
+          <input type="text" placeholder="例）2026年8月2日（土）" required>
+        </div>
+        <div class="form-row">
+          <label>開催時間</label>
+          <input type="text" placeholder="例）10:00〜16:00">
+        </div>
+      </div>
+      <div class="form-row">
+        <label>開催場所・住所 <span class="req">*</span></label>
+        <input type="text" placeholder="例）奈良県香芝市〇〇公園" required>
+      </div>
+      <div class="form-row">
+        <label>イベントの規模・来場者数（目安）</label>
+        <select>
+          <option>選択してください</option>
+          <option>〜100人</option>
+          <option>100〜500人</option>
+          <option>500〜1000人</option>
+          <option>1000人以上</option>
+          <option>未定</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label>出店条件</label>
+        <div class="check-list">
+          <label class="check-item"><input type="checkbox">出店料あり</label>
+          <label class="check-item"><input type="checkbox">出店料なし</label>
+          <label class="check-item"><input type="checkbox">電源あり</label>
+          <label class="check-item"><input type="checkbox">車両乗り入れ可</label>
+        </div>
+      </div>
+      <div class="form-row">
+        <label>イベントの詳細・ご依頼内容 <span class="req">*</span></label>
+        <textarea placeholder="イベントの内容、出店をお願いしたい理由、その他ご要望などをご記入ください" required></textarea>
+      </div>
+      <div class="form-submit">
+        <button type="submit" class="btn-primary">出店依頼を送信する ›</button>
+      </div>
+      <p class="form-note">※ デモ表示です。実際のサイトでは、ご入力内容がそのままオーナーのメール／LINEに届きます。</p>
+    </form>
+  </div>
+
+  <!-- ② お客さまお問い合わせ -->
+  <div class="form-panel" id="panel-customer">
+    <form class="contact-form fade-up" style="padding-top:38px;" onsubmit="alert('デモサイトです。実際のサイトでは、この内容がそのままオーナーのメール／LINEに届きます。');return false;">
+      <div class="form-intro">
+        <i class="fa-solid fa-envelope-open-text" style="color:var(--accent);margin-right:7px;"></i><strong>こんなときにご利用ください</strong><br>
+        <i class="fa-solid fa-martini-glass-citrus" style="color:var(--accent);margin-right:7px;"></i>まるごと桃パフェなど<strong>数量限定メニューのご予約</strong><br>
+        <i class="fa-solid fa-cake-candles" style="color:var(--accent);margin-right:7px;"></i><strong>貸切・パーティー</strong>のご相談<br>
+        <i class="fa-solid fa-gift" style="color:var(--accent);margin-right:7px;"></i><strong>ギフト・オンラインショップ</strong>の商品について<br>
+        <i class="fa-solid fa-camera-retro" style="color:var(--accent);margin-right:7px;"></i><strong>取材・SNS掲載</strong>のご依頼
+        <span class="fi-note">※ お急ぎの場合は、Instagram DM がおすすめです。</span>
+      </div>
+      <div class="form-2col">
+        <div class="form-row">
+          <label>お名前 <span class="req">*</span></label>
+          <input type="text" placeholder="山田 花子" required>
+        </div>
+        <div class="form-row">
+          <label>メールアドレス <span class="req">*</span></label>
+          <input type="email" placeholder="example@mail.com" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <label>お問い合わせ内容</label>
+        <select>
+          <option>ご予約について（パフェ・席）</option>
+          <option>貸切・イベントのご相談</option>
+          <option>商品・オンラインショップについて</option>
+          <option>取材・掲載について</option>
+          <option>その他</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label>メッセージ <span class="req">*</span></label>
+        <textarea placeholder="ご希望の日時・人数・ご相談内容などをご記入ください" required></textarea>
+      </div>
+      <div class="form-submit">
+        <button type="submit" class="btn-primary">送信する ›</button>
+      </div>
+      <p class="form-note">※ デモ表示です。実際のサイトでは、ご入力内容がそのままオーナーのメール／LINEに届きます。</p>
+    </form>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section class="sec access-sec" id="access">
+  <div class="sec-label">Access & Info</div>
+  <h2 class="sec-title">店舗情報</h2>
+  <div class="access-inner">
+    <div class="access-info fade-up">
+      <div class="access-row">
+        <i class="fa-solid fa-location-dot"></i>
+        <div class="access-rt"><span class="lbl">Address</span>奈良県香芝市真美ヶ丘2-13-8</div>
+      </div>
+      <div class="access-row">
+        <i class="fa-solid fa-train-subway"></i>
+        <div class="access-rt"><span class="lbl">Access</span>近鉄「五位堂駅」より徒歩約10分<br><span class="biz">駐車場あり</span></div>
+      </div>
+      <div class="access-row">
+        <i class="fa-solid fa-clock"></i>
+        <div class="access-rt"><span class="lbl">Open</span>月・火・木・金・土 12:00–18:00<br><span class="biz">定休日：水曜</span></div>
+      </div>
+      <div class="access-row">
+        <i class="fa-brands fa-instagram"></i>
+        <div class="access-rt"><span class="lbl">Instagram</span>@pilotcoffeekitchen</div>
+      </div>
+    </div>
+    <div class="access-map gmap fade-up" style="transition-delay:0.15s">
+      <iframe src="https://www.google.com/maps/embed?origin=mfe&pb=!1m2!2m1!1z5aWI6Imv55yM6aaZ6Iqd5biC55yf576O44O25LiYMi0xMy04" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Pilot Coffee Kitchen 地図"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">Pilot Coffee Kitchen<span>.</span></div>
+      <p class="footer-desc">
+        スペシャルティコーヒー・季節のパフェ ／ 奈良県香芝市 真美ヶ丘<br>
+        営業：月火木金土 12:00–18:00（水休）<br>
+        📷 @pilotcoffeekitchen　🛒 pck.base.ec
+      </p>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="index.html#shop">Online Shop</a>
+      <a href="index.html#access">Access</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Pilot Coffee Kitchen</div>
+    <div class="footer-credit">Web制作：<a href="#">Byron time Web制作</a></div>
+  </div>
+</footer>
+
+<script>
+  function switchTab(name){
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.form-panel').forEach(p=>p.classList.remove('active'));
+    document.getElementById('tab-'+name).classList.add('active');
+    document.getElementById('panel-'+name).classList.add('active');
+  }
+  const toggle=document.getElementById('navToggle'),mobile=document.getElementById('navMobile');
+  toggle.addEventListener('click',()=>{toggle.classList.toggle('open');mobile.classList.toggle('open');});
+  document.querySelectorAll('.nav-mobile a').forEach(a=>a.addEventListener('click',()=>{toggle.classList.remove('open');mobile.classList.remove('open');}));
+  const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.12});
+  document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
