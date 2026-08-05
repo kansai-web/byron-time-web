@@ -6,3 +6,5 @@
 wrangler.toml
 .DS_Store
 *.md
+*.py
+*.bak

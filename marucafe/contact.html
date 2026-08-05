@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お問い合わせ｜MARU cafe（マルカフェ）｜丹波篠山</title>
+  <meta name="description" content="MARU cafeへのお問い合わせ。ご予約は公式LINE、その他のご質問・出店のご依頼はフォームから承ります。">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="images/logo_sm.jpg" alt="MARU cafe ロゴ">MARU cafe</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">ホーム</a></li>
+      <li><a href="menu.html">メニュー</a></li>
+      <li><a href="pet.html">ペットとの過ごし方</a></li>
+      <li><a href="shop.html">ショップ</a></li>
+      <li><a href="access.html">アクセス</a></li>
+      <li><a href="contact.html" class="on">お問い合わせ</a></li>
+      <li><a href="https://lin.ee/Dg2lLuk" target="_blank" rel="noopener" class="nav-line"><i class="fa-brands fa-line"></i>LINEで予約</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="メニュー"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="page-head">
+  <span class="sec-en">Contact</span>
+  <h1>お問い合わせ</h1>
+  <p>ご予約は公式LINE、その他はフォームから承ります。</p>
+</header>
+
+<section>
+  <div class="wrap narrow">
+    <div class="route">
+      <div class="rbox line fade">
+        <div class="ic"><i class="fa-brands fa-line"></i></div>
+        <h3>ご予約</h3>
+        <p>お席のご予約は公式LINEから承っております。<br>お日にち・人数・わんちゃんの有無をお知らせください。</p>
+        <a href="https://lin.ee/Dg2lLuk" target="_blank" rel="noopener" class="btn btn-line"><i class="fa-brands fa-line"></i>LINEで予約する</a>
+      </div>
+      <div class="rbox mail fade">
+        <div class="ic"><i class="fa-regular fa-envelope"></i></div>
+        <h3>そのほかのお問い合わせ</h3>
+        <p>お店へのご質問、出店のご依頼、取材のご相談などは<br>下のフォームからお願いいたします。</p>
+        <a href="#form" class="btn btn-accent"><i class="fa-solid fa-arrow-down"></i>フォームへ</a>
+      </div>
+    </div>
+
+    <div class="draft">
+      <b>【制作中のお知らせ】</b>このフォームは見た目のみのサンプルです。公開時に、送信内容がメールに届くよう私（制作者）が設定します。受信用のメールアドレス（Gmail）をお知らせください。<br><b>▼ご確認ください：</b>「お問い合わせの種類」の選択肢は仮のものです。<b>MARU cafestaへの出店希望</b>の窓口もあった方がよいかと思い入れています。不要なもの・足したいものがあれば教えてください。
+    </div>
+
+    <div class="sec-head fade" id="form">
+      <span class="sec-en">Contact form</span>
+      <h2 class="sec-t">お問い合わせフォーム</h2>
+      <p class="sec-lead">2〜3日以内にお返事いたします。<br>お急ぎの場合は公式LINEからご連絡ください。</p>
+    </div>
+
+    <form class="form fade" onsubmit="alert('サンプルのため送信されません。公開時に実際のメールへ届くよう設定します。'); return false;">
+      <div class="fld">
+        <label>お問い合わせの種類<span class="req">必須</span></label>
+        <select required>
+          <option value="">選択してください</option>
+          <option>お店へのご質問</option>
+          <option>MARU cafestaへの出店希望（イベントに出たい）</option>
+          <option>出店のご依頼（イベントにMARU cafeを呼びたい）</option>
+          <option>取材・掲載のご相談</option>
+          <option>商品について</option>
+          <option>その他</option>
+        </select>
+        <div class="hint">※お席のご予約は公式LINEから承っております。</div>
+      </div>
+      <div class="fld">
+        <label>お名前<span class="req">必須</span></label>
+        <input type="text" required placeholder="例）山田 花子">
+      </div>
+      <div class="fld">
+        <label>会社名・団体名</label>
+        <input type="text" placeholder="出店のご依頼などの場合はご記入ください">
+      </div>
+      <div class="fld">
+        <label>メールアドレス<span class="req">必須</span></label>
+        <input type="email" required placeholder="例）info@example.com">
+      </div>
+      <div class="fld">
+        <label>お電話番号</label>
+        <input type="tel" placeholder="例）090-0000-0000">
+      </div>
+      <div class="fld">
+        <label>お問い合わせ内容<span class="req">必須</span></label>
+        <textarea required placeholder="ご質問やご依頼の内容をご記入ください。"></textarea>
+      </div>
+      <label class="privacy-check">
+        <input type="checkbox" required>
+        <span><a href="privacy-policy.html" style="color:var(--accent-dark);text-decoration:underline;">プライバシーポリシー</a>に同意します</span>
+      </label>
+      <div class="form-submit">
+        <button type="submit" class="btn btn-accent"><i class="fa-regular fa-paper-plane"></i>この内容で送信する</button>
+      </div>
+    </form>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="ft-in">
+      <div>
+        <a href="index.html" class="ft-logo"><img class="ft-logo-img" src="images/logo_sm.jpg" alt="MARU cafe ロゴ">MARU cafe</a>
+        <p>兵庫県丹波篠山市野中330-6<br>11:00〜16:30（L.O. 16:00）<br>定休日はカレンダーをご覧ください</p>
+        <div class="ft-sns">
+          <a href="https://www.instagram.com/marucafe_0721/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://lin.ee/Dg2lLuk" target="_blank" rel="noopener" aria-label="LINE"><i class="fa-brands fa-line"></i></a>
+        </div>
+      </div>
+      <ul class="ft-links">
+        <li><a href="index.html">ホーム</a></li>
+        <li><a href="menu.html">メニュー</a></li>
+        <li><a href="pet.html">ペットとの過ごし方</a></li>
+        <li><a href="shop.html">ショップ</a></li>
+        <li><a href="access.html">アクセス</a></li>
+        <li><a href="contact.html">お問い合わせ</a></li>
+      </ul>
+    </div>
+    <div class="ft-bottom">
+      <span>&copy; MARU cafe</span>
+      <span><a href="privacy-policy.html">プライバシーポリシー</a>　/　<a href="terms.html">利用規約</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

@@ -362,6 +362,22 @@
         <span class="meta-label">ご記入日</span>
         <input class="meta-input" type="text" name="ご記入日" placeholder="例）2026年5月1日">
       </div>
+      <div class="meta-field">
+        <span class="meta-label">ご連絡先メールアドレス <span style="color:#c0392b;">※必須</span></span>
+        <input class="meta-input" type="email" name="ご連絡先メールアドレス" required placeholder="例）info@example.com">
+      </div>
+      <div class="meta-field">
+        <span class="meta-label">お問い合わせフォームの受信先</span>
+        <input class="meta-input" type="email" name="フォーム受信先メールアドレス" placeholder="上と同じでよければ空欄でOK">
+      </div>
+    </div>
+    <div style="margin-top:14px; font-size:12.5px; line-height:1.95; color:#e8ded0; background:rgba(255,255,255,.08); border-radius:8px; padding:12px 16px;">
+      ✉️ <strong>メールアドレスの使いみち</strong><br>
+      ・<strong>ご連絡先</strong>＝制作中のご連絡に使います<br>
+      ・<strong>フォームの受信先</strong>＝完成したホームページの「お問い合わせフォーム」に<u>お客さまが入力した内容が届く</u>アドレスです<br>
+      ・営業カレンダーの自動更新（Googleカレンダー連携）をご希望の場合は、<strong>Googleアカウント（Gmail）</strong>が必要です。お持ちでなければ、無料で作れますのでご相談ください。
+    </div>
+    <div style="display:none;">
     </div>
   </div>
 
@@ -452,8 +468,19 @@
         <div class="check-group">
           <label class="check-item"><input type="checkbox" name="Q3_営業スタイル" value="キッチンカーのみ"> キッチンカーのみ</label>
           <label class="check-item"><input type="checkbox" name="Q3_営業スタイル" value="実店舗あり" id="check-jitenshop"> 実店舗あり</label>
-          <label class="check-item"><input type="checkbox" name="Q3_営業スタイル" value="ネットショップあり（minne・BASE等）"> ネットショップあり（minne・BASE等）</label>
+          <label class="check-item"><input type="checkbox" name="Q3_営業スタイル" value="ネットショップあり（minne・BASE等）" id="check-netshop"> ネットショップあり（minne・BASE等）</label>
           <label class="check-item"><input type="checkbox" name="Q3_営業スタイル" value="イベント・マルシェ出店"> イベント・マルシェ出店</label>
+        </div>
+
+        <!-- ネットショップあり → ショップURL欄（条件表示） -->
+        <div id="section-netshop" style="display:none; margin-top:12px; padding:20px 24px; background:#f6f4fa; border-radius:8px; border:1px solid #d9d0e8;">
+          <p style="font-size:12px; color:var(--sub); margin-bottom:14px;">🛒 ホームページから、お買い物ページへリンクします。URLを入力してください。</p>
+          <div style="display:grid; grid-template-columns:1fr 2fr; gap:10px 16px; align-items:center;">
+            <label style="font-size:13px; color:var(--text);">ネットショップURL</label>
+            <input class="q-input" type="url" name="Q3_ネットショップURL" placeholder="例）https://yourshop.base.shop/">
+            <label style="font-size:13px; color:var(--text);">2つ目があれば</label>
+            <input class="q-input" type="url" name="Q3_ネットショップURL2" placeholder="minne・Creema など（なければ空欄）">
+          </div>
         </div>
 
         <!-- 実店舗あり → 住所欄（条件表示） -->
@@ -468,8 +495,10 @@
             <input class="q-input" type="text" name="Q3_店舗_住所" placeholder="例）大阪市北区〇〇町1-2-3">
             <label style="font-size:13px; color:var(--text);">建物名・部屋番号</label>
             <input class="q-input" type="text" name="Q3_店舗_建物" placeholder="例）〇〇ビル1F（なければ空欄）">
+            <label style="font-size:13px; color:var(--text);">営業日（曜日）</label>
+            <input class="q-input" type="text" name="Q3_店舗_営業日" placeholder="例）月・金・土・日・祝">
             <label style="font-size:13px; color:var(--text);">営業時間</label>
-            <input class="q-input" type="text" name="Q3_店舗_営業時間" placeholder="例）火〜土 10:00〜17:00">
+            <input class="q-input" type="text" name="Q3_店舗_営業時間" placeholder="例）11:00〜16:30（L.O.16:00）">
             <label style="font-size:13px; color:var(--text);">定休日</label>
             <input class="q-input" type="text" name="Q3_店舗_定休日" placeholder="例）日・月曜定休">
             <label style="font-size:13px; color:var(--text);">GoogleマップURL</label>
@@ -1113,6 +1142,12 @@
           <label class="radio-item"><input type="radio" name="Q23_ロゴ" value="手書きや写真ならある"> 手書きや写真ならある</label>
           <label class="radio-item"><input type="radio" name="Q23_ロゴ" value="ない・作ってほしい"> ない・作ってほしい</label>
           <label class="radio-item"><input type="radio" name="Q23_ロゴ" value="ない・なくてもいい"> ない・なくてもいい</label>
+          </div>
+          <div style="font-size:12px;color:#8a7a6a;margin-top:10px;line-height:1.9;background:#fdf7f0;border-radius:8px;padding:10px 14px;">
+            📎 <strong>ロゴ・お写真・メニュー表のデータは、このシートとは別に公式LINEへお送りください。</strong><br>
+            送信後に、こちらから送り先をご案内します。スマホで撮ったものでも大丈夫です。
+          </div>
+          <div style="display:none;">
         </div>
       </div>
     </div>
@@ -1368,6 +1403,11 @@
   }
   document.querySelectorAll('.style-check').forEach(function(cb) {
     cb.addEventListener('change', updateStyleSections);
+  });
+
+  // ネットショップあり → ショップURL欄を表示
+  document.getElementById('check-netshop').addEventListener('change', function() {
+    document.getElementById('section-netshop').style.display = this.checked ? 'block' : 'none';
   });
 
   // 実店舗あり → 住所欄を表示
