@@ -306,6 +306,10 @@ footer{background:var(--ink);color:#EDE5DF;padding:52px 0 30px;}
 .br-sp{display:none;}
 @media (max-width:700px){ .br-sp{display:inline;} }
 
+/* 最後の行に1文字だけ残る「取り残され改行」をブラウザ側でも避ける
+   （幅の狭い箇条書きなど、手で改行を入れにくい場所に効く） */
+p,li,dd,h3{text-wrap:pretty;}
+
 /* ---------------------------------------------------------
    スマホのヒーロー：写真の上に文字を重ねない
    （建物の看板「MARU cafe」とサイトの見出しが重なって
