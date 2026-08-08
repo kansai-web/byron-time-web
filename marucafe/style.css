@@ -312,6 +312,14 @@ footer{background:var(--ink);color:#EDE5DF;padding:52px 0 30px;}
   .hero-pic{position:relative;inset:auto;height:42vh;min-height:250px;max-height:340px;}
   .hero-bg{object-position:center 62%;}
   .hero::after{content:none;}
+  /* 写真の下（駐車場）を白いもやでふんわり隠して、下の背景になじませる */
+  .hero-pic::after{content:'';position:absolute;left:0;right:0;bottom:0;height:48%;
+    background:linear-gradient(180deg,
+      rgba(251,248,245,0) 0%,
+      rgba(251,248,245,.14) 34%,
+      rgba(251,248,245,.62) 66%,
+      rgba(251,248,245,.94) 87%,
+      var(--bg) 100%);}
   .hero-in{padding:0 22px 48px;}
   .hero-logo{margin-top:-54px;box-shadow:0 6px 20px rgba(74,64,58,.18);}
   .hero h1{font-size:34px;}
