@@ -36,7 +36,11 @@
 
 <!-- HERO -->
 <header class="hero">
-  <img class="hero-bg" src="images/gaikan_yoko.jpg" alt="MARU cafe 外観">
+  <picture class="hero-pic">
+    <!-- スマホは縦写真（空が広く、看板の文字と本文が重ならない） -->
+    <source media="(max-width:700px)" srcset="images/gaikan_tate.jpg">
+    <img class="hero-bg" src="images/gaikan_yoko.jpg" alt="MARU cafe 外観">
+  </picture>
   <div class="hero-in">
     <img class="hero-logo" src="images/logo_sm.jpg" alt="MARU cafe ロゴ">
     <h1>MARU cafe<span class="h1sub">マルカフェ｜丹波篠山</span></h1>
