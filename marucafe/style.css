@@ -302,6 +302,10 @@ footer{background:var(--ink);color:#EDE5DF;padding:52px 0 30px;}
 .feat.f4 .fitem{padding:26px 18px;}
 @media (max-width:900px){ .feat.f4{grid-template-columns:1fr 1fr;} }
 
+/* スマホだけで改行させたい箇所に付ける（PCでは改行しない） */
+.br-sp{display:none;}
+@media (max-width:700px){ .br-sp{display:inline;} }
+
 /* ---------------------------------------------------------
    スマホのヒーロー：写真の上に文字を重ねない
    （建物の看板「MARU cafe」とサイトの見出しが重なって
