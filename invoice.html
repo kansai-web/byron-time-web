@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>請求書｜BYRON TIME</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{
+  --brown:#8B664F; --text:#4a3728; --sub:#9b8575;
+  --border:#e0d5c8; --beige:#D3C4A7; --sunset:#E19B6D;
+  --font:'Noto Serif JP',serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:var(--font);color:var(--text);background:#EDE7DE;line-height:1.9;
+  -webkit-font-smoothing:antialiased;padding:28px 14px 90px;}
+.sheet{max-width:760px;margin:0 auto;background:#fff;border-radius:14px;overflow:hidden;
+  box-shadow:0 10px 40px rgba(90,70,50,.14);}
+
+.head{background:var(--brown);color:#fff;padding:36px 44px 30px;
+  display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;}
+.head .en{font-family:'Cormorant Garamond',serif;font-style:italic;letter-spacing:.24em;
+  font-size:14px;opacity:.85;}
+.head h1{font-size:32px;font-weight:700;margin-top:6px;letter-spacing:.14em;}
+.head .no{font-size:13px;opacity:.9;text-align:right;line-height:2;}
+
+.body{padding:34px 44px 44px;}
+
+.to{font-size:22px;font-weight:700;border-bottom:2px solid var(--brown);
+  padding-bottom:10px;margin-bottom:8px;display:inline-block;min-width:290px;}
+.to small{font-size:14px;font-weight:400;color:var(--sub);margin-left:8px;}
+.msg{font-size:14.5px;margin:20px 0 26px;}
+
+.grand{background:#FBF7F0;border:2px solid var(--beige);border-radius:10px;
+  padding:22px 26px;display:flex;align-items:center;justify-content:space-between;
+  gap:16px;flex-wrap:wrap;margin-bottom:30px;}
+.grand .lb{font-size:16px;font-weight:700;color:var(--brown);}
+.grand .amt{font-size:38px;font-weight:700;color:var(--brown);letter-spacing:.01em;}
+.grand .amt small{font-size:15px;font-weight:500;color:var(--sub);margin-left:8px;}
+
+table.items{width:100%;border-collapse:collapse;font-size:14.5px;margin-bottom:8px;}
+table.items th{background:#F6F1E9;color:var(--sub);font-weight:500;font-size:13px;
+  padding:11px 14px;text-align:left;border-bottom:2px solid var(--border);}
+table.items th.r,table.items td.r{text-align:right;}
+table.items td{padding:15px 14px;border-bottom:1px dashed var(--border);vertical-align:top;}
+table.items td b{color:var(--brown);}
+table.items td small{display:block;color:var(--sub);font-size:12.5px;margin-top:4px;}
+.sum{margin-left:auto;width:100%;max-width:340px;font-size:14.5px;margin-top:6px;}
+.sum .row{display:flex;justify-content:space-between;padding:9px 14px;}
+.sum .row.total{border-top:2px solid var(--brown);margin-top:6px;padding-top:13px;
+  font-size:19px;font-weight:700;color:var(--brown);}
+
+.sec-t{display:flex;align-items:center;gap:11px;font-size:17px;font-weight:700;
+  color:var(--brown);padding-bottom:10px;border-bottom:2px solid var(--border);
+  margin:34px 0 16px;}
+.sec-t i{font-size:15px;}
+
+.bank{background:#fff;border:2px solid var(--border);border-radius:10px;padding:20px 24px;font-size:15.5px;}
+.bank .row{display:flex;gap:14px;padding:8px 0;}
+.bank .row b{width:100px;color:var(--sub);font-weight:500;flex:0 0 auto;font-size:14px;}
+.blank{display:inline-block;min-width:200px;border-bottom:1.5px dotted #bda88f;}
+
+table.info{width:100%;border-collapse:collapse;font-size:14.5px;}
+table.info th,table.info td{text-align:left;padding:11px 4px;border-bottom:1px dashed var(--border);vertical-align:top;}
+table.info th{width:32%;color:var(--sub);font-weight:500;white-space:nowrap;}
+table.info td b{color:var(--brown);}
+table.info tr:last-child th,table.info tr:last-child td{border-bottom:none;}
+
+.note{background:#FAF4EC;border-left:4px solid var(--sunset);border-radius:0 8px 8px 0;
+  padding:15px 20px;font-size:13.5px;line-height:1.9;margin-top:18px;}
+.note b{color:#C1743A;}
+
+.issuer{margin-top:34px;padding-top:22px;border-top:2px solid var(--border);
+  font-size:14px;line-height:2;}
+.issuer .nm{font-size:17px;font-weight:700;color:var(--brown);}
+.issuer small{color:var(--sub);font-size:12.5px;}
+
+.print-btn{position:fixed;right:22px;bottom:22px;background:var(--brown);color:#fff;border:none;
+  padding:15px 26px;border-radius:40px;font-family:var(--font);font-size:15px;font-weight:700;
+  cursor:pointer;box-shadow:0 8px 22px rgba(90,70,50,.3);}
+
+@media (max-width:640px){
+  .head,.body{padding-left:22px;padding-right:22px;}
+  .head h1{font-size:26px;}
+  .grand .amt{font-size:31px;}
+  table.info th{width:38%;}
+}
+@media print{
+  body{background:#fff;padding:0;}
+  .sheet{box-shadow:none;border-radius:0;max-width:100%;}
+  .print-btn{display:none;}
+}
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <div class="head">
+    <div>
+      <div class="en">Invoice</div>
+      <h1>請求書</h1>
+    </div>
+    <div class="no">
+      請求書番号：2026-001<br>
+      発行日：2026年8月11日
+    </div>
+  </div>
+
+  <div class="body">
+
+    <div class="to">MARU cafe 様 <small>ご担当：三谷 様</small></div>
+    <div class="msg">
+      下記のとおりご請求申し上げます。<br>
+      ご確認のうえ、お手続きをお願いいたします。
+    </div>
+
+    <div class="grand">
+      <div class="lb">ご請求金額（税込）</div>
+      <div class="amt">¥43,780 <small>-</small></div>
+    </div>
+
+    <table class="items">
+      <tr>
+        <th>品目</th>
+        <th class="r" style="width:100px;">数量</th>
+        <th class="r" style="width:130px;">金額</th>
+      </tr>
+      <tr>
+        <td>
+          <b>ホームページ制作一式</b>
+          <small>
+            トップ／メニュー／ドッグラン・わんこ／ショップ／アクセス・営業カレンダー／ご予約・お問い合わせ
+            ＋ プライバシーポリシー・利用規約（計8ページ）<br>
+            お問い合わせフォームの受信設定・Googleカレンダー連携・Instagram埋め込み・Googleマップ埋め込み・公開作業を含む<br>
+            ※モニター価格（通常 ¥50,000〜）
+          </small>
+        </td>
+        <td class="r">1式</td>
+        <td class="r">39,800</td>
+      </tr>
+    </table>
+
+    <div class="sum">
+      <div class="row"><span>小計</span><span>¥39,800</span></div>
+      <div class="row"><span>消費税（10%）</span><span>¥3,980</span></div>
+      <div class="row total"><span>合計</span><span>¥43,780</span></div>
+    </div>
+
+    <div class="sec-t"><i class="fa-solid fa-building-columns"></i>お振込先</div>
+    <div class="bank">
+      <div class="row"><b>金融機関</b><span class="blank"></span></div>
+      <div class="row"><b>支店名</b><span class="blank"></span></div>
+      <div class="row"><b>口座種別</b><span class="blank"></span></div>
+      <div class="row"><b>口座番号</b><span class="blank"></span></div>
+      <div class="row"><b>口座名義</b><span class="blank"></span></div>
+    </div>
+
+    <div class="sec-t"><i class="fa-regular fa-calendar-check"></i>お支払いについて</div>
+    <table class="info">
+      <tr><th>お支払い期限</th><td><b>2026年8月18日（火）</b>　※お申込みから5営業日以内</td></tr>
+      <tr><th>振込手数料</th><td>お客様のご負担でお願いいたします</td></tr>
+      <tr><th>ご入金後</th><td>確認しましたら、公開に向けた制作作業に入ります</td></tr>
+      <tr><th>領収書</th><td>お振込の控えが領収書のかわりになります。別途必要な場合はお申しつけください</td></tr>
+    </table>
+
+    <div class="note">
+      <b>▶ インボイス（適格請求書）について</b><br>
+      当方は現在、適格請求書発行事業者の登録をしておりません。
+      そのため本書は適格請求書ではなく、登録番号の記載がございません。
+      あらかじめご了承ください。
+    </div>
+
+    <div class="issuer">
+      <div class="nm">BYRON TIME（バイロンタイム）</div>
+      吉田 ゆかり<br>
+      <small>
+        お問い合わせ：公式LINE　／　Instagram：@kansai_connector<br>
+        所在地・電話番号は、ご請求があれば遅滞なく開示いたします
+      </small>
+    </div>
+
+  </div>
+</div>
+
+<button class="print-btn" onclick="window.print()">
+  <i class="fa-solid fa-print"></i> 印刷・PDF保存
+</button>
+
+</body>
+</html>
