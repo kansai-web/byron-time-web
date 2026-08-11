@@ -8,3 +8,6 @@ wrangler.toml
 *.md
 *.py
 *.bak
+
+# クライアント宛の書類（口座番号を含むため公開しない）
+_docs/
