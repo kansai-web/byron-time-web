@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>メニュー｜ソラオトミサキコーヒー</title>
+  <meta name="description" content="ソラオトミサキコーヒーのメニュー。ベトナム・ダラット産のシングルオリジン、特製ブレンド、抹茶・ほうじ茶ラテ、コーヒーぜんざいなど。">
+  <meta name="robots" content="noindex">
+  <meta property="og:title" content="メニュー｜ソラオトミサキコーヒー">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ソラオトミサキコーヒー">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root{
+      --cream:#F6EFE6; --sub:#ECE3D6; --coffee:#6F4E37; --dark:#3A2A1E;
+      --muted:#8A7866; --accent:#C9743D; --green:#7E946F; --white:#FCF8F2; --border:#DED3C2;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Noto Sans JP',sans-serif;font-weight:300;color:var(--dark);background:var(--cream);line-height:1.85;overflow-x:hidden;}
+    a{text-decoration:none;color:inherit;}
+    img{display:block;width:100%;object-fit:cover;}
+    .wrap{max-width:1080px;margin:0 auto;}
+    .en{font-family:'Cormorant Garamond',serif;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-size:13px;}
+    .imgbox{overflow:hidden;}
+    .imgbox img{width:100%;height:100%;object-fit:cover;display:block;}
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(246,239,230,.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(111,78,55,.10);transition:box-shadow .3s;}
+    nav.scrolled{box-shadow:0 2px 20px rgba(58,42,30,.08);}
+    .nav-inner{max-width:1080px;margin:0 auto;padding:0 28px;display:flex;justify-content:space-between;align-items:center;height:74px;}
+    .nav-logo{display:flex;align-items:center;gap:12px;font-family:'Noto Serif JP',serif;font-size:20px;font-weight:600;letter-spacing:.12em;color:var(--dark);}
+    .nav-logo .logo-img{width:58px;height:58px;object-fit:contain;flex-shrink:0;}
+    .nav-links{display:flex;gap:30px;list-style:none;}
+    .nav-links a{font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);transition:.2s;}
+    .nav-links a:hover,.nav-links a.active{color:var(--accent);}
+    .nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;}
+    .nav-toggle span{display:block;width:22px;height:1.5px;background:var(--dark);transition:.28s;}
+    /* PAGE HEADER */
+    .page-header{padding:140px 24px 56px;background:linear-gradient(165deg,#5d4130,#3a2a1e);color:#fff;text-align:center;}
+    .page-header .en{color:#e8c9a8;}
+    .page-header h1{font-family:'Noto Serif JP',serif;font-weight:500;font-size:38px;letter-spacing:.05em;margin:12px 0 12px;}
+    .page-header p{color:rgba(255,255,255,.82);font-size:14.5px;line-height:2;}
+    /* SECTION */
+    section{padding:80px 24px;}
+    .sec-title{font-family:'Noto Serif JP',serif;font-weight:500;font-size:30px;color:var(--dark);margin:8px 0 0;letter-spacing:.04em;}
+    /* TABS */
+    .cat-tabs{display:flex;gap:10px;justify-content:center;max-width:620px;margin:0 auto 50px;flex-wrap:wrap;}
+    .cat-tab{border:1px solid var(--border);background:var(--white);color:var(--coffee);border-radius:40px;padding:12px 26px;font-size:14px;font-family:'Noto Sans JP',sans-serif;font-weight:500;cursor:pointer;transition:.25s;}
+    .cat-tab.active{background:var(--coffee);color:#fff;border-color:var(--coffee);}
+    .cat-tab:hover:not(.active){background:var(--sub);}
+    .panel{display:none;}
+    .panel.active{display:block;}
+    /* MENU CARDS */
+    .m-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;}
+    .m-card{background:var(--white);border-radius:10px;overflow:hidden;box-shadow:0 6px 24px rgba(58,42,30,.06);transition:.3s;}
+    .m-card:hover{transform:translateY(-6px);box-shadow:0 14px 36px rgba(58,42,30,.12);}
+    .m-card .pic{aspect-ratio:1/1;overflow:hidden;background:var(--sub);}
+    .m-card .pic img{width:100%;height:100%;object-fit:cover;transition:.45s;}
+    .m-card:hover .pic img{transform:scale(1.05);}
+    .m-ph{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;font-size:46px;background:linear-gradient(135deg,var(--sub),var(--border));color:rgba(111,78,55,.4);}
+    .m-body{padding:22px 24px 26px;}
+    .m-tag{display:inline-block;border:1px solid var(--accent);color:var(--accent);font-family:'Cormorant Garamond',serif;letter-spacing:.14em;font-size:11px;text-transform:uppercase;padding:3px 12px;border-radius:30px;margin-bottom:10px;}
+    .m-tag.sig{border-color:var(--green);color:var(--green);}
+    .m-body h3{font-family:'Noto Serif JP',serif;font-weight:500;font-size:20px;margin-bottom:6px;}
+    .m-body p{color:var(--muted);font-size:13px;margin:6px 0 12px;line-height:1.85;}
+    .m-price{font-family:'Cormorant Garamond',serif;color:var(--accent);font-size:19px;letter-spacing:.03em;}
+    .m-price small{font-size:12px;color:var(--muted);font-family:'Noto Sans JP',sans-serif;margin-left:5px;}
+    .m-price .ic{color:var(--muted);}
+    /* COFFEE BLEND CARDS (2 wide) */
+    .blend-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:48px;}
+    .blend{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:28px 30px;display:flex;flex-direction:column;}
+    .blend h3{font-family:'Noto Serif JP',serif;font-weight:500;font-size:22px;margin-bottom:8px;}
+    .blend .desc{color:var(--muted);font-size:13.5px;line-height:1.9;flex:1;margin-bottom:14px;}
+    .blend .pr{display:flex;gap:18px;font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--accent);}
+    .blend .pr span{color:var(--muted);font-size:12px;font-family:'Noto Sans JP',sans-serif;margin-right:4px;}
+    /* SINGLE ORIGIN TABLE */
+    .so-head{text-align:center;margin-bottom:30px;}
+    .so-head h3{font-family:'Noto Serif JP',serif;font-weight:500;font-size:22px;color:var(--dark);}
+    .so-head .en{display:block;margin-bottom:6px;}
+    .so-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--white);}
+    .so{display:grid;grid-template-columns:1fr auto;gap:14px;padding:20px 26px;border-bottom:1px solid var(--border);align-items:center;}
+    .so:last-child{border-bottom:none;}
+    .so:hover{background:rgba(201,116,61,.04);}
+    .so-left .nm{font-family:'Noto Serif JP',serif;font-size:16.5px;color:var(--dark);font-weight:500;}
+    .so-left .meta{font-size:12px;color:var(--accent);letter-spacing:.04em;margin:2px 0 4px;}
+    .so-left .fl{font-size:12.5px;color:var(--muted);line-height:1.7;}
+    .so-right{text-align:right;font-family:'Cormorant Garamond',serif;color:var(--coffee);font-size:15px;white-space:nowrap;}
+    .so-right b{color:var(--accent);font-weight:600;}
+    .so-right .lab{font-size:11px;color:var(--muted);font-family:'Noto Sans JP',sans-serif;}
+    /* notes */
+    .menu-note{text-align:center;margin-top:36px;color:var(--muted);font-size:13px;line-height:2;}
+    .pay-note{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:18px;}
+    .pay-note span{display:inline-flex;align-items:center;gap:7px;background:var(--white);border:1px solid var(--border);color:var(--coffee);font-size:12.5px;padding:8px 16px;border-radius:30px;}
+    .pay-note i{color:var(--accent);}
+    /* BEAN CTA */
+    .bean{background:var(--sub);text-align:center;}
+    .bean .box{max-width:680px;margin:0 auto;}
+    .bean .lead{font-family:'Noto Serif JP',serif;font-size:24px;color:var(--dark);margin:16px 0 14px;}
+    .bean p{color:var(--muted);font-size:14px;line-height:2;margin-bottom:28px;}
+    .btn{display:inline-flex;align-items:center;gap:10px;background:var(--coffee);color:#fff;padding:15px 34px;border-radius:40px;font-size:14px;letter-spacing:.06em;transition:.25s;}
+    .btn:hover{background:var(--accent);transform:translateY(-2px);}
+    /* FOOTER */
+    footer{background:var(--dark);color:rgba(255,255,255,.8);padding:60px 24px 34px;}
+    .f-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:start;}
+    .f-logo{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;color:#fff;letter-spacing:.05em;margin-bottom:12px;}
+    .f-desc{font-size:12.5px;line-height:2;color:rgba(255,255,255,.6);}
+    .f-nav{display:flex;flex-direction:column;gap:11px;text-align:right;}
+    .f-nav a{font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);transition:.2s;}
+    .f-nav a:hover{color:#fff;}
+    .f-sns{display:flex;gap:18px;justify-content:flex-end;margin-top:18px;}
+    .f-sns a{width:40px;height:40px;border:1px solid rgba(255,255,255,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;transition:.25s;}
+    .f-sns a:hover{background:var(--accent);border-color:var(--accent);}
+    .f-bottom{max-width:1080px;margin:34px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,.4);letter-spacing:.05em;flex-wrap:wrap;gap:8px;}
+    .f-bottom a{color:rgba(255,255,255,.45);}
+    .fade-up{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease;}
+    .fade-up.in{opacity:1;transform:none;}
+    @media(max-width:760px){
+      section{padding:60px 20px;}
+      .nav-links{position:fixed;top:74px;right:0;flex-direction:column;background:var(--white);width:64%;height:calc(100vh - 74px);padding:40px 30px;gap:26px;transform:translateX(100%);transition:.35s;box-shadow:-6px 0 30px rgba(0,0,0,.1);}
+      .nav-links.open{transform:none;}
+      .nav-toggle{display:flex;}
+      .page-header{padding:118px 20px 48px;}
+      .page-header h1{font-size:30px;}
+      .m-grid{grid-template-columns:1fr 1fr;gap:18px;}
+      .blend-grid{grid-template-columns:1fr;}
+      .so{grid-template-columns:1fr;}
+      .so-right{text-align:left;}
+      .f-inner{grid-template-columns:1fr;gap:28px;}
+      .f-nav,.f-sns{text-align:left;justify-content:flex-start;}
+      .sec-title{font-size:25px;}
+    }
+    @media(max-width:480px){ .m-grid{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><img class="logo-img" src="images/logo.png" alt="ソラオトミサキコーヒー">ソラオトミサキ</a>
+      <ul class="nav-links" id="navlinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html" class="active">Menu</a></li>
+        <li><a href="schedule.html">Schedule</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="navtoggle"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <span class="en">Menu</span>
+    <h1>メニュー</h1>
+    <p>ベトナム・ダラット産の豆を、一杯ずつ丁寧に。<br>すべてテイクアウトできます。</p>
+  </div>
+
+  <!-- MENU -->
+  <section>
+    <div class="wrap">
+      <div class="cat-tabs">
+        <button class="cat-tab active" onclick="switchCat('coffee',this)">コーヒー</button>
+        <button class="cat-tab" onclick="switchCat('drink',this)">ラテ・ドリンク</button>
+        <button class="cat-tab" onclick="switchCat('sweets',this)">スイーツ</button>
+      </div>
+
+      <!-- COFFEE -->
+      <div class="panel active" id="cat-coffee">
+        <div class="blend-grid">
+          <div class="blend fade-up">
+            <h3>ソラオトミサキ特製ブレンド</h3>
+            <p class="desc">しっかりしたコクと抜群の飲みごこち。当店の看板ブレンドです。</p>
+            <div class="pr"><div><span>HOT</span>¥450</div><div><span>ICE</span>¥450</div></div>
+          </div>
+          <div class="blend fade-up">
+            <h3>ミステリアスブレンド</h3>
+            <p class="desc">エスプレッソマシンで抽出する、ちょっと不思議な謎ブレンドコーヒー。</p>
+            <div class="pr"><div><span>HOT</span>¥300</div><div><span>ICE</span>¥300</div></div>
+          </div>
+        </div>
+
+        <div class="so-head">
+          <span class="en">Single Origin</span>
+          <h3>シングルオリジンコーヒー</h3>
+        </div>
+        <div class="so-list">
+          <div class="so fade-up">
+            <div class="so-left"><div class="nm">ベトナム カティモール</div><div class="meta">ハニー ／ 深煎り</div><div class="fl">コクのあるしっかり目で後味スッキリ。〈ハーブ〉</div></div>
+            <div class="so-right"><span class="lab">HOT</span> <b>¥600</b> ／ <span class="lab">ICE</span> <b>¥650</b></div>
+          </div>
+          <div class="so fade-up">
+            <div class="so-left"><div class="nm">ベトナム イエローカツアイ</div><div class="meta">ハニー ／ 浅煎り</div><div class="fl">甘さと爽やかな酸味とコク。〈レーズン〉</div></div>
+            <div class="so-right"><span class="lab">HOT</span> <b>¥600</b> ／ <span class="lab">ICE</span> <b>¥650</b></div>
+          </div>
+          <div class="so fade-up">
+            <div class="so-left"><div class="nm">ベトナム イエローカツアイ</div><div class="meta">ナチュラル ／ 浅煎り</div><div class="fl">フルーティーな甘さとさっぱりした酸味。〈チェリー〉</div></div>
+            <div class="so-right"><span class="lab">HOT</span> <b>¥600</b> ／ <span class="lab">ICE</span> <b>¥650</b></div>
+          </div>
+          <div class="so fade-up">
+            <div class="so-left"><div class="nm">ベトナム ティピカ</div><div class="meta">ナチュラル ／ 深煎り</div><div class="fl">スッキリした後味とほのかな苦み。〈ナッツ〉</div></div>
+            <div class="so-right"><span class="lab">HOT</span> <b>¥600</b> ／ <span class="lab">ICE</span> <b>¥650</b></div>
+          </div>
+          <div class="so fade-up">
+            <div class="so-left"><div class="nm">ベトナム ティピカ</div><div class="meta">ナチュラル ／ 浅煎り</div><div class="fl">スッキリした酸味で後味は重厚。〈グレープフルーツ〉</div></div>
+            <div class="so-right"><span class="lab">HOT</span> <b>¥600</b> ／ <span class="lab">ICE</span> <b>¥650</b></div>
+          </div>
+          <div class="so fade-up">
+            <div class="so-left"><div class="nm">ベトナム アネロビック</div><div class="meta">深煎り</div><div class="fl">フルーティーな甘さと重厚な飲みごたえ。〈ワイン〉</div></div>
+            <div class="so-right"><span class="lab">HOT</span> <b>¥700</b> ／ <span class="lab">ICE</span> <b>¥750</b></div>
+          </div>
+          <div class="so fade-up">
+            <div class="so-left"><div class="nm">グァテマラ アティトランブルーレイク</div><div class="meta">ハニー ／ 深煎り</div><div class="fl">しっかりしたコクと後味にほのかな甘み。〈ビターチョコ〉</div></div>
+            <div class="so-right"><span class="lab">HOT</span> <b>¥600</b> ／ <span class="lab">ICE</span> <b>¥650</b></div>
+          </div>
+          <div class="so fade-up">
+            <div class="so-left"><div class="nm">カフェインレス</div><div class="meta">やさしい味わい</div><div class="fl">お子さま連れや夜のひと息にも。</div></div>
+            <div class="so-right"><span class="lab">HOT</span> <b>¥500</b></div>
+          </div>
+        </div>
+
+        <div class="pay-note">
+          <span><i class="fa-solid fa-mug-hot"></i> すべてテイクアウト可能</span>
+          <span><i class="fa-solid fa-yen-sign"></i> 現金支払いのみ</span>
+          <span><i class="fa-solid fa-tag"></i> 表示は税込価格</span>
+        </div>
+      </div>
+
+      <!-- DRINK -->
+      <div class="panel" id="cat-drink">
+        <div class="m-grid">
+          <div class="m-card fade-up">
+            <div class="pic"><img src="images/orange.png" alt="オレンジコーヒー"></div>
+            <div class="m-body"><span class="m-tag sig">Signature</span><h3>オレンジコーヒー</h3><p>柑橘の爽やかな香りがふわり。当店の看板ドリンク。（アイス）</p><div class="m-price">¥550</div></div>
+          </div>
+          <div class="m-card fade-up">
+            <div class="pic"><img src="images/latte.png" alt="カフェオレ"></div>
+            <div class="m-body"><span class="m-tag">Latte</span><h3>カフェオレ</h3><p>ダラットの豆をミルクとともに、やさしい味わいで。</p><div class="m-price">¥500 <small>HOT/ICE</small><br><small style="color:var(--muted)">カフェインレス +¥100</small></div></div>
+          </div>
+          <div class="m-card fade-up">
+            <div class="m-ph"><i class="fa-solid fa-mug-hot"></i></div>
+            <div class="m-body"><span class="m-tag">Latte</span><h3>抹茶ラテ</h3><p>香り高い抹茶のほろ苦さとミルクのまろやかさ。</p><div class="m-price">¥500 <small>HOT/ICE</small></div></div>
+          </div>
+          <div class="m-card fade-up">
+            <div class="m-ph"><i class="fa-solid fa-mug-hot"></i></div>
+            <div class="m-body"><span class="m-tag">Latte</span><h3>ほうじ茶ラテ</h3><p>香ばしいほうじ茶のやさしい甘さでほっと一息。</p><div class="m-price">¥500 <small>HOT/ICE</small></div></div>
+          </div>
+          <div class="m-card fade-up">
+            <div class="m-ph"><i class="fa-solid fa-mug-saucer"></i></div>
+            <div class="m-body"><span class="m-tag">Latte</span><h3>キャラメルラテ</h3><p>甘く香ばしいキャラメルとコーヒーのハーモニー。</p><div class="m-price">¥550 <small>HOT/ICE</small></div></div>
+          </div>
+          <div class="m-card fade-up">
+            <div class="m-ph"><i class="fa-solid fa-mug-saucer"></i></div>
+            <div class="m-body"><span class="m-tag">Latte</span><h3>カフェモカ</h3><p>チョコレートのコクが溶け合う、デザート感覚の一杯。</p><div class="m-price">¥550 <small>HOT/ICE</small></div></div>
+          </div>
+          <div class="m-card fade-up">
+            <div class="m-ph"><i class="fa-solid fa-glass-water"></i></div>
+            <div class="m-body"><span class="m-tag">Juice</span><h3>果汁100%オレンジジュース</h3><p>コーヒーが苦手な方やお子さまにも。</p><div class="m-price">¥150</div></div>
+          </div>
+        </div>
+        <p class="menu-note">☕ ホット／アイスをお選びいただけます。</p>
+      </div>
+
+      <!-- SWEETS -->
+      <div class="panel" id="cat-sweets">
+        <div class="m-grid">
+          <div class="m-card fade-up">
+            <div class="pic"><img src="images/zenzai.jpg" alt="コーヒーぜんざい"></div>
+            <div class="m-body"><span class="m-tag sig">Sweets</span><h3>コーヒーぜんざい</h3><p>和とコーヒーが出会った、ここだけの一品。白玉とあずきにコーヒーの香り。</p><div class="m-price"><small class="ic">店頭にてご案内</small></div></div>
+          </div>
+          <div class="m-card fade-up">
+            <div class="pic"><img src="images/ice-matcha.png" alt="抹茶とアイスクリーム"></div>
+            <div class="m-body"><span class="m-tag">Sweets</span><h3>抹茶とアイスクリーム</h3><p>濃厚抹茶にバニラアイスとあずきを添えて。ほろ苦さと甘さの絶妙バランス。</p><div class="m-price"><small class="ic">店頭にてご案内</small></div></div>
+          </div>
+          <div class="m-card fade-up">
+            <div class="pic"><img src="images/ice-hojicha.png" alt="ほうじ茶とアイスクリーム"></div>
+            <div class="m-body"><span class="m-tag">Sweets</span><h3>ほうじ茶とアイスクリーム</h3><p>香ばしいほうじ茶ソースとアイスのあたたかな組み合わせ。</p><div class="m-price"><small class="ic">店頭にてご案内</small></div></div>
+          </div>
+          <div class="m-card fade-up">
+            <div class="pic"><img src="images/shake-matcha.png" alt="抹茶のシェイク"></div>
+            <div class="m-body"><span class="m-tag">Shake</span><h3>抹茶のシェイク</h3><p>ひんやり濃厚。抹茶の風味をぜいたくに楽しむシェイク。</p><div class="m-price"><small class="ic">店頭にてご案内</small></div></div>
+          </div>
+          <div class="m-card fade-up">
+            <div class="pic"><img src="images/shake-hojicha.png" alt="ほうじ茶のシェイク"></div>
+            <div class="m-body"><span class="m-tag">Shake</span><h3>ほうじ茶のシェイク</h3><p>香ばしさとミルクのやさしい甘さ。暑い日のひと息に。</p><div class="m-price"><small class="ic">店頭にてご案内</small></div></div>
+          </div>
+        </div>
+        <p class="menu-note">🍨 季節によって内容が変わります。最新情報はInstagramをご確認ください。<br><span style="font-size:12px;">※ スイーツの価格は店頭・SNSにてご案内しています。</span></p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BEAN CTA -->
+  <section class="bean">
+    <div class="box fade-up">
+      <span class="en">Coffee Beans</span>
+      <p class="lead">おうちでも、ダラットの一杯を。</p>
+      <p>お好みに合わせた焙煎豆の販売も行っています。<br>「どれを選べばいい？」というご相談も大歓迎。お気軽にどうぞ。</p>
+      <a class="btn" href="contact.html"><i class="fa-solid fa-seedling"></i> 焙煎豆について相談する</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="f-inner">
+      <div>
+        <div class="f-logo">Soraotomisaki Coffee</div>
+        <p class="f-desc">
+          大阪・茨木のコーヒースタンド<br>
+          ベトナム・ダラット産 自家焙煎コーヒー<br>
+          〒567-0828 大阪府茨木市竹橋町9-7
+        </p>
+      </div>
+      <div>
+        <div class="f-nav">
+          <a href="index.html">Home</a>
+          <a href="menu.html">Menu</a>
+          <a href="schedule.html">Schedule</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="f-sns">
+          <a href="https://www.instagram.com/soraotomisaki.coffee/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.threads.com/@soraotomisaki.coffee" target="_blank" rel="noopener"><i class="fa-brands fa-threads"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <div>© Soraotomisaki Coffee　大阪・茨木のコーヒースタンド</div>
+      <div>Web制作：<a href="#">Byron time Web制作</a></div>
+    </div>
+  </footer>
+
+  <script>
+    const nav=document.getElementById('nav');
+    addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20));
+    const tg=document.getElementById('navtoggle'),lk=document.getElementById('navlinks');
+    tg.onclick=()=>{lk.classList.toggle('open');tg.classList.toggle('open');};
+    lk.querySelectorAll('a').forEach(a=>a.onclick=()=>{lk.classList.remove('open');tg.classList.remove('open');});
+    const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.1});
+    document.querySelectorAll('.fade-up').forEach(el=>io.observe(el));
+    function switchCat(name,btn){
+      document.querySelectorAll('.cat-tab').forEach(t=>t.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('cat-'+name).classList.add('active');
+      document.querySelectorAll('#cat-'+name+' .fade-up').forEach(el=>{el.classList.remove('in');setTimeout(()=>io.observe(el),10);});
+    }
+  </script>
+</body>
+</html>

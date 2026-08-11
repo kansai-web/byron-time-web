@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Googleカレンダー 埋め込みテスト | Byron time</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&family=Noto+Serif+JP:wght@500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --teal: #5DA8A3;
+      --dark: #4a3728;
+      --white: #F1ECE5;
+      --bg2: #FDFAF6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 300;
+      background: var(--white);
+      color: var(--dark);
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .label {
+      display: inline-block;
+      background: var(--teal);
+      color: #fff;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 26px;
+      margin-bottom: 8px;
+    }
+    .desc {
+      font-size: 14px;
+      color: #7a6657;
+      margin-bottom: 32px;
+    }
+
+    /* ---- カレンダー wrapper ---- */
+    .cal-wrapper {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+    .cal-title {
+      font-weight: 400;
+      font-size: 15px;
+      margin-bottom: 16px;
+      color: var(--teal);
+    }
+
+    /* レスポンシブ：iframeをラップして横スクロール防止 */
+    .cal-responsive {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .cal-responsive iframe {
+      display: block;
+      border-radius: 8px;
+    }
+
+    /* ---- 使い方メモ ---- */
+    .memo {
+      background: var(--bg2);
+      border-left: 3px solid var(--teal);
+      padding: 20px 24px;
+      border-radius: 8px;
+      font-size: 13px;
+      line-height: 1.9;
+    }
+    .memo h2 {
+      font-size: 14px;
+      font-weight: 400;
+      margin-bottom: 10px;
+      color: var(--teal);
+    }
+    .memo ol { padding-left: 18px; }
+    .memo li { margin-bottom: 6px; }
+    .memo code {
+      background: #e8f5f4;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 12px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 32px;
+      color: var(--teal);
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <span class="label">TEST PAGE</span>
+    <h1>Googleカレンダー 埋め込みテスト</h1>
+    <p class="desc">
+      このページは埋め込みの見た目確認用です。本番サイトには含まれません。<br>
+      ※予定を追加するには <a href="https://calendar.google.com" target="_blank" style="color:var(--teal)">calendar.google.com</a> から登録してください。
+    </p>
+
+    <!-- ===== カレンダー埋め込み ===== -->
+    <div class="cal-wrapper">
+      <div class="cal-title">📅 出店・イベントスケジュール</div>
+      <div class="cal-responsive">
+        <iframe
+          src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia%2FTokyo&showPrint=0&src=b3RvbmEucGx1czQwQGdtYWlsLmNvbQ&src=ja.japanese%23holiday%40group.v.calendar.google.com&color=%235DA8A3&color=%230B8043"
+          style="border:solid 1px #ddd; border-radius:8px"
+          width="800"
+          height="600"
+          frameborder="0"
+          scrolling="no">
+        </iframe>
+      </div>
+    </div>
+
+    <!-- ===== 使い方メモ ===== -->
+    <div class="memo">
+      <h2>🗒 このカレンダーの使い方</h2>
+      <ol>
+        <li>Googleカレンダー（<code>calendar.google.com</code>）を開く</li>
+        <li>「BYRON TIME」カレンダーにイベントを追加する</li>
+        <li>このページをリロードすると → 自動で反映される！</li>
+      </ol>
+      <br>
+      <p style="color:#888">
+        ※ 現在のカレンダーは非公開設定のため、ログインしていないと予定が表示されません。<br>
+        公開したい場合は カレンダー設定 →「一般公開して誰でも利用できるようにする」にチェックを入れてください。
+      </p>
+    </div>
+
+    <a href="index.html" class="back-link">← Byron time トップへ戻る</a>
+  </div>
+</body>
+</html>

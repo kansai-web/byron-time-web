@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お問い合わせ｜ソラオトミサキコーヒー</title>
+  <meta name="description" content="ソラオトミサキコーヒーへのお問い合わせ・マルシェ／イベント出店のご依頼はこちら。コーヒー豆のこと、ご質問などお気軽にどうぞ。">
+  <meta name="robots" content="noindex">
+  <meta property="og:title" content="お問い合わせ｜ソラオトミサキコーヒー">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ソラオトミサキコーヒー">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root{
+      --cream:#F6EFE6; --sub:#ECE3D6; --coffee:#6F4E37; --dark:#3A2A1E;
+      --muted:#8A7866; --accent:#C9743D; --green:#7E946F; --white:#FCF8F2; --border:#DED3C2;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Noto Sans JP',sans-serif;font-weight:300;color:var(--dark);background:var(--cream);line-height:1.85;overflow-x:hidden;word-break:auto-phrase;}
+    a{text-decoration:none;color:inherit;}
+    img{display:block;width:100%;object-fit:cover;}
+    .wrap{max-width:1080px;margin:0 auto;}
+    .en{font-family:'Cormorant Garamond',serif;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-size:13px;}
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(246,239,230,.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(111,78,55,.10);transition:box-shadow .3s;}
+    nav.scrolled{box-shadow:0 2px 20px rgba(58,42,30,.08);}
+    .nav-inner{max-width:1080px;margin:0 auto;padding:0 28px;display:flex;justify-content:space-between;align-items:center;height:74px;}
+    .nav-logo{display:flex;align-items:center;gap:12px;font-family:'Noto Serif JP',serif;font-size:20px;font-weight:600;letter-spacing:.12em;color:var(--dark);}
+    .nav-logo .logo-img{width:58px;height:58px;object-fit:contain;flex-shrink:0;}
+    .nav-links{display:flex;gap:30px;list-style:none;}
+    .nav-links a{font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);transition:.2s;}
+    .nav-links a:hover,.nav-links a.active{color:var(--accent);}
+    .nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;}
+    .nav-toggle span{display:block;width:22px;height:1.5px;background:var(--dark);transition:.28s;}
+    /* PAGE HEADER */
+    .page-header{padding:140px 24px 56px;background:linear-gradient(165deg,#5d4130,#3a2a1e);color:#fff;text-align:center;}
+    .page-header .en{color:#e8c9a8;}
+    .page-header h1{font-family:'Noto Serif JP',serif;font-weight:500;font-size:38px;letter-spacing:.05em;margin:12px 0 12px;}
+    .page-header p{color:rgba(255,255,255,.82);font-size:14.5px;line-height:2;}
+    section{padding:80px 24px;}
+    .sec-title{font-family:'Noto Serif JP',serif;font-weight:500;font-size:30px;color:var(--dark);margin:8px 0 0;letter-spacing:.04em;}
+    /* CONTACT */
+    .contact-lead{text-align:center;color:var(--muted);font-size:15px;margin:0 auto 6px;max-width:600px;}
+    .tabs{display:flex;gap:10px;justify-content:center;max-width:580px;margin:34px auto 0;}
+    .tab{flex:1;border:1px solid var(--border);background:var(--white);color:var(--coffee);border-radius:40px;padding:13px 10px;font-size:14px;font-family:'Noto Sans JP',sans-serif;font-weight:500;cursor:pointer;transition:.25s;}
+    .tab.active{background:var(--coffee);color:#fff;border-color:var(--coffee);}
+    .tab-panel{display:none;}
+    .tab-panel.active{display:block;}
+    .form{max-width:580px;margin:30px auto 0;}
+    .f-row{margin-bottom:22px;}
+    .f-row label{display:block;font-size:13px;letter-spacing:.06em;color:var(--coffee);font-weight:500;margin-bottom:8px;}
+    .f-row label span{color:var(--accent);font-size:11px;margin-left:6px;}
+    .f-in,.f-ta{width:100%;border:1px solid var(--border);background:var(--white);border-radius:8px;padding:14px 16px;font-family:'Noto Sans JP',sans-serif;font-size:15px;color:var(--dark);transition:.2s;}
+    .f-in:focus,.f-ta:focus{outline:none;border-color:var(--accent);background:#fff;}
+    .f-ta{resize:vertical;min-height:130px;line-height:1.8;}
+    .f-submit{display:block;width:100%;background:var(--coffee);color:#fff;border:none;border-radius:40px;padding:16px;font-size:15px;letter-spacing:.08em;font-family:'Noto Sans JP',sans-serif;cursor:pointer;transition:.25s;margin-top:8px;}
+    .f-submit:hover{background:var(--accent);transform:translateY(-2px);}
+    .contact-alt{text-align:center;margin-top:28px;color:var(--muted);font-size:13.5px;}
+    .contact-alt a{color:var(--accent);font-weight:500;}
+    /* FAQ */
+    .faq{background:var(--sub);}
+    .faq-head{text-align:center;}
+    .faq-list{max-width:760px;margin:44px auto 0;display:flex;flex-direction:column;gap:14px;}
+    .faq-item{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+    .faq-q{display:flex;align-items:center;gap:12px;padding:20px 24px;cursor:pointer;font-size:15px;color:var(--dark);font-weight:400;}
+    .faq-q .qm{font-family:'Cormorant Garamond',serif;color:var(--accent);font-size:20px;font-weight:600;flex-shrink:0;}
+    .faq-q .ar{margin-left:auto;color:var(--muted);transition:.3s;flex-shrink:0;}
+    .faq-item.open .faq-q .ar{transform:rotate(180deg);}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+    .faq-a .inner{padding:0 24px 22px 56px;color:var(--muted);font-size:14px;line-height:2;}
+    .faq-item.open .faq-a{max-height:280px;}
+    /* FOOTER */
+    footer{background:var(--dark);color:rgba(255,255,255,.8);padding:60px 24px 34px;}
+    .f-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:start;}
+    .f-logo{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;color:#fff;letter-spacing:.05em;margin-bottom:12px;}
+    .f-desc{font-size:12.5px;line-height:2;color:rgba(255,255,255,.6);}
+    .f-nav{display:flex;flex-direction:column;gap:11px;text-align:right;}
+    .f-nav a{font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);transition:.2s;}
+    .f-nav a:hover{color:#fff;}
+    .f-sns{display:flex;gap:18px;justify-content:flex-end;margin-top:18px;}
+    .f-sns a{width:40px;height:40px;border:1px solid rgba(255,255,255,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;transition:.25s;}
+    .f-sns a:hover{background:var(--accent);border-color:var(--accent);}
+    .f-bottom{max-width:1080px;margin:34px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,.4);letter-spacing:.05em;flex-wrap:wrap;gap:8px;}
+    .f-bottom a{color:rgba(255,255,255,.45);}
+    .fade-up{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease;}
+    .fade-up.in{opacity:1;transform:none;}
+    @media(max-width:760px){
+      section{padding:60px 20px;}
+      .nav-links{position:fixed;top:74px;right:0;flex-direction:column;background:var(--white);width:64%;height:calc(100vh - 74px);padding:40px 30px;gap:26px;transform:translateX(100%);transition:.35s;box-shadow:-6px 0 30px rgba(0,0,0,.1);}
+      .nav-links.open{transform:none;}
+      .nav-toggle{display:flex;}
+      .page-header{padding:118px 20px 48px;}
+      .page-header h1{font-size:30px;}
+      .f-inner{grid-template-columns:1fr;gap:28px;}
+      .f-nav,.f-sns{text-align:left;justify-content:flex-start;}
+      .sec-title{font-size:25px;}
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><img class="logo-img" src="images/logo.png" alt="ソラオトミサキコーヒー">ソラオトミサキ</a>
+      <ul class="nav-links" id="navlinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="schedule.html">Schedule</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="navtoggle"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <span class="en">Contact</span>
+    <h1>お問い合わせ</h1>
+    <p>ご質問・コーヒー豆のこと、マルシェ・イベントへの<br>出店のご依頼など、お気軽にどうぞ。</p>
+  </div>
+
+  <!-- CONTACT -->
+  <section class="contact">
+    <div class="wrap">
+      <p class="contact-lead">下のタブからご用件を選んでご記入ください。<br>2〜3日以内にご返信します（不在時はお時間をいただく場合があります）。</p>
+
+      <div class="tabs fade-up">
+        <button class="tab active" type="button" onclick="switchTab('general')">お問い合わせ</button>
+        <button class="tab" type="button" onclick="switchTab('event')">出店のご依頼</button>
+      </div>
+
+      <!-- 一般お問い合わせ -->
+      <div class="tab-panel active" id="panel-general">
+        <form class="form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="9578232e-a24e-4c0a-846c-9688fed6bab4">
+          <input type="hidden" name="subject" value="【ソラオトミサキコーヒー】お問い合わせ">
+          <input type="hidden" name="from_name" value="ソラオトミサキコーヒー お問い合わせフォーム">
+          <input type="checkbox" name="botcheck" style="display:none;">
+          <div class="f-row">
+            <label>お名前 <span>必須</span></label>
+            <input class="f-in" type="text" name="お名前" placeholder="山田 花子" required>
+          </div>
+          <div class="f-row">
+            <label>メールアドレス <span>必須</span></label>
+            <input class="f-in" type="email" name="メールアドレス" placeholder="example@email.com" required>
+          </div>
+          <div class="f-row">
+            <label>お問い合わせ内容 <span>必須</span></label>
+            <textarea class="f-ta" name="お問い合わせ内容" placeholder="ご質問・ご要望などをご記入ください。" required></textarea>
+          </div>
+          <button class="f-submit" type="submit">送信する</button>
+        </form>
+      </div>
+
+      <!-- 出店のご依頼 -->
+      <div class="tab-panel" id="panel-event">
+        <form class="form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="9578232e-a24e-4c0a-846c-9688fed6bab4">
+          <input type="hidden" name="subject" value="【ソラオトミサキコーヒー】出店のご依頼">
+          <input type="hidden" name="from_name" value="ソラオトミサキコーヒー 出店依頼フォーム">
+          <input type="checkbox" name="botcheck" style="display:none;">
+          <div class="f-row">
+            <label>ご担当者名 <span>必須</span></label>
+            <input class="f-in" type="text" name="ご担当者名" placeholder="山田 花子" required>
+          </div>
+          <div class="f-row">
+            <label>団体・イベント名 <span>必須</span></label>
+            <input class="f-in" type="text" name="団体・イベント名" placeholder="〇〇マルシェ実行委員会" required>
+          </div>
+          <div class="f-row">
+            <label>メールアドレス <span>必須</span></label>
+            <input class="f-in" type="email" name="メールアドレス" placeholder="example@email.com" required>
+          </div>
+          <div class="f-row">
+            <label>お電話番号</label>
+            <input class="f-in" type="tel" name="お電話番号" placeholder="090-1234-5678">
+          </div>
+          <div class="f-row">
+            <label>開催日</label>
+            <input class="f-in" type="text" name="開催日" placeholder="2026年7月20日（祝）">
+          </div>
+          <div class="f-row">
+            <label>開催場所</label>
+            <input class="f-in" type="text" name="開催場所" placeholder="大阪府茨木市〇〇公園">
+          </div>
+          <div class="f-row">
+            <label>ご依頼内容 <span>必須</span></label>
+            <textarea class="f-ta" name="ご依頼内容" placeholder="出店規模・電源の有無・出店料の有無・搬入時間など、わかる範囲でご記入ください。" required></textarea>
+          </div>
+          <button class="f-submit" type="submit">出店依頼を送信する</button>
+        </form>
+      </div>
+
+      <p class="contact-alt">SNSのDMでもお気軽にどうぞ 👉 <a href="https://www.instagram.com/soraotomisaki.coffee/" target="_blank" rel="noopener">Instagram</a> ／ <a href="https://www.threads.com/@soraotomisaki.coffee" target="_blank" rel="noopener">Threads</a></p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="wrap">
+      <div class="faq-head">
+        <span class="en">FAQ</span>
+        <h2 class="sec-title">よくあるご質問</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item fade-up">
+          <div class="faq-q"><span class="qm">Q</span>テイクアウトはできますか？<i class="fa-solid fa-chevron-down ar"></i></div>
+          <div class="faq-a"><div class="inner">はい、メニューはすべてテイクアウトでご提供しています。店内でもお召し上がりいただけます。</div></div>
+        </div>
+        <div class="faq-item fade-up">
+          <div class="faq-q"><span class="qm">Q</span>支払い方法は何が使えますか？<i class="fa-solid fa-chevron-down ar"></i></div>
+          <div class="faq-a"><div class="inner">現在は現金支払いのみとなっております。あらかじめご了承ください。</div></div>
+        </div>
+        <div class="faq-item fade-up">
+          <div class="faq-q"><span class="qm">Q</span>コーヒー豆だけ購入することはできますか？<i class="fa-solid fa-chevron-down ar"></i></div>
+          <div class="faq-a"><div class="inner">はい、お好みに合わせた焙煎豆を販売しています。「どれを選べばいい？」というご相談も大歓迎ですので、お気軽にお問い合わせください。</div></div>
+        </div>
+        <div class="faq-item fade-up">
+          <div class="faq-q"><span class="qm">Q</span>マルシェ・イベントへの出店依頼をしたいのですが。<i class="fa-solid fa-chevron-down ar"></i></div>
+          <div class="faq-a"><div class="inner">上の「出店のご依頼」タブからフォームをお送りください。開催日・場所・出店条件など、わかる範囲でご記入いただけるとスムーズです。</div></div>
+        </div>
+        <div class="faq-item fade-up">
+          <div class="faq-q"><span class="qm">Q</span>子ども連れでも大丈夫ですか？<i class="fa-solid fa-chevron-down ar"></i></div>
+          <div class="faq-a"><div class="inner">もちろんです。カフェインレスのコーヒーや、果汁100%オレンジジュースもご用意しています。キッズバリスタ体験などのイベントも行っています。</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="f-inner">
+      <div>
+        <div class="f-logo">Soraotomisaki Coffee</div>
+        <p class="f-desc">
+          大阪・茨木のコーヒースタンド<br>
+          ベトナム・ダラット産 自家焙煎コーヒー<br>
+          〒567-0828 大阪府茨木市竹橋町9-7
+        </p>
+      </div>
+      <div>
+        <div class="f-nav">
+          <a href="index.html">Home</a>
+          <a href="menu.html">Menu</a>
+          <a href="schedule.html">Schedule</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="f-sns">
+          <a href="https://www.instagram.com/soraotomisaki.coffee/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.threads.com/@soraotomisaki.coffee" target="_blank" rel="noopener"><i class="fa-brands fa-threads"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <div>© Soraotomisaki Coffee　大阪・茨木のコーヒースタンド</div>
+      <div>Web制作：<a href="#">Byron time Web制作</a></div>
+    </div>
+  </footer>
+
+  <script>
+    const nav=document.getElementById('nav');
+    addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20));
+    const tg=document.getElementById('navtoggle'),lk=document.getElementById('navlinks');
+    tg.onclick=()=>{lk.classList.toggle('open');tg.classList.toggle('open');};
+    lk.querySelectorAll('a').forEach(a=>a.onclick=()=>{lk.classList.remove('open');tg.classList.remove('open');});
+    const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.1});
+    document.querySelectorAll('.fade-up').forEach(el=>io.observe(el));
+    function switchTab(t){
+      document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+      document.getElementById('panel-'+t).classList.add('active');
+      (t==='general'?document.querySelectorAll('.tab')[0]:document.querySelectorAll('.tab')[1]).classList.add('active');
+    }
+    document.querySelectorAll('.faq-item').forEach(it=>{
+      it.querySelector('.faq-q').onclick=()=>it.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
