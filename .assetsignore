@@ -11,3 +11,6 @@ wrangler.toml
 
 # クライアント宛の書類（口座番号を含むため公開しない）
 _docs/
+
+# 元写真の保管（配信しない）
+marucafe/_photos_dogrun/
