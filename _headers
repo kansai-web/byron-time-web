@@ -1,0 +1,27 @@
+# 検索エンジンに載せたくないパスの指定
+# HTML の <meta name="robots"> は画像やPDFには効かないため、
+# フォルダ配下すべてに効くヘッダーをここで付ける。
+
+# 旧「うちの子グッズ」LP（新しい /uchinoko/ に置き換え予定）
+/byron-time/*
+  X-Robots-Tag: noindex
+
+# クライアント案件（公開前の限定公開）
+/marucafe/*
+  X-Robots-Tag: noindex
+
+# デモサイト
+/demo-kitchencar/*
+  X-Robots-Tag: noindex
+
+/demo-komeko/*
+  X-Robots-Tag: noindex
+
+/demo-pilotcoffee/*
+  X-Robots-Tag: noindex
+
+/demo-soraotomisaki/*
+  X-Robots-Tag: noindex
+
+/soraotomisaki-preview/*
+  X-Robots-Tag: noindex
