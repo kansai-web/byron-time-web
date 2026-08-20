@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<!-- ★公開するときに、この noindex の行を削除する -->
+<meta name="robots" content="noindex">
+<title>無料イメージのお申し込み｜うちの子グッズ BYRON TIME</title>
+<meta name="description" content="写真1枚から、うちの子のオリジナルグッズを。まず無料で仕上がりイメージをお作りします。お申し込みの時点では料金は発生しません。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;700&family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="form-head">
+  <div class="form-head-inner">
+    <a href="index.html" class="logo">BYRON TIME</a>
+    <span class="step-of">STEP <b id="stepNow">1</b> / 5</span>
+  </div>
+  <div class="wrap" style="padding:0;max-width:760px;">
+    <div class="progress"><i id="bar"></i></div>
+  </div>
+</header>
+
+<main class="wrap form-body">
+<form id="f" novalidate>
+
+  <!-- ============ STEP 1 加工スタイル ============ -->
+  <section class="step on" data-step="1">
+    <h1 class="step-t">どんな雰囲気に仕上げますか？</h1>
+    <p class="step-d">お送りいただいたお写真を、イラスト風に整えてグッズにお入れします。<br>迷ったら「おまかせ」でも大丈夫です。ご相談しながら決めましょう。</p>
+
+    <!--
+      ★加工スタイルの名前と説明は仮のものです。
+        Yukari さんが実際に作れるスタイルに合わせて、
+        下の value と名前・説明文を差し替えてください。
+        画像は img/style-*.jpg に置く想定です（未作成）。
+    -->
+    <div class="cards" data-required data-name="style">
+      <label class="card">
+        <input type="radio" name="加工スタイル" value="水彩風">
+        <span class="tick"></span>
+        <span class="card-n">水彩風</span>
+        <span class="card-s">やわらかい色合いで、絵の具で描いたような雰囲気に。</span>
+      </label>
+      <label class="card">
+        <input type="radio" name="加工スタイル" value="鉛筆デッサン風">
+        <span class="tick"></span>
+        <span class="card-n">鉛筆デッサン風</span>
+        <span class="card-s">線で描いたような、落ち着いた仕上がりに。</span>
+      </label>
+      <label class="card">
+        <input type="radio" name="加工スタイル" value="モノクロ風">
+        <span class="tick"></span>
+        <span class="card-n">モノクロ風</span>
+        <span class="card-s">色を抑えて、シックな印象に。</span>
+      </label>
+      <label class="card">
+        <input type="radio" name="加工スタイル" value="おまかせ・相談したい">
+        <span class="tick"></span>
+        <span class="card-n">迷っています / おまかせ</span>
+        <span class="card-s">お写真を見てから、似合うものをご提案します。</span>
+      </label>
+    </div>
+    <p class="err-msg" id="e-style">仕上がりの雰囲気をひとつお選びください。</p>
+
+    <div class="nav-btns">
+      <button type="button" class="btn btn-main btn-lg" data-go="2">次へ進む</button>
+    </div>
+  </section>
+
+  <!-- ============ STEP 2 グッズ ============ -->
+  <section class="step" data-step="2">
+    <h1 class="step-t">どのグッズにしますか？</h1>
+    <p class="step-d">写真をお入れできるグッズです。価格はグッズ代とイラスト加工代の合計で、送料は別にかかります。</p>
+
+    <div class="cards cards-2" data-required data-name="item">
+      <label class="card">
+        <input type="radio" name="グッズ" value="アクリルフォトスタンド" data-price="2980" data-key="acrylic">
+        <span class="tick"></span>
+        <span class="card-ph"><img src="img/uchinoko-acrylic.jpg" alt="アクリルフォトスタンド" loading="lazy"></span>
+        <span class="card-n">アクリルフォトスタンド</span>
+        <span class="card-p">¥2,980</span>
+      </label>
+      <label class="card">
+        <input type="radio" name="グッズ" value="iPhoneグリップケース" data-price="3480" data-key="grip" data-model="1">
+        <span class="tick"></span>
+        <span class="card-ph"><img src="img/uchinoko-grip.jpg" alt="iPhoneグリップケース" loading="lazy"></span>
+        <span class="card-n">iPhoneグリップケース</span>
+        <span class="card-p">¥3,480</span>
+      </label>
+      <label class="card">
+        <input type="radio" name="グッズ" value="iPhoneウッドケース" data-price="4280" data-key="wood" data-model="1">
+        <span class="tick"></span>
+        <span class="card-ph"><img src="img/uchinoko-wood.jpg" alt="iPhoneウッドケース" loading="lazy"></span>
+        <span class="card-n">iPhoneウッドケース</span>
+        <span class="card-p">¥4,280</span>
+      </label>
+      <label class="card">
+        <input type="radio" name="グッズ" value="ステンレスボトル" data-price="4680" data-key="bottle">
+        <span class="tick"></span>
+        <span class="card-ph"><img src="img/uchinoko-bottle.jpg" alt="ステンレスボトル" loading="lazy"></span>
+        <span class="card-n">ステンレスボトル</span>
+        <span class="card-p">¥4,680</span>
+      </label>
+      <label class="card">
+        <input type="radio" name="グッズ" value="モバイルバッテリー" data-price="4800" data-key="battery">
+        <span class="tick"></span>
+        <span class="card-ph"><img src="img/uchinoko-battery.jpg" alt="モバイルバッテリー" loading="lazy"></span>
+        <span class="card-n">モバイルバッテリー</span>
+        <span class="card-p">¥4,800</span>
+      </label>
+    </div>
+    <p class="err-msg" id="e-item">グッズをひとつお選びください。</p>
+
+    <!-- iPhoneケースを選んだときだけ出す -->
+    <div class="cond" id="modelBox" style="margin-top:22px;">
+      <div class="field">
+        <label for="model">お使いのiPhoneの機種<span class="opt">任意</span></label>
+        <p class="hint">例：iPhone 15 Pro。わからない場合は空欄で大丈夫です。LINEで一緒に確認します。</p>
+        <input type="text" id="model" name="機種" autocomplete="off" placeholder="iPhone 15 Pro">
+      </div>
+    </div>
+
+    <p class="notes" style="margin-top:18px;">
+      <li>2点以上ご希望の場合は、送信後にLINEでお知らせください。</li>
+    </p>
+
+    <div class="nav-btns">
+      <button type="button" class="btn btn-sub" data-back>戻る</button>
+      <button type="button" class="btn btn-main" data-go="3">次へ進む</button>
+    </div>
+  </section>
+
+  <!-- ============ STEP 3 名入れ ============ -->
+  <section class="step" data-step="3">
+    <h1 class="step-t">お名前をお入れしますか？</h1>
+    <p class="step-d">うちの子のお名前や記念日をお入れできます。文字を入れない仕上がりもきれいです。</p>
+
+    <div class="cards" data-required data-name="engrave">
+      <label class="card">
+        <input type="radio" name="名入れ" value="名前だけ" data-fields="nm">
+        <span class="tick"></span>
+        <span class="card-n">お名前だけ</span>
+      </label>
+      <label class="card">
+        <input type="radio" name="名入れ" value="名前と誕生日" data-fields="nm bd">
+        <span class="tick"></span>
+        <span class="card-n">お名前と誕生日</span>
+      </label>
+      <label class="card">
+        <input type="radio" name="名入れ" value="メッセージ" data-fields="msg">
+        <span class="tick"></span>
+        <span class="card-n">メッセージを入れる</span>
+        <span class="card-s">短い言葉をお入れします。</span>
+      </label>
+      <label class="card">
+        <input type="radio" name="名入れ" value="名入れなし" data-fields="">
+        <span class="tick"></span>
+        <span class="card-n">文字は入れない</span>
+      </label>
+    </div>
+    <p class="err-msg" id="e-engrave">名入れの種類をお選びください。</p>
+
+    <div style="margin-top:22px;">
+      <div class="cond" data-fld="nm">
+        <div class="field">
+          <label for="petname">うちの子のお名前<span class="req">必須</span></label>
+          <p class="hint">アルファベット表記が人気です（例：Choco）。ひらがな・漢字もお入れできます。</p>
+          <input type="text" id="petname" name="お名前（名入れ）" maxlength="20" autocomplete="off" placeholder="Choco">
+          <p class="err-msg">お名前をご記入ください。</p>
+        </div>
+      </div>
+      <div class="cond" data-fld="bd">
+        <div class="field">
+          <label for="bday">誕生日・記念日<span class="req">必須</span></label>
+          <p class="hint">お書きいただいた表記のままお入れします（例：2020.3.4／March 4th, 2020）。</p>
+          <input type="text" id="bday" name="誕生日（名入れ）" maxlength="30" autocomplete="off" placeholder="2020.3.4">
+          <p class="err-msg">誕生日・記念日をご記入ください。</p>
+        </div>
+      </div>
+      <div class="cond" data-fld="msg">
+        <div class="field">
+          <label for="msg">お入れするメッセージ<span class="req">必須</span></label>
+          <p class="hint">グッズの大きさによって、お入れできる文字数が変わります。長い場合はご相談させてください。</p>
+          <textarea id="msg" name="メッセージ（名入れ）" maxlength="60" placeholder="いつもありがとう"></textarea>
+          <p class="count"><b id="msgN">0</b> / 60</p>
+          <p class="err-msg">メッセージをご記入ください。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="draft" id="fontNote">
+      文字の書体と背景の色は、このあとLINEで見本をお送りしてお選びいただきます。
+      書体7種類・背景12色からお選びいただけます。
+    </div>
+
+    <div class="nav-btns">
+      <button type="button" class="btn btn-sub" data-back>戻る</button>
+      <button type="button" class="btn btn-main" data-go="4">次へ進む</button>
+    </div>
+  </section>
+
+  <!-- ============ STEP 4 お客様情報 ============ -->
+  <section class="step" data-step="4">
+    <h1 class="step-t">お客様のことを教えてください</h1>
+    <p class="step-d">ご連絡とお申し込み内容の控えに使います。お届け先のご住所は、お支払いのときにご入力いただきます。</p>
+
+    <div class="field">
+      <label for="cname">お名前<span class="req">必須</span></label>
+      <input type="text" id="cname" name="お名前" autocomplete="name" placeholder="吉田 花子">
+      <p class="err-msg">お名前をご記入ください。</p>
+    </div>
+
+    <div class="field">
+      <label for="cmail">メールアドレス<span class="req">必須</span></label>
+      <p class="hint">お申し込み内容の控えをお送りします。</p>
+      <input type="email" id="cmail" name="メールアドレス" inputmode="email" autocomplete="email" placeholder="hanako@example.com">
+      <p class="err-msg">メールアドレスをご確認ください。</p>
+    </div>
+
+    <div class="field">
+      <label for="cinsta">Instagramのアカウント<span class="opt">任意</span></label>
+      <p class="hint">お客様を見つけやすくなります。</p>
+      <input type="text" id="cinsta" name="Instagram" autocomplete="off" placeholder="@hanako_choco">
+    </div>
+
+    <label class="agree" id="agreeBox">
+      <input type="checkbox" id="agree">
+      <span><a href="../privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a> と
+      <a href="tokushoho.html" target="_blank" rel="noopener">特定商取引法に基づく表記</a> を確認し、同意します</span>
+    </label>
+    <p class="err-msg" id="e-agree" style="margin-top:10px;">ご確認のうえ、チェックをお願いします。</p>
+
+    <ul class="notes">
+      <li>お申し込みの時点では料金は発生しません。</li>
+      <li>お送りいただくお写真は、ご本人が権利をお持ちのものに限ります。</li>
+    </ul>
+
+    <div class="draft" style="margin-top:20px;">
+      このあと、<b>LINEでうちの子のお写真をお送りいただきます。</b>
+      お手元にお気に入りのお写真をご用意ください。
+    </div>
+
+    <div class="nav-btns">
+      <button type="button" class="btn btn-sub" data-back>戻る</button>
+      <button type="button" class="btn btn-main" data-go="5">内容を確認する</button>
+    </div>
+  </section>
+
+  <!-- ============ STEP 5 確認 ============ -->
+  <section class="step" data-step="5">
+    <h1 class="step-t">この内容でお送りします</h1>
+    <p class="step-d">直したいところがあれば「修正」から戻れます。</p>
+
+    <div class="review">
+      <dl id="rv"></dl>
+    </div>
+
+    <div class="draft" style="margin-top:18px;">
+      <b>ここではまだお支払いは発生しません。</b><br>
+      お写真をお預かりして仕上がりイメージをお作りし、気に入っていただけたらお支払いのご案内をします。
+      イメージをご覧になってからお断りいただいて構いません。
+    </div>
+
+    <div class="nav-btns">
+      <button type="button" class="btn btn-sub" data-back>戻る</button>
+      <button type="submit" class="btn btn-main" id="send">お申し込みを送信する</button>
+    </div>
+
+    <div class="send-err" id="sendErr">
+      うまく送信できませんでした。電波の状況をご確認のうえ、もう一度お試しください。
+      くり返し失敗する場合は、お手数ですが Instagram のDMからご連絡ください。
+    </div>
+  </section>
+
+</form>
+</main>
+
+<!-- ============ 固定サマリーバー ============ -->
+<div class="bar">
+  <div class="bar-in">
+    <div class="bar-l">
+      <div class="bar-lbl">選択中の内容</div>
+      <div class="bar-val" id="barVal"><span class="bar-empty">選ぶとここに表示されます</span></div>
+    </div>
+    <div class="bar-r">
+      <div class="bar-price" id="barPrice">ー</div>
+      <div class="bar-note">送料別</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  var KEY = 'uchinoko-order-v1';
+  var ACCESS_KEY = '9578232e-a24e-4c0a-846c-9688fed6bab4';
+
+  var form = document.getElementById('f');
+  var steps = [].slice.call(document.querySelectorAll('.step'));
+  var bar = document.getElementById('bar');
+  var stepNow = document.getElementById('stepNow');
+  var cur = 1;
+  var LAST = steps.length;
+
+  /* ---------- ステップの表示 ---------- */
+  function show(n, push){
+    cur = n;
+    steps.forEach(function(s){
+      s.classList.toggle('on', +s.dataset.step === n);
+    });
+    bar.style.width = (n / LAST * 100) + '%';
+    stepNow.textContent = n;
+    if (n === LAST) buildReview();
+    window.scrollTo({top:0, behavior:'instant'});
+    if (push) history.pushState({step:n}, '');
+  }
+
+  /* スワイプバック・ブラウザバックで1ステップだけ戻す */
+  history.replaceState({step:1}, '');
+  window.addEventListener('popstate', function(e){
+    var n = (e.state && e.state.step) || 1;
+    show(n, false);
+  });
+
+  document.addEventListener('click', function(e){
+    var go = e.target.closest('[data-go]');
+    if (go){
+      if (validate(cur)) show(+go.dataset.go, true);
+      return;
+    }
+    if (e.target.closest('[data-back]')){ history.back(); return; }
+    var ed = e.target.closest('[data-edit]');
+    if (ed){ show(+ed.dataset.edit, true); }
+  });
+
+  /* ---------- 入力チェック ---------- */
+  function err(el, on){
+    if (!el) return;
+    el.classList.toggle('on', on);
+    var fld = el.closest('.field');
+    if (fld) fld.classList.toggle('has-err', on);
+  }
+  function firstErr(){
+    var e = document.querySelector('.step.on .err-msg.on');
+    if (e) e.scrollIntoView({block:'center', behavior:'smooth'});
+  }
+
+  function validate(n){
+    var ok = true;
+
+    if (n === 1){
+      var s = form.querySelector('[name="加工スタイル"]:checked');
+      err(document.getElementById('e-style'), !s);
+      if (!s) ok = false;
+    }
+
+    if (n === 2){
+      var i = form.querySelector('[name="グッズ"]:checked');
+      err(document.getElementById('e-item'), !i);
+      if (!i) ok = false;
+    }
+
+    if (n === 3){
+      var g = form.querySelector('[name="名入れ"]:checked');
+      err(document.getElementById('e-engrave'), !g);
+      if (!g){ ok = false; }
+      else {
+        // 表示中の欄だけを必須にする
+        (g.dataset.fields || '').split(' ').filter(Boolean).forEach(function(k){
+          var box = document.querySelector('.cond[data-fld="'+k+'"]');
+          var inp = box.querySelector('input,textarea');
+          var bad = !inp.value.trim();
+          err(box.querySelector('.err-msg'), bad);
+          if (bad) ok = false;
+        });
+      }
+    }
+
+    if (n === 4){
+      var nm = document.getElementById('cname');
+      var bad1 = !nm.value.trim();
+      err(nm.closest('.field').querySelector('.err-msg'), bad1);
+      if (bad1) ok = false;
+
+      var ml = document.getElementById('cmail');
+      var bad2 = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(ml.value.trim());
+      err(ml.closest('.field').querySelector('.err-msg'), bad2);
+      if (bad2) ok = false;
+
+      var ag = document.getElementById('agree');
+      err(document.getElementById('e-agree'), !ag.checked);
+      if (!ag.checked) ok = false;
+    }
+
+    if (!ok) setTimeout(firstErr, 30);
+    return ok;
+  }
+
+  /* ---------- 条件表示 ---------- */
+  function syncCond(){
+    var item = form.querySelector('[name="グッズ"]:checked');
+    document.getElementById('modelBox')
+      .classList.toggle('on', !!(item && item.dataset.model));
+
+    var g = form.querySelector('[name="名入れ"]:checked');
+    var want = g ? (g.dataset.fields || '').split(' ').filter(Boolean) : [];
+    document.querySelectorAll('.cond[data-fld]').forEach(function(box){
+      var on = want.indexOf(box.dataset.fld) >= 0;
+      box.classList.toggle('on', on);
+      if (!on){
+        var i = box.querySelector('input,textarea');
+        i.value = '';
+        err(box.querySelector('.err-msg'), false);
+      }
+    });
+    // 文字を入れない場合は書体の案内も隠す
+    document.getElementById('fontNote').style.display =
+      (g && g.value === '名入れなし') ? 'none' : '';
+  }
+
+  /* ---------- サマリーバー ---------- */
+  function price(){
+    var i = form.querySelector('[name="グッズ"]:checked');
+    return i ? +i.dataset.price : 0;
+  }
+  function yen(n){ return '¥' + n.toLocaleString('ja-JP'); }
+
+  function syncBar(){
+    var s = form.querySelector('[name="加工スタイル"]:checked');
+    var i = form.querySelector('[name="グッズ"]:checked');
+    var parts = [];
+    if (s) parts.push(s.value);
+    if (i) parts.push(i.value);
+
+    var v = document.getElementById('barVal');
+    if (parts.length) v.textContent = parts.join(' / ');
+    else v.innerHTML = '<span class="bar-empty">選ぶとここに表示されます</span>';
+
+    document.getElementById('barPrice').textContent = price() ? yen(price()) : 'ー';
+  }
+
+  /* ---------- 確認画面 ---------- */
+  function val(n){
+    var el = form.querySelector('[name="'+n+'"]:checked') || form.querySelector('[name="'+n+'"]');
+    return el ? el.value.trim() : '';
+  }
+  function row(label, value, editStep){
+    if (!value) return '';
+    var e = editStep ? '<a class="edit" data-edit="'+editStep+'">修正</a>' : '';
+    return '<dt>'+label+'</dt><dd>'+esc(value)+e+'</dd>';
+  }
+  function esc(s){
+    return String(s).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+
+  function buildReview(){
+    var g = form.querySelector('[name="名入れ"]:checked');
+    var txt = '';
+    if (g){
+      var f = (g.dataset.fields||'').split(' ').filter(Boolean).map(function(k){
+        return document.querySelector('.cond[data-fld="'+k+'"] input, .cond[data-fld="'+k+'"] textarea').value.trim();
+      }).filter(Boolean);
+      txt = f.join(' / ');
+    }
+    var h = '';
+    h += row('仕上がり', val('加工スタイル'), 1);
+    h += row('グッズ', val('グッズ'), 2);
+    h += row('機種', val('機種'), 2);
+    h += row('名入れ', val('名入れ'), 3);
+    h += row('入れる文字', txt, 3);
+    h += row('お名前', val('お名前'), 4);
+    h += row('メール', val('メールアドレス'), 4);
+    h += row('Instagram', val('Instagram'), 4);
+    h += '<dt class="total">金額</dt><dd class="total">'+ (price()? yen(price()) : 'ー') +
+         '<br><span style="font-size:12px;font-weight:300;color:var(--sub);">送料が別にかかります</span></dd>';
+    document.getElementById('rv').innerHTML = h;
+  }
+
+  /* ---------- 入力の保存と復元 ---------- */
+  function save(){
+    try{
+      var d = {};
+      new FormData(form).forEach(function(v,k){ d[k] = v; });
+      sessionStorage.setItem(KEY, JSON.stringify(d));
+    }catch(e){}
+  }
+  function restore(){
+    try{
+      var d = JSON.parse(sessionStorage.getItem(KEY) || '{}');
+      Object.keys(d).forEach(function(k){
+        var els = form.querySelectorAll('[name="'+CSS.escape(k)+'"]');
+        els.forEach(function(el){
+          if (el.type === 'radio'){ if (el.value === d[k]) el.checked = true; }
+          else el.value = d[k];
+        });
+      });
+    }catch(e){}
+  }
+
+  /* ---------- URLパラメータで初期選択 ---------- */
+  /* 例: order.html?item=bottle&style=水彩風  ← Instagram の投稿ごとに出し分けられる */
+  function fromQuery(){
+    var q = new URLSearchParams(location.search);
+    var it = q.get('item');
+    if (it){
+      var t = form.querySelector('[name="グッズ"][data-key="'+CSS.escape(it)+'"]');
+      if (t) t.checked = true;
+    }
+    var st = q.get('style');
+    if (st){
+      form.querySelectorAll('[name="加工スタイル"]').forEach(function(r){
+        if (r.value === st) r.checked = true;
+      });
+    }
+  }
+
+  /* ---------- 受付番号 ---------- */
+  function makeNo(){
+    var d = new Date();
+    var p = function(n){ return String(n).padStart(2,'0'); };
+    var ymd = String(d.getFullYear()).slice(2) + p(d.getMonth()+1) + p(d.getDate());
+    return 'BT-' + ymd + '-' + String(Math.floor(1000 + Math.random()*9000));
+  }
+  function stamp(){
+    var d = new Date();
+    var p = function(n){ return String(n).padStart(2,'0'); };
+    return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+' '+p(d.getHours())+':'+p(d.getMinutes());
+  }
+
+  /* ---------- 送信 ---------- */
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    if (!validate(4)) { show(4, true); return; }
+
+    var btn = document.getElementById('send');
+    var se = document.getElementById('sendErr');
+    se.classList.remove('on');
+    btn.disabled = true;
+    btn.textContent = '送信しています...';
+
+    var no = makeNo();
+    var g = form.querySelector('[name="名入れ"]:checked');
+    var engText = '';
+    if (g){
+      engText = (g.dataset.fields||'').split(' ').filter(Boolean).map(function(k){
+        return document.querySelector('.cond[data-fld="'+k+'"] input, .cond[data-fld="'+k+'"] textarea').value.trim();
+      }).filter(Boolean).join(' / ');
+    }
+
+    // 空欄は「なし」で埋める。空だと選び忘れか該当なしか読み取れないため
+    var n = function(v){ return v || 'なし'; };
+
+    var d = {
+      access_key: ACCESS_KEY,
+      subject: '【うちの子】' + no + ' ' + val('グッズ') + '／' + val('加工スタイル') + ' ' + val('お名前') + '様',
+      from_name: 'うちの子グッズ 注文フォーム',
+      replyto: val('メールアドレス'),
+      '受付番号': no,
+      '仕上がり': val('加工スタイル'),
+      'グッズ': val('グッズ'),
+      '金額': price() ? yen(price()) + '（送料別）' : 'ー',
+      '機種': n(val('機種')),
+      '名入れ種別': val('名入れ'),
+      '入れる文字': n(engText),
+      'お名前': val('お名前'),
+      'メールアドレス': val('メールアドレス'),
+      'Instagram': n(val('Instagram')),
+      '送信日時': stamp(),
+      '発注メモ': [no, val('グッズ'), price()?yen(price()):'', val('加工スタイル'),
+                   '名入れ:' + val('名入れ') + (engText ? '「'+engText+'」' : ''),
+                   '機種:' + n(val('機種')), val('お名前') + '様'].join('／')
+    };
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json', 'Accept':'application/json'},
+      body: JSON.stringify(d)
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(res){
+      if (!res.success) throw new Error(res.message || 'failed');
+      try{
+        sessionStorage.setItem('uchinoko-done', JSON.stringify({no:no, data:d}));
+        sessionStorage.removeItem(KEY);
+      }catch(e){}
+      location.href = 'thanks.html';
+    })
+    .catch(function(){
+      btn.disabled = false;
+      btn.textContent = 'お申し込みを送信する';
+      se.classList.add('on');
+      se.scrollIntoView({block:'center', behavior:'smooth'});
+    });
+  });
+
+  /* ---------- 監視 ---------- */
+  form.addEventListener('change', function(){ syncCond(); syncBar(); save(); });
+  form.addEventListener('input', function(){ save(); });
+
+  var msg = document.getElementById('msg');
+  msg.addEventListener('input', function(){
+    document.getElementById('msgN').textContent = msg.value.length;
+  });
+
+  // 選び直したらエラー表示を消す
+  form.addEventListener('change', function(e){
+    var t = e.target;
+    if (t.name === '加工スタイル') err(document.getElementById('e-style'), false);
+    if (t.name === 'グッズ') err(document.getElementById('e-item'), false);
+    if (t.name === '名入れ') err(document.getElementById('e-engrave'), false);
+    if (t.id === 'agree' && t.checked) err(document.getElementById('e-agree'), false);
+    var fld = t.closest('.field');
+    if (fld && t.value.trim()) err(fld.querySelector('.err-msg'), false);
+  });
+
+  /* ---------- 起動 ---------- */
+  restore();
+  fromQuery();
+  syncCond();
+  syncBar();
+  if (msg.value) document.getElementById('msgN').textContent = msg.value.length;
+})();
+</script>
+</body>
+</html>

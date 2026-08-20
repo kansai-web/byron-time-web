@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<!-- ★公開するときに、この noindex の行を削除する -->
+<meta name="robots" content="noindex">
+<title>うちの子グッズ｜写真1枚から作るオーダーメイド BYRON TIME</title>
+<meta name="description" content="うちの子のお写真1枚から、イラスト風のオリジナルグッズをお作りします。まず無料で仕上がりイメージをご覧いただき、気に入っていただけたらお支払いへ。スマホケース・ボトル・モバイルバッテリーなど。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;700&family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="site-nav-in">
+    <span class="logo">BYRON TIME</span>
+    <a href="order.html" class="cta">無料でイメージを見る</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============ ヒーロー ============ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-ph">
+      <img src="img/hero.jpg" alt="うちの子グッズ" width="800" height="1000">
+    </div>
+    <p class="sec-en">UCHINOKO GOODS</p>
+    <h1>写真1枚から、<br>うちの子のグッズを。</h1>
+    <p class="lead">
+      お預かりしたお写真をイラスト風に整えて、毎日使えるグッズにお入れします。
+      犬・猫・鳥はもちろん、お子さまやご家族のお写真でも承ります。
+    </p>
+    <p class="lead" style="color:var(--text);">
+      <b style="font-weight:500;">まず無料で、仕上がりイメージをお作りします。</b><br>
+      実物のイメージをご覧になってから、お決めください。
+    </p>
+    <div class="hero-btns">
+      <a href="order.html" class="btn btn-main btn-lg">無料でイメージを見てみる</a>
+      <a href="#flow" class="btn btn-sub btn-lg">注文の流れを見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 加工スタイル ============ -->
+<section id="style" style="background:var(--white);">
+  <div class="wrap">
+    <div class="center" style="margin-bottom:32px;">
+      <p class="sec-en">STYLE</p>
+      <h2 class="sec-h">3つの雰囲気から選べます</h2>
+      <p class="sec-lead">同じお写真でも、仕上げ方で印象が変わります。<br>迷ったら、お写真を見てからご提案します。</p>
+    </div>
+
+    <!--
+      ★ここに入れる画像がまだありません。
+        同じ子の同じお写真を、3つのスタイルに加工した4枚
+        （元のお写真1枚＋スタイル3枚）を作って
+        img/style-src.jpg / style-1.jpg / style-2.jpg / style-3.jpg として置いてください。
+        画像が用意できたら、下の点線ボックスを削除して
+        コメントアウトしている比較ブロックを表示に戻します。
+    -->
+    <div class="draft">
+      <b>【制作中】</b>ここに「同じお写真を3つのスタイルに加工した比較」が入ります。<br>
+      元のお写真1枚と、水彩風・鉛筆デッサン風・モノクロ風の3枚をご用意ください。
+    </div>
+
+    <!--
+    <div class="style-src">
+      <img src="img/style-src.jpg" alt="元のお写真">
+      <p class="cap">お送りいただくお写真</p>
+    </div>
+    <div class="arrow-dn"></div>
+    <div class="styles">
+      <div class="style-i">
+        <div class="ph"><img src="img/style-1.jpg" alt="水彩風" loading="lazy"></div>
+        <p class="n">水彩風</p>
+        <p class="d">やわらかい色合いに</p>
+      </div>
+      <div class="style-i">
+        <div class="ph"><img src="img/style-2.jpg" alt="鉛筆デッサン風" loading="lazy"></div>
+        <p class="n">鉛筆<br>デッサン風</p>
+        <p class="d">落ち着いた印象に</p>
+      </div>
+      <div class="style-i">
+        <div class="ph"><img src="img/style-3.jpg" alt="モノクロ風" loading="lazy"></div>
+        <p class="n">モノクロ風</p>
+        <p class="d">シックな雰囲気に</p>
+      </div>
+    </div>
+    -->
+  </div>
+</section>
+
+<!-- ============ 作れるもの ============ -->
+<section id="items">
+  <div class="wrap">
+    <div class="center" style="margin-bottom:28px;">
+      <p class="sec-en">PRODUCTS</p>
+      <h2 class="sec-h">作れるもの</h2>
+      <p class="sec-lead">タップすると、くわしい内容をご覧いただけます。<br>価格はグッズ代とイラスト加工代を含んだ総額です。</p>
+    </div>
+
+    <div class="items" id="items-grid"></div>
+
+    <p class="center" style="margin-top:16px;font-size:12.5px;color:var(--sub);">
+      送料が別にかかります。2点以上のご注文もご相談ください。
+    </p>
+
+    <div style="margin-top:34px;">
+      <a href="order.html" class="btn btn-main btn-lg btn-block">無料でイメージを見てみる</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ イラスト加工について ============ -->
+<section style="background:var(--white);">
+  <div class="wrap">
+    <div class="center" style="margin-bottom:26px;">
+      <p class="sec-en">HOW IT WORKS</p>
+      <h2 class="sec-h">お写真は、こう変わります</h2>
+    </div>
+    <img src="img/howto-illust.jpg" alt="お写真を切り抜いてイラスト風に加工する流れ" loading="lazy" style="border-radius:16px;">
+
+    <div class="center" style="margin:44px 0 22px;">
+      <h2 class="sec-h" style="font-size:20px;">背景の色も選べます</h2>
+      <p class="sec-lead">12色の背景と7種類の書体から、お好きな組み合わせで。<br>LINEで見本をお送りしますので、一緒に決めましょう。</p>
+    </div>
+    <img src="img/bg-colors.jpg" alt="選べる背景デザイン12色" loading="lazy" style="border-radius:16px;">
+  </div>
+</section>
+
+<!-- ============ 注文の流れ ============ -->
+<section id="flow">
+  <div class="wrap">
+    <div class="center" style="margin-bottom:34px;">
+      <p class="sec-en">HOW TO ORDER</p>
+      <h2 class="sec-h">注文の流れ</h2>
+      <p class="sec-lead">お支払いは、仕上がりイメージをご覧いただいたあとです。</p>
+    </div>
+
+    <div class="flow">
+      <div class="flow-i">
+        <span class="n">1</span>
+        <h3>お申し込みフォームで選ぶ</h3>
+        <p>仕上がりの雰囲気、グッズ、お入れするお名前を選んで送信してください。1分ほどで終わります。</p>
+        <span class="free">ここでは料金は発生しません</span>
+      </div>
+      <div class="flow-i">
+        <span class="n">2</span>
+        <h3>LINEでお写真を送る</h3>
+        <p>送信後の画面からLINEを開いて、お気に入りのお写真を3枚ほどお送りください。一緒に使うお写真を決めます。</p>
+      </div>
+      <div class="flow-i">
+        <span class="n">3</span>
+        <h3>仕上がりイメージをご覧いただく</h3>
+        <p>お写真をイラスト風に整えて、グッズにのせたイメージをLINEでお送りします。書体や背景の色もここで決めましょう。</p>
+        <span class="free">イメージの制作も無料です</span>
+      </div>
+      <div class="flow-i">
+        <span class="n">4</span>
+        <h3>気に入ったら、お支払い</h3>
+        <p>お支払いページのリンクをお送りします。カード情報はこちらでは一切お預かりしません。お届け先のご住所も、この画面でご入力いただきます。</p>
+      </div>
+      <div class="flow-i">
+        <span class="n">5</span>
+        <h3>お届け</h3>
+        <p>印刷会社からお客様のご住所へ直接お届けします。伝票に金額は入りませんので、ギフトにもお使いいただけます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 無料の強調 ============ -->
+<section class="tight">
+  <div class="wrap">
+    <div class="free-box">
+      <p class="big">見てから、決めてください。</p>
+      <p>
+        お申し込みの時点では、料金は一切発生しません。<br>
+        仕上がりイメージをご覧になって、思っていたものと違えば、
+        そのままお断りいただいて大丈夫です。
+      </p>
+      <div style="margin-top:22px;">
+        <a href="order.html" class="btn btn-main btn-lg btn-block">無料でイメージを見てみる</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ よくあるご質問 ============ -->
+<section id="faq" style="background:var(--white);">
+  <div class="wrap">
+    <div class="center" style="margin-bottom:22px;">
+      <p class="sec-en">FAQ</p>
+      <h2 class="sec-h">よくあるご質問</h2>
+    </div>
+
+    <details class="faq-i">
+      <summary>スマホで撮った写真でも大丈夫ですか？</summary>
+      <p class="a">はい、スマホのお写真で承っています。ピントが合っていて、お顔が明るく写っているものが向いています。
+      LINEでお送りいただくときは、画質が落ちないよう「ORIGINAL」を選んでいただけると助かります。
+      お写真を拝見して難しそうな場合は、制作前にご相談します。</p>
+    </details>
+
+    <details class="faq-i">
+      <summary>本当に、先にお金を払わなくていいのですか？</summary>
+      <p class="a">はい。仕上がりイメージをご覧いただくところまで無料です。
+      お写真をお預かりして、イラスト風に加工し、グッズにのせた状態をLINEでお見せします。
+      その上で気に入っていただけたら、お支払いのご案内をします。</p>
+    </details>
+
+    <details class="faq-i">
+      <summary>写真を送ったら、必ず買わないといけませんか？</summary>
+      <p class="a">いいえ。イメージをご覧になってお断りいただいて構いません。料金は発生しません。
+      「思っていたのと違った」と伝えていただくだけで大丈夫です。</p>
+    </details>
+
+    <details class="faq-i">
+      <summary>iPhone以外のスマホケースは作れますか？</summary>
+      <p class="a">申し訳ありません、いまお取り扱いしているスマホケースはiPhone用のみです。
+      ボトルやモバイルバッテリー、アクリルフォトスタンドは機種に関係なくお作りできます。</p>
+    </details>
+
+    <details class="faq-i">
+      <summary>複数のペットを1つに入れられますか？</summary>
+      <p class="a">お作りできる場合が多いです。ただしグッズの大きさによっては、
+      並べると小さくなってしまうことがあります。お写真を拝見してご相談させてください。</p>
+    </details>
+
+    <details class="faq-i">
+      <summary>お届け先を、注文した人と別の住所にできますか？</summary>
+      <p class="a">はい。お支払いの画面でお届け先をご入力いただけますので、
+      プレゼントとして直接お送りすることもできます。伝票に金額は入りません。</p>
+    </details>
+
+    <details class="faq-i">
+      <summary>送ったペットの写真は、どう扱われますか？</summary>
+      <p class="a">グッズの制作のためだけに使わせていただきます。
+      作品例としてご紹介したい場合は、そのつど個別にご相談し、
+      許可をいただいた場合のみ掲載します。<a href="../privacy.html" style="color:var(--teal-dark);">プライバシーポリシー</a>もあわせてご覧ください。</p>
+    </details>
+
+    <details class="faq-i">
+      <summary>minneでも売っていますが、違いはありますか？</summary>
+      <p class="a">品物は同じものです。こちらのページからだと、
+      作りたいものを選んでそのままお申し込みいただけます。
+      minneのご利用に慣れている方は、これまでどおりminneからでも承ります。</p>
+    </details>
+  </div>
+</section>
+
+<!-- ============ 最後のCTA ============ -->
+<section class="tight">
+  <div class="wrap center">
+    <h2 class="sec-h">お写真を1枚、<br>選ぶところから。</h2>
+    <p class="sec-lead" style="margin-bottom:26px;">お申し込みは1分ほどで終わります。</p>
+    <a href="order.html" class="btn btn-main btn-lg btn-block">無料でイメージを見てみる</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-logo">BYRON TIME</div>
+    <div class="f-links">
+      <a href="https://www.instagram.com/kansai_connector/" target="_blank" rel="noopener">Instagram</a>
+      <a href="tokushoho.html">特定商取引法に基づく表記</a>
+      <a href="../privacy.html">プライバシーポリシー</a>
+      <a href="../byron-time-hp/">ホームページ制作</a>
+    </div>
+    <div class="f-copy">&copy; BYRON TIME</div>
+  </div>
+</footer>
+
+<!-- ============ 商品モーダル ============ -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mName">
+  <div class="modal-bg" data-close></div>
+  <div class="modal-in">
+    <button class="modal-x" type="button" data-close aria-label="閉じる">&times;</button>
+    <div class="modal-ph"><img id="mImg" src="" alt=""></div>
+    <h3 class="modal-n" id="mName"></h3>
+    <p class="modal-p" id="mPrice"></p>
+    <p class="modal-d" id="mDesc"></p>
+    <div class="modal-meta" id="mMeta"></div>
+    <a class="btn btn-main btn-block btn-lg" id="mGo" href="order.html">これで無料イメージを見てみる</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* 商品データ。追加するときはここに1件足して、img/ に写真を置くだけ */
+  var ITEMS = [
+    { key:'acrylic', name:'アクリルフォトスタンド', price:2980,
+      img:'img/uchinoko-acrylic.jpg',
+      desc:'お部屋に飾って、いつでも会えるフォトスタンド。透明感のあるアクリルに、うちの子をお入れします。記念日やギフトにも。',
+      meta:'素材：アクリル' },
+    { key:'grip', name:'iPhoneグリップケース', price:3480,
+      img:'img/uchinoko-grip.jpg',
+      desc:'毎日手にするスマホに、うちの子を。持ちやすいくびれのある形で、フチが少し高くなっているので画面が傷つきにくい作りです。',
+      meta:'素材：ポリカーボネート × TPU ／ iPhone用（対応機種はお申し込み時にお知らせください）' },
+    { key:'wood', name:'iPhoneウッドケース', price:4280,
+      img:'img/uchinoko-wood.jpg',
+      desc:'天然木のあたたかみに、うちの子のイラストを。やわらかな木目が出るので、ひとつずつ表情が違います。',
+      meta:'素材：天然木 ／ iPhone用（対応機種はお申し込み時にお知らせください）' },
+    { key:'bottle', name:'ステンレスボトル', price:4680,
+      img:'img/uchinoko-bottle.jpg',
+      desc:'毎日の水分補給が、少し楽しみになるボトル。お散歩やおでかけのお供に。ギフトにも選ばれています。',
+      meta:'素材：ステンレス（保冷・保温）' },
+    { key:'battery', name:'モバイルバッテリー', price:4800,
+      img:'img/uchinoko-battery.jpg',
+      desc:'ケーブルが内蔵されているので、荷物がかさばりません。おでかけのあいだも、うちの子がそばに。',
+      meta:'容量：5,000mAh ／ 10,000mAh からお選びいただけます（PSE認証済）' }
+  ];
+
+  var yen = function(n){ return '¥' + n.toLocaleString('ja-JP'); };
+  var esc = function(s){
+    return String(s).replace(/[&<>"]/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];
+    });
+  };
+
+  /* 一覧を組み立てる */
+  var grid = document.getElementById('items-grid');
+  grid.innerHTML = ITEMS.map(function(p, i){
+    return '<button class="item" type="button" data-i="'+i+'">' +
+      '<span class="ph"><img src="'+p.img+'" alt="'+esc(p.name)+'" loading="lazy"></span>' +
+      '<span class="b">' +
+        '<span class="n">'+esc(p.name)+'</span>' +
+        '<span class="p">'+yen(p.price)+'</span>' +
+        '<span class="more">くわしく見る</span>' +
+      '</span></button>';
+  }).join('');
+
+  /* モーダル */
+  var modal = document.getElementById('modal');
+  var lastFocus = null;
+
+  function open(i){
+    var p = ITEMS[i];
+    document.getElementById('mImg').src = p.img;
+    document.getElementById('mImg').alt = p.name;
+    document.getElementById('mName').textContent = p.name;
+    document.getElementById('mPrice').textContent = yen(p.price);
+    document.getElementById('mDesc').textContent = p.desc;
+    document.getElementById('mMeta').textContent = p.meta;
+    document.getElementById('mGo').href = 'order.html?item=' + p.key;
+    lastFocus = document.activeElement;
+    modal.classList.add('on');
+    document.body.style.overflow = 'hidden';
+    document.querySelector('.modal-x').focus();
+  }
+  function close(){
+    modal.classList.remove('on');
+    document.body.style.overflow = '';
+    if (lastFocus) lastFocus.focus();
+  }
+
+  document.addEventListener('click', function(e){
+    var it = e.target.closest('.item');
+    if (it){ open(+it.dataset.i); return; }
+    if (e.target.closest('[data-close]')) close();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && modal.classList.contains('on')) close();
+  });
+})();
+</script>
+</body>
+</html>
