@@ -6,6 +6,12 @@
 /byron-time/*
   X-Robots-Tag: noindex
 
+# 新「うちの子グッズ」受注サイト（準備中）
+# ★公開するときに、この2行を削除する。
+#   各HTMLの <meta name="robots" content="noindex"> も一緒に外すこと。
+/uchinoko/*
+  X-Robots-Tag: noindex
+
 # クライアント案件（公開前の限定公開）
 /marucafe/*
   X-Robots-Tag: noindex
