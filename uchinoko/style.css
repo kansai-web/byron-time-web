@@ -302,7 +302,8 @@ button{font-family:inherit;cursor:pointer;}
 section{padding:60px 0;}
 section.tight{padding:44px 0;}
 
-.hero{padding:52px 0 56px;}
+/* .wrap と併用するので、左右の余白は必ず残す（一括指定で 0 にしない） */
+.hero{padding:52px 20px 56px;}
 .hero h1{
   font-family:var(--font-h);font-size:29px;font-weight:700;
   line-height:1.65;letter-spacing:.02em;margin-bottom:18px;
@@ -338,7 +339,8 @@ section.tight{padding:44px 0;}
   width:100%;padding:0;border-width:1px;
 }
 .item .ph{display:block;aspect-ratio:1/1;overflow:hidden;background:var(--cream);}
-.item .ph img{width:100%;height:100%;object-fit:cover;}
+/* 同じ理由で、一覧のサムネイルも上寄せにして注記が入らないようにする */
+.item .ph img{width:100%;height:100%;object-fit:cover;object-position:center top;}
 .item .b{display:block;padding:13px 14px 16px;}
 .item .n{display:block;font-size:14px;font-weight:500;line-height:1.5;}
 .item .p{display:block;font-size:16px;font-weight:700;color:var(--brown);margin-top:6px;}
@@ -408,7 +410,16 @@ section.tight{padding:44px 0;}
   position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;
   background:var(--cream);border:none;font-size:19px;color:var(--sub);line-height:1;
 }
-.modal-ph{border-radius:15px;overflow:hidden;margin-bottom:18px;background:var(--cream);}
+/* いまの商品画像は minne 用バナーで、下部に「送料は地域別」等の
+   注記が焼き込まれている。自サイトの条件と食い違うため、
+   4:3 の上寄せで切り、下部が出ないようにしている。
+   ★文字の入っていない商品画像に差し替えたら、この aspect-ratio と
+     object-position は外してよい */
+.modal-ph{
+  border-radius:15px;overflow:hidden;margin-bottom:18px;background:var(--cream);
+  aspect-ratio:4/3;
+}
+.modal-ph img{width:100%;height:100%;object-fit:cover;object-position:center top;}
 .modal-n{font-family:var(--font-h);font-size:20px;font-weight:700;line-height:1.55;}
 .modal-p{font-size:22px;font-weight:700;color:var(--brown);margin:9px 0 14px;}
 .modal-d{font-size:14px;color:var(--sub);line-height:2;margin-bottom:20px;}

@@ -27,47 +27,39 @@
 <main class="wrap form-body">
 <form id="f" novalidate>
 
-  <!-- ============ STEP 1 加工スタイル ============ -->
-  <section class="step on" data-step="1">
-    <h1 class="step-t">どんな雰囲気に仕上げますか？</h1>
-    <p class="step-d">お送りいただいたお写真を、イラスト風に整えてグッズにお入れします。<br>迷ったら「おまかせ」でも大丈夫です。ご相談しながら決めましょう。</p>
+  <!-- ============ STEP 1 仕上がりの確認 ============ -->
+  <!--
+    ★いま確定している加工スタイルは「イラスト加工」の1種類だけ。
+      選択肢が1つのラジオボタンは意味がないので、ここは
+      「選ばせる画面」ではなく「仕上がりを先に理解してもらう画面」にしてある。
 
-    <!--
-      ★加工スタイルの名前と説明は仮のものです。
-        Yukari さんが実際に作れるスタイルに合わせて、
-        下の value と名前・説明文を差し替えてください。
-        画像は img/style-*.jpg に置く想定です（未作成）。
-    -->
-    <div class="cards" data-required data-name="style">
-      <label class="card">
-        <input type="radio" name="加工スタイル" value="水彩風">
-        <span class="tick"></span>
-        <span class="card-n">水彩風</span>
-        <span class="card-s">やわらかい色合いで、絵の具で描いたような雰囲気に。</span>
-      </label>
-      <label class="card">
-        <input type="radio" name="加工スタイル" value="鉛筆デッサン風">
-        <span class="tick"></span>
-        <span class="card-n">鉛筆デッサン風</span>
-        <span class="card-s">線で描いたような、落ち着いた仕上がりに。</span>
-      </label>
-      <label class="card">
-        <input type="radio" name="加工スタイル" value="モノクロ風">
-        <span class="tick"></span>
-        <span class="card-n">モノクロ風</span>
-        <span class="card-s">色を抑えて、シックな印象に。</span>
-      </label>
-      <label class="card">
-        <input type="radio" name="加工スタイル" value="おまかせ・相談したい">
-        <span class="tick"></span>
-        <span class="card-n">迷っています / おまかせ</span>
-        <span class="card-s">お写真を見てから、似合うものをご提案します。</span>
-      </label>
+      ★スタイルが3種類そろったら選択カードに戻す：
+        ① 下の hidden（name="加工スタイル"）を削除
+        ② .cards + data-required の選択カードに置き換え
+        ③ script 内 validate() の「スタイルが増えたら」コメント部分を有効化
+  -->
+  <section class="step on" data-step="1">
+    <h1 class="step-t">こんなふうに<br class="br-sp">仕上がります</h1>
+    <p class="step-d">お送りいただいたお写真を、イラスト風に整えてグッズにお入れします。背景は切り抜いて、すっきりとした仕上がりにします。</p>
+
+    <img src="img/howto-illust.jpg" alt="お写真を切り抜き、イラスト風に加工してグッズに仕上げるまでの流れ" style="border-radius:16px;margin:6px 0 10px;">
+    <p style="font-size:12.5px;color:var(--sub);line-height:1.8;margin-bottom:22px;">
+      こちらはスマホケースの例です。ほかのグッズも同じ流れでお作りします。
+    </p>
+
+    <input type="hidden" name="加工スタイル" value="イラスト加工">
+
+    <div class="free-box" style="padding:24px 20px;">
+      <p class="big" style="font-size:17px;margin-bottom:10px;">実際の仕上がりを<br class="br-sp">見てから決められます</p>
+      <p style="font-size:13.5px;">お申し込みのあと、うちの子のお写真をLINEでお送りいただきます。仕上がりイメージをお作りしてご覧いただき、気に入っていただけたらお支払いにお進みください。</p>
     </div>
-    <p class="err-msg" id="e-style">仕上がりの雰囲気をひとつお選びください。</p>
+
+    <ul class="notes" style="margin-top:18px;">
+      <li>イメージをご覧になってからお断りいただいて構いません。</li>
+    </ul>
 
     <div class="nav-btns">
-      <button type="button" class="btn btn-main btn-lg" data-go="2">次へ進む</button>
+      <button type="button" class="btn btn-main btn-lg" data-go="2">グッズを選ぶ</button>
     </div>
   </section>
 
@@ -85,7 +77,7 @@
         <span class="card-p">¥2,980</span>
       </label>
       <label class="card">
-        <input type="radio" name="グッズ" value="iPhoneグリップケース" data-price="3480" data-key="grip" data-model="1">
+        <input type="radio" name="グッズ" value="iPhoneグリップケース" data-price="3480" data-key="grip" data-model="1" data-bg="1">
         <span class="tick"></span>
         <span class="card-ph"><img src="img/uchinoko-grip.jpg" alt="iPhoneグリップケース" loading="lazy"></span>
         <span class="card-n">iPhoneグリップケース</span>
@@ -106,7 +98,7 @@
         <span class="card-p">¥4,680</span>
       </label>
       <label class="card">
-        <input type="radio" name="グッズ" value="モバイルバッテリー" data-price="4800" data-key="battery">
+        <input type="radio" name="グッズ" value="モバイルバッテリー" data-price="4800" data-key="battery" data-bg="1">
         <span class="tick"></span>
         <span class="card-ph"><img src="img/uchinoko-battery.jpg" alt="モバイルバッテリー" loading="lazy"></span>
         <span class="card-n">モバイルバッテリー</span>
@@ -192,10 +184,10 @@
       </div>
     </div>
 
-    <div class="draft" id="fontNote">
-      文字の書体と背景の色は、このあとLINEで見本をお送りしてお選びいただきます。
-      書体7種類・背景12色からお選びいただけます。
-    </div>
+    <!-- 背景の色を選べるのはグリップケースとモバイルバッテリーだけ。
+         ボトルとアクリルフォトスタンドでは背景の話を出さない（事実と違うため）。
+         文面は script の syncCond() で切り替えている -->
+    <div class="draft" id="fontNote"></div>
 
     <div class="nav-btns">
       <button type="button" class="btn btn-sub" data-back>戻る</button>
@@ -353,11 +345,13 @@
   function validate(n){
     var ok = true;
 
-    if (n === 1){
-      var s = form.querySelector('[name="加工スタイル"]:checked');
-      err(document.getElementById('e-style'), !s);
-      if (!s) ok = false;
-    }
+    // STEP1 はいま「仕上がりを見てもらう」だけの画面なので、確認する項目がない。
+    // ★加工スタイルが3種類そろったら、下の3行を有効にする
+    // if (n === 1){
+    //   var s = form.querySelector('[name="加工スタイル"]:checked');
+    //   err(document.getElementById('e-style'), !s);
+    //   if (!s) ok = false;
+    // }
 
     if (n === 2){
       var i = form.querySelector('[name="グッズ"]:checked');
@@ -418,9 +412,22 @@
         err(box.querySelector('.err-msg'), false);
       }
     });
-    // 文字を入れない場合は書体の案内も隠す
-    document.getElementById('fontNote').style.display =
-      (g && g.value === '名入れなし') ? 'none' : '';
+    // 書体と背景の案内。背景を選べる商品かどうかで文面を変える
+    var note = document.getElementById('fontNote');
+    if (g && g.value === '名入れなし'){
+      // 文字を入れないなら書体の案内は不要。背景だけ選べる商品なら背景の案内は残す
+      if (item && item.dataset.bg){
+        note.style.display = '';
+        note.innerHTML = '背景の色は、このあとLINEで見本をお送りしてお選びいただきます。<b>12色</b>からお選びいただけます。';
+      } else {
+        note.style.display = 'none';
+      }
+    } else {
+      note.style.display = '';
+      note.innerHTML = (item && item.dataset.bg)
+        ? '文字の書体と背景の色は、このあとLINEで見本をお送りしてお選びいただきます。<b>書体7種類・背景12色</b>からお選びいただけます。'
+        : '文字の書体は、このあとLINEで見本をお送りしてお選びいただきます。<b>7種類</b>からお選びいただけます。';
+    }
   }
 
   /* ---------- サマリーバー ---------- */
@@ -470,7 +477,7 @@
       txt = f.join(' / ');
     }
     var h = '';
-    h += row('仕上がり', val('加工スタイル'), 1);
+    h += row('仕上がり', val('加工スタイル'), 0); // いまは選択項目でないので「修正」は出さない
     h += row('グッズ', val('グッズ'), 2);
     h += row('機種', val('機種'), 2);
     h += row('名入れ', val('名入れ'), 3);
