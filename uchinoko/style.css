@@ -484,6 +484,24 @@ footer{background:var(--white);border-top:1px solid var(--border);padding:40px 0
   .review dl{grid-template-columns:132px 1fr;}
 }
 
+/* 法務ページの表は、スマホでは横に並べると窮屈で読めない。
+   項目名を上、内容を下に積んで読みやすくする */
+@media(max-width:600px){
+  .doc-tbl,.doc-tbl tbody,.doc-tbl tr,.doc-tbl th,.doc-tbl td{
+    display:block;width:auto;
+  }
+  .doc-tbl tr{
+    border:1px solid var(--border);border-radius:11px;
+    overflow:hidden;margin-bottom:12px;
+  }
+  .doc-tbl th{
+    border:none;border-bottom:1px solid var(--border);
+    padding:10px 14px;font-size:13px;
+  }
+  .doc-tbl th br{display:none;}
+  .doc-tbl td{border:none;padding:14px;}
+}
+
 /* 動きを減らす設定への配慮 */
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important;}
