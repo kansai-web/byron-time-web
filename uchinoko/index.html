@@ -263,6 +263,15 @@
         </div>
       </details>
       <details class="faq-i">
+        <summary>仕上がりが写真と少し違うことはありますか？</summary>
+        <div class="a">
+          印刷はひとつずつ手作業で機械に設置するため、<b style="font-weight:500;">3mmほどの位置のずれが出ることがあります</b>。
+          また、画面でご覧いただく色と印刷された実物の色は、多少異なります。
+          どちらも通常の範囲としてお願いしておりますが、明らかな印刷ミスや破損があった場合は、
+          お取り替えまたは返金で対応いたします。
+        </div>
+      </details>
+      <details class="faq-i">
         <summary>送ったお写真は、どう扱われますか？</summary>
         <div class="a">
           お預かりしたお写真は、ご注文いただいたグッズをお作りするためだけに使います。
@@ -307,7 +316,25 @@
     <h3 class="modal-n" id="mName"></h3>
     <p class="modal-p" id="mPrice"></p>
     <p class="modal-d" id="mDesc"></p>
+
+    <!-- 選べる点などの短い箇条書き -->
     <div class="modal-meta" id="mMeta"></div>
+
+    <!-- 追加の写真（あるものだけ出す） -->
+    <div class="modal-shots" id="mShots"></div>
+
+    <!-- 仕様（サイズ・素材など） -->
+    <div class="spec-wrap" id="mSpecWrap">
+      <h4 class="spec-h">この商品について</h4>
+      <dl class="spec" id="mSpec"></dl>
+    </div>
+
+    <!-- 注意点 -->
+    <div class="caution" id="mCautionWrap">
+      <h4>お申し込みの前に</h4>
+      <ul id="mCaution"></ul>
+    </div>
+
     <a class="btn btn-main btn-block btn-lg" id="mOrder" href="order.html">これで申し込む</a>
     <p class="center" style="font-size:12px;color:var(--sub);margin-top:12px;">
       押しても料金は発生しません
@@ -341,60 +368,139 @@
       key:'grip', name:'iPhoneグリップケース', price:3480,
       img:'img/uchinoko-grip.jpg',
       desc:'毎日手にするスマホに、うちの子を。持ちやすいくびれた形で、フチが盛り上がっているので画面が傷つきにくい設計です。',
-      meta:['ポリカーボネート × TPU のハイブリッド構造','背景12色 × 書体7種類からお選びいただけます','ご注文時にiPhoneの機種をお伺いします']
+      meta:['背景12色 × 書体7種類からお選びいただけます'],
+      spec:[
+        ['素材','ポリカーボネート × TPU のハイブリッド構造'],
+        ['印刷','背面に全面フルカラー'],
+        ['ご確認','ご注文時にiPhoneの機種をお伺いします']
+      ]
     },
     {
       key:'wood', name:'iPhoneウッドケース', price:4280,
       img:'img/uchinoko-wood.jpg',
       desc:'天然木のぬくもりに、うちの子のイラストを。やわらかな木目が落ち着いた雰囲気をつくります。',
-      meta:['天然木を使用','木目の出方はひとつずつ異なります','ご注文時にiPhoneの機種をお伺いします']
+      meta:[],
+      spec:[
+        ['素材','天然木を使用'],
+        ['印刷','背面に全面フルカラー'],
+        ['ご確認','ご注文時にiPhoneの機種をお伺いします']
+      ],
+      caution:['天然の木を使っているため、木目の出方はひとつずつ異なります。']
     },
     {
       key:'bottle', name:'ステンレスボトル', price:4680,
       img:'img/uchinoko-bottle.jpg',
-      desc:'毎日の水分補給が、少し楽しい時間に。持ち歩くたびに、うちの子が一緒にいてくれます。',
-      meta:['ステンレス製','背景の色はお選びいただけません']
+      desc:'真空2重構造で、冷たい飲みものも温かい飲みものも温度を保ちます。氷が飛び出しにくい内ブタつき。ボトルをぐるりと一周、写真がまわります。',
+      meta:[],
+      spec:[
+        ['容量','300ml ／ 500ml'],
+        ['サイズ','300ml 約Φ57×H180mm ／ 500ml 約Φ67×H216mm'],
+        ['素材','ステンレス鋼（フタ・せんはポリプロピレン、パッキンはシリコーンゴム）'],
+        ['保温','6時間で53℃〜72℃'],
+        ['保冷','6時間で6℃〜10℃'],
+        ['印刷','360度フルカラー（ボトル全周）'],
+        ['衛生','食品衛生検査済'],
+        ['お手入れ','フタとせんは分解して洗えます']
+      ],
+      caution:[
+        '炭酸飲料・乳飲料・お味噌汁などの塩分を含むもの・果汁や茶葉は入れないでください。',
+        '食洗機、電子レンジ、冷凍庫ではお使いいただけません。',
+        '印刷の特性上、赤みがやや弱く、少し黄色みがかった仕上がりになります。',
+        '柄がぐるりとつながるデザインは、端と端がうまく合わない場合があります。'
+      ]
     },
     {
       key:'battery', name:'モバイルバッテリー', price:4800,
       img:'img/uchinoko-battery.jpg',
       desc:'ケーブルが内蔵されているので、荷物がかさばりません。お出かけのお供に。',
-      meta:['ケーブル内蔵タイプ','背景12色 × 書体7種類からお選びいただけます','PSE認証済み']
+      meta:['背景12色 × 書体7種類からお選びいただけます'],
+      spec:[
+        ['容量','5,000mAh ／ 10,000mAh'],
+        ['ケーブル','本体に内蔵'],
+        ['印刷','片面に全面フルカラー'],
+        ['認証','PSE認証済み']
+      ]
     },
 
-    /* ▼ 2026-08-22 追加（Yukari選定）。画像はまだ無いので img を空にしてある。
-         用意できたら img/ に置いてパスを書くだけで、プレースホルダーが差し替わる */
-    {
-      key:'charger', name:'光るワイヤレス充電器', price:4280,
-      img:'',
-      desc:'スマホを置くとLEDがふわりと灯ります。充電のたびに、うちの子が浮かび上がる置きもの。',
-      meta:['直径101mm・厚み6.3mm／約65g','天板は強化ガラス、本体はメタル','最大10Wの急速充電に対応',
-        '背景12色 × 書体7種類からお選びいただけます','本体の色はブラック・シルバー・ゴールド','ケースをつけたままだと充電できない場合があります']
-    },
-    {
-      key:'heater', name:'充電式カイロ', price:5480,
-      img:'',
-      desc:'スイッチを入れて約5秒であたたかくなります。モバイルバッテリーとしても使えるので、冬のお出かけにひとつ。',
-      meta:['約102 × 59 × 25mm／132g','アルミ合金とABS樹脂','温度の調節ができます',
-        '背景12色 × 書体7種類からお選びいただけます','モバイルバッテリー機能つき','専用ケースとUSBケーブルつき','PSE認証済み','低温やけどの恐れがあるため、就寝時はお使いになれません']
-    },
-    {
-      key:'ipad', name:'iPadソフトケース', price:4680,
-      img:'',
-      desc:'Apple Pencilを収めるポケットつき。背面いっぱいに、うちの子をお入れします。',
-      meta:['やわらかいTPU素材','Apple Pencilの収納ポケットつき','iPad Pro／Air／無印／miniに対応','ご注文時にiPadの機種をお伺いします','ペンの収納部分ではワイヤレス充電ができません']
-    },
+    /* ▼ 2026-08-22 追加（Yukari選定） */
     {
       key:'slidecan', name:'おやつ缶（スライド式）', price:2180,
       img:'',
       desc:'お散歩のおともに、ごほうびを少しだけ。ふたを横にスライドして開けるので、リードを持ったままでも開けられます。ポケットに入る薄さです。',
-      meta:[
-        '71 × 41 × 厚み13mm（フリスクくらいの大きさ）',
-        'スチール製・ふたはスライド式',
-        'ふたの外側にフルカラーでお入れします',
-        '背景12色 × 書体7種類からお選びいただけます',
-        '個包装のおやつや、乾いたおやつを入れてお使いください',
-        '食品用の容器として作られたものではありません'
+      meta:[],
+      spec:[
+        ['サイズ','全長71 × 幅41 × 厚さ13mm'],
+        ['素材','ティンフリースチール（ブリキ）'],
+        ['本体の色','シルバー'],
+        ['形','ふたがしっかり閉まるスライド式'],
+        ['印刷','ふたの外側に全面フルカラー']
+      ],
+      caution:[
+        '食品用の容器として作られたものではありません。個包装のおやつや、乾いたおやつを入れてお使いください。',
+        '透明にした部分にはインクがのらないため、本体のシルバーがそのまま出ます。'
+      ]
+    },
+    {
+      key:'charger', name:'光るワイヤレス充電器', price:4280,
+      img:'img/uchinoko-charger.jpg',
+      desc:'スマホを置くだけで充電できるQi対応の充電器です。充電しているあいだ、内蔵のLEDがゆるやかに点滅して、うちの子を下から照らします。',
+      meta:['背景12色 × 書体7種類からお選びいただけます'],
+      spec:[
+        ['サイズ','直径101 × 厚み6.3mm'],
+        ['重さ','約65g'],
+        ['素材','天面は強化ガラス9H、本体はメタル'],
+        ['本体の色','ブラック ／ シルバー ／ ゴールド'],
+        ['出力','最大10W（入力5V2A ／ 出力9V2A）'],
+        ['対応','Qi対応のスマートフォン'],
+        ['付属品','microUSBケーブル 1本'],
+        ['印刷','天面のガラス全面にフルカラー']
+      ],
+      caution:[
+        'ケースをつけたままでも充電できますが、素材や厚みによってはうまく充電できない場合があります。',
+        '付属ケーブルの差込口は、在庫の都合で Type-B か Type-C のいずれかになります。指定はできません。',
+        'ICカードや磁気を帯びたもの、金属製品を近づけないでください。',
+        'お使いの機器がQiに対応しているか、ご注文前にご確認ください。'
+      ]
+    },
+    {
+      key:'ipad', name:'iPadソフトケース', price:4680,
+      img:'',
+      desc:'やわらかく弾力のあるTPU素材のケースです。Apple Pencilを差しておけるポケットと、立てかけられるスタンド機能がついています。背面いっぱいに、うちの子をお入れします。',
+      meta:[],
+      spec:[
+        ['素材','TPU（やわらかく弾力のある素材）'],
+        ['本体の色','クリア'],
+        ['機能','Apple Pencil収納ポケット ／ スタンド機能'],
+        ['印刷','背面の全面にフルカラー（片面）'],
+        ['対応','iPad Pro ／ Air ／ 無印 ／ mini の各世代'],
+        ['ご確認','ご注文時にiPadの機種をお伺いします']
+      ],
+      caution:[
+        'Apple Pencilのポケットは収納するためのものです。入れたままでの充電はできません。',
+        '透明にした部分にはインクがのらないため、ケースのクリアがそのまま出ます。'
+      ]
+    },
+    {
+      key:'heater', name:'充電式カイロ', price:5480,
+      img:'',
+      desc:'スイッチを入れて約5秒であたたかくなります。モバイルバッテリーとしても使えるので、冬のお出かけにひとつ。専用ケースとUSBケーブルがついています。',
+      meta:['背景12色 × 書体7種類からお選びいただけます'],
+      spec:[
+        ['サイズ','約102 × 59 × 25mm'],
+        ['重さ','132g'],
+        ['素材','アルミ合金＋ABS'],
+        ['本体の色','ピンク ／ ゴールド ／ シルバー ／ ブラック'],
+        ['機能','温度調節 ／ モバイルバッテリー機能'],
+        ['充電','USB Type-C'],
+        ['付属品','専用ケース ／ USB充電ケーブル'],
+        ['認証','PSE（電気用品安全法）適合'],
+        ['印刷','表面にフルカラー']
+      ],
+      caution:[
+        '低温やけどにご注意ください。1時間に1回ほど、肌の状態をお確かめください。',
+        '就寝時はお使いにならないでください。',
+        '肌の弱い方、お子さま、ご自身で温度を伝えられない方のご使用はお控えください。',
+        'コタツやストーブなど、暖房器具のそばではお使いにならないでください。'
       ]
     }
   ];
@@ -440,8 +546,43 @@
     document.getElementById('mName').textContent = p.name;
     document.getElementById('mPrice').textContent = yen(p.price);
     document.getElementById('mDesc').textContent = p.desc;
-    document.getElementById('mMeta').innerHTML =
-      p.meta.map(function(m){ return '・' + esc(m); }).join('<br>');
+
+    // 選べる点など（短い箇条書き）
+    var meta = document.getElementById('mMeta');
+    if (p.meta && p.meta.length){
+      meta.style.display = '';
+      meta.innerHTML = p.meta.map(function(m){ return '・' + esc(m); }).join('<br>');
+    } else {
+      meta.style.display = 'none';
+    }
+
+    // 追加の写真
+    document.getElementById('mShots').innerHTML =
+      (p.shots || []).map(function(src){
+        return '<img src="' + esc(src) + '" alt="' + esc(p.name) + '" loading="lazy">';
+      }).join('');
+
+    // 仕様（サイズ・素材など）
+    var specWrap = document.getElementById('mSpecWrap');
+    if (p.spec && p.spec.length){
+      specWrap.style.display = '';
+      document.getElementById('mSpec').innerHTML = p.spec.map(function(row){
+        return '<dt>' + esc(row[0]) + '</dt><dd>' + esc(row[1]) + '</dd>';
+      }).join('');
+    } else {
+      specWrap.style.display = 'none';
+    }
+
+    // 注意点
+    var cWrap = document.getElementById('mCautionWrap');
+    if (p.caution && p.caution.length){
+      cWrap.style.display = '';
+      document.getElementById('mCaution').innerHTML =
+        p.caution.map(function(c){ return '<li>' + esc(c) + '</li>'; }).join('');
+    } else {
+      cWrap.style.display = 'none';
+    }
+
     document.getElementById('mOrder').href = 'order.html?item=' + encodeURIComponent(p.key);
 
     lastFocus = document.activeElement;
