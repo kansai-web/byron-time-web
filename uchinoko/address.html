@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<!-- このページは検索に出す必要がないので、公開後も noindex のままにする -->
+<meta name="robots" content="noindex">
+<title>お届け先のご入力｜うちの子グッズ BYRON TIME</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;700&family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="form-head">
+  <div class="form-head-inner">
+    <a href="index.html" class="logo">BYRON TIME</a>
+    <span class="step-of">お届け先</span>
+  </div>
+</header>
+
+<main class="wrap" style="padding-bottom:60px;">
+
+  <section style="padding:32px 0 0;">
+    <h1 class="step-t">お届け先を<br class="br-sp">教えてください</h1>
+    <p class="step-d">
+      いただいたご住所は、印刷会社からお客様へ直接お送りするために使います。
+      お名前とご住所は、そのまま配送伝票に印字されます。
+    </p>
+  </section>
+
+  <form id="f" novalidate>
+
+    <div class="field">
+      <label for="no">受付番号<span class="req">必須</span></label>
+      <p class="hint">お申し込みのあとにお送りした <b>BT</b> から始まる番号です。LINEのトークからもご確認いただけます。</p>
+      <input type="text" id="no" name="受付番号" autocomplete="off" placeholder="BT-260822-4821" inputmode="text">
+      <p class="err-msg">受付番号をご記入ください。おわかりにならない場合は、空欄のままLINEでお知らせください。</p>
+    </div>
+
+    <div class="field">
+      <label for="name">お名前<span class="req">必須</span></label>
+      <input type="text" id="name" name="お届け先お名前" autocomplete="name" placeholder="吉田 花子">
+      <p class="err-msg">お名前をご記入ください。</p>
+    </div>
+
+    <div class="field">
+      <label for="kana">お名前のふりがな<span class="opt">任意</span></label>
+      <input type="text" id="kana" name="ふりがな" autocomplete="off" placeholder="よしだ はなこ">
+    </div>
+
+    <div class="field">
+      <label for="zip">郵便番号<span class="req">必須</span></label>
+      <p class="hint">7桁を入れると、ご住所の途中まで自動で入ります。</p>
+      <input type="text" id="zip" name="郵便番号" inputmode="numeric" autocomplete="postal-code"
+             placeholder="5670000" maxlength="8">
+      <p class="err-msg">郵便番号を7桁でご記入ください。</p>
+      <p id="zipMsg" style="font-size:12.5px;color:var(--teal-dark);margin-top:7px;display:none;"></p>
+    </div>
+
+    <div class="field">
+      <label for="pref">都道府県<span class="req">必須</span></label>
+      <input type="text" id="pref" name="都道府県" autocomplete="address-level1" placeholder="大阪府">
+      <p class="err-msg">都道府県をご記入ください。</p>
+    </div>
+
+    <div class="field">
+      <label for="city">市区町村<span class="req">必須</span></label>
+      <input type="text" id="city" name="市区町村" autocomplete="address-level2" placeholder="茨木市●●町">
+      <p class="err-msg">市区町村をご記入ください。</p>
+    </div>
+
+    <div class="field">
+      <label for="addr">番地<span class="req">必須</span></label>
+      <p class="hint">丁目・番地・号まで、続けてご記入ください。</p>
+      <input type="text" id="addr" name="番地" autocomplete="address-line1" placeholder="1-2-3">
+      <p class="err-msg">番地をご記入ください。</p>
+    </div>
+
+    <div class="field">
+      <label for="bldg">建物名・お部屋番号<span class="opt">任意</span></label>
+      <p class="hint">マンション・アパートにお住まいの場合は、お部屋番号までご記入ください。</p>
+      <input type="text" id="bldg" name="建物名・部屋番号" autocomplete="address-line2" placeholder="●●マンション 101">
+    </div>
+
+    <div class="field">
+      <label for="tel">お電話番号<span class="req">必須</span></label>
+      <p class="hint">配送業者からご連絡が必要になったときに使います。ハイフンはあってもなくても大丈夫です。</p>
+      <input type="text" id="tel" name="電話番号" inputmode="tel" autocomplete="tel" placeholder="09012345678">
+      <p class="err-msg">お電話番号をご記入ください。</p>
+    </div>
+
+    <div class="field">
+      <label for="note">ご要望<span class="opt">任意</span></label>
+      <p class="hint">お届けのご希望などがあれば。（置き配のご指定は承れません）</p>
+      <textarea id="note" name="ご要望" maxlength="200" placeholder=""></textarea>
+    </div>
+
+    <div class="draft">
+      <b>ご住所は、印刷会社にのみお伝えします。</b>
+      商品はその印刷会社からお客様へ直接お届けするため、お届け先の情報を渡す必要があります。
+      それ以外の目的には使いません。くわしくは
+      <a href="../privacy.html" target="_blank" rel="noopener" style="color:var(--teal-dark);border-bottom:1px solid var(--border);">プライバシーポリシー</a>
+      をご覧ください。
+    </div>
+
+    <div class="nav-btns" style="margin-top:26px;">
+      <button type="submit" class="btn btn-main btn-lg btn-block" id="send">この住所で送る</button>
+    </div>
+
+    <div class="send-err" id="sendErr">
+      うまく送信できませんでした。電波の状況をご確認のうえ、もう一度お試しください。
+      くり返し失敗する場合は、お手数ですがLINEからご連絡ください。
+    </div>
+  </form>
+
+  <!-- 送信後 -->
+  <section id="done" style="display:none;padding:40px 0;">
+    <div class="center">
+      <div class="thanks-ic">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5DA8A3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20 6L9 17l-5-5"/>
+        </svg>
+      </div>
+      <h2 class="sec-h" style="margin-bottom:10px;">お届け先を<br class="br-sp">受け取りました</h2>
+      <p class="sec-lead">
+        ありがとうございます。<br>
+        このあと、お支払いのご案内をメールでお送りします。
+      </p>
+    </div>
+
+    <div class="after" style="margin-top:26px;">
+      <h3>このあとの流れ</h3>
+      <ol>
+        <li>Square（スクエア）という決済サービスから、請求書メールが届きます</li>
+        <li>メールのボタンからお支払いにお進みください</li>
+        <li>ご入金の確認後に制作し、印刷会社からお客様へ直接お届けします</li>
+      </ol>
+      <p style="font-size:12.5px;color:var(--sub);margin-top:12px;line-height:1.85;">
+        カードをお使いになりたくない場合は、銀行振込でも承ります。LINEでお知らせください。
+      </p>
+    </div>
+
+    <p class="center" style="margin-top:26px;">
+      <a href="index.html" class="back-link">トップにもどる</a>
+    </p>
+  </section>
+
+</main>
+
+<script>
+(function(){
+  'use strict';
+
+  var ACCESS_KEY = '9578232e-a24e-4c0a-846c-9688fed6bab4';
+  var form = document.getElementById('f');
+
+  function el(id){ return document.getElementById(id); }
+  function err(field, on){
+    var m = field.closest('.field').querySelector('.err-msg');
+    if (m) m.classList.toggle('on', on);
+    field.closest('.field').classList.toggle('has-err', on);
+  }
+
+  /* ---------- 郵便番号から住所を自動で入れる ----------
+     zipcloud（無料・登録不要）を使う。
+     APIが落ちていても手で入力できるので、失敗しても止めない。 */
+  var zip = el('zip'), zipMsg = el('zipMsg');
+  var lastLookup = '';
+
+  zip.addEventListener('input', function(){
+    var v = zip.value.replace(/[^0-9]/g, '');
+    if (v.length !== 7 || v === lastLookup) return;
+    lastLookup = v;
+    zipMsg.style.display = 'block';
+    zipMsg.style.color = 'var(--sub)';
+    zipMsg.textContent = 'ご住所を調べています...';
+
+    fetch('https://zipcloud.ibsnet.co.jp/api/search?zipcode=' + v)
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        if (d.status !== 200 || !d.results || !d.results.length){
+          zipMsg.style.color = 'var(--sub)';
+          zipMsg.textContent = 'この郵便番号では見つかりませんでした。お手数ですが、下の欄にご記入ください。';
+          return;
+        }
+        var a = d.results[0];
+        el('pref').value = a.address1 || '';
+        el('city').value = (a.address2 || '') + (a.address3 || '');
+        [el('pref'), el('city')].forEach(function(f){ err(f, false); });
+        err(zip, false);
+        zipMsg.style.color = 'var(--teal-dark)';
+        zipMsg.textContent = 'ご住所を入れました。続けて番地をご記入ください。';
+        el('addr').focus();
+      })
+      .catch(function(){
+        zipMsg.style.color = 'var(--sub)';
+        zipMsg.textContent = 'うまく調べられませんでした。お手数ですが、下の欄にご記入ください。';
+      });
+  });
+
+  /* ---------- 入力チェック ---------- */
+  function validate(){
+    var ok = true;
+    var required = ['no','name','zip','pref','city','addr','tel'];
+
+    required.forEach(function(id){
+      var f = el(id);
+      var bad = !f.value.trim();
+      if (id === 'zip' && !bad){
+        bad = f.value.replace(/[^0-9]/g,'').length !== 7;
+      }
+      err(f, bad);
+      if (bad) ok = false;
+    });
+
+    if (!ok){
+      var first = document.querySelector('.err-msg.on');
+      if (first) first.scrollIntoView({block:'center', behavior:'smooth'});
+    }
+    return ok;
+  }
+
+  form.addEventListener('input', function(e){
+    var f = e.target;
+    if (f.closest('.field') && f.value.trim()) err(f, false);
+  });
+
+  /* ---------- 送信 ---------- */
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    if (!validate()) return;
+
+    var btn = el('send');
+    var se = el('sendErr');
+    se.classList.remove('on');
+    btn.disabled = true;
+    btn.textContent = '送信しています...';
+
+    var v = function(id){ return el(id).value.trim(); };
+    var n = function(s){ return s || 'なし'; };
+
+    // 郵便番号は 000-0000 の形に整える
+    var z = v('zip').replace(/[^0-9]/g,'');
+    var zipFmt = z.length === 7 ? z.slice(0,3) + '-' + z.slice(3) : v('zip');
+
+    // ★ヨツバ印刷の入力欄の順に並べる。上から順にコピーすれば発注が終わる
+    var d = {
+      access_key: ACCESS_KEY,
+      subject: '【お届け先】' + v('no') + ' ' + v('name') + '様',
+      from_name: 'うちの子グッズ お届け先フォーム',
+      '受付番号': v('no'),
+      'お名前': v('name'),
+      'ふりがな': n(v('kana')),
+      '郵便番号': zipFmt,
+      '都道府県': v('pref'),
+      '市区町村': v('city'),
+      '番地': v('addr'),
+      '建物名・部屋番号': n(v('bldg')),
+      '電話番号': v('tel'),
+      'ご要望': n(v('note')),
+      '住所まるごと': v('pref') + v('city') + v('addr') + (v('bldg') ? ' ' + v('bldg') : '')
+    };
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify(d)
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(res){
+      if (!res.success) throw new Error(res.message || 'failed');
+      form.style.display = 'none';
+      document.querySelector('main section').style.display = 'none';
+      el('done').style.display = 'block';
+      window.scrollTo({top:0, behavior:'instant'});
+    })
+    .catch(function(){
+      btn.disabled = false;
+      btn.textContent = 'この住所で送る';
+      se.classList.add('on');
+      se.scrollIntoView({block:'center', behavior:'smooth'});
+    });
+  });
+})();
+</script>
+</body>
+</html>
