@@ -340,6 +340,33 @@
       img:'img/uchinoko-battery.jpg',
       desc:'ケーブルが内蔵されているので、荷物がかさばりません。お出かけのお供に。',
       meta:['ケーブル内蔵タイプ','背景12色 × 書体7種類からお選びいただけます','PSE認証済み']
+    },
+
+    /* ▼ 2026-08-22 追加（Yukari選定）。画像はまだ無いので img を空にしてある。
+         用意できたら img/ に置いてパスを書くだけで、プレースホルダーが差し替わる */
+    {
+      key:'charger', name:'光るワイヤレス充電器', price:4280,
+      img:'',
+      desc:'スマホを置くとLEDがふわりと灯ります。充電のたびに、うちの子が浮かび上がる置きもの。',
+      meta:['直径101mm・厚み6.3mm／約65g','天板は強化ガラス、本体はメタル','最大10Wの急速充電に対応','本体の色はブラック・シルバー・ゴールド','ケースをつけたままだと充電できない場合があります']
+    },
+    {
+      key:'heater', name:'充電式カイロ', price:5480,
+      img:'',
+      desc:'スイッチを入れて約5秒であたたかくなります。モバイルバッテリーとしても使えるので、冬のお出かけにひとつ。',
+      meta:['約102 × 59 × 25mm／132g','アルミ合金とABS樹脂','温度の調節ができます','モバイルバッテリー機能つき','専用ケースとUSBケーブルつき','PSE認証済み','低温やけどの恐れがあるため、就寝時はお使いになれません']
+    },
+    {
+      key:'ipad', name:'iPadソフトケース', price:4680,
+      img:'',
+      desc:'Apple Pencilを収めるポケットつき。背面いっぱいに、うちの子をお入れします。',
+      meta:['やわらかいTPU素材','Apple Pencilの収納ポケットつき','iPad Pro／Air／無印／miniに対応','ご注文時にiPadの機種をお伺いします','ペンの収納部分ではワイヤレス充電ができません']
+    },
+    {
+      key:'slidecan', name:'スライド缶ケース', price:1980,
+      img:'',
+      desc:'手のひらに収まる小さな缶。ピアスや薬、小さなものを入れて持ち歩けます。ふたをスライドするたび、うちの子に会えます。',
+      meta:['71 × 41 × 厚み13mm','スチール製','ふたはスライド式','全面にフルカラーでお入れします']
     }
   ];
 
@@ -353,8 +380,12 @@
   /* ---------- 一覧を描く ---------- */
   var grid = document.getElementById('itemGrid');
   grid.innerHTML = PRODUCTS.map(function(p, i){
+    // 写真がまだ無い商品は、空欄にせず「準備中」と正直に出す
+    var ph = p.img
+      ? '<span class="ph"><img src="'+p.img+'" alt="'+esc(p.name)+'" loading="lazy"></span>'
+      : '<span class="ph ph-soon"><span>写真を準備しています</span></span>';
     return '<button class="item" type="button" data-i="'+i+'">' +
-             '<span class="ph"><img src="'+p.img+'" alt="'+esc(p.name)+'" loading="lazy"></span>' +
+             ph +
              '<span class="b">' +
                '<span class="n">'+esc(p.name)+'</span>' +
                '<span class="p">'+yen(p.price)+'</span>' +
@@ -369,8 +400,14 @@
 
   function open(i){
     var p = PRODUCTS[i];
-    document.getElementById('mImg').src = p.img;
-    document.getElementById('mImg').alt = p.name;
+    var box = document.querySelector('.modal-ph');
+    if (p.img){
+      box.classList.remove('ph-soon');
+      box.innerHTML = '<img id="mImg" src="'+p.img+'" alt="'+esc(p.name)+'">';
+    } else {
+      box.classList.add('ph-soon');
+      box.innerHTML = '<span>写真を準備しています</span>';
+    }
     document.getElementById('mName').textContent = p.name;
     document.getElementById('mPrice').textContent = yen(p.price);
     document.getElementById('mDesc').textContent = p.desc;

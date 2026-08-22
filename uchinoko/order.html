@@ -104,14 +104,46 @@
         <span class="card-n">モバイルバッテリー</span>
         <span class="card-p">¥4,800</span>
       </label>
+
+      <!-- ▼ 2026-08-22 追加（Yukari選定）。写真がそろったら
+           span.card-ph の中身を img に差し替える -->
+      <label class="card">
+        <input type="radio" name="グッズ" value="スライド缶ケース" data-price="1980" data-key="slidecan">
+        <span class="tick"></span>
+        <span class="card-ph ph-soon"><span>写真を準備しています</span></span>
+        <span class="card-n">スライド缶ケース</span>
+        <span class="card-p">¥1,980</span>
+      </label>
+      <label class="card">
+        <input type="radio" name="グッズ" value="光るワイヤレス充電器" data-price="4280" data-key="charger">
+        <span class="tick"></span>
+        <span class="card-ph ph-soon"><span>写真を準備しています</span></span>
+        <span class="card-n">光るワイヤレス充電器</span>
+        <span class="card-p">¥4,280</span>
+      </label>
+      <label class="card">
+        <input type="radio" name="グッズ" value="iPadソフトケース" data-price="4680" data-key="ipad" data-model="ipad">
+        <span class="tick"></span>
+        <span class="card-ph ph-soon"><span>写真を準備しています</span></span>
+        <span class="card-n">iPadソフトケース</span>
+        <span class="card-p">¥4,680</span>
+      </label>
+      <label class="card">
+        <input type="radio" name="グッズ" value="充電式カイロ" data-price="5480" data-key="heater">
+        <span class="tick"></span>
+        <span class="card-ph ph-soon"><span>写真を準備しています</span></span>
+        <span class="card-n">充電式カイロ</span>
+        <span class="card-p">¥5,480</span>
+      </label>
     </div>
     <p class="err-msg" id="e-item">グッズをひとつお選びください。</p>
 
-    <!-- iPhoneケースを選んだときだけ出す -->
+    <!-- iPhoneケース・iPadケースを選んだときだけ出す。
+         文言は script の syncCond() で切り替えている -->
     <div class="cond" id="modelBox" style="margin-top:22px;">
       <div class="field">
-        <label for="model">お使いのiPhoneの機種<span class="opt">任意</span></label>
-        <p class="hint">例：iPhone 15 Pro。わからない場合は空欄で大丈夫です。LINEで一緒に確認します。</p>
+        <label for="model"><span id="modelLabel">お使いのiPhoneの機種</span><span class="opt">任意</span></label>
+        <p class="hint"><span id="modelEx">例：iPhone 15 Pro</span>。わからない場合は空欄で大丈夫です。LINEで一緒に確認します。</p>
         <input type="text" id="model" name="機種" autocomplete="off" placeholder="iPhone 15 Pro">
       </div>
     </div>
@@ -398,8 +430,18 @@
   /* ---------- 条件表示 ---------- */
   function syncCond(){
     var item = form.querySelector('[name="グッズ"]:checked');
-    document.getElementById('modelBox')
-      .classList.toggle('on', !!(item && item.dataset.model));
+
+    // 機種の欄。iPhoneケースとiPadケースで文言を変える
+    var needModel = !!(item && item.dataset.model);
+    document.getElementById('modelBox').classList.toggle('on', needModel);
+    if (needModel){
+      var isIpad = item.dataset.model === 'ipad';
+      var dev = isIpad ? 'iPad' : 'iPhone';
+      var ex  = isIpad ? 'iPad Air 第5世代' : 'iPhone 15 Pro';
+      document.getElementById('modelLabel').textContent = 'お使いの' + dev + 'の機種';
+      document.getElementById('modelEx').textContent = '例：' + ex;
+      document.getElementById('model').placeholder = ex;
+    }
 
     var g = form.querySelector('[name="名入れ"]:checked');
     var want = g ? (g.dataset.fields || '').split(' ').filter(Boolean) : [];
